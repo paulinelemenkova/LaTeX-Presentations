@@ -1,0 +1,448 @@
+\documentclass[pdflatex,compress,9pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}
+\usetheme{Goettingen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A,T1]{fontenc}
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+	style = numeric,
+%	style=nature,
+%	style=science,
+%	style=apa,
+%	style=mla,
+%	style=phys, 
+	maxbibnames=99,
+%	citestyle=authoryear,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{YO.bib}
+\renewcommand*{\bibfont}{\tiny} %\scriptsize \footnotesize
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+\title{Satellite Image Based Mapping of Wetland Tundra Landscapes Using ILWIS GIS}
+\author{Polina Lemenkova}
+         \date{March 19, 2015}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Outline}
+\begin{frame}
+           \tableofcontents
+\end{frame}
+
+\section{Introduction}
+\subsection{Research Goals}
+\begin{frame}{Research Goals}
+\begin{itemize}
+            \item Distribution of different types of landscapes in the wetland tundra of the Yamal Peninsula
+            \item Monitoring changes in the landscapes of tundra
+            \item Analysis of the landscape dynamics for 2 decades (1988-2011).
+            \item Data: Landsat TM satellite images for 1988 and 2011
+            \item Application of ILWIS GIS for spatial analysis and data processing on the region of Bovanenkovo, Yamal.
+            \item Technical approach: Remote sensing data processing by ILWIS GIS.
+            \item Methods: Supervised classification of Landsat TM images
+            \item Study area: tundra landscapes in the wetlands of the Yamal Peninsula in the Far North of Russia
+\end{itemize}
+\end{frame}
+
+\section{Geographic Settings}
+
+\subsection{Geomorphology of the Yamal Peninsula}
+\begin{frame}{Geomorphology of the Yamal Peninsula}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F4.png}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+	Key points on the Yamal geomorphology: 
+\begin{itemize}
+       \item[-] Elevations almost flat, terrain less than 90 m.
+       \item[-] Seasonal flooding
+       \item[-] Active processes of erosion
+       \item[-] Permafrost distribution
+       \item[-] Local formation of ground cryogenic landslides
+       \item[-] Specific ecological and climatic conditions (Arctic)
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Landscapes of the Yamal Peninsula} 
+\begin{frame}\frametitle{Landscapes of the Yamal Peninsula}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+       \item[*] Cryogenic landslides are formed as a result of the soil erosion are typical processes in the Yamal Peninsula
+       \item[*] Soil erosion develop as a result of the soil subsidence and soil thawing
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F1.png}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+       \item[*] Cryogen landslides have a negative impact on the local ecosystems
+       \item[*] Cryogen landslides disrupt the strata of the soil and slow down restoration of vegetation after the landslide
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F2.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Cryogenic Landslides on the Yamal Peninsula}
+\begin{frame}{Cryogenic Landslides on the Yamal Peninsula}
+\begin{itemize}
+       \item[--] The negative effect of cryogenic landslides - changes in types of vegetation cover at the place of their formation.
+       \item[--] For 10 years after active cryogenic landslide processes, the area of their occurrence remains uncovered.
+       \item[--] Then, over the next few years, a process of slow restoration of the soil and vegetation cover takes place 
+       \item[--] Vegetation succession: plant communities with dominant herbs, mosses, lichens and sedge, willow and meadows with short shrubs.
+       \item[--] Vegetation in the early stages of restoration (mosses, lichens) indirectly indicates recent formation of the cryogenic landslides 
+       \item[--] Meadows and willow shrub, on the contrary, indicate a relatively developed and restored plant community. 
+       \item[--] Areas subjected to the formation of cryogenic landslides in past 2-3 decades are usually characterized by the spread of willow and shrubbery, an indirect indicator of these processes in the past.
+\end{itemize}
+\end{frame}
+
+\section{Methods}
+\subsection{Data Processing Algorithm} 
+\begin{frame}\frametitle{Data Processing Algorithm}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.5cm]{F5.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.5cm]{F6.png}
+\end{figure}
+Examples of various types of the vegetation typical for the Yamal tundra, Arctic.
+\end{column}
+\begin{column}{0.5\textwidth}
+Algorithms of the data processing in ILWIS GIS: 
+\begin{enumerate}[i]
+            \item Data collection, import and conversion
+            \item Data: 2 Landsat TM images, 1988 \& 2011
+            \item Data pre-processing 
+            \item Georeferencing: WGS 1984 ellipsoid to UTM, E42, NW
+            \item 3 spectral channels for image processing: color composite\& multi-band layers
+            \item Clustering segmentation and classification
+            \item GIS mapping, spatial analysis
+            \item Google Earth imagery verification
+            \item Results interpretation
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Research Questions and Aims} 
+\begin{frame}\frametitle{Research Questions and Aims}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F7.png}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+Research questions and aims: 
+\begin{enumerate}[(I)]
+            \item The aim of the work is the use of GIS and RS data (Landsat TM) for monitoring tundra land cover types
+            \item Approaches: images classification, visualization and mapping
+            \item Have landscapes within the test territory of the study region changed over the past 14 years (1988-2011)?
+            \item What types of land cover types were dominating previously, and which ones are now ?
+            \item Methodologically, how ILWIS GIS can be used to process RS data ?
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Landsat TM images}
+\begin{frame}\frametitle{Landsat TM images}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+            \item AOI mask: 67\degree 00'-72\degree 00'E-70\degree 00'- 71\degree 00'N 
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F8.png}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+            \item Time span: 23 years (1988-2011)
+            \item Images taken during June to assess vegetation
+            \item Original Landsat TM images (.tiff) were converted to the Erdas Imagine .img format.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F9.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Image Georeferencing}
+\begin{frame}\frametitle{Image Georeferencing}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F14.png}
+\end{figure}
+Georeference Corner Editor of ILWIS GIS
+\end{frame}
+
+\subsection{Spectral Reflectance}
+\begin{frame}\frametitle{Spectral Reflectance (SR)}
+\begin{enumerate}[SR i.]
+	\item Image classification is grouping pixels into classes (merging pixels)
+	\item Clusters correspond to the types of vegetation cover according to the AOI settings
+	\item Classification is based on using spectral brightness of the image pixels
+	\item Spectral and texture characteristics of various land cover types are displayed on the image as different spectral brightnesses of the pixels
+	\item Spectral reflectances show spectral reflectivity of the land cover types (through pixels' spectral brightness) and individual properties of the vegetation objects detected on a raster image 
+\end{enumerate}
+\end{frame}
+
+\subsection{Image Clustering}
+\begin{frame}\frametitle{Image Clustering}
+\begin{enumerate}[(a)]
+            \item Cluster analysis is a statistical procedure for grouping objects (pixels on a raster image)
+            \item Pixels are ordered into homogeneous thematic groups (clusters)
+            \item Each digital pixel in the image is assigned to the corresponding land cover type group
+            \item Grouping is based on the proximity of the spectral brightness value (Digital Number, DN) of the pixel to the centroid.
+            \item The logical segmentation algorithm consists of grouping the pixels in the image (merging pixels) into clusters. 
+            \item Grouping pixels occurs in semi-automatic mode based on the distinctness from neighboring (neighbor pixels).
+            \item The process is repeated interactively until optimal values of the classes (and pixels attached to these classes) are reached.
+\end{enumerate}
+\end{frame}
+
+\subsection{Image Classification}
+\begin{frame}\frametitle{Image Classification (IC)}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F10.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F11.png}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+\begin{enumerate}[{IC}-1]
+            \item Thematic mapping is based on the results of the classification of images
+            \item Visualization of the landscapes' structure and vegetation types within the AOI.
+            \item To classify land cover types, image pixels were identified for each category and grouped into different land categories.
+            \item Land cover types were evaluated and identified with each land cover class
+            \item Number of cluster groups is 13 representing vegetation land cover types of the Yamal tundra
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Results}
+\subsection{Mapping Results}
+\begin{frame}\frametitle{Mapping Results}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+1988
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F12.png}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+2011
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F13.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Results Interpretation}
+\begin{frame}\frametitle{Results Interpretation}
+\begin{itemize}
+            \item Statistical results of calculations of types of vegetation cover were obtained in a semi-automatic mode in ILWIS GIS
+            \item 1988 'willow shrubs' type covered 412,292 pixels from the total part of the AOI, and 'high willow' class is 823,430 pixels
+            \item 2011: willow increased to 651427 pixels, ('willow shrubs'), and 893092 pixels ('high willows')
+            \item Both combined classes of willows, typical for AOI with a high water content, cover total 1544519 pixels, which is 40.27 \%. 
+            \item Area of grasses decreased compared to shrub and willow
+            \item Max area covered by class 'heather and dry grass' is 933798 pixels
+\end{itemize}
+\end{frame}
+
+\subsection{Google Earth Verification}
+\begin{frame}\frametitle{Google Earth Verification}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F15.png}
+\end{figure}
+The selected area represents one of the most diversified part of the tundra landscapes of Yamal
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+\begin{itemize}
+            \item AOI has a complex structure of boggy landscapes and unique types of vegetation
+            \item Therefore, in order to control the most difficult areas, the images were verified by Google Earth
+            \item Visualization of the same area in the satellite image and Google Earth image at the same time.
+            \item This made it possible to visually check heterogeneous areas with mixed land cover types and landscapes
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}{Conclusions}
+\begin{enumerate}[I.]
+            \item Monitoring landscape changes is an important tool for assessing the ecological stability of a region
+            \item Spatial analysis of the multi-temporal satellite images by ILWIS GIS algorithms is an effective tool
+            \item Research demonstrated how Yamal wetland tundra landscapes changed over a 23-year period of time
+            \item Data included LandsatTM satellite imagery covering the Yamal Peninsula, Far North of Russia
+            \item Image processing was done by classification methods.
+            \item Results shown changes in the landscapes from 1988 to 2011
+            \item Results confirm presence of the destructive processes caused changes in tundra boggy landscapes.
+            \item Research demonstrated successful ILWIS GIS based of the RS data analysis, effective for tundra monitoring
+\end{enumerate}
+\end{frame}
+
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+  	\emph{Thank you for attention !}\\
+	\vspace{5em}
+\normalsize
+Acknowledgement: \\
+Current research has been funded by the \\
+Finnish Centre for International Mobility (CIMO) \\
+Grant No. TM-10-7124, for author's research stay at \\
+Arctic Center, University of Lapland (2012).
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+\section{Bibliography}
+\Large{Bibliography}
+\nocite{*}
+\printbibliography[heading=none]
+	
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+\end{document}
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
