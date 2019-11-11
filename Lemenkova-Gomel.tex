@@ -1,0 +1,430 @@
+\documentclass[pdflatex,compress,9pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}
+\usetheme{CambridgeUS}
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style = numeric,
+%	style=nature,
+%	style=science,
+%	style=apa,
+%	style=mla,
+	style=phys, 
+	maxbibnames=99,
+%	citestyle=authoryear,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Gomel.bib}
+\renewcommand*{\bibfont}{\tiny} %\scriptsize \footnotesize
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Assessing and Monitoring Geoecological Status of West Turkish Landscapes for Sustainable Development: Processes, Activities and Problems}
+\author{Polina Lemenkova}
+         \date{April 23, 2015}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Outline}
+\begin{frame}
+	\scriptsize \tableofcontents
+\end{frame}
+
+\section{Introduction}
+\subsection{Study Area: Izmir Region}
+\begin{frame}{Study Area: Izmir Region}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F1.png}
+\end{figure}
+Izmir region is a special part of Turkey, which has unique landscapes with a variety of types of vegetation, different landforms and conservation areas.\\
+The vegetation within the Aegean coastal region is complex, characterized by high biodiversity and presence of the unique forms (endemics).	
+\end{frame}
+
+\section{Environmental Settings}
+\begin{frame}{Environmental Settings}
+\begin{itemize}
+            \item Izmir is the \nth{3} largest and most populous city in Turkey, an industrial city, significant both as a center of trade and industry, and as a major seaport of strategic importance.
+            \item The region has a high ecological significance and at the same time is experiencing a strong anthropogenic load.
+            \item A well-developed transport network, intensive shipping, the presence of factories and industrial centers, densely populated areas, intensive agricultural activity-these are the features of modern Izmir
+            \item The region of Izmir is a highly dynamic and rapidly developing region of western Turkey.
+            \item Urbanization rate is high: increase from 18.5\% (1950) to 62\% (2000)
+            \item The urban areas located on the coastal area of the Aegean Sea
+            \item Population: ca 4 M people have impact on the environment through enormous demographic, cultural and economic pressure
+ \end{itemize}
+\end{frame}
+
+\subsection{Urbanization}
+\begin{frame}{Urbanization}
+\begin{itemize}
+            \item There are ongoing processes of urbanization in westernTurkey.
+            \item Besides natural population increase, there is a tendency of local population migration coming from eastern regions westwards (for education and employment). 
+            \item Such migration leads to the congested, overpopulated quarters in large western metropolises with dense construction of multistoried buildings.
+            \item Even small coastal towns nowadays become more urbanized and gradually enlarge in size. 
+            \item As a consequence, this leads to the loss of natural and agricultural lands and changes in local landscapes and increaed anthropogenic pressure
+\end{itemize}
+\end{frame}
+
+
+\subsection{Environmental Problems of the Marine Areas: Izmir Bay}
+\begin{frame}{Environmental Problems of the Marine Areas: Izmir Bay}
+\begin{itemize}
+         \item Contribution of pollutants in Izmir Bay
+	\item During the last decades a large number of studies have been reported on the environmental, physical, chemical and biological properties of Izmir Bay
+	\item Inner Izmir Bay surface sediments are seriously polluted and contain significant concentration of geavy metals in Ag, As, Cd, Cr, Cu, Hg, Mo, Pb, Sb, Sn, V, and Zn, well above their preindustrial background levels and notable quantities of PCDD, PCDF and PAH. 
+	\item Traces of mercury originating from Gediz River and inactive mining sites in Karaburun Peninsula are discharged into adjucent shelf waters
+Mercury content in plankton exceeds acceptable standard level
+\end{itemize}
+\end{frame}
+
+\subsection{Marine environmental problems}
+\begin{frame}{Marine environmental problems}
+\begin{itemize}
+            \item Monitoring changes in the landscape - important tool for assessing ecological stability Spatial analysis of multi-temporal satellite images using GIS is the most effective tool 
+            \item Research demonstrated how landscape changed in a given period (1987-2000).
+            \item These include satellite images of Landsat. Image processing was performed using classification. 
+            \item Results showed landscape changes which proofs anthropogenic impacts 
+            \item The described above anthropogenic and climatic factors impact environment and cause destruction or loss of landscape elements. 
+            \item Landscape changes are detected in Izmir area It is therefore necessary to increase measures on nature protection and environmental monitoring of the Aegean Sea area.
+\end{itemize}
+\end{frame}
+
+\subsection{Water contamination in Izmir Bay}
+\begin{frame}{Water contamination in Izmir Bay}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F2.png}
+\end{figure}
+Contribution of pollutants in Izmir Bay
+\end{frame}
+
+\subsection{Izmir Bay: Environmental Pollution of the Sea by Sewage}
+\begin{frame}{Izmir Bay: Environmental Pollution of the Sea by Sewage}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F3.png}
+\end{figure}
+Pollution loads of Izmir sewage and streams. Source: G\"{u}r\"{u} et al., 2006.
+\end{frame}
+
+\subsection{Water contamination in Izmir Bay by heavy metals: Pb}
+\begin{frame}{Water contamination in Izmir Bay by heavy metals: Pb}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F4.png}
+\end{figure}
+Visualized graph of the concentrations of lead/plumbum (Pb) as mg/kg dry matter in sediment samples taken at Izmir Bay: July 2003 and 1990.
+\end{frame}
+
+\subsection{Water contamination in Izmir Bay by heavy metals: Zn}
+\begin{frame}{Water contamination in Izmir Bay by heavy metals: Zn}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F5.png}
+\end{figure}
+Visualized graph of the concentrations of zinc (Zn) in sediment samples (mg/kg) dry matter at Izmir Bay: July 2003 and 1990
+\end{frame}
+
+\subsection{Water contamination in Izmir Bay by heavy metals: Cd}
+\begin{frame}{Water contamination in Izmir Bay by heavy metals: Cd}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F6.png}
+\end{figure}
+Visualized graph of the concentrations of cadmium (Cd) in sediment samples (10 mcg/kg) dry matter at Izmir Bay: July 2003 and 1990.
+\end{frame}
+
+\subsection{Water contamination in Izmir Bay by heavy metals: Cr}
+\begin{frame}{Water contamination in Izmir Bay by heavy metals: Cr}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F7.png}
+\end{figure}
+Visualized graph of the concentrations of chromium (Cr) in sediment samples (mg/kg) dry matter at Izmir Bay: July 2003 and 1990.
+\end{frame}
+
+\subsection{The Interactions Between Aquatic and Terrestrial Components of the Ecosystems}
+\begin{frame}{The Interactions Between Aquatic and Terrestrial Components of the Ecosystems}
+\begin{itemize}
+            \item Water and terrestrial areas are closely connected within ecosystems, hydrological disturbances cause landscape degradation.
+            \item Erosion is the most important trigger factor for soil degradation.
+            \item According to the reports (EEA, 2010), there is a high degree of soil erosion in west Turkey, which is caused by complex influence of various factors: climatic settings, topographic relief, geological settings.
+            \item Climate change together with human impacts cause degradation of the semi-natural vegetation which leads to the soil degradation, and causes erosion.
+\end{itemize}
+\end{frame}
+
+
+\subsection{Landscape Change as a Sequential Process with Impact Factors}
+\begin{frame}{Landscape Change as a Sequential Process with Impact Factors}
+\begin{itemize}
+            \item Soil-hydrological processes cause changes in local landscapes.
+            \item In turn, it affect vegetation, especially in the coastal zones with sensible ecosystems.
+            \item For example, certain geological conditions makes land soils prone to erosion. 
+            \item Together with geomorphological conditions (e.g. step slopes) it intensifies erosion and leads to the land degradation in the Aegean Sea area.
+            \item Intensified by the destruction of the vegetation land cover and types, it increases desertification in the Mediterranean basin.
+\end{itemize}
+\end{frame}
+
+\subsection{Soils and Vegetation: Close Interconnection}
+\begin{frame}{Soils and Vegetation: Close Interconnection}
+\begin{itemize}
+            \item Soil and vegetation degradation are deeply interconnected: quality of soils reflects the state of upper vegetation.
+            \item Bare soils are destroyed more quick and intensive than those covered by forests.
+            \item Impacts of modified land cover types on soil is caused by the extensive agricultural activities which cause serious degradation and destruction of soils in highland Turkey. 
+            \item Quality and structure of soils deteriorate along with conversion of natural landscapes into cultivated lands. 
+            \item This demonstrates close connection between various parts of the ecosystem and negative effects of the land use change on natural landscapes.
+\end{itemize}
+\end{frame}
+
+\subsection{Water and Vegetation: Ecological Interactions}
+\begin{frame}{Water and Vegetation: Ecological Interactions}
+\begin{itemize}
+            \item Water shortage causes deforestation of precious forests communities, desertification, soil erosion and land degradation in Karuburun Peninsula
+            \item Karuburun Peninsula is an important part of Izmir ecosystems, well known as on of the major undisturbed sites in western Turkey with precious biodiversity structure, aesthetic landscapes and unique environment.
+            \item Other sources of environmental threats: radioactive wastes and radionuclides that originate from natural sources.
+            \item Sources include e.g. leaching from minerals and pollutants, e.g. nuclear power plants, explosions and accidents.
+            \item Such ecological contamination have direct impact on the sustainability of ecosystems.
+\end{itemize}
+\end{frame}
+
+\subsection{Anthropogenic Impacts on Izmir Region: Agriculture and Industrial Development}
+\begin{frame}{Anthropogenic Impacts on Izmir Region: Agriculture and Industrial Development}
+\begin{itemize}
+            \item Non-controlled anthropogenic pressure also has potential negative consequences.
+            \item Human influence is reflected in physical landscapes, e.g. land use types or spatial landscapes heterogeneity
+            \item Positive factor: industrial development definitely has positive influence on the local economics and tourism development 
+            \item Negative factor: anthropogenic land overuse and industrial development  trigger processes of changes in chemical and physical properties of soils.
+            \item Other factors: cultivation, overgrazing and harvesting lead to gradual soil deterioration and land depletion
+\end{itemize}
+\end{frame}
+
+\subsection{Impact of Tourism on the Izmir Region}
+\begin{frame}{Impact of Tourism on the Izmir Region}
+\begin{itemize}
+            \item Apart from the industrial anthropogenic activities, Izmir region is being intensively visited by tourists, due to the touristic attractiveness of the Izmir region, its natural settings, favorable climate conditions and scenic landscapes, geothermalwater springs
+            \item Example of negative effects of tourism on the environment is threat for seal population (\emph{Monachus Monachus}) and sea turtles (\emph{Caretta caretta}) which comes from the tourism and local uncontrolled fishery (Veryeri et al., 2002).
+\end{itemize}
+\end{frame}
+
+\subsection{Conclusion on the Environment of Izmir Region}
+\begin{frame}{Conclusion on the Environment of Izmir Region}
+\begin{itemize}
+            \item As a result of multiple factors, this region is recently being under pressure from both climate changes and from anthropogenic activities
+            \item Hence, local landscapes are affected by industrialization, uncontrolled urbanization and high anthropogenic pressure (e.g. overgrazing) leading to landscape changes
+            \item The urbanization triggers gradual decrease of the fertile landscapes and agricultural areas along the Aegean coasts
+            \item As a result, natural and semi-natural landscapes disappeared drastically in the course of \nth{20} century
+            \item \nth{20} Century is a period of the most intensive urbanization in Turkey
+\end{itemize}
+\end{frame}
+
+\section{Questions}
+\begin{frame}{Research Questions}
+\begin{itemize}
+            \item Did landscapes change within the test area of the Izmir region in the last 13 years (1987-2000)? 
+            \item If there are changes, what types of land cover were before, and what is now ? 
+            \item Calculate exact changes in pixels and ha (or km)
+            \item How we can use remote sensing data in combination with Erdas Imagine software and apply GIS methods towards study problem, methodologically ?
+\end{itemize}
+\end{frame}
+
+\section{Methods}
+\begin{frame}{Methodological Flowchart}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F8.png}
+\end{figure}
+\end{frame}
+
+\section{Data}
+\subsection{Data Selection}
+\begin{frame}{Data Selection}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6.0cm]{F9.png}
+\end{figure}
+Landsat TM: Global Land Cover Facility (GLCF) Earth Science Data Interface
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6.0cm]{F10.png}
+\end{figure}
+\begin{itemize}
+            \item Selecting study area: mask with coordinates 26\degree 00’-26\degree 00 'E-38\degree 00’-39\degree 00'N
+            \item The selected images show the Izmir region in 1987 and 2000.
+            \item 2 pictures have a time difference of 13 years (1987-2000)
+            \item Summer month (June) was chosen to assess vegetation changes.
+\end{itemize}
+\end{frame}
+
+\subsection{Data Conversion}
+\begin{frame}{Data Conversion}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F11.png}
+\end{figure}
+\end{frame}
+
+\section{Software: Erdas Image}
+\subsection{Creating Color Composites}
+\begin{frame}{Creating Color Composites}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F12.png}
+\end{figure}
+\end{frame}
+
+\subsection{Masking Study Area}
+\begin{frame}{Masking Study Area}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F13.png}
+\end{figure}
+\end{frame}
+
+\subsection{Clustering}
+\begin{frame}{Clustering}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F14.png}
+\end{figure}
+\end{frame}
+
+\section{Results}
+\subsection{Results: Maps of Land Cover Types (1987 and 2000)}
+\begin{frame}{Results: Maps of Land Cover Types: 1987 (left) and 2000 (right)}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F15.png}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F16.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Results: Table of Land Cover Types}
+\begin{frame}{Results: Table of Land Cover Types}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F17.png}
+\end{figure}
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}{Conclusions}
+\begin{itemize}
+            \item Monitoring changes in the landscape - important tool for assessing ecological stability 
+            \item Spatial analysis of multi-temporal satellite images using GIS is the most effective tool 
+            \item Research demonstrated how landscape changed in a given period (1987-2000).
+            \item These include satellite images of the Landsat Thematic Mapper (TM). 
+            \item Image processing was performed using classification by means of Erdas Imagine. 
+            \item Results showed landscape changes which proofs anthropogenic impacts 
+            \item The described above anthropogenic and climatic factors impact environment and cause destruction or loss of landscape elements. 
+            \item Landscape changes are detected in Izmir area 
+            \item Presented research contributed towards the environmental monitoring in the Aegean Sea area.
+\end{itemize}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \Huge 
+  	\emph{Thank you for attention !}\\
+	\vspace{5em}
+\normalsize
+Acknowledgement: \\
+Current research has been funded by the \\
+T\"{U}BITAK Scientific and Technological Research Council of Turkey, \\
+Fellowship 2216, No. B.02.1.TBT. 0.06.01- 31/12/2012 216.01 -5/282. (2012).
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+\section{Bibliography}
+\Large{Bibliography}
+\nocite{*}
+\printbibliography[heading=none]
+	
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+\end{document}
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
