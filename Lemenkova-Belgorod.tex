@@ -1,0 +1,357 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}
+\usetheme{AnnArbor}
+
+\usepackage{gensymb} % degree symbol
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style=authortitle,
+	style = numeric,
+%	style=ieee,
+%	style=nature,
+%	style=science,
+%	style=apa,
+%	style=mla,
+%	style=phys, 
+	maxbibnames=99,
+%	citestyle=authoryear,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+%	sorting=nydt,
+%	sorting=ydnt, 
+	sorting=ndymdt,
+%	sorting=ydnt, % Sort by year (descending), name, title.
+% 	sorting=nty (Sort by name, title, year.)
+% 	sorting=nyt,
+%	sorting=nyvt (Sort by name, year, volume, title).
+%	sorting=ydnt, 
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Belgorod.bib}
+\renewcommand*{\bibfont}{\scriptsize} %\footnotesize
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Analysis of Landsat NDVI Time Series for Detecting Degradation of Vegetation}
+\author{Polina Lemenkova}
+         \date{April 6, 2015}
+
+\begin{document}
+
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Outline}
+        \begin{frame}
+           \tableofcontents
+         \end{frame}
+
+\section{Introduction}
+\subsection{Brief Summary of Research Aims}
+       
+ \begin{itemize}
+        	\item GIS and RS application for environmental studies of Yamal
+	\item Calculation of NDVI 
+	\item Monitoring vegetation changes in tundra landscapes
+	\item Analysis of the vegetation dynamics in the past two decades (1988-2011).
+	\item Data: Landsat TM scenes for 1988, 2001 and 2011
+	\item Originality: Application of ILWIS
+	\item GIS spatial analysis tools and Landsat imagery 
+	\item Area: Bovanenkovo region in Yamal Peninsula, Russian Extreme North
+\end{itemize}
+
+\begin{frame}\frametitle{Google Earth Image}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8cm]{f01.jpg}
+	\caption{Study area}\label{fig:f01}
+\end{figure}
+\end{frame}
+
+\subsection{Study Area}
+\begin{frame}\frametitle{Study Area}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{f02.png}
+\end{figure}
+Source: B. Forbes
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{f03.png}
+\end{figure}
+Geographic location: Yamal Peninsula, north Russia.
+(a) Geographic location of Yamal
+(b) Location of the study Peninsula Map source: google.com area on Yamal (western coast). 
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Specific climatic-environmental settings of Yamal}
+
+\begin{frame}\frametitle{Environmental setting}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+Yamal Peninsula: geomorphology : flat geomorphology, elevations lower than 90 m
+Processes:
+ \begin{itemize}
+        	\item seasonal flooding,
+	\item active erosion processing,
+	\item permafrost distribution,
+	\item cryogenic landslides formation
+\end{itemize}
+Landslides affect local ecosystem structure. \\
+Landslides change vegetation types recovering after the disaster.
+\end{column}
+\begin{column}{0.5\textwidth}
+Landscapes of Yamal. 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{f04.png}
+\end{figure}
+Source: http://pixtale.net/
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Landscapes of the Yamal Peninsula}
+
+\begin{frame}\frametitle{Landscapes of the Yamal Peninsula - I}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10cm]{f05.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Landscapes of the Yamal Peninsula - II}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{f06.png}
+\end{figure}
+Dry grass heath tundra (left). Sedge grass tundra (center). Dry short shrub tundra (right)
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{f07.png}
+\end{figure}
+Landscapes of Yamal (left). Sphagnum moss (right)
+\end{frame}
+
+\begin{frame}\frametitle{Landscapes of the Yamal Peninsula - III}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{f08.png}
+\end{figure}
+Dry short shrub sedge tundra (left). Wetlands (right)
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{f09.png}
+\end{figure}
+Short shrub tundra
+\end{frame}
+
+\section{Methods} 
+\subsection{Methodology: ILWIS GIS}
+\begin{frame}\frametitle{Methodology: ILWIS GIS}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+Technical tools: The RS data processing was performed in ILWIS GIS software.
+Research Methods: 
+\begin{itemize}
+	\item Image interpretation ( Landsat TM scenes).
+	\item NDVI calculation.
+	\item Producing vegetation indices has been done in this research using mathematic calculation of the channels
+	\item The formulae are: (NIR-VIS) / (NIR+VIS), or a ratio for channels: (Band4-Band3) / (Band4 +Band3).
+	\item NDVI values lie in the range of 0 – 1 and never become negative or extend over 1, since NDVI is a linear algebraic function of these bands
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{f10.png}
+\end{figure}
+ILWIS GIS: https://52north.org/software/software-projects/ilwis/
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Advantages of the NDVI}
+\begin{frame}\frametitle{Advantages of the NDVI}
+Calculation of vegetation indices, especially and in this case Normalized Difference Vegetation Index (NDVI), has become one of the most successful, popular and traditional attempts in biogeographical research methods.
+\begin{itemize}
+            \item NDVI has certain advantages over other vegetation indices or band combinations.
+            \item NDVI is less depending on soil properties of study area
+            \item NDVI is less depending on the daytime illumination comparing to simple red-infrared bands combination
+            \item NDVI is well adjusted specially for the analysis of vegetation properties
+            \item NDVI can be indirectly interpreted from the objects colors, as shown on the raster image
+\end{itemize}
+\end{frame}
+
+\subsection{Workflow}
+\begin{frame}\frametitle{Workflow}
+Data pre-processing
+\begin{itemize}
+            \item Import .img file into ASCII raster format (GDAL). 
+            \item After converting, each image contained collection of 7 raster bands
+            \item Pre-processing (visual color and contrast enhancement)
+            \item Geographic referencing of Landsat scenes, initially based on WGS 1984 datum.
+            \item Georeference Corner Editor
+            \item UTM (Universal Transverse Mercator) Projection, Eastern Zone 42, Northern Zone W.
+            \item Crop of study area: the area of interest (AOI) was identified and cropped on the raw images. 
+            \item Selected area shows Bovanenkovo region in a large scale 
+            \item Environmentally, AOI best represents typical tundra landscapes.
+            \item NDVI Calculation
+            \item GIS visualization and mapping
+\end{itemize}
+\end{frame}
+
+\subsection{Import and data conversion}
+\begin{frame}\frametitle{Import and data conversion}
+\begin{itemize}
+        \item Test area selection (Mask): 67\degree 00' - 72\degree 00' E - 70\degree 00' - 71\degree 00' N. 
+	\item3 selected  Landsat TM satellite images show Yamal region in 1988, 2001, 2011.
+	\item Time span: 23 years (1988, 2001, 2011). 
+	\item Summer months selected for vegetation assessment. 
+	\item Data conversion / original images in format .TIFF converted to Erdas Imagine .img.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{f11.png}
+\end{figure}
+Initial remote sensing data, left to right: Landsat TM 1988, bands 7-3-1; Landsat TM 2011, pseudo natural colors composite; Landsat ETM + 2001 bands 6-3-1.
+\end{frame}
+
+\subsection{Georeferencing}
+\begin{frame}\frametitle{Georeferencing: Google Earth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{f19.png}
+\end{figure}
+\end{frame}
+
+\subsection{NDVI Calculation}
+\begin{frame}\frametitle{NDVI Calculation}
+\begin{itemize}
+	\item To model the NDVI I used Map Calculation tool in command line of the Raster Operations menu in ILWIS GIS. 
+	\item ILWIS GIS enables to perform spatial analysis and modeling by combination of queries, arithmetic expressions and overlays of selected raster images. 
+	\item The NDVI was calculated using following equation: NDVI = (Band4 - Band3) / (Band4 + Band3),
+	\item Band 4 is DN values of spectral reflectance in NIR (near infra-red) and Band 3 is DN values of spectral reflectance in VIS (visual).
+	\item The NDVI was calculated automatically in ILWIS GIS using arguments of images: VegIndex = NDVI (Band3, Band4). 
+	\item Two Landsat bands have been used: Band4, containing red reflectance and Band3 with infra-red reflectance: VegIndex=NDVI(TM\_3,TM\_4).
+	\item Other Landsat scenes were classified individually using the same method scheme in ILWIS GIS in the same way described above.
+\end{itemize}
+\end{frame}
+
+\section{Results} 
+
+\begin{frame}\frametitle{Results}
+The resulting images shows distribution of the vegetation over the Bovanenkovo region within three (3) years: 1988, 2001 and 2011.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{f20.png}
+\end{figure}
+ \begin{itemize}
+	\item The results for 2001 show that vegetation has very moderate overall index, reaching NDVI value 0,50 as a maximal.
+	\item The maximal NDVI values in year 2011 are 0.49,
+	\item The maximal NDVI values in year 1988 was 0.76.
+\end{itemize}
+Comparison of these results shows gradual decrease in the biomass values during the past two decades.
+\end{frame}
+
+\section{Discussion} 
+\begin{frame}\frametitle{Conclusion and Discussion}
+ \begin{itemize}
+        	\item This research presented GIS based studies of environmental of Yamal
+	\item The study is technically supported by means of ILWIS GIS which proved to be effective tool for spatial analysis
+	\item Performed analysis demonstrated changes in the NDVI during period of 1988 - 2011, calculated on the on the Landsat TM images
+	\item The results show decrease in overall NDVI values for the study area, which is caused by the environmental and anthropogenic factors
+	\item The results of spatial analysis are presented as 3 GIS maps illustrating changes in vegetation based on the image analysis using NDVI.
+	\item The calculated NDVI indicated biomass and can be also used as indicator of “greenness” of the vegetation.
+	\item Application of RS data is especially important for studies of northern ecosystems, as it enables study of remotely located areas of Arctic
+	\item GIS-based processing of the RS data ( Landsat TM) improves technical aspects of the landscape studies and monitoring
+\end{itemize}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \Huge 
+  	\emph{Thank you for attention !}
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+\section{Bibliography}
+\Huge{Bibliography}
+\nocite{*}
+\printbibliography
+
+	
+%%%%%%%%%%% Bibliography %%%%%%%	
+\end{document}
