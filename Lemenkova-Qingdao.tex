@@ -1,0 +1,871 @@
+% Compile: LuaLaTeX 
+% Engine: Biber
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage{times}
+\usepackage{totcount}
+\usepackage{csquotes}
+
+%\usetheme{Singapore}
+
+%%%%%%%%%
+\logo{\includegraphics[width=.25\textwidth]{OUC-logo.png}\vspace{-35pt}\hspace{10pt}}
+%%%%%%%%%
+
+\usepackage{subfig}
+\usepackage{fancyhdr}
+\usepackage{metalogo}
+\usepackage[super]{nth}
+
+\usepackage[font={tiny,it}]{caption} % шрифт подписей к картинкам
+	\setbeamertemplate{caption}[numbered]
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{textcomp}  % numero symbol
+\usepackage{gensymb} % degree symbol
+
+\usepackage{booktabs} %%% таблица
+\usepackage{tabularx}
+\usepackage{array,etoolbox}
+\usepackage{colortbl} %% цветная таблица
+\setlength{\arrayrulewidth}{0.3mm}
+\usepackage{wrapfig}
+\usepackage{smartdiagram}
+
+\usepackage{ifthen}
+\usepackage{luacode}
+\usepackage{tikz} % load xcolor before tikz
+\usetikzlibrary{graphs,graphdrawing,mindmap}
+%\usepackage{verbatim}
+%	\newcommand{\verbatimfont}[1]{\renewcommand{\verbatim@font}{\ttfamily#1}}
+\usepackage{fancyvrb}[frame=single,commandchars=\\\{\},rulecolor=\color{red}]% verbatim
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style=authortitle,
+	style = numeric,
+%	style=ieee,
+%	style=nature,
+%	style=science,
+%	style=apa,
+%	style=mla,
+%	style=phys, 
+	maxbibnames=99,
+%	citestyle=authoryear,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+%	sorting=nydt,
+%	sorting=ydnt, 
+	sorting=ndymdt,
+%	sorting=ydnt, % Sort by year (descending), name, title.
+% 	sorting=nty (Sort by name, title, year.)
+% 	sorting=nyt,
+%	sorting=nyvt (Sort by name, year, volume, title).
+%	sorting=ydnt, 
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Qingdao.bib}
+%\renewcommand*{\bibfont}{\footnotesize}
+\renewcommand*{\bibfont}{\scriptsize}
+
+%%%%%%%%%%%% значок Open Access: начало %%%%%%%
+%\usepackage[tikzsymbol=plos]{biblatex-ext-oa}
+%\DeclareOpenAccessEprintUrl[always]{hal}{%
+ % http://hal.archives-ouvertes.fr/\thefield{eprint}}
+%\DeclareOpenAccessEprintAlias{HAL}{hal}
+%%%%%%%%%%% значок Open Access:: конец %%%%%%%
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+%\setbeamertemplate{bibliography item}{}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%% чтобы Lua читал TikZ:graphdrawing : начало %%%%%
+\begin{luacode*}
+function pgf_lookup_and_require(name)
+    local sep = package.config:sub(1,1)
+    local function lookup(name)
+        local sub = name:gsub('%.',sep)  
+        if kpse.find_file(sub, 'lua') then
+            require(name)
+        elseif kpse.find_file(sub, 'clua') then
+            collectgarbage('stop') 
+            require(name)
+            collectgarbage('restart')
+        else
+            return false
+        end
+        return true
+    end
+    return
+        lookup('pgf.gd.' .. name .. '.library') or
+        lookup('pgf.gd.' .. name) or
+        lookup(name .. '.library') or
+        lookup(name) 
+end
+\end{luacode*}
+%%%%%%%%%%%%%%%% чтобы Lua читал TikZ:graphdrawing : конец %%%%%
+
+%%%%%%%%%% pdf, TikZ %%%%%%%%%%%%%%%
+\usepackage{calc}
+\usetikzlibrary{calc,trees,snakes,shadows.blur,shadings,decorations.pathmorphing,shapes.arrows,shapes.symbols,arrows,arrows.spaced,arrows.meta,decorations.text}
+\usegdlibrary{trees,layered,force,circular,phylogenetics}
+\usepgflibrary{graphdrawing}
+\newcounter{mathseed}
+\setcounter{mathseed}{3}
+\pgfmathsetseed{\arabic{mathseed}} % To have predictable results
+% Define a background layer, in which the parchment shape is drawn
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+%%%%%%%%%% pdf, TikZ %%%%%%%%%%%%%%%
+\usepackage{academicons}
+
+%%%%%%%%%%%%%%%GREEN %%%%%%%%%%%%
+
+\regtotcounter{section}
+
+\definecolor{color0}{HTML}{a22041}
+\definecolor{color1}{HTML}{f4b3c2}
+\definecolor{color2}{HTML}{f6bfbc}
+\definecolor{color3}{HTML}{f5b1aa}
+\definecolor{color4}{HTML}{f5b199}
+\definecolor{color5}{HTML}{f2a0a1}
+\definecolor{color6}{HTML}{f0908d}
+\definecolor{color7}{HTML}{f09199}
+\definecolor{color8}{HTML}{ee827c}
+\definecolor{color9}{HTML}{A9F5A9} 
+\definecolor{color10}{HTML}{A9F5BC}
+\definecolor{color11}{HTML}{A9F5D0}
+\definecolor{color12}{HTML}{A9F5E1}
+\definecolor{color13}{HTML}{A9F5F2}
+\definecolor{color14}{HTML}{A9E2F3}
+\definecolor{color15}{HTML}{A9D0F5}
+
+\makeatletter
+
+\def\sectioncolor{color0}% color to be applied to section headers
+
+\setbeamercolor{palette primary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette secondary}{use=structure,fg=structure.fg!75!black}
+\setbeamercolor{palette tertiary}{use=structure,fg=structure.fg!50!black}
+\setbeamercolor{palette quaternary}{fg=black}
+
+\setbeamercolor{local structure}{fg=color0}
+\setbeamercolor{structure}{fg=color0}
+\setbeamercolor{title}{fg=color0}
+\setbeamercolor{section in head/foot}{fg=black}
+
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{block title alerted}{fg=red}
+\setbeamercolor{block title example}{fg=color0}
+
+% Each \section redefines \sectioncolor and applies the shading with this color
+% add as many colors as needed
+\AtBeginSection{%
+  \renewcommand\sectioncolor{%
+    \ifcase\value{section} color0\or color1\or color2\or color3\or color4\or color5\else color6\fi}
+  \setbeamercolor{frametitle}{fg=black}%
+  \pgfdeclareverticalshading{beamer@headfade}{\paperwidth}
+  {%
+    color(0.25cm)=(bg);
+    color(1.25cm)=(\sectioncolor)%
+  }
+}
+
+\newlength\sectionboxwd
+
+\AtBeginDocument{%
+  \ifnum\totvalue{section}>0 
+    \setlength\sectionboxwd{\dimexpr\paperwidth/\totvalue{section}\relax}
+  \else
+    \setlength\sectionboxwd{\paperwidth}
+  \fi
+} 
+
+\newcommand\insertcolors{%
+  \ifnum\totvalue{section}>0
+    \setlength\fboxsep{0pt}%
+    \foreach \x in {1,...,\totvalue{section}}
+    {\colorbox{color\x}{\phantom{\rule{\dimexpr\the\sectionboxwd\relax}{5ex}}}}%
+  \else\fi
+}
+
+\setbeamertemplate{section in head/foot}{\setlength\fboxsep{0pt}\hspace{-1.875ex}%
+    \parbox[c][4ex][t]{\sectionboxwd}{%
+      \hfill\parbox{\dimexpr\sectionboxwd-8pt\relax}{%
+      \raggedright\insertsectionhead%
+      }\hfill\mbox{}%
+    }%
+}
+
+\setbeamertemplate{headline}
+{%
+  \begin{beamercolorbox}[wd=\paperwidth]{section in head/foot}
+    \insertcolors%
+    \vskip-4ex%
+    \insertsectionnavigationhorizontal{\paperwidth}{\hskip-1.875ex}{\hskip-8pt}\vskip2pt
+  \end{beamercolorbox}%
+}
+
+
+\pgfdeclareverticalshading{beamer@headfade}{\paperwidth}
+{%
+  color(0.25cm)=(bg);
+  color(1.25cm)=(color7)%
+}
+
+\addtoheadtemplate{}{\pgfuseshading{beamer@headfade}\vskip-1.25cm}
+
+\setbeamertemplate{navigation symbols}{}
+\addtobeamertemplate{footline}{}{%
+  \hfill\color{\sectioncolor}\rule[0.5cm]{2.5cm}{1pt}\rule[0.5cm]{1pt}{1cm}\hspace*{0.5cm}}
+
+%%%%%%%%%%%%%%%TEST %%%%%%%%%%%%%%
+
+\title{Geostatistical Analysis of the Data Sets on the Mariana Trench, Pacific Ocean}
+\author{Polina Lemenkova}
+\institute{Ocean University of China, College of Marine Geo-Sciences}
+\date{08/04/2019}
+
+%%%%%%%%%%%%%%%%%% END SETUP %%%%%%%%%%%%%%
+\begin{document}
+
+% ----------------------------------------------------------------------------
+% *** Titlepage <<<
+% ----------------------------------------------------------------------------
+\maketitle
+% ----------------------------------------------------------------------------
+% *** END of Titlepage >>>
+% ----------------------------------------------------------------------------
+
+\setbeamertemplate{footline}[text line]{%
+\parbox{\linewidth}{\vspace*{-8pt}Compiled in \LuaLaTeX \space by Polina Lemenkova for: the Seminar at OUC.\\ Venue: Ocean University of China, Faculty of Marine Geo-science. Location: Qingdao, Shandong, P. R. C. Date: 08/04/2019.} \hfill\insertpagenumber}
+\setbeamertemplate{navigation symbols}{}
+
+
+% ----------------------------------------------------------------------------
+% *** START of Introduction <<<
+% ----------------------------------------------------------------------------
+
+
+\subsection{Research}
+
+\begin{frame}\frametitle{Research Goals}
+	\begin{exampleblock}{Research Objective}
+- is an application of R programming language for geostatistical data processing. The impact of the geographic location and geological factors on its geomorphology has been studied by methods of statistical analysis and data visualization using R libraries.
+	\end{exampleblock}
+	\begin{exampleblock}{Research Aim}
+- is to identify main impact factors affecting variations in the geomorphology of the Mariana Trench: steepness angle and structure of the sediment compression. 
+	\end{exampleblock}
+	\begin{alertblock}{Research Focus}
+- is upon understanding variability of factors responsible for the deep ocean trench formation and comparative analysis of its geomorphic structure. It contributes towards investigations of the geology of the Pacific Ocean and the interplay between geomorphic, geological, tectonic and volcanic factors affecting submarine landform formation.
+	\end{alertblock}
+\end{frame}
+	
+\section{Introduction}
+\subsection{Summary}
+
+\begin{frame}\frametitle{Mindmap}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{Fig-MT20.jpg}
+	\caption{Project mindmap: methods, concepts, approaches and tools. \\Plotting: \LaTeX \space \cite{Lemenkova201993}}\label{fig:MT20}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Mariana Trench}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.5cm]{Fig-MT1.jpg}
+	\caption{Topographic map and location of the Mariana Trench. \cite{Lemenkova201992}}\label{fig:MT1}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Introduction - I}
+Mariana Trench is one of the 37 known deep-water trenches of the World Ocean, 28 of which located in the margin areas of the tectonic plates of the Pacific Ocean. It forms the peripheral framing, of which five are located in the Atlantic \cite{Bogdanov1997} and four in Indian Ocean \cite{Lisicynetal1990}.\\ Mariana Trench creates a \textcolor{red}{complex of the deeply interrelated factors}, determinants and processes. Factors affecting formation, geomorphic development and bathymetric patterns of the Mariana Trench are diverse:\\
+\begin{itemize}
+            \item geological 
+            \item hydro-chemical
+            \item biological
+            \item geothermal
+            \item climatic
+            \item tectonic
+            \item bathymetric 
+            \item geomorphological
+  \end{itemize} 
+\end{frame}
+
+\begin{frame}\frametitle{Introduction - II}
+The seafloor of the Mariana Trench is a \textcolor{NavyBlue}{background}, on which all the processes occurring in the Mariana Trench are reflected \cite{Dic1974}:
+ \begin{itemize}
+	\item The \textcolor{red}{hydrosphere} influence on the Mariana Trench is reflected by deep ocean currents bringing sediments to the trench bottom and contributing towards accumulation of the sedimental thickness layer \cite{HorlestonHelffrich2012}.
+	\item The impact of \textcolor{red}{lithosphere} is illustrated by a constant exchange of matter and energy between the submarine volcanoes located nearby \cite{HussongUyeda1982}.
+	\item The structure of the Mariana Trench and the nature of its relief are greatly complicated by the multiple secondary tectonic disturbances, i.e. by the occurrence of faults and displacements on of grabens, horsts and lateral \textcolor{red}{geologic} shifts. 		
+	\item Among other trenches, Mariana Trench is distinct for its edge type associated with the marginal \textcolor{red}{tectonic} plate subduction processes \cite{Boutelieretal2014}. 
+ \end{itemize} 
+ 
+\end{frame}
+
+\subsection{Study area}
+
+\begin{frame}\frametitle{Geography}
+Study area: Mariana Trench: the deepest place of the Earth, located in the west Pacific Ocean. Mariana Trench is a long and narrow topographic depression of the sea floor, the deepest among all hadal trenches, 200 km to the east of the Mariana Islands, eastwards of the Philippine Islands.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6cm]{Fig-1.jpg}.
+		\caption{Mariana Trench: square of the study area}
+\end{figure}
+\end{frame}
+
+\subsection{Geology}
+
+\begin{frame}\frametitle{Mariana Trench:\\Geological characteristics}
+	\begin{exampleblock}{Bathymetry}
+- transverse profile is strongly asymmetric: the slopes are higher on the side of the island arc. The slopes are dissected by deep underwater canyons. Various narrow steps are often found on the slopes of the trench.
+	\end{exampleblock}
+	\begin{exampleblock}{Geomorphology}
+- complicated steps of various shapes and sizes, caused by active tectonic and sedimental processes. Hence, it is the largest structural trap located in the continental margins of the Pacific Ocean.
+	\end{exampleblock}
+	\begin{alertblock}{Sediments}
+- the sediments are being carrying by the ocean waves in a clockwise direction, passing through the trenches on the west of the Pacific, i.e. the Kermadec Trench, Tonga Trench, Samoan Passage.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}\frametitle{Map of the Mariana Trench}
+	\begin{figure}[H]
+			\centering
+		\includegraphics[width=9cm]{Fig-2.jpg}.\caption{Enlarged map of the Mariana Trench}
+	\end{figure}
+\end{frame}
+\subsection{Tectonics}
+
+\begin{frame}\frametitle{Tectonics - I}
+\begin{itemize}
+    \item Mariana Trench crosses four tectonic plates: Mariana, Caroline, Pacific and Philippine. 
+    \item The formation of the Mariana Trench is caused by complex and diverse geomorphic factors. 
+    \item Mariana Trench presents a complex system with highly interconnected factors: 
+    	 \begin{itemize}
+            	\item geology (sediment thickness across 4 tectonic plates), 
+            	\item bathymetry (coordinates, depth values in the observation points), 
+           	 \item geometry of the slopes: angle and steepness, 
+           	 \item oceanography (deep sea currents), 
+           	 \item volcanology,
+            	\item deep sea marine biology. 
+           \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Tectonics - II}
+The system of the Mariana trench is complicated and consists of the interrelated factors forming its tectonic structure:
+ \begin{itemize}
+            \item The main part of the seabed of the Mariana Trench is composed by the oceanic crust forming rift zones of the mid-ocean ridges with a capacity of 5 to 10 km \cite{Morgan1968}. 
+            \item The deformations of the trench respond to the coupling between the upper and lower plates relating to the continental slab age-buoyancy \cite{RuffKanamori1980},
+            \item The back-arc deformation roughly correlate with upper continental tectonic plate velocity \cite{HeuretLallemand2005}. 
+            \item The trench migration rates are chiefly controlled by the lower continental tectonic plate velocity \cite{Lallemandetal2008}, 
+            \item In turn, tectonic plate velocity depends on the tectonic slab age buoyancy \cite{Chase1978}.
+\end{itemize}
+\end{frame}
+
+\subsection{Technical Approach}
+\begin{frame}\frametitle{Technical Approach}
+To study such a complex system as Mariana Trench, an objective method combining various approaches (statistics, R, GIS, descriptive analysis and graphical plotting) was performed. \\Thus, the methodology includes following steps:
+\begin{itemize}
+    \item Data capture in GIS, vector thematic data were processed in QGIS: tectonics, bathymetry, geomorphology and geology.
+    \item Programming on R language
+      \begin{itemize}
+            \item statistics
+            \item descriptive analysis 
+            \item graphical plotting  
+        \end{itemize}
+      \item Geospatial comparative analysis of variables by 4 tectonic plates
+\end{itemize}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+% *** END of Introduction >>>
+% ----------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------------
+% *** START: Methodology <<<
+% ----------------------------------------------------------------------------
+\section{Methodology}
+
+\subsection{Workflow}
+\begin{frame}
+\frametitle{Methodology (Brief)}
+The methodology includes following steps. 
+\begin{itemize}
+    \item<1-> firstly, vector thematic data were processed in QGIS: tectonics, bathymetry, geomorphology and geology.
+    \item<2-> secondly, 25 cross-section profiles were drawn across the trench. The length of each profile is 1000-km. 
+        \begin{itemize}
+            \item the attribute information has been derived from each profile and stored in a table containing coordinates, depths and thematic information.
+            \item this table was processed by methods of the statistical analysis on R
+        \end{itemize}
+      \item<3-> thirdly, performed geospatial comparative analysis to estimate effects of the data distribution by 4 tectonic plates: slope angle, igneous volcanic areas and depths.
+\end{itemize}
+\end{frame}
+
+\subsection{GIS Project}
+\begin{frame}
+\frametitle{Data Capture in GIS}
+			
+The GIS part of the research is performed in the QGIS 3.0. 
+Geospatial tasks by QGIS plugins: reading coordinates, crossing profile lines, reading data from attribute table into .csv format. Various geospatial data have been uploaded into the GIS project: bathymetry (depths), sediment thickness, location of igneous volcanic zones, tectonic plates, etc. The GIS project: UTM cartesian coordinate system (square N-55). 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8cm]{Fig-2-1.jpg}
+	\caption{Study area. Methodological approach using QGIS: digitizing profiles across the Mariana Trench. Source: \cite{Lemenkova201991}}\label{fig:2-1}
+\end{figure}		
+\end{frame}
+
+\subsection{GIS Workflow}
+\begin{frame}
+\frametitle{Digitizing bathymetric profiles}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8cm]{Fig-2-2.jpg}
+	\caption{Digitizing 25 bathymetric profiles across the Mariana Trench. \cite{Lemenkova201991}}\label{fig:2-2}
+\end{figure}		
+\end{frame}
+
+\subsection{\LaTeX \space Plotting}
+
+\begin{frame}[fragile]\frametitle{\TeX \space macro language code for \\bathymetric plotting. Example for profile 16, 17, 18.}
+\begin{Verbatim}[fontsize=\scriptsize]
+\begin{filecontents*}{MyTab18.csv}
+ELEV ,y2,x2
+145.528246366,47.0433461696,-7800 # bathymetric data here in 3 columns 
+\end{filecontents*}
+\begin{tikzpicture}
+\begin{axis}[grid=major,minor x tick num=10,minor y tick num=10,
+	colorbar sampled line,colormap name=bluered,
+	title={Mariana Trench. Bathymetric Profiles Nr.16,17,18},
+	ylabel={Depth (m)},
+	legend entries={Profile18,Profile17,Profile16,},
+	scaled ticks=false,
+	yticklabel style={/pgf/number format/fixed,/pgf/number format/fixed zerofill,}]
+\addplot+ [scatter,only marks,mark=Mercedes star flipped,colormap name=bluered,]
+table [x=x, y=d, col sep=comma] {MyTab16.csv};
+\addplot+ [scatter, colorbar sampled line,only marks,mark=asterisk,colormap
+name=bluered,] 
+table [x=long, y=d, col sep=comma] {MyTab17.csv};
+\addplot+ [scatter, colorbar sampled line,only marks,mark=10-pointed star,colormap
+name=bluered,] 
+table [x=y2,y=ELEV, col sep=comma] {MyTab18.csv}; 
+\end{axis} 
+\end{tikzpicture}
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}\frametitle{\LaTeX \space for bathymetry}
+\frametitle{\LaTeX \space for bathymetry}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{Fig-2-3.jpg}
+	\caption{\LaTeX \space Plotting: two selected profiles, 2D View. Source: \cite{Lemenkova201871}}\label{fig:2-3}
+\end{figure}		
+\end{frame}
+
+\begin{frame}\frametitle{\LaTeX \space for bathymetry: 3D plotting}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.5cm]{Fig-2-4.jpg}
+	\caption{\LaTeX \space Plotting: Marina Arc, 3D View. Source: \cite{Lemenkova201871}}\label{fig:2-4}
+\end{figure}		
+\end{frame}
+
+% ----------------------------------------------------------------------------
+% *** END: Methodology >>>
+% ----------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------------
+% *** START: Software <<<
+% ----------------------------------------------------------------------------
+
+\section{Statistical Analysis}
+\subsection{Data Distribution}
+
+\begin{frame}\frametitle{Graph: bathymetric profiles}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4cm]{Fig-2-5.jpg}
+	\caption{Graphs of the 25 bathymetric profiles, \\Mariana Trench. Source: \cite{Lemenkova201991}}\label{fig:2-5}
+\end{figure}		
+\end{frame}
+
+\begin{frame}\frametitle{Statistical box plots}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6cm]{Fig-2-6.jpg}
+	\caption{Boxplots of the cross-section profiles: R based statistical analysis. \cite{Lemenkova201871}}
+\end{figure}		
+\end{frame}
+
+\begin{frame}\frametitle{'Violin' Plots}
+The violin plots show Kernel probability density distribution of the bathymetric observations, as multimodal distributions with multiple peaks. Kernel density distribution plot was created using library \{violinmplot\} of R in a combined plot, which includes calculated quantiles for 0.25 and 0.75 of the data pool. 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{Fig-2-7.jpg}\caption{Violin plots of the profiles: R based statistical plotting. \cite{Lemenkova201866}}
+\end{figure}		
+\end{frame}
+	
+\begin{frame}\frametitle{Regression Analysis:\\Enlarged Selected Profiles.}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{Fig-2-8b.jpg}
+	\caption{Regression Analysis: 3 selected profiles. Source: \cite{Lemenkova201904}}
+\end{figure}		
+\end{frame}
+
+\subsection{Geostatistical Analysis}
+
+\begin{frame}\frametitle{Normalized steepness slope calculation of the cross-section profiles}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8cm]{Fig-3-1.jpg}\caption{Normalized steepness slope calculation of the cross-section profiles: R library \{ggplot\}, \cite{RCoreTeam2014}. \cite{Lemenkova201871}. Visualization of the plot for normalized steepness: R.}
+\end{figure}		
+\end{frame}
+
+\subsection{Correlation Analysis}
+
+\begin{frame}\frametitle{Ranking dot plots by data grouping}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{Fig-3-8b.jpg}
+	\caption{Ranking dot plots by data grouping: Left: distribution of data points by profiles across igneous areas. Right: variation of steepness angles by 25 profiles. R based visualization and statistical analysis, libraries \{ggalt\} and \{ggplot\}. \cite{Lemenkova201904}}
+\end{figure}		
+\end{frame}
+
+\begin{frame}\frametitle{Scatterplot matrices}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{Fig-4-4.jpg}
+	\caption{Scatterplot matrices. \cite{Lemenkova201901}}
+\end{figure}		
+\end{frame}
+
+\subsection{Cluster Analysis}
+
+\begin{frame}\frametitle{Python}
+\begin{figure}[H]
+		\includegraphics[width=7.0cm]{Fig-MT8.jpg}
+	\caption{R based dendrogram tree of the 25 profiles. Left: unsorted, right: sorted. \cite{Lemenkova201868}}\label{fig:MT8}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{Fig-MT9.jpg}
+	\caption{Hierarchical clustering with p-values using multiscale bootstrap probability, R. \cite{Lemenkova201868}}\label{fig:MT9}
+\end{figure}
+\end{frame}
+
+\subsection{Data Distribution Analysis: Kernel Density Estimation (KDE)}
+\begin{frame}\frametitle{Python (Matplotlib)}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{Fig-MT11.jpg}
+	\caption{Kernel Density Estimation (KDE) for the profiles bathymetry. \\
+	Python libraries: Matplotlib, Seaborn, Pandas \cite{Rossumatal2018}. \cite{Lemenkova201905}}\label{fig:MT11}
+\end{figure}
+\end{frame}
+
+\subsection{Gretl for Data Analysis}
+
+\begin{frame}\frametitle{Gretl}
+\begin{figure}[H]
+		\includegraphics[width=7.0cm]{Fig-RM1.jpg}
+	\caption{Descriptive statistical analysis of the bathymetry in the study area: minimal, mean, median and maximal values (A); box plots of the cross-sectional profiles (B). Plotting: Gretl
+. Source: \cite{Lemenkova201988}}\label{fig:RM1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{Fig-RM2.jpg}
+	\caption{Statistical analysis of the sediment thickness: QQ plot (A), locally-weighted polynomial regression (B); box plots ranked by clusters (C). Source: \cite{Lemenkova201988}}\label{fig:RM2}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Gretl}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9cm]{Fig-RM6.jpg}
+	\caption{Forecast evaluation of the spatial variations in sediment thickness. Modelling methods: OLS (A-F); LML (G); WLS (H); Heteroskedastisity-corrected (I). Plotting: Gretl. \cite{Lemenkova201988}}\label{fig:RM6}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Python (StatsModel)}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+	\includegraphics[width=5.5cm]{Fig-MT13.jpg}
+Quantile regression tested by Python library StatsModel. \cite{Lemenkova201989}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{itemize}
+            \item quantile regression is tested by Python library StatsModel \cite{Rossumatal2018} for sediment thickness (m) versus geologic parameters \cite{Lemenkova201989}
+            \item quantile regression (approach of the linear regression) shows the estimated conditional median and other quantiles of the response geological variables: 
+            \item the upper two rows of the plot show (subplots A, B, C, D) data distribution across tectonic plates: A) Pacific Plate; B) Philippine Plate; C) Mariana Plate; D) Caroline Plate; E) Cumulative sediment thickness; F) Slope angle degree by profiles
+            \item the lower row of the plot (subplots E, F) shows data distribution for the cumulative sediment thickness and slope angle degree by profiles.
+\end{itemize}	
+\end{column}
+\end{columns}
+\end{minipage}
+
+\end{frame}
+% ----------------------------------------------------------------------------
+% *** END: Software >>>
+% ----------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------------
+% *** START: Results <<<
+% ----------------------------------------------------------------------------
+
+\section{Results}
+\begin{frame}\frametitle{Results - I. Bathymetry: north, profiles 1-19}
+Statistical analysis revealed following findings:
+\begin{itemize}
+    \item The major depth observation points of the Mariana Trench are located in between the -3000 and -5000 m.
+    \item The widths of the confidence intervals are expanding rapidly by the profiles 12 to 15 thus indicating on the large amplitude of the depths variations in this part of the Mariana Trench.
+    \item The profile depths are affected by the local geographic features caused by the location on 4 tectonic plates with varying environmental conditions.
+    \item Conversely, profiles from 1 to 16 have gradual decrease in absolute depths, which can be noted in outliers sample location. 
+    \item A slight increase in absolute depths of the profiles \textnumero \space 4-8. 
+\end{itemize}
+\end{frame}
+	
+\begin{frame}\frametitle{Results - II. Bathymetry: south, profiles 20-25}
+Summaries of the variations of the local polynomial regression of the bathymetric depths of the measured samples are presented. \begin{itemize}
+    \item The maximal depths reach up to -10000 in the current dataset: profiles \textnumero 20, 21, 22 crossing mostly Philippine tectonic plate (t.p.).
+    \item The widths of the confidence intervals expand rapidly by the profiles 19 to 22 indicating on the large amplitude of the depths variations in this part of the trench.
+    \item Decrease of depth: profiles \textnumero 23, 24, 25, Caroline t.p.
+    \item Profiles \textnumero 23 and 24 demonstrate the deepest depth values. 
+    \item The absolute depths in the profiles 22 to 25 on the Caroline t.p. become shallower than those on Philippine and Pacific t.p.
+    \item The majority of the observation points: Pacific and Philippine t.p., following by Mariana t.p. Caroline t.p. only covers a few points. 
+    \item Variability in the geological factors of the underlying t.p. triggers changes in bathymetric settings
+\end{itemize}
+\end{frame}	
+
+\begin{frame}\frametitle{Results - III. Sediment thickness}
+The sediment thickness changes notably both within the trench by profiles (1:25) and between four tectonic plates that Mariana Trench crosses: Philippine, Pacific, Mariana and Caroline. Since the tectonic properties and attribute values of them are not identical. The comparative analysis of how the data vary across four distinctive plates revealed that the middle part of the Mariana Trench (profiles: 14 up to 17) has roughly equal proportions of the sediment thickness layer, which indicates that
+    	\begin{itemize}
+    		 \item spatial locations and distributions of the volcanic areas and slope angle of the ocean trench are closely interrelated; 
+		 \item geographic distributions of the volcanic areas and steepness of the slope angles of the ocean trench affect sedimental thickness. 
+	\end{itemize}
+\end{frame}
+	
+\begin{frame}\frametitle{Results - IV. Angle steepness (1)}
+Analysis of the angle steepness of the cross-section profiles along Mariana Trench revealed following findings:
+    	\begin{itemize}
+		 \item The major trend of the trench angles located on the Pacific plate has downward general line trend. 
+		 \item The Philippine tectonic plate, on the contrary, has a minimal peak by profiles \textnumero \space 14-21, and then moving upwards. 
+		 \item The highest value for the trench angle steepness is within Caroline t.p. 
+		 \item Mariana plate has the highest density of depth distribution values, followed by the Philippine plate, then Pacific and Caroline, respectively. 
+		 \item From two multiple panel graphs by groups one can compare the slope angles and depth distributions by tectonic plates. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Results - V. Angle steepness (2)}	
+
+	\begin{itemize}
+		 \item A bunch of bathymetric cross-section profiles form a cluster groups with similar geomorphic properties divided into five groups over the study area. 
+		 \item Thus, profiles: 21, 22, 18 and 20 have all “strong slope” tg\degree angle degree, which is an average of 0.05. 
+		 \item Similarly, profiles: 15, 19, 16, 17, 14 and 2, belonging to class “very strong slope”, have an tg\degree angle of 0.057 to 0.058 (Figure 19). 
+		 \item When compared with third group in the study area, such as class “extreme slope” (profiles: 1, 11, 4, 5, 10 and 13), the average slope tg\degree angle fluctuating from 0.060 to 0.070. 
+		 \item The fourth group is class “steep slope” (profiles: 25, 12, 6, 8 3) with a slope tg\degree angle values from 0.070 to 0.075. 
+		 \item Finally, the last group is notable for the highest steepness (profiles: 9, 7, 23, 24), with average slope tg\degree angle degree up to 0.079. 
+	\end{itemize}		 
+\end{frame}
+
+% ----------------------------------------------------------------------------
+% *** END: Results >>>
+% ----------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------------
+% *** START: Conclusion <<<
+% ----------------------------------------------------------------------------
+
+\section{Conclusion}
+\begin{frame}\frametitle{Conclusion}
+
+	\begin{exampleblock}{Impact Factors}
+The slope steepness is generally related to the slab subduction (tectonic settings) in the particular area, but may also be associated with other factors: topography, submarine volcanism, geology, oceanology.
+	\end{exampleblock}
+	
+	\begin{exampleblock}{Enevenness} As a result of the undertaken study, a strong spatial geomorphic unevenness of the Mariana Trench has been revealed: the middle part (profiles: 14 up to 17) has very strong slopes and roughly equal proportions of the sediment thickness layer, while other parts differ.\\ Five unique regions across the trench length have been classified.
+	\end{exampleblock}
+	
+	\begin{alertblock}{Applied statistics using R}
+	The impact of various factors (oceanology, geology, submarine volcanism, tectonics) affecting structure and geomorphology of the Mariana Trench were studied by means of R programming language.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}\frametitle{Impact Factors}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6cm]{Fig-5-1.jpg}\caption{Treemap for impact factors affecting Mariana Trench formation, R visualization. Source: \cite{Lemenkova201871}}
+\end{figure}		
+\end{frame}
+
+\begin{frame}\frametitle{Euler-Venn diagrams: 4 and 6 petals}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5cm]{Fig-5-2a.jpg}}
+			\hspace{3mm}
+		\subfloat {\includegraphics[width=5cm]{Fig-5-2b.jpg}}
+			\hspace{3mm}
+	\caption{Possible correlations of the impact factors affecting Mariana Trench. \\Left: four tectonic plates. Right: environmental factors}.
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Euler-Venn diagrams: 7 petals}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6.5cm]{Fig-5-2c.jpg}\caption{Correlations of the impact factors \\affecting Mariana Trench, R}.
+\end{figure}		
+\end{frame}
+
+\begin{frame}\frametitle{Research Innovation}
+\normalsize
+There are both theoretical and practical innovations of the presented research. 
+
+\begin{itemize}
+            \item The theoretical novelty lies in the comparative geomorphological mapping of the Mariana hadal trench that does not exists in the available literature. 
+            \item The practical novelty consists in the developed methodology of the sequential technological chain of processes: QGIS plugins, R, Python.
+            \item Cartographic novelty consists in the developed and presented algorithm of the cross-section profiles digitizing and geomorphic modelling of the  hadal trench modelling using QGIS plugins. Other methods include Gretle, SPSS \cite{Lemenkova201990}, GMT \cite{Lemenkova201995}, \cite{Lemenkova201994}.
+            \item Hadal trench present a complex system with highly interconnected factors affecting geomorphological structure, formation and development of the trench: slabs and tectonics plates, bathymetry, geographic location, geologic structure of the underlying basement and sediment thickness. 
+            \item Therefore, comparative analysis of the Mariana trench requires advanced methods of data analysis for operating with large data sets, structuring, organizing and managing thematic information in a GIS database, linking data and creating map overlays \cite{Lemenkova201540}, \cite{Lemenkova2016e}. 
+            \item Integrating multi-source data supports verification of the data precision and control. The most important geodata include GEBCO \cite{Mayeretal2018}; \cite{Monahan2004}, SRTM \cite{Beckeretal2009}, ETOPO1 \cite{AmanteEakins2009}, Goole Earth \cite{Lemenkova201510}, CryoSat-2, Envisat, Jason-1 \cite{Sandwelletal2013}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Research Significance and Justification}
+The significance and justification of this works consist in the following:
+
+\begin{itemize}
+         \item Although ML has been significantly increased recently, using scripting and ML in cartography still remains lower comparing to the traditional GIS used in geosciences (e.g. \cite{Lemenkova2005b2}, \cite{RID09251802355041}, \cite{RID:0925180235504-2}, \cite{Lemenkova2014d}, \cite{Lemenkova2011c}, \cite{Lemenkova2005a}, \cite{Lemenkova2012j}, \cite{Lemenkova2007c}, \cite{Lemenkova2012d}, \cite{Lemenkova2012g}). 
+         \item Seafloor mapping includes multiple steps in technological process which may include: Hydrosweep DS sonar echo-sounding \cite{Lemenkova201569}, CARIS HIPS data processing \cite{Lemenkova2007f}, ArcGIS/ArcCatalog database management, QGIS data processing. 
+	\item Accurate digitizing cross-section profiles using QGIS is effective. Modelling is important for accurate geomorphological data analysis and crucial for better understanding of the seafloor landforms. 
+	\item QGIS-based mapping provides accurate visualization of the seafloor.
+	\item QGIS-based mapping provides enables cartographic digitizing. 
+	\item Efforts in developing methodology in automatization in bathymetric mapping exists \cite{Lemenkova2008b}. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Conclusion}
+
+\begin{itemize}
+	\item Precise, correct and up-to-date information about the geomorphology Mariana trench is necessary understanding marine geology, tectonics, seismicity, processes of sedimentation and geodynamic evolution of the seafloor \cite{Lemenkova2006e}, \cite{Lemenkova2006a}, \cite{Lemenkova2006b}, \cite{Lemenkova2006c}.
+	\item Submarine geomorphological and bathymetric mapping plays a critical role in analysis of the geological structures of the seafloor, marine benthic habitats, navigation, geological drilling, modelling marine environment and other aspects of geosciences.	
+	\item Current studies contributed to the methodological testing and technical application of the advanced algorithms for seafloor modelling and mapping and to the geomorphological modelling. 	
+	 \item Tested, presented and explained functionality of the several QGIS plugins enables to do automated digitizing of the orthogonal profiles crossing trenches in the perpendicular direction. Through this modelling, the shape of the landforms and steepness gradient of the trenches were visualized, compared and statistically analyzed. 
+\end{itemize}
+
+\end{frame}
+
+% ----------------------------------------------------------------------------
+% *** END: Conclusion >>>
+% ----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+% *** START: Acknowledgements <<<
+% ----------------------------------------------------------------------------
+
+\section{Thanks}
+\begin{frame}\frametitle{Thanks}
+The funding for this research has been provided by the China Scholarship Council (CSC), People’s Republic of China (P.R.C.), Beijing.\\ Grant \#2016SOA002.
+\end{frame}
+% ----------------------------------------------------------------------------
+% *** END: Acknowledgements >>>
+% ----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+% *** START: Literature <<<
+% ----------------------------------------------------------------------------
+
+\section{References}
+	\markright{References}
+References
+	\printbibliography[heading=none]
+
+
+% ----------------------------------------------------------------------------
+% *** END: Literature >>>
+% ----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+% *** START: Final Slide <<<
+% ----------------------------------------------------------------------------
+
+\section{Final Slide}
+\begin{frame}\frametitle{Thank you for attention!}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7cm]{Wordcloud.jpg}
+\end{figure}		
+\end{frame}
+ 
+% ----------------------------------------------------------------------------
+% *** END: Final Slide >>>
+% ----------------------------------------------------------------------------
+\end{document}
