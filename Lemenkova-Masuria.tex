@@ -1,0 +1,476 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,
+	breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}	
+\usetheme{Berlin}
+\usecolortheme[named=Salmon2]{structure}
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+	style = numeric,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Masuria.bib}%  \scriptsize \footnotesize
+\renewcommand*{\bibfont}{\tiny} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+\usepackage[super]{nth}
+\usepackage{amsmath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{The Environment of the Masuria Lakeland and\\ Biebrza National Park, North-Eastern Poland}
+\subtitle{University of Warsaw}
+\institute{Presentation at GEM MSc Course, Erasmus Mundus Scholarship}
+
+\author{Polina Lemenkova}
+         \date{June 25, 2010}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Outline}
+        \begin{frame}
+           \tableofcontents
+         \end{frame}
+
+\section{Introduction}
+\begin{frame}\frametitle{Introduction}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.5cm]{F2.jpg}
+\end{figure}
+\footnotesize{Great Masurian Lakes (Wielkie Jeziora Mazurskie)}
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{2em} 
+\begin{itemize}
+	\item Masurian Lakeland and Biebrza National Park: wetland ecosystems of the North-Eastern Poland
+	\item Uniqueness of the biodiversity if the area 
+	\begin{itemize}
+		\item richness of species diversity
+		\item rare types of species
+	\end{itemize}
+	\item Beavers – example of rare species of the European environment
+	\item Environmental problems: changes of land cover types (encroachment of reeds, willows and birch), habitat drain\end{itemize}
+	\begin{figure}[H]
+		\includegraphics[width=2.7cm]{F1.jpg}
+	\end{figure}
+	\footnotesize{Wilkasy, Gizhicko district}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Lakeland} 
+\begin{frame}\frametitle{Masuria Lakelands}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F3.jpg}
+\end{figure}
+\footnotesize{Landscape near lake Niegocin}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F4.jpg}
+\end{figure}
+Mixed forest
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{3ex} 
+\begin{itemize}
+	\item Masuria region: north-eastern Poland, has the \nth{2} World's density of lakes
+	\item Masuria Lakeland – an area of over 2000 lakes, connected through a series of channels \& rivers,
+	\item Gizhicko Gmina – study area within Masuria: Wilkasy, Gizhicko district
+\end{itemize}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F5.jpg}
+\end{figure}
+\footnotesize{Pine forest}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Landscapes}
+\begin{frame}\frametitle{Landscapes of the Mazuria Lakes and surroundings}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F7.jpg}
+\end{figure}
+\footnotesize{Wetlands in Masuria. Photo: author}
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{2em} 
+Some large lakes:
+\begin{itemize}
+	\item Jezioro Sniardwy,
+	\item Jezioro Niegocin,
+	\item Reservat Mokre - Jezioro Dargin,
+	\item Reservat Jezioro Dobskie - Jezioro Dobskie,
+	\item Reservat Wyspy - Jezioro Mamry
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.0cm]{F6.jpg}
+\end{figure}
+Landscapes of the Mazuria are diverse: Pine forests, lakes, wetlands, mixed forests etc with various types of vegetation. Photo: author.
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Wetlands}
+\begin{frame}\frametitle{Wetland landscapes in Mazuria}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F8.jpg}
+\end{figure}
+\footnotesize{Landscapes in Masuria. Photo: author}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+Masurian wetlands: precious ecosystems
+\begin{itemize}
+            \item Wetlands – specific type of ecosystems
+            \item Wetlands are typical for the Mazuria area in North-Eastern Poland
+            \item Diversified landscape is a result of glacier activity Northern part of the region: moraine hills, hollows.
+            \item Southern part – sand plains.
+            \item The most valuable element – groups of lakes linked by a net of rivers
+\end{itemize}
+Masurian wetlands are rich in biodiversity. Some species:
+\begin{itemize}
+	\item mammals (fox, wolf etc)
+	\item elk, bison, deer
+	\item primeval forest species of trees, bushes and other plants
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Beavers}
+\begin{frame}\frametitle{Beavers}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.3\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F11.jpg}
+\end{figure}
+\footnotesize{European Beaver. Photo: author.}
+\end{column}
+\begin{column}{0.7\textwidth}
+\begin{itemize}\small
+            \item European Beaver (\emph{Castor fiber}) - one of the particular examples of the Masurian ecosystems. 
+            \item Beavers have natural trait for building dams and canals for their dwelling (“lodges”). 
+            \item Beavers are second-largest rodent in the world \\(after the capybara). 
+            \item Beavers' colonies create one or more dams to provide still, deep water to protect against predators, and to float food and building material.
+            \item Beavers can reach up to 30 kg weight.
+            \item Masurian lakes play an important role in the restitution of the lowland European beaver population. 
+            \item Beavers were hunted almost to extinction in Europe.
+            \item Besides Poland there are Beaver populations in Germany, Finland, Russia, Czech Republic and Slovakia.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Environment}
+\begin{frame}\frametitle{Environmental Problems}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.7cm]{F12.jpg}
+\end{figure}
+\footnotesize{European Beaver. Photo: author.}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+Some environmental problems in the region: 
+\begin{itemize}
+	\item encroachment of reeds, willows and birches
+	\item endanger of wetland habitats by eutrophication and drying up
+	\item (in past years) hunting 
+	\item land use changing
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.0cm]{F13.jpg}
+\end{figure}
+\footnotesize{European Beaver. Photo: author.}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{BNP}
+\begin{frame}\frametitle{Biebrza National Park (BNP) and Museum}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F16.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{2em} 
+\begin{itemize}
+            \item BNP is named after 'Biebrza' river (the major river in the area, 145 km long);
+            \item The name has linguistic origin from “beaver”. Founded as a National Park in 1993.
+            \item Located in the river basin of Narew, the Biebrza and their tributaries
+            \item BNP - the  biggest area of swamps and wetlands in Europe;
+            \item BNP has most diverse flora and fauna comparing to similar wetland ecosystems 
+            \item BNP is the largest National Park in Poland
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Museum}
+\begin{frame}\frametitle{in BNP Museum...}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.7cm]{F14.jpg}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.7cm]{F15.jpg}
+\end{figure}
+\footnotesize{In the BNP Museum. Photo: author}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+Typical parts and elements of Biebrza landscapes:
+\begin{itemize}
+	\item Swamps, peat bog, mixed forests
+	\item Trees: birches, olsa
+	\item Animals: elks, wolves and beavers
+	\item Birds: stork, black-tailed godwit, sandpipers
+\end{itemize}
+Methods of the environmental protection:
+\begin{itemize}
+	\item understanding environmental relationships and structure of the ecosystems
+	\item restricted or prohibited human activities in the area
+	\item cultivation and restitution of the population of rare species \\(beavers, bisons, etc)
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\begin{frame}\frametitle{Attractiveness}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.0cm]{F9.jpg}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.0cm]{F10.jpg}
+\end{figure}
+\footnotesize{In the BNP Museum. Photo: author}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+Main factors of Biebrza attractiveness \& uniqueness:
+\begin{itemize}
+	\item ecological value, nature
+	\item picturesque value of landscapes
+	\item variety of flora and fauna
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.7cm]{F17.jpg}
+\end{figure}
+\footnotesize{European stork. Photo: author}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Nature}
+\begin{frame}\frametitle{Nature of Biebrza National Park}
+Biebrza National Park gives habitat for many rare fauna species near extinction due to the reasons: 
+\begin{itemize}
+	\item Climatic and ecological characteristics
+	\item Water environment with high level of moisture, necessary for some species, birds
+	\item Vast area (59,233 ha)
+	\item Few human activities in the area of wetlands 
+\end{itemize}
+Just some examples of species:
+\begin{itemize}
+	\item Birds - Spotted Eagle, Black Grouse, Great Snipe, 
+	\item Animals – Beaver, Otter, Wolf
+	\item Plants – Fen Orchid, Lady’s Slipper
+\end{itemize}
+\end{frame}
+
+\section{Statistics}
+\begin{frame}\frametitle{Biebrza: Statistics}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F18.jpg}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F19.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{2em} 
+Biebrza National Park gives habitat to
+\begin{itemize}
+	\item 280 bird species: it is the place of nesting and living for lots of water birds which only exist in such areas
+	\item 178 among them breed in the Biebrza wetlands
+	\item 48 mammals
+	\item The biggest population of Elks (ca 600 individuals)
+	\item more tan 1000 different types of vascular plants species (including rare orchids Lady’s Slipper)
+	\item BNP encompasses the largest area of marshes, peat bogs and grassland in Europe, mainly of primordial origin
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}\frametitle{Conclusion: Environmental Protection}
+\begin{itemize}
+	\item From 1995 BNP is included in the list of RAMSAR regions – i.e. it is an ecological area of international importance (wetland).
+	\item The BNP is included into the European Ecological NATURA 2000 network \& protecting system. 
+	\item For many of bird, mammals and vegetation species BNP is one of the last places for living that still exist in Europe
+	\item BNP includes Red Bog project – one of the oldest and most protected area in Poland, within BNP. 
+	\item The Red Bog is the \nth{2} biggest raised  bog in Poland
+	\item The Masuria Lakeland and BNP are the areas especially rich in species and biodiversity
+	\item The areas of Masuria Lakeland and BNP must be strictly protected because of their unique characteristics and importance for the European environment
+	\item There are some environmental problems in the area: encroachment of reeds, willows, birches, peatbog fires
+	\item There are already some environmental activities in the area and protecting projects funded by the EU
+\end{itemize}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+  	\emph{Thank you for attention !}\\
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+
+\section{Bibliography}
+\begin{frame}{Bibliography}
+\scriptsize{Author's publications focused on environment: \cite{Lemenkova2006e}, \cite{Lemenkova2006b}, \cite{Lemenkova2006a}, \cite{Lemenkova2007b}, \cite{Lemenkova2004a}, \cite{Lemenkova2008b},  \cite{Lemenkova2005b1}, \cite{Lemenkova2005a}.}
+
+\nocite{*}
+\printbibliography[heading=none]
+
+\end{frame}
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+
+\end{document}
