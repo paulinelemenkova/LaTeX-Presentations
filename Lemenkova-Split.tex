@@ -1,0 +1,468 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,
+	breaklinks = true, 
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+\usecolortheme{crane}
+
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{gensymb} % degree symbol
+\usepackage{amsmath} % math symbols
+\usepackage{graphicx} % to insert figures
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style = numeric,
+%	style=nature,
+	style=apa,
+%	style=mla,
+%	style=phys, % без doi
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Split.bib}%   \tiny \scriptsize \footnotesize \normalsize
+\renewcommand*{\bibfont}{\footnotesize} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+
+\title{Spatial analysis for the assessment of the environmental changes in the landscapes of Izmir surroundings}
+\subtitle{Presented at \\
+\nth{10} International Conference on \\
+Environmental, Cultural, Economic and Social Sustainability\\
+Split, Croatia}
+\author{Polina Lemenkova}
+         \date{January 22, 2014}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Outline}
+ \begin{frame}\frametitle{Table of Contents}
+           \tableofcontents
+\end{frame}
+
+\section{Study Area}
+\subsection{Research Problem}
+\begin{frame}\frametitle{Research Problem}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F1.jpg}
+\end{figure}
+\small{The study region is located in western Turkey, Izmir surroundings. \\
+The region has strong anthropogenic pressure: well developed transport network, intensive shipping and maritime constructions, industrial factories, plants, densely populated urban districts, intensive agricultural cultivation.
+}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+Research Problem: 
+\begin{itemize}
+	\item The region of Izmir is a particular part of Turkey: it has unique landscapes with variety of vegetation types, diverse relief and natural reserve areas;
+	\item The vegetation within the Aegean region has very complex character;
+	\item Area is characterized by the the variety, biogeographical diversity and richness;
+	\item At the same time, Izmir, a third large metropolis of Turkey, is an industrial city of high importance;
+	\item Izmir is a key seaport harbor, strategic for the country and Mediterranean region;
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Research Questions and Goals}
+\begin{frame}\frametitle{Research Questions and Goals}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.7cm]{F2.jpg}
+\end{figure}
+\footnotesize{Western Turkey, Izmir region. Landscapes from the aerial view. Source: Google Earth}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+Research Questions and Goals: 
+\begin{itemize}
+	\item How landscapes within the test area of Izmir region changed due to the anthropogenic effects 
+	\item Visualization of the landscapes in the given time scope of 13 years (1987-2000)
+	\item If there are changes, what are the exact areas (in ha or km) occupied by every land cover type.
+	\item Calculate \& Assess Accuracy.
+	\item How can remote sensing (RS) data and GIS tools of Erdas Imagine be used for answering questions (1) and (2). 
+	\item Demonstration \& Discussion
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Methods} 
+\begin{frame}\frametitle{Methods}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.5cm]{F4.jpg}
+\end{figure}
+\footnotesize{Methodological Flowchart}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}  
+\begin{itemize}
+	\item Data import and conversion
+	\item Creating multi-band layer \& color composite Selecting AOI (Area Of Interest)
+	\item Clustering segmentation and classification GIS Mapping
+	\item Verification via Google Earth
+	\item Accuracy Assessment
+	\item Analyzing results
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Data Import} 
+\begin{frame}\frametitle{Data Import}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F5.jpg}
+\end{figure}
+\begin{itemize}
+	\item Study Area. Selecting study area covered by Landsat TM scenes.
+ 	\item GLCF website: Landsat Thematic Mapper (TM)
+	\item Global Land Cover Facility (GLCF) Earth Science Data Interface
+	\item Analysis of vegetation types: images taken during summer (June). 
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{1em} 
+For selecting target area, a spatial mask of coordinates ranging from 26\degree 00'-26\degree 00' E to 38\degree 00'-39\degree 00' N was applied. 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F6.jpg}
+\end{figure}
+\begin{itemize}
+	\item Target images: 1987 and 2000 
+	\item Tme span of 13-years (1987-2000) 
+	\item Change detection in the land cover types.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Data Conversion}
+\begin{frame}\frametitle{Data Conversion}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F7.jpg}
+\end{figure}
+Conversion of raw .TIFF Landsat TM images into Erdas Imagine “.img” format.
+\end{frame}
+
+\subsection{Creating Multi-band Color Composite}
+\begin{frame}\frametitle{Creating Multi-band Color Composite}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F8.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Selecting Area of Interest (AOI)}
+\begin{frame}\frametitle{Selecting AOI}
+Test area: Izmir surroundings.
+\begin{itemize}
+	\item Test area: Manisa and Izmir provinces covering various landscapes types;
+	\item AOI ecological diversity: urban built-up areas, coastal zone, agricultural crop areas, hilly landscapes;
+	\item Urban areas located on the coastal area of the Aegean Sea with ca. 4 M people;
+	\item Human impact on the environment: demographic, cultural \& economic pressure;
+	\item This is reflected in various land cover types, landscapes patterns, heterogeneity;
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F9.jpg}
+\end{figure}
+\begin{itemize}
+	\item Left: Selecting AOI from the overlapping initial Landsat images. 
+	\item Center: adjusting parameters, Erdas Imagine.
+	\item Right: AOI 1987 (above) and AOI 2000 (below).
+\end{itemize}
+\end{frame}
+
+\subsection{Clustering Segmentation}
+\begin{frame}\frametitle{Clustering Segmentation}
+Principle of clustering segmentation:
+\begin{itemize}
+	\item The logical algorithmic approach of clustering segmentation consists in merging pixels on the images into clusters.
+	\item Grouping pixels is based on the assessment of their homogeneity, that is, distinguishability from the neighboring pixel elements.
+	\item Clusters enable to analyze spectral \& textural characteristics of the land cover types, i.e. to perform spatial analysis.
+	\item Accurate cluster segmentation of the images is an important step for supervised classification.
+\end{itemize}
+Differentiating Patterns via DNs:
+\begin{itemize}
+	\item Image classification consists in assignation of all pixels into land cover classes of the study area.
+	\item Classification is done using multispectral data, spectral pattern (signatures) of the pixels that represent land cover classes.
+	\item Various land cover types and landscape features are detected using individual properties of digital umbers (DNs) of the pixels.
+	\item The DNs show values of the spectral reflectance of the land cover features, and individual properties of the objects.
+\end{itemize}
+\end{frame}
+
+\subsection{Clustering: Algorithm}
+\begin{frame}\frametitle{Clustering: Algorithm}
+\begin{itemize}
+	\item Clustering was performed to classify pixels into thematic groups, or clusters.
+	\item Number of clusters = 15, which responds to the selected land cover types in the study area.
+	\item During clustering, each digital pixel on the image is categorized to the respecting cluster, 
+	 \item Assigned cluster is the one to which the mean DN value of the given pixel is the closest.
+	\item The process is repeated in an iterative way, 
+	\item Iteration continued until optimal values of the class groups and the pixels assigned to the corresponding classes are reached.
+	\item Afterwards, the land cover types were visually assessed and identified for each land cover class.
+\end{itemize}
+\end{frame}
+
+\subsection{Clustering: Visualization}
+\begin{frame}\frametitle{Clustering: Visualization}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F10.jpg}
+\end{figure}
+\begin{itemize}
+	\item Final thematic mapping is based on the results of the image classification: 
+	\item Visualizing landscape structure and land cover in the study area.
+	\item Final thematic maps are represented on the following two slides.
+\end{itemize}
+\end{frame}
+
+\section{Results}
+\begin{frame}\frametitle{Maps of 1987 and 2000}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.8cm]{F11.jpg}
+\end{figure}
+\small{1987}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F12.jpg}
+\end{figure}
+\small{2000}
+\end{column}
+\end{columns}
+\end{minipage}
+Classified Landsat TM image (above) and thematic map of land cover types (below).
+\end{frame}
+
+\section{Accuracy Assessment}
+\subsection{Verification via the Google Earth: Algorithm}
+\begin{frame}\frametitle{Verification via the Google Earth: Algorithm}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F13.jpg}
+\end{figure}
+\small{Linking Map with the Google Earth}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+	\item The selected areas with the most diverse landscape structure and high heterogeneity of the land cover types, have been verified by the overlapping of the Google Earth aerial images.
+	\item The function “connect to Google Earth” was activated that enabled to visualize the same region of the current study on the Google Earth in a simultaneous way.
+	\item The functions “Link Google Earth to View” and “Sync Google Earth to View” enabled to synchronize the view areas between the Google Earth and the current view on the image.
+	\item This enabled to check the difficult study areas where questions arose in which land cover type this site belongs.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Error Matrix}
+\begin{frame}\frametitle{Computing Error Matrix}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6.0cm]{F15.jpg}
+\end{figure}
+\small{Left: Correction of the assigned class values of the generated points according to the real values. \\
+Right: Error matrix generated for each land cover class, Landsat TM classification 1987.}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F14.jpg}
+\end{figure}
+\small{Results validation: the quality control and validation of the results\\
+ Quality control was performed using accuracy assessment operations in Erdas Imagine menu}
+\end{frame}
+
+\subsection{Final Calculations}
+\begin{frame}\frametitle{Final Calculations}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F16.jpg}
+\end{figure}
+Classification of Landsat TM image, 1987. 
+Classification of Landsat TM image, 2000.
+\end{frame}
+
+\subsection{Kappa Statistics}
+\begin{frame}\frametitle{Accuracy Results: Kappa Statistics}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.5cm]{F17.jpg}
+\end{figure}
+Accuracy results for Landsat TM image classification are computed as follows:
+\begin{itemize}
+	\item The classification of the image 1987: accuracy 81.25\%, 2000: 80,47\%.
+	\item Kappa statistics for the  image 2000: 0.7843, for the image 1987: 0.7923
+\end{itemize}
+\end{frame}
+
+\subsection{Comments on Table}
+\begin{frame}\frametitle{Comments on Table}
+\begin{itemize}
+	\item The results indicate changes in land cover types affected by human activities, i.e. increased agricultural areas.
+	\item 1987: croplands (wheat) covered 71\% of the today's area (2000): 2382 vs. 3345 ha.
+	\item Increase in barley cropland areas is noticeable as well: 1149 ha in 1987 vs. 4423 ha in 2000.
+	\item Sparsely vegetated areas now also occupy more areas : 5914 ha in 2000 against 859 ha in 1987.
+	\item Natural vegetation, decreased, which can be explained by the expansion of the agricultural lands.
+	\item 1987: coppice areas covered 5500 ha while later on there are only 700 ha in this land type.
+\end{itemize}
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}\frametitle{Conclusions}
+Conclusions: 
+\begin{itemize}
+	\item Increased human activities (agricultural works, urbanization, industrialization) affect environment, cause negative impacts on the ecosystems and make changes in the vegetation coverage (land cover types).
+	\item Climate change affect land cover types: decrease of typical woody vegetation.
+	\item Drastic land use changes are recorded and detected in diverse regions of Turkey, including Izmir surroundings.
+\end{itemize}
+R\'{e}sum\'{e}:
+\begin{itemize}
+	\item Monitoring land cover changes is necessary for maintaining environmental sustainability. 
+	\item Updated information and spatial analysis are useful tools.
+	\item The presentation demonstrated how landscapes changed in the selected study area at a 13-year time span (1987-2000).
+	\item The data included Landsat imagery covering research area. The image processing was done by classification methods.
+	\item The classification results detected changes in landscapes in 2000 comparing to 1987. This proved anthropogenic impacts on the landscapes which affect sustainable environmental development of the region.
+	\item The results demonstrated successful combination of the RS data and methods of GIS spatial analysis, effective for monitoring of highly heterogeneous landscapes in the area of intensive anthropogenic activities.
+\end{itemize}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+  	\emph{Thank you for attention !}\\
+	\vspace{5em}
+\normalsize
+Acknowledgements: \\
+Current research has been supported by the T\"{U}BİTAK: \\
+T\"{u}rkiye Bilimsel ve Teknoloji Arastirma Kurumu\\
+(The Scientific and Technological Research Council of Turkey) \\
+Research Fellowship for Foreign Citizens, No. 2216 for 2012.\\
+The research stay was done during 11-12.2012 at \\
+Ege University, Faculty of Geography,\\
+Izmir, Turkey.
+\end{frame}
+
+\section{References}
+\begin{frame}{References}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F18.jpg}
+\end{figure}
+\end{frame}
+%%%%%%%%%%% Bibliography %%%%%%%
+
+\section{Bibliography}
+\Large{Bibliography} \vspace{1em}
+\nocite{*}
+\printbibliography[heading=none]
+
+\end{document}
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
