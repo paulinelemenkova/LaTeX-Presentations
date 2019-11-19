@@ -1,0 +1,301 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}
+\usetheme{Marburg}
+
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+	style = numeric,
+%	style=phys, % без doi
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Southampton.bib}%   \tiny  \scriptsize \footnotesize \normalsize
+\renewcommand*{\bibfont}{\scriptsize} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Flood Hazards: A Case Study of the Floods in Bangladesh, Asia}
+\author{Polina Lemenkova}
+\subtitle{Presented at the Course GEOG6023\\ 'Physical Geography in Environmental Management'}
+\institute{University of Southampton, School of Geography, \\
+MSc GEM Studies, Erasmus Mundus Scholarship \\
+Southampton, England (UK)}
+\date{November 30, 2009}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Outline}
+\begin{frame}
+           \tableofcontents
+\end{frame}
+
+\section{Introduction}
+\subsection{Floods in the World}
+\begin{frame}\frametitle{Floods in the world}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F1.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Floods in Asia}
+\begin{frame}\frametitle{Floods in Asia}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F2.jpg}
+\end{figure}
+\end{frame}
+
+\section{Bangladesh}
+\begin{frame}\frametitle{Bangladesh}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F3.jpg}
+\end{figure}
+\footnotesize{Bangladesh: areas vulnerable to flooding}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+Key points on Bangladesh: 
+\footnotesize{
+\begin{itemize}
+	\item Bangladesh is among the countries that are the most affected by climate change
+	\item Frequent natural disasters, loss of life, damage to infrastructure and economic assets, impacts on lives and livelihoods
+	\item Floods, tropical cyclones, storm surges and droughts are likely to become more frequent and severe in the coming years
+	\item Lies in the delta of three of the largest rivers in the world – the Brahmaputra, the Ganges and the Meghna
+	\item Mostly low and flat topography, susceptible to river and rainwater flooding
+	\item More than 50 million of people still live in poverty
+	\item Many people live in remote or ecologically fragile parts of the country, such as river islands
+	\item Approximately one quarter of the country inundated each year
+	\item The poorest and most vulnerable living in the exposed areas suffer the most
+\end{itemize}
+}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{The Flood Plain Area of the Meghna River}
+\begin{frame}\frametitle{Meghna River}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.7cm]{F4.jpg}
+\end{figure}
+\footnotesize{Meghna river flood plain area}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+Meghna river flood plain area: 
+\small{\begin{itemize}
+	\item Ideal case for examining relationship between the climate change, hazard and socio-economic vulnerability
+	\item One of the highest flood hazard area in the world
+	\item One of the poorest and the most flood-prone areas of Bangladesh
+	\item Inhabited with more than four hundred thousand people
+	\item Residents mostly farmers (farming rice, wheat, vegetables, oil seeds)
+	\item Heavy monsoon rainfall generates excessive flows in the rivers and causes floods almost every year
+	\item Suffered from devastating floods over the past 20 years in 1988, 1996, 1998 and 2004
+\end{itemize}}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+	
+\subsection{Socio-Economic Vulnerability}
+\begin{frame}\frametitle{Bangladesh: Socio-Economic Vulnerability}
+\begin{itemize}
+	\item Poorer segments of society live closer to the river
+	\item Inundation levels significantly higher for poorer households
+	\item Impoverished face a higher risk of flooding and are more vulnerable
+	\item The higher the exposure level and income inequality, the less access to a natural resourses
+	\item Average damage costs and coping capacity higher for wealthier households
+	\item Households with higher income take preventive measures and have significantly lower damage costs
+	\item Unequal income distributions in villages with higher risk exposure
+	\item The least well prepared both in terms of household-level and community level face the highest risk of flooding
+\end{itemize}
+\end{frame}
+
+\section{Impacts of the Flood Hazards in Bangladesh}
+\begin{frame}\frametitle{Impacts of the Flood Hazards in Bangladesh}
+\small{\textcolor{red}{Impact of Event = $\sum$ Intensity of Event * $\sum$ Baseline Conditions * $\sum$ Adaptive Capacity}}\\
+In the coastal areas of Bangladesh communities are impacted by the following factors:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F5.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Impacts of the Major Floods in Bangladesh}
+\begin{frame}\frametitle{Impacts of the Major Floods in Bangladesh}
+Impacts of Major Floods in Bangladesh during the last 50 years
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F6.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Vulnerability Factors}
+\begin{frame}\frametitle{Vulnerability Factors}
+Factors of vulnerability in Bangladesh which make impacts of flood hazards sensible:
+\begin{itemize}
+	\item Geographic location
+	\begin{itemize}
+		\item long coast line
+		\item effect of saline water intrusion in the estuaries
+		\item vast low-lying landmass
+		\item extremely dynamic coastal geomorphological processes
+	\end{itemize}
+	\item Socio-demographic and economic features
+	\begin{itemize}
+		\item high population density
+		\item nature-dependant traditional agricultural practices
+	\end{itemize}
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F7.jpg}
+\end{figure}
+\end{frame} 
+
+\subsection{Impacts of the Flood Hazards}
+\begin{frame}\frametitle{Impacts of the Flood Hazards}
+General impacts of flood hazards on the population:
+\begin{itemize}
+	\item initial economic conditions (poor or non-poor)
+	\item location (coastal or non-coastal, rural or urban)
+	\item gender and general health condition (capacity to resist illnesses, stresses)
+	\item reduced livelihood options (loss of agriculture, restriction of movement)
+\end{itemize}
+Particular impacts of flood hazards on human health:
+\begin{itemize}
+	\item temperature rise
+	\item degrading water quality as well as shortage leads to illnesses: cholera, diarrhea, dysentery, malaria and typhoid
+	\item widespread malnutrition (due to shortage of water)
+	\item women: increased risks of the involuntary foetus abortion in the coastal areas due to rising salinity leading to hypertension
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=6.0cm]{F8.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=2.5cm]{F9.jpg}}
+\end{figure}
+\end{frame} 
+
+\section{Conclusion}
+\begin{frame}\frametitle{Conclusion}
+Table 2. Causes of Impacts, Vulnerable Areas and Impacted Sectors in Bangladesh:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F10.jpg}
+\end{figure}
+
+
+During the flood hazard 
+\begin{itemize}
+	\item the poor, 
+	\item poor-healthy, 
+	\item women will suffer much more disproportionately than the well-being and healthy men, more so in the coastal and rural areas than elsewhere.
+\end{itemize}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+  	\emph{Thank you for attention !}\\
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+
+\section{Bibliography}
+\Large{Bibliography}\ %\\vspace{1em}
+\nocite{*}
+\printbibliography[heading=none]
+
+\end{document}
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
