@@ -1,0 +1,472 @@
+\documentclass[pdflatex,compress,9pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}
+	
+\usepackage[utf8]{inputenc}
+\usepackage[T2A,T1]{fontenc}
+%\usefonttheme{structuresmallcapsserif}
+\usepackage{bookman}
+
+\usetheme{Bergen}
+%\usecolortheme{seahorse}Teal DarkCyan
+%\usecolortheme{wolverine} 
+\usecolortheme[named=Crimson]{structure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style = numeric,
+	style=apa,
+	maxbibnames=99,
+%	citestyle=authoryear,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Minsk.bib}
+\renewcommand*{\bibfont}{\tiny} % \tiny \scriptsize \footnotesize
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\title{Cost-Effective Raster Image Processing\\
+ for Geoecological Analysis \\
+ Using “ISOCLUST” Classifier:\\
+ a Case Study of Estonian Landscapes}\vspace{2em}
+ 
+\subtitle{\vspace*{0.5cm}Presented at \nth{5} International Conference \\
+'Modern Problems of Geoecology and Landscapes Studies'\\
+Belarus State University (BSU)\\
+Minsk, Belarus}
+
+\author{Polina Lemenkova}
+\date{October 14, 2014}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Outline}
+\begin{frame}
+  \small{         \tableofcontents}
+\end{frame}
+
+\section{Introduction}
+
+\subsection{Study Area}
+\begin{frame}{Study Area: P\"{a}rnu Region, Estonia}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.2cm]{F1.jpg}
+\end{figure}
+\begin{block}{Study Area}
+The research region encompasses coastal area of Baltic Sea: south-western Estonia
+\end{block}
+ 
+\begin{alertblock}{Spatial extent}
+Spatial extent of the study area is limited to the surroundings of P\"{a}rnu County.
+\end{alertblock}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.5cm]{F2.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Research Aim}
+\begin{frame}\frametitle{Research Aim}
+The purpose of this study is following \alert{two aims}:
+\begin{alertblock}{GIS Analysis}
+first, a geographic (GIS) analysis of land cover types in the coastal landscapes of western Estonia, P\"{a}rnu surroundings at two various temporal dates (\alert{1992} and \alert{2006})
+\end{alertblock}
+
+\begin{block}{IDRISI GIS}
+second, an overview of the technical methods enabling image processing by different tools of IDRISI GIS software"
+\end{block}
+
+\begin{block}{Landsat TM Images}
+Hence, the main research methods consists in processing and classification of satellite remote sensing data Landsat TM aimed at land cover types recognition and thematic mapping.
+\end{block}
+
+\end{frame}
+
+\subsection{Landscapes}
+\begin{frame}\frametitle{Landscapes}
+
+\begin{block}{South-West Estonia: Unique Environment}
+South-west Estonia is known for unique environmental settings: mild maritime climate, broad beaches, coniferous pine forests on the coastal zone
+\end{block}
+
+\begin{alertblock}{Landscapes}
+Landscapes here are rich and world-known for their diversity, variability, unique composition structure and high esthetic value
+\end{alertblock}
+
+\begin{examples}{Types of Landscapes}
+Landscape types include, for example, mixed and broadleaved forests, traditional agricultural semi-natural landscapes, wooded meadows, plant communities, heathland, bogs and moors, complex anthropogenic areas with different land use structure, shrubland, grasslands, birch-dominating coastal areas and flooded meadows
+\end{examples}
+
+\end{frame}
+
+\section{Examples of Landscapes}
+\subsection{Baltic Sea Coasts}
+\begin{frame}\frametitle{Examples of Landscapes: Baltic Sea Coasts}
+\begin{examples}{Landscapes:}
+Baltic Sea Coasts. Photos: author.
+\end{examples}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F3.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Marine Landscapes: P\"{a}rnu}
+\begin{frame}\frametitle{Marine Landscapes: P\"{a}rnu Coasts}
+\begin{examples}{Marine Landscapes:}
+ P\"{a}rnu Coasts. Photos: author.
+\end{examples}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F4.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Lacustrine landscapes: Luitemaaa}
+\begin{frame}\frametitle{Lacustrine landscapes: Luitemaa Nature Conservation Area}
+\begin{examples}{Lacustrine landscapes:}
+Luitemaa Nature Conservation Area. Photos: author.
+\end{examples}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F5.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Forest landscapes: Luitemaa}
+\begin{frame}\frametitle{Forest landscapes: Luitemaa Nature Conservation Area}
+\begin{examples}{Forest Landscapes:}
+Luitemaa Nature Conservation Area. Photos: author.
+\end{examples}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F6.jpg}
+\end{figure}
+\end{frame}
+
+\section{Anthropogenic Impacts}
+\subsection{Facts}
+\begin{frame}\frametitle{Anthropogenic Impacts}
+
+\begin{block}{Tourism Activities}
+P\"{a}rnu region is traditionally popular as a \alert{tourism destination} due to favorable combination of factors:
+\begin{itemize}
+	\item geographic value: advantageous location on the coasts of Baltic Sea
+	\item social value: good facilities for the tourism and tourism reputation
+	\item environmental value: unique nature (marine landscapes, pine forests)
+\end{itemize}
+\end{block}
+
+\begin{block}{Agricultural Activities}
+P\"{a}rnu region is also known for traditional \alert{agricultural activities} (field crops cultivation, intensive planting, etc), as well as extensive \alert{housing development} in the rural area.
+\end{block}
+
+\begin{alertblock}{Human Pressure}
+All these factors create additional human pressure on the local ecosystems and may lead to fragmentation of the landscape structure.
+\end{alertblock}
+\end{frame}
+
+%%%%%%%%%%
+\subsection{Ecohouses Construction}
+\begin{frame}\frametitle{Ecohouses Construction}
+\begin{examples}{Ecohouses Construction}
+Photos: author.
+\end{examples}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F7.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Examples: Eco-housing}
+\begin{examples}{Eco-housing}
+Photos: author.
+\end{examples}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F12.jpg}
+\end{figure}
+\end{frame}
+
+\section{Data}
+\begin{frame}\frametitle{Data}
+The research data used in this project include vector and raster types of data:
+
+\begin{block}{Raster data:}
+Thematic raster layers (GeoTIFF) Landsat TM including scenes taken on \alert{18 June 2006} and \alert{03 June 1992}. \\
+Both images cover summer months, thus enabling vegetation coverage to be easily recognized. \\
+The images were downloaded from the Earth Science Data Interface, Global Land Cover Facility.
+\end{block}
+
+\begin{block}{Vector data:}
+\alert{CORINE} vector layers (abbreviation from \alert{Coordination of Information on the Environment}), developed by the European Environmental Agency, EU Commission). \\
+The CORINE data were stored in ESRI format shape-files. They contain information on land use types provided by the Estonian Land Board and available at the University of Tartu
+\end{block}
+\end{frame}
+
+\section{Methods}
+\begin{frame}\frametitle{Methods}
+
+\begin{block}{GIS Projects}
+The GIS projects has been organized and executed in two different software: \alert{Arc GIS 10.0} and \alert{IDRISI GIS Andes 15.0}.
+\end{block}
+
+\begin{block}{Landsat TM}
+The raster processing GIS approach and classification was applied in the current work towards Landsat TM two images."
+\end{block}
+
+\begin{block}{ISOCLUST}
+The method is based on the ISOCLUST unsupervised classification executed by means of IDRISI GIS.
+\end{block}
+
+\begin{block}{Machine Learning}
+The ISOCLUST available in IDRISI GIS performs the most of the image processing workflow in semi-automatically regime
+\end{block}
+
+\begin{block}{Land Cover Classes}
+It results in a map with pre-defined number of 16 land class categories which enable to compare two different stages of landscape development: \alert{“earlier”} and \alert{“now”}.
+\end{block}
+
+\begin{block}{Objectivity}
+The ISOCLUST method was chosen, since it enables to avoid subjectivity in classification.
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{Workflow Step-1}
+
+\begin{block}{IMPORT}
+Initially, the data of Landsat TM were imported to IDRISI Andes GIS from \alert{GeoTIFF} format to IDRISI specific format \alert{.rst}, through \alert{Data Provider Format} import.\\ As each Landsat TM scene is a multispectral image with several spectral bands, each band was displayed and visualized as a separate image.
+\end{block}
+
+\begin{block}{COLOR COMPOSITE}
+Afterwords, the images were composed using \alert{Color Composite} function. \\
+The combination of three bands was made as a single color composite image (bands 2-3-4).\\
+ This composition displays urban areas distinctively, which enables to clearly recognize them
+\end{block}
+
+\begin{block}{PROJECT}
+Then data were organized in a created project in \alert{IDRISI GIS}.
+\end{block}
+
+\end{frame}
+
+\begin{frame}\frametitle{Workflow Step-1}
+\begin{examples}{Image Processing}
+\end{examples}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F8.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Workflow Step-2}
+
+\begin{block}{CLASSIFICATION}
+The next step includes application of chosen classification method of ISOCLUST approach towards images processing. ISOCLUST classifier technique is based on the histogram peak selection technique"
+\end{block}
+
+\begin{block}{Analysis of Spectral Signatures}
+The ground principle of the classification consists in the analysis of spectral signatures that are individual for each land cover class.
+\end{block}
+
+\begin{block}{Analysis of Spectral Reflections}
+The analysis of spectral reflections strongly depends on the local surface features: texture, structure, color, etc.
+\end{block}
+
+\begin{block}{Spectral Signatures}
+Information on spectral signatures is received by the satellite sensors and recorded on the images (in this case, Landsat TM). This information is used for the image classification.
+\end{block}
+
+\begin{examples}{Information Extraction:}
+Using individual characteristics of objects, derived from the multispectral Landsat TM bands, information from the images was extracted, analyzed and used for land classification
+\end{examples}
+
+\end{frame}
+
+\begin{frame}\frametitle{Workflow Step-3}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6.0cm]{F9.jpg}
+\end{figure}
+\begin{block}{Image Comparison}
+Changes in land cover types in selected Estonian landscapes are shown on the histograms on 1992 and 2006.
+\end{block}
+
+\begin{block}{2006 vs 1992}
+ In 2006 the urban area became larger than in 1992 (land cover class "3" on the histogram. This can be explained by various reasons.
+\end{block}
+
+\begin{block}{Impact Factors}
+The most important reason is intense suburbanization $=>$ the major process in the current urban dynamics of modern Estonia: intensive construction of summer homes and cottages in the coastal area.
+\end{block}
+
+\begin{block}{Buildings}
+New buildings and houses created along the P\"{a}rnu Bay, $=>$ increased area of urban areas.
+\end{block}
+\end{frame}
+
+\section{Results}
+\begin{frame}\frametitle{Image Processing}
+
+\begin{block}{ISOCLUST}
+ISOCLUST classification of the images enabled to create thematic maps of the same study areas
+\end{block}
+
+\begin{block}{CORINE}
+According to CORINE, there are 16 land cover types typical for the study area.
+\end{block}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F10.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Land Cover Classes}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\small{\begin{itemize}
+	\item discontinuous urban fabric
+	\item industrial or commercial units
+	\item green urban areas
+	\item pastures
+	\item complex cultivation patterns
+	\item agriculture lands with grass
+	\item broad-leaved forest
+	\item coniferous forest
+	\item mixed forest
+	\item natural grassland
+	\item moors and heathlands
+	\item transitional woodland
+	\item beaches, dunes, sand
+	\item island marshes
+	\item water bodies
+	\item sea and ocean
+\end{itemize}}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.5cm]{F11.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+\emph{Thank you for attention !}\\
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F13.jpg}
+\end{figure}
+\small{Photo: author.}\\
+\normalsize
+Acknowledgement: \\
+The research has been done at the University of Tartu \\
+under support of DoRa grant (ESF, Estonia).\\
+The University of Tartu provided \alert{data} and \alert{software}:\\
+ \alert{CORINE} vector layers, \alert{IDRISI GIS} 15.0 and \alert{ArcGIS} 10.0.
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+\section{Bibliography}
+\Large{Bibliography}
+\nocite{*}
+\printbibliography[heading=none]
+	
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+\end{document}
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
