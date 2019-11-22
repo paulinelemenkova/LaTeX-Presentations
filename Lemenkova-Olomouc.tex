@@ -1,0 +1,479 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}
+\usetheme{Szeged}
+%\setbeamertemplate{background}[grid][step=1.5cm]
+
+\usecolortheme[named=Purple]{structure}
+%\useoutertheme{smoothtree}% tree smoothtree shadow default sidebar miniframes split infolines
+%\useinnertheme{rounded}% circles inmargin rounded rectangles
+
+ \setbeamertemplate{itemize item}{$\Rightarrow$}
+ \setbeamertemplate{itemize item}[double arrow]
+ %\setbeamertemplate{itemize items}[circle]
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+	style = numeric,
+%	style=apa,
+	maxbibnames=99,
+%	citestyle=authoryear,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Olomouc.bib}
+\renewcommand*{\bibfont}{\tiny} % \tiny \scriptsize \footnotesize
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+
+% ----------------------------------------------------------------------------
+% делать footnote \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip0pt%
+}
+\makeatother
+
+% ----------------------------------------------------------------------------
+
+\title[Understanding Spatiotemporal Forms, Triggers and Consequences of Urban Dynamics in Taipei: 1990-2005]{Understanding Spatiotemporal Forms, Triggers and Consequences of Urban Dynamics in Taipei: 1990-2005}
+
+\subtitle{\vspace*{0.5cm}Presented at the Conference on the \\
+Socio-Economic Transition of China: Opportunities and Threats \\
+Palack\'{y} University Department of Asian Studies \\
+Olomouc, Czech Republic}
+
+\author{Polina Lemenkova}
+
+\date{April 03, 2014}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Outline}
+\begin{frame}
+           \tableofcontents
+\end{frame}
+
+\section{Summary}
+
+\begin{frame}\frametitle{Summary}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F1.jpg}
+\end{figure}
+\small{Study area: overlay of the Landsat TM image with vector map of Taiwan Island and elevation contours. ArcGIS visualization.}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{alertblock}{Research Area}
+Taipei urban landscapes, Taiwan R.O.C.
+\end{alertblock}
+
+\begin{block}{Research Aim}
+Apatio-temporal analysis of urban dynamics in study area during 15 years (1990-2005)
+\end{block}
+
+\begin{alertblock}{Research Objective}
+Application of geoinformatic tools, remote sensing data for urban studies of Taipei
+\end{alertblock}
+
+\begin{block}{Research Methodology}
+GIS based spatial analysis
+\end{block}
+
+Study area is located in Taiwan R.O.C., Taipei city capital area. 
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\begin{frame}\frametitle{Study Area}
+	\begin{alertblock}{Location}
+Taipei is located on the north of the Taiwan Island
+	\end{alertblock}
+	
+	\begin{block}{Significance}
+Taipei is the Taiwan's core urban political \& economic center
+	\end{block}
+
+	\begin{block}{Characteristics}
+		\begin{itemize}
+			\item Taipei: favorable \alert{topographic} location, \alert{climatic} and \alert{geographic} settings 
+			\item Advantageous conditions for habitation here during centuries.
+		\end{itemize}
+	\end{block}
+
+	\begin{examples}{Geographic Settings}
+		\begin{itemize}
+			\item  Geomorphology: Taipei is characterized by flat relief and several rivers of Tamsui basin with alluvial soils. 
+			\item Physical geography: Natural borders of the city are formed by surrounding mountains and hills	(Tsou \& Cheng, 2013).
+			\item Geology: Rich sediments from the upstream area maintain soils fertility, creating favorable resources for agricultural activities (Huang et al., 2001).
+		\end{itemize}
+	\end{examples}
+\end{frame}
+
+\section{Human Factors}
+\begin{frame}\frametitle{Human Activities Affecting Landscapes}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.5cm]{F3.jpg}
+\end{figure}
+\small{View of from Taipei-101 skyscraper (Taipei World Financial Center), Photo: author.}
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{1em}
+Urban growth and city sprawl affects ecosystems. \\
+Consequences of human impacts include:
+\small{
+\begin{itemize}
+	\item landscape degradation
+	\item changes in land cover and land use types
+	\item decrease in biodiversity richness within the city
+	\item deforestation, urbanization, and wetlands destruction (Chen and Lin, 2013)
+	\item decrease in species, losses of rare and extinct species (McKinney, 2006; Shochat et al., 2004; Ramachandra et al., 2012)
+\end{itemize}
+In turn, modified land use types:
+\begin{itemize}
+	\item affect hydrological components in the surrounding watersheds
+	\item cause changes of the land use \alert{patterns}
+	\item change primary descriptors of the landscape patterns: \alert{composition, configuration, connectivity, variety} (Lin et al., 2007)
+	\item modify \alert{abundance} of patch types within a landscape
+\end{itemize}}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Land Cover/Use Types}
+\begin{frame}\frametitle{Land Cover vs Land Use Types: Conceptual Difference}
+
+\begin{alertblock}{Land Cover}
+Land cover data documents how much of a region is covered by forests, wetlands, impervious surfaces, agriculture, and other land and water types. 
+Water types include wetlands or open water.
+\end{alertblock}
+
+\begin{block}{Land Use}
+Land Use shows just how people use the landscape – whether for development, conservation, or mixed uses. The different types of land cover can be managed or used quite differently.
+\end{block}
+
+\begin{examples}{Land Cover vs Land Use}
+\begin{itemize}
+	\item Land cover can be determined by analyzing satellite and aerial imagery.
+	\item Land use cannot be determined from satellite imagery.
+	\item Land cover maps provide information to enable interpreting current landscape.
+\end{itemize}
+\end{examples}
+
+This research focused on study of land cover types in Taipei using GIS \& RS.\\
+To highlight dynamics in the land cover types, multi-temporal RS images for several different years were taken and compared. 
+With this information, past situation was evaluated and insight into the effects of urban sprawl in Taipei area are made.
+\end{frame}
+
+\section{Taipei}
+\subsection{Urban Area}
+\begin{frame}\frametitle{Taipei: Urban Area}
+% 2 картинки
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.9cm]{F2.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=4.0cm]{F4.jpg}}
+\end{figure}
+
+\begin{alertblock}{Population}
+A Taipei population living within an area of 271.8 $km^{2}$, density of 9566 persons/$km^{2}$, which is higher than for most of Asia’s other major cities (Tsou \& Cheng, 2013).
+\end{alertblock}
+
+\begin{block}{Function}
+Located on the north of the Taiwan Island, Taipei is the country's core urban \alert{political and economic center} with population reaching over 2.6 M and continuing to expand within the metropolitan region.
+\end{block}
+
+\end{frame}
+
+\subsection{Urbanization}
+\begin{frame}\frametitle{Taipei: Urbanization}
+Concentrated \alert{population density} and \alert{environmental pressure} within the \alert{limited geographic space and resources} $=>$ metropolis as Taipei deal with specific urban environmental problems.
+\begin{examples}{Consequences of urbanization}
+\begin{enumerate}
+	\item transformation in \alert{structure of natural landscapes}
+	\item simplification of species, changes in landscape composition
+	\item disconnected and disrupted components within the hydrological systems, fragmentation of natural habitats
+	\item changes in \alert{land cover types}: forests, river deltas, meadows, native grasslands, wetlands $=>$ human-modified agricultural or \alert{built-up areas} 
+	\item new areas consist of large amounts of \alert{impervious surfaces}, covered by concrete blocks, asphalt pavement, bricks, buildings
+	\item significantly altered \alert{aboveground net primary productivity}
+	\item changes in \alert{soil respiration rates}, compared to natural ecosystems (Kaye et al., 2005)
+	\item \alert{air pollution} and decreased \alert{water quality} (Huang et al., 2001)
+\end{enumerate}
+\end{examples}
+\end{frame}
+
+\subsection{Regional Differences: Urban Space}
+\begin{frame}\frametitle{Regional Differences: Urban Space}
+
+\begin{alertblock}{Limitation of Land Resources}
+Uncontrolled urbanization $=>$ \\
+Gradual limitation of the land and water resources $=>$ \\
+Insufficient infrastructure within the city $=>$ \\
+Development of densely concentrated mixed land use types.
+\end{alertblock}
+
+\begin{block}{Land Use Types}
+About 45\% of the Taipei city is categorized as restricted with regard to availability and usage due to its topography (Tsou and Cheng, 2013). \\
+Only 14\% (46.30 km2) is available for further development (residential and commercial).
+\end{block}
+
+\begin{block}{Land Cover Types}
+Urban landscapes are composed of areas of various shape and size, water bodies, human built-up quarters and hilly mountainous areas
+\end{block}
+
+\begin{examples}{Urbanization}
+Nowadays, new Taipei city face consists of built-up new apartments, buildings, office centers and residential areas, re-structured districts. \\
+This process is reinforced by the average structure age of the buildings and modernization (Lin and Jhen, 2009).
+\end{examples}
+
+\end{frame}
+
+\section{Ecosystems}
+\subsection{Functions}
+\begin{frame}\frametitle{Urban Ecosystems: Functions}
+
+\begin{alertblock}{Complex Structure}
+Urban ecosystems have highly complex composing structure and functioning. \\
+Urban landscapes have the highest level of ecosystems hierarchy.
+\end{alertblock}
+
+\begin{block}{Energy}
+Energy flows and density reach the most intensity in the cities comparing to natural and semi-natural ecosystems
+\end{block}
+
+\begin{examples}{Typical functions of urban ecosystems:}
+Cultural, supporting, regulating services $=>$ core criteria for measurement of the environmental quality of the urban areas (Flores et al., 1998). Complexity of these functions consists in various aspects of urban landscapes (Bonaiuto et al., 2003): 
+\begin{itemize}
+	\item spatial (architecture and planning space)
+	\item organization and access to green spaces within the city)
+	\item human (i.e. people and social interrelations)
+	\item functional (recreational, commercial, transport services and welfare)
+	\item contextual aspects (life style and environmental health)
+\end{itemize}
+\end{examples}
+\end{frame}
+
+\subsection{Structure}
+\begin{frame}\frametitle{Urban structure: a simplified flowchart}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F5.jpg}
+\end{figure}
+\end{frame}
+
+\section{Urbanization}
+
+\subsection{Urbanization: Trends}
+\begin{frame}\frametitle{Urbanization: Trends}
+
+\begin{alertblock}{Population}
+In the past decades, the process of urbanization became more and more notable in the world. About half of the world's population will reside in urban areas and cities by 2000 (Huang et al., 1998).
+\end{alertblock}
+
+\begin{block}{Importance}
+World's global cities (e.g. New York, London, Tokyo, Taipei, Paris, Seoul, Moscow, Hong Kong, Singapore, etc.) are the key engines of the human development and global cooperation. The importance of capitals: economies drivers; play key role in national and regional economies of countries (Scott, 2000; Hsu, 2005; Sassen, 2001).
+\end{block}
+
+\begin{examples}{Functions of capitals in the modern World}
+\begin{enumerate}[(a)]
+	\item control resources and information
+	\item attract major material and economic forces
+	\item trigger human activities
+	\item attract financial investments for further development
+	\item involve informational knowledge centers and strategies
+\end{enumerate}
+\end{examples}
+\end{frame}
+
+\subsection{Urbanization: Consequences}
+\begin{frame}\frametitle{Urbanization: Consequences}
+Global cities, such as Taipei, have to face specific environmental problems, due to the concentrated human density and environmental pressure within the limited geographic space and resources. Consequences of urbanization:
+
+\begin{itemize}
+	\item [*] transformation in structure of natural landscapes: e.g. simplification of species, changes in landscape composition, disconnected and disrupted components within the hydrological systems, fragmentation of natural habitats
+	\item [*] changes in land cover types: e.g., from forests, river deltas, meadows, native grasslands, wetlands, or agricultural areas, towards anthropogenic affected built-up areas which consist of large amounts of impervious surfaces, covered by concrete blocks, asphalt pavement, bricks, buildings
+	\item [*] significantly altered aboveground net primary productivity
+	\item [*] serious changes in soil respiration rates, compared to natural ecosystems (Kaye et al., 2005)
+	\item [*] air pollution and decreased water quality (Huang et al., 2001)
+\end{itemize}
+\end{frame}
+
+\section{Statistics}
+
+\begin{frame}\frametitle{Taipei: comparison with other major cities}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F6.jpg}
+\end{figure}
+
+\begin{alertblock}{Taipei Population}
+Taipei metropolitan area population = 2,618,772 people
+ including Taipei, New Taipei and Keelung = 6,900,273 people
+\end{alertblock}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{10em}
+\begin{block}{Taiwan Population}
+Taiwan population (for the whole country) according to the last two censuses: year 1990: 20.393,628; year 2000: 22.226,879.; year 2012: 23,315,822.\\
+Source: Number of Villages, Neighborhoods, Households and Resident Population. \\
+MOI Statistical Information Service. Retrieved: 2 January 2013.
+\end{block}
+
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Environment}
+\begin{frame}\frametitle{Environment}
+
+\begin{alertblock}{Industrialization}
+Human-driven effects on the environment and landscapes of Taipei agglomeration consist in \alert{high industrialization and urbanization}.
+The spatiotemporal pattern of landscape diversity changed within Taipei metropolitan region between 1971 and 2005.
+\end{alertblock}
+
+\begin{block}{Urbanization}
+Rapid urbanization affects \alert{interrelations between natural and urban ecosystems}, changes their \alert{structure, size} and \alert{shape}, which gradually became a serious environmental problem. Thus, in Taipei, natural, typical land cover types are being gradually transformed into human-affected artificial surfaces (Hung et al., 2010).
+\end{block}
+
+\begin{examples}{Increase of built-up areas:}
+Analysis of the landscape biogeographic characteristics of the urban forests shows that species diversity, composition and richness, spatial variability is done by Jim and Chen, 2008. According to their findings, the Taipei's urban the built-up areas with space limitations have the \alert{lowest biodiversity level}, while parks accommodate the \alert{highest biodiversity level}, as represented by native species.
+\end{examples}
+
+\end{frame}
+
+\section{Literature}
+\begin{frame}\frametitle{Literature}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.5cm]{liter.jpg}
+\end{figure}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+	\emph{Thank you for attention !}\\
+	\vspace{5em}
+\normalsize
+Acknowledgement: \\
+Current work has been supported by the \\
+Taiwan Ministry of Education Short Term Research Award (STRA) \\
+for author's 2-month research stay (April-May 2013) at\\
+National Taiwan University (NTU), \\
+Department of Geography.
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+\section{Bibliography}
+\Large{Bibliography}
+\nocite{*}
+\printbibliography[heading=none]
+	
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+\end{document}
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
