@@ -1,0 +1,774 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}
+\usetheme{Antibes}
+%\usetheme{Median}
+
+%\useoutertheme{split}
+%\usecolortheme{albatross}
+\usecolortheme[named=RoyalBlue3]{structure}% DarkTurquoise Turquoise3 
+\usepackage[utf8]{inputenc}
+\usepackage[T2A,T1]{fontenc}
+\usefonttheme{serif}
+ \setbeamertemplate{itemize item}{$\Rightarrow$}
+    \setbeamertemplate{itemize item}[double arrow]
+% \setbeamertemplate{itemize items}[circle]
+
+\useinnertheme{circles} % inmargin - like 'metropolis' rounded
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{subfig}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+	style = numeric,
+%	style=apa,
+	maxbibnames=99,
+%	citestyle=authoryear,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Taipei.bib}
+\renewcommand*{\bibfont}{\tiny} % \tiny \scriptsize \footnotesize
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+% ----------------------------------------------------------------------------
+% делать footnote \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip0pt%
+}
+\makeatother
+
+% ----------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Russia, Moscow: Society, Culture, Geography]{Russia, Moscow: Society, Culture, Geography}
+
+\subtitle{\vspace*{0.5cm}Seminar presentation at \\
+Taiwan National University (NTU), \\
+Department of Geography\\
+Taipei, Taiwan, China}
+
+\author{Polina Lemenkova}
+\date{May 10, 2013}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Outline}
+ \begin{frame}
+           \tableofcontents
+\end{frame}
+
+\section{Introduction}
+\begin{frame}\frametitle{Introduction}
+General information about Russia:
+The Russian Federation is located both in Europe and Asia.
+Area: 17 098 246 $km^{2}$ the largest country in the world.
+% 2 картинки
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.3cm]{F1.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=4.5cm]{F2.jpg}}
+\end{figure}
+Capital: Moscow.
+\end{frame}
+
+\begin{frame}\frametitle{Geographic Settings}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.2\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=2.5cm]{F3.jpg}}
+			\vspace{5mm}
+		\subfloat {\includegraphics[width=2.5cm]{F4.jpg}}
+\end{figure}
+\small{Russian Flag and Coat of Arms}
+\end{column}
+\begin{column}{0.8\textwidth}
+General Facts
+ \begin{itemize}
+	\item [*]Russia borders with 18 countries, which is the largest neighboring number in the world
+	\item [*]Russia is industrial country with difficult political structure and constantly developing economy
+	\item [*]Russia is notable for high cultural and ethnical diversity and multi-nationality
+\end{itemize}
+Geographic Settings
+\begin{enumerate}[(a)]
+	\item Water: Russia borders Pacific ocean, Arctic, and Atlantic ocean seas: Baltic, Black and Azov.
+	\item Geomorphology: the Ural Mountains geographically cross the country (and Eurasia continent) into Europe and Asia 
+	\item Landscapes: 75\% of the territory is occupied by plains and lowlands. Mountains are mostly located in the south and east.
+	\item Location: most of the territory lies above the 50\degree N. 
+	\item Northern territories lie beyond the Polar circle. 
+	\item Climate: the country has 3 major climate types: 1) moderate, 2) sub-Arctic and 3) Arctic climate. 
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Language and Society}
+\begin{frame}\frametitle{Language and Society}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.0cm]{F5.jpg}}\\
+		A traditional Russian costume.
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=3.0cm]{F6.jpg}}
+\end{figure}
+ A traditional popular Russian doll: 'Matryoshka'.
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{2em} 
+\begin{itemize}
+	\item Population:143 M (the \nth{9} in the world)
+	\item Language: Russian
+	\item Religion: 75\% of the Russian population are Christians: Russian Orthodox Church
+	\item Among other religions: Buddhism, Islam, traditional tribe religions, etc.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=2.4cm]{F40.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=2.5cm]{F41.jpg}}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Science}
+\subsection{Space}
+\begin{frame}\frametitle{Space Science: Important Facts}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.3\textwidth}
+%\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.0cm]{F20.jpg}
+\end{figure}
+\small{Yuri Gagarin\\
+Yuri Gagarin is a first man on Earth who traveled in outer space in April 12, 1961, on Vostok 1. His name 'Yuri' is a Russian version of 'Geogre'.}
+\end{column}
+\begin{column}{0.7\textwidth}
+Some important facts about contribution of Russia for the humanity and fantastic success in space exploration:
+\begin{itemize}
+	\item intercontinental ballistic missile (1957)
+	\item first satellite (Sputnik-1)
+	\item first animal in space (the dog Laika on Sputnik 2)
+	\item first spacewalk (cosmonaut A. Leonov on Voskhod 2)
+	\item first Moon impact (Luna 2)
+	\item first image of the far side of the moon (Luna 3) 
+	\item unmanned lunar soft landing (Luna 9)
+	\item first space rover
+	\item first space station 
+	\item first interplanetary probe
+	\item first woman in space and Earth orbit: cosmonaut Valentina Tereshkova on Vostok 6
+	\item Soviet programs contributed to the space exploration
+	\item The “Roscosmos” Russian Federal Space Agency is one of the leading space organization (such as ESA, NASA, etc)
+ \end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Polar Regions}
+\begin{frame}\frametitle{Exploration of Polar Regions}
+
+\begin{alertblock}{Arctic}
+Russia has large territories in Arctic. Russian scientists made significant contribution to the studies of cold regions. 
+\end{alertblock}
+
+\begin{block}{Natural Resources}
+Arctic contains precious natural resources. At the same time, the exploration of natural resources in Polar regions is both highly difficult and dangerous. 
+\end{block}
+
+\begin{examples}{Oil}
+Oil stored in Arctic shelf area is ca. 90 billions of barrels. 
+\end{examples}
+\end{frame}
+
+\begin{frame}\frametitle{Exploration of Arctic}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.0cm]{F21.jpg}}
+			\vspace{5mm}
+		\subfloat {\includegraphics[width=4.0cm]{F22.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+\begin{itemize}
+	\item The difficulty of Arctic exploration is caused by specific climate,  vulnerability of the ecosystems and high risk of technical accidents, faults and emergency situations in cold climate and Polar night. 
+	\item For that special devices and vessels have been created by the Russian scientists (e.g. Atomic (nuclear) ice-breakers, as on the picture below).
+	\item Russia is the first and the only country which has an Arctic Drifting Research Station “Barneo”- created directly in the pack ice in the deep Arctic Ocean (89\degree N). 
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Culture}
+\subsection{Music in Russia}
+\begin{frame}\frametitle{Music in Russia}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.0cm]{F23.jpg}}
+			\vspace{5mm}
+		\subfloat {\includegraphics[width=4.0cm]{F24.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{2em} 
+\begin{alertblock}{Music Education}
+Music education is important tradition in Russian society. 
+Many families let they children attend Music School and learn to play piano or violin (or other instruments), or sing  in a choir.   
+\end{alertblock}
+
+\begin{block}{Music Styles}
+Both classic music and modern music (jazz, techno, pop, etc) are popular. 
+There are many jazz clubs and didjeys playing fun music. 
+Also various musician groups visit Moscow to give concerts.
+\end{block}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Dance}
+\begin{frame}\frametitle{Dance}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.3\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.0cm]{F26.jpg}}
+			\vspace{3mm}
+		\subfloat {\includegraphics[width=3.0cm]{F27.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.7\textwidth}
+\vspace{1em} 
+%TEXT: 
+\begin{itemize}
+	\item One cannot talk about Russia and not mention ballet.
+	\item The first ballet performance took  place in 1672 in Moscow. 
+	\item Since then it developed to its highest state of the art.
+	\item Now it is a world-known “visit card” of Russian dance arts and highest achievement of Russian culture.
+	\item Modern Russian ballet has classic tradition with European dance techniques \& styles.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F25.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\begin{frame}\frametitle{Famous of Russian Ballet}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.0cm]{F29.jpg}}
+			\vspace{3mm}
+		\subfloat {\includegraphics[width=3.0cm]{F28.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{2em} 
+%TEXT: 
+\begin{itemize}
+	\item The world reputation of Russian ballet is caused by the combination of romance in performance and virtuosity of dance technique. 
+	\item The dance style is achieved by the special difficult training system in the ballet schools, formed during XIX-XX centuries.
+	\item The most famous ballet school is Moscow State Academy of Choreography.
+	\item The ballet education starts at 6 years and lasts until 18 years.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Theaters}
+\begin{frame}\frametitle{Theaters}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.0cm]{F30.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=5.0cm]{F32.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{enumerate}
+	\item Bolshoi (“The Great”) Theater (Moscow) is most important and famous Russian theater.
+	\item In Moscow there are 165 (\emph{sic !}) various smaller theaters in total. 
+	\item The level of the performance is comparable with the best scenes of the world  
+	\item Bolshoi (“the Great”) Theater, Moscow has both operas and ballets.
+\end{enumerate}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F31.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Architecture}
+\subsubsection{Soviet Classic}
+\begin{frame}\frametitle{Soviet Classic}
+Classic elegance and beautiful forms of Soviet style:
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.5cm]{F36.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=4.5cm]{F37.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.0cm]{F38.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=4.0cm]{F39.jpg}}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsubsection{Christian Churches}
+\begin{frame}\frametitle{Christian Churches}
+Eternal harmony, beauty and aesthetics of churches:
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+%\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F42.jpg}
+\end{figure}
+%\small{TEXT}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.0cm]{F44.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=4.0cm]{F45.jpg}}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsubsection{Moscow Kremlin}
+\begin{frame}\frametitle{Moscow Kremlin}
+Solemnity and grandeur of Kremlin: 
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.5cm]{F46.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=4.5cm]{F47.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.5cm]{F48.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=4.5cm]{F49.jpg}}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsubsection{Arbat}
+\begin{frame}\frametitle{Old city. Arbat street.}
+Charming Arbat street in old Moscow center...:
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.2cm]{F50.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=3.2cm]{F51.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.5cm]{F52.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=4.5cm]{F53.jpg}}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsubsection{Mix of Styles}
+\begin{frame}\frametitle{Co-existence of History and Modernity}
+Moscow = old + new city:
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.5cm]{F54.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=4.5cm]{F55.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.5cm]{F56.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=4.5cm]{F57.jpg}}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsubsection{Moscow Subway}
+\begin{frame}\frametitle{Moscow Subway: Facts}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F7.jpg}
+\end{figure}
+\small{Moscow subway (metro)}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+	\item Very famous is Moscow metro, created since 1935.
+	\item Moscow metro is intensely used. Its traffic and passengers capacity is number 4 in the world (after Tokyo, Seoul and Beijing).
+	\item Moscow metro has complex structure with main circle and radial lines crossing each other.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.0cm]{F8.jpg}
+\end{figure}
+Symbol of Moscow metro.
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\begin{frame}\frametitle{Moscow Subway: Underground Palaces}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.0cm]{F9.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=5.0cm]{F10.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{1em}
+\begin{itemize}
+	\item Moscow metro is known for its outstanding beauty in classic palace-style: 
+	\item Materials used: marble \& granite columns, paintings, splendid lighters, stone fretwork, stained glass.
+	\item 44 of the existing 188 stations are considered to be the objects of Russian Cultural Heritage 
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F11.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\begin{frame}\frametitle{Beauty of Moscow Subway}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F12-15.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Visiting Moscow Subway}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.0cm]{F17.jpg}}
+			\vspace{3mm}
+		\subfloat {\includegraphics[width=4.0cm]{F18.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+	\item Many tourist groups visiting Moscow will go downstairs to look at the stations' interior and take pictures.
+	\item One singe metro ticket costs 30 RUB (ca. NTD 28). There are smart-card available for use (similar to EasyCard in Taipei MRT)
+	\item [$\Leftarrow$] However, in \alert{rush hours (7-9 AM and 6-7 PM)} it is \alert{very} crowded. 
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F16.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Russian Cuisine}
+
+\begin{frame}\frametitle{Russian Cuisine}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+%\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.0cm]{F58.jpg}}\\
+		Famous Russian soup: “Borsch”
+			\vspace{1mm}
+		\subfloat {\includegraphics[width=4.0cm]{F60.jpg}}\\
+		Fish salmon soup
+\end{figure}
+%\small{TEXT}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{1em} 
+\begin{itemize}
+	\item Russian cuisine is a combination of diverse styles: Ukrainian, Siberian, Central Russian, European, Asian.
+	\item Normally, the lunch has a soup (meat or fish \& vegetables), a main dish and a salad. 
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F59.jpg}
+\end{figure}
+Vermicelli, vegetables \& meat soup
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\begin{frame}\frametitle{Russian Pancakes}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+%\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.0cm]{F61.jpg}}
+			\vspace{1mm}
+		\subfloat {\includegraphics[width=4.0cm]{F63.jpg}}
+\end{figure}
+%\small{TEXT}
+\end{column}
+\begin{column}{0.5\textwidth}
+%\vspace{2em} 
+\begin{itemize}
+	\item Pancakes are one of the most popular and favorite Russian meals.
+	\item Pancakes are served sweet (e.g. with honey, strawberry jam, etc.) or filled with meat, cheese, fish.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F62.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\begin{frame}\frametitle{Russian Pies}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+%\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.0cm]{F64.jpg}}
+			\vspace{1mm}
+		\subfloat {\includegraphics[width=5.0cm]{F65.jpg}}
+\end{figure}
+%\small{TEXT}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+\begin{itemize}
+	\item Pies are very popular in Russian cuisine.
+	\item Pies are available in many small cafeterias. Otherwise one can cook them in an oven
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F66.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\begin{frame}\frametitle{Moscow: Coffeehouses}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+%\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.5cm]{F67.jpg}}
+			\vspace{1mm}
+		\subfloat {\includegraphics[width=4.5cm]{F68.jpg}}
+\end{figure}
+%\small{TEXT}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+\begin{itemize}
+	\item There are also adopted style of food that are popular in modern Russia: 
+	\item Sushi bars, Italian Pizzerias, many different European caf\'{e}s, Irish bars, Indian and Chinese restaurants, Starbucks, etc.
+	\item The most known coffeehouses in Moscow are 'Shokoladnitsa' ...and 'Coffemania'
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F69.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+        
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+	\emph{Thank you for attention !}\\
+	\vspace{5em}
+\normalsize
+Acknowledgement: \\
+Current work has been supported by the \\
+Taiwan Ministry of Education Short Term Research Award (STRA) \\
+for author's 2-month research stay (April-May 2013) at\\
+National Taiwan University (NTU), \\
+Department of Geography.
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+\section{Bibliography}
+\Large{Bibliography}\\
+\normalsize{Author's publications on the geography and environment of Russia:}\\
+
+\cite{Lemenkova2004a}, \cite{Lemenkova2005a}, \cite{Lemenkova2005b1}, \cite{Lemenkova2012d}, \cite{Lemenkova2012f}, \cite{Lemenkova2012c},\cite{Lemenkova2002b}.
+
+%\nocite{*}
+\printbibliography[heading=none]
+	
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+\end{document}
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
