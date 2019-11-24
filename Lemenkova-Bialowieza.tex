@@ -1,0 +1,599 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,
+	breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}	
+%\usetheme{Ilmenau}%Copenhagen
+\usetheme{Klope}
+%\usecolortheme[named=DarkOliveGreen3]{structure}
+%\usefonttheme{professionalfonts}
+%\usepackage{palatino}
+%\usepackage{courier}
+%\usepackage{lmodern}
+%\usepackage{textcomp}
+\usefonttheme{structureitalicserif}
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style = numeric,
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Bialowieza.bib}%  \scriptsize \footnotesize
+\renewcommand*{\bibfont}{\tiny} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------------
+% делать footnote \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip0pt%
+}
+\makeatother
+
+% ----------------------------------------------------------------------------
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[The Environment of the Białowieza National Park and Sudety Mountains]{The Environment of the Białowieza National Park and Sudety Mountains}
+\subtitle{Presentation at GEM MSc Course, \\
+Environmental Management and Policy in Central Europe\\
+Erasmus Mundus Scholarship}
+\institute{University of Warsaw}
+
+\author{Polina Lemenkova}
+         \date{June 20, 2010}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Outline}
+\begin{frame}
+\vspace{5em}
+           \tableofcontents
+\end{frame}
+         
+\section{Białowieza National Park}
+\subsection{Geographic Location}
+\begin{frame}\frametitle{Introduction}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.6\textwidth}
+
+\vspace{4em}
+\begin{alertblock}{Location}
+Białowieza National Park (BNP) location: 52\degree 41' 52\degree 59'N 23\degree 43' 23\degree 56' E. \\
+BNP is a World Heritage Site located in north-east Poland on the border with Belarus.\\
+BNP belongs to the Bialostockie administrative region. Altitude: 145m to 202m.\\
+BNP is in UNESCO World Heritage List, 2008. 
+\end{alertblock}
+
+\begin{block}{Boundaries}
+\begin{itemize}
+	\item North: BNP is bounded by the Hwozna
+	\item West: and Narewka Rivers
+	\item East: Belovezhskaja Puscha National Park, Belarus
+	\item South: national forests
+\end{itemize} 
+\end{block}
+
+\begin{examples}{Situation}
+ BNP lies between western Belarus about 60 km north-northwest of Brest and eastern Poland, 62 km south-east of Bialystok, 190 km north-east of Warsaw.
+\end{examples}   
+
+\end{column}
+\begin{column}{0.4\textwidth}
+\vspace{5em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F1.jpg}
+\end{figure}
+\emph{Photos: author.}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{History}
+\begin{frame}\frametitle{History}
+\vspace{3em}
+\small{\begin{itemize}
+	\item 14th century: limited hunting rights were granted throughout the forest;
+	\item 1538: first record of legal protection;
+	\item 1541: declared as a hunting reserve;
+	\item 1557: establishing a board governing the forest usage;
+	\item 1639: another record of legal protection under "The Białowieza Royal Forest Decree" (‘‘Ordynacja Puszczy J.K. Mości leśnictwa Białowieskiego'');
+	\item 1801: reintroduction of the forest protection (after ca. 15 years of intensive hunting);
+	\item 1860: reintroduction of the protection of European bison (\emph{Bison bonasus});
+	\item 1921: Puszcza Białowieska was declared a National Reserve, as a forestry reservation;
+	\item 1929: reintroduction of European bison (\emph{Bison bonasus});
+	\item 1932: designated a national park;
+	\item 1944/47: re-establishing the Belovezhskaya Pushcha National Park and BNP;
+	\item 1976: internationally recognized as a Biosphere Reserve under UNESCO \emph{Man and the Biosphere} Program (191,300 ha);
+	\item 1979: inscribed on the World Heritage List and extended in 1999.
+	\item 2002: Belovezhskaya Pushcha National Park (BPNP) in Belarus enlarged to 100,312 ha with a buffer zone of 92,000 ha
+	\item 2004: The forest area in Belarus enlarged to 152,200 ha with a core area	
+\end{itemize}}
+\end{frame}
+
+\subsection{Governance and Protection}
+\begin{frame}\frametitle{Governance and Protection of BNP}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.7\textwidth}
+\vspace{4em} 
+\begin{alertblock}{Poland}
+The site is in the voivodship of Podlasie, administered by the BNP Management under the General Board of National Parks within the Ministry of the Environment.
+\end{alertblock}
+
+\begin{block}{Belorussia}
+Forest and Game Hunting Department of the Ministry of Natural Resources \& Environmental Protection is responsible for conservation of biodiversity and natural resources. 
+\end{block}
+
+\begin{examples}{Cooperation:}
+Since 1991, Poland and Belarus work together on BNP management. The director of the Belarusian Park was nominated as a member of the Scientific Council of the Polish BNP.
+\end{examples}
+
+\begin{block}{UNESCO World Heritage List}
+In Poland 4,747 ha of the World Heritage site (11\% of the Polish forest) are a Strict Nature Reserve and adjoin 12,000 ha of protected areas. In 1992 the whole transboundary forest was 150,000 ha (ca. 87,600 ha in Belarus and 62,400 ha in Poland).
+\end{block}
+
+\end{column}
+\begin{column}{0.3\textwidth}
+\vspace{4em}
+Land Tenure
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.0cm]{F2.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=3.0cm]{F3a.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=3.0cm]{F3b.jpg}}
+\end{figure}
+\scriptsize{\emph{Photos: author.}}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Physical Settings}
+\begin{frame}\frametitle{Physical Settings}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=2.0cm]{F4.jpg}}
+			\hspace{2mm}
+		\subfloat {\includegraphics[width=2.0cm]{F5.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=3.0cm]{F6.jpg}}
+\end{figure}
+\small{\emph{Photos: author.}}
+\begin{alertblock}{Geomorphology}
+Relief flat to rolling lowland plain on the hydrological divide between the Baltic and Black Seas forming a mosaic of peat bogs, stream and river valleys.
+\end{alertblock}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\vspace{4em} 
+
+\begin{alertblock}{Soils and Hydrology}
+ It is covered by glacial formations with deposits of deep sands overlying clays and loams, podsols and bog soils. The forest is drained by the River Orlowka, a tributary of the northward-flowing Narewka river which crosses northern part of the BNP in Belarus. The Pavaya Lisnaya river drains southern part of BNP. 
+\end{alertblock}
+
+\begin{block}{Climate}
+Cool-temperate continental climate. Mean annual precipitation: 620mm, 2/3 falls between April and October.
+Mean annual temperature: 7\degree C, average January and July T -5\degree C and 18\degree C. 
+\end{block}
+
+\begin{examples}{Snow}
+Snow cover persists for an average of 92 days/yr between mid-October and end of April. Conditions favouring plant growth occurs for 205 days/yr.
+\end{examples}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Vegetation}
+\begin{frame}\frametitle{Vegetation}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.0cm]{F7b.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=3.0cm]{F8a.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=3.0cm]{F8b.jpg}}
+\end{figure}
+\small{\emph{Photos: author.}}
+\end{column}
+
+\begin{column}{0.6\textwidth}
+\vspace{4em} 
+\begin{block}{Vegetation}
+Humid western European type with intermixed northern and southern elements. 12 major forest associations. 
+\end{block}
+
+\begin{alertblock}{Dominant communities}
+Typical east European linden-hornbeam Tilio-Carpinetum and typical central European oak-hornbeam Querco-Carpinetum.
+\end{alertblock}
+
+\begin{examples}{Species}
+Principal forest species include following species:
+\end{examples}
+\begin{itemize}
+	\item Scots pine Pinus silvestris
+	\item Norway spruce Picea abies
+	\item oak Quercus robur
+	\item sycamore Acer platanoides
+	\item maple Acer spp
+	\item ash Fraxinus excelsior
+	\item white birch Betula pubescens
+	\item aspen Populus tremula
+	\item black alder Alnus glutinosa
+\end{itemize}
+
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Fauna of Białowieza}
+\begin{frame}\frametitle{Fauna of Białowieza}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{5em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=2.0cm]{F7a.jpg}}
+			\hspace{2mm}
+		\subfloat {\includegraphics[width=2.0cm]{F9.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=2.0cm]{F10.jpg}}
+			\hspace{2mm}
+		\subfloat {\includegraphics[width=2.0cm]{F11.jpg}}
+\end{figure}
+\emph{Photos: author.}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{4em} 
+\begin{block}{Animals}
+There are over 11,500 different species of animals in Polish part of Białowieza (Society for Conservation Biology, 2003) 
+68 species of mammals: European bison, grey wolf and lynx, common otter, European beaver. 300 animals, along with the reintroduced tarpan. 
+\end{block}
+
+\begin{alertblock}{Common species}
+Wild boar, elk, red deer and roe deer. The bison, exterminated in the forest in 1919, was re-established in 1929. 
+\end{alertblock}
+
+\begin{examples}{\textcolor{DarkGreen}{Birds}:}
+251 species are noted in BNP. 120 birds include following species: black stork, crane, pygmy owl and eagle owl, a large number of raptors such as Pomeranian eagle, greater spotted eagle, booted eagle, three-toed woodpecker
+\end{examples}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{People}
+\begin{frame}\frametitle{People}
+
+\begin{alertblock}{Activities}
+Human activity include clearings, hunting grounds, riverside meadows, road systems and trails, forest settlements, narrow-gauge railways, felling sites, and gravel-pits.
+\end{alertblock}
+
+\begin{examples}{Visitors}
+In the Belarusian sector visitors averaged 50-60,000 a year, during the 1990s, and 83,000 visitors were recorded in the first nine months of 2004.
+In the Polish section there were about 80,000 visitors in 1997, 30\% of whom visit the strict preservation area where access is limited to guided groups. 
+\end{examples}
+
+\begin{block}{Settlements}
+Living in the strict preservation area is prohibited but some 3,000 people live in villages nearby. Within the extended forest there are 22 villages with some 30,000 inhabitants (UESCO/IUCN, 2004). They are mostly farmers, growing potatoes, rye, wheat, oats, barley, rape and sugar-beet. The nearest town is Kamenyuki (MAB-Belarus, 1993). In Poland the village of Bialowieza is located 1 km from the Park.
+\end{block}
+
+\end{frame}
+
+\subsection{Research}
+\begin{frame}\frametitle{Research}
+
+\vspace{3em}
+\begin{block}{Cultural Heritage}
+184 old Slav burial tumuli from the \nth{10} and \nth{11} AD have been found. Slav tribes are settled in this area between \nth{10} and \nth{13} AD.
+\end{block}
+
+\begin{block}{Archaeology}
+Traces of \nth{18} to \nth{19} AD forest bee-keeping are visible on some 100 pines in the core area. Palace Park, a former imperial Russian hunting lodge near the village of Bialowieza, dates from the 1890s, where a monument commemorates the hunting by Augustus.
+\end{block}
+
+\begin{alertblock}{Development}
+The Belovezhskaya Pushcha was first covered with a net of exploitation tracks, and subsequently studied scientifically, in the mid 19th century.
+Ongoing research includes natural ecosystems and their restoration, natural succession, forest management, agricultural research, and floral and faunal surveys.
+\end{alertblock}
+
+\begin{block}{Research Centre}
+Research is also planned for the social sciences, in particular ethno-biology, cultural anthropology, rural technology and traditional land-use systems.
+There is now a scientific research centre laboratory situated near the Park headquarters at Kamieniuki.
+\end{block}
+
+\end{frame}
+
+\section{Sudety Mountains}
+\begin{frame}\frametitle{Sudety Mountains}
+\vspace{2em}
+\begin{alertblock}{Linguistics}
+The name Sudetes has been derived from Sudeti montes.
+Sudetes consist of 3 parts: Western Sudetes, Central Sudetes, Eastern Sudetes
+\end{alertblock}
+
+\begin{block}{Location}
+The \nth{2} part of the research lies in Western Sudetes, Karkonosze Mountains and Izera Mountains. \\
+Karpacz - one of the most notable small towns along the border of the Czech Republic and Poland, extending ca.185 mi (300 km) between the Elbe and Oder rivers, Erzgebirge and Carpathians
+\end{block}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.2cm]{F12.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=5.0cm]{F13.jpg}}
+\end{figure}
+
+\end{frame}
+
+\subsection{Geographic Settings}
+\begin{frame}\frametitle{Geographic Settings}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.3\textwidth}
+\vspace{6em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.0cm]{S1.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=3.0cm]{S2.jpg}}
+\end{figure}
+\small{Sudety mountains. \\Source: Web}
+\end{column}
+\begin{column}{0.7\textwidth}
+\vspace{3em} 
+\begin{alertblock}{Karkonosze National Park}
+Nature Protection (Karkonoski Park Narodowy, KPN), created in 1959.\\
+Area: 55.8 $km^{2}$. Highly sensitive higher parts of the mountain range (altitude of 900– 1000m) and some special nature reserves below this zone
+\end{alertblock}
+
+\begin{block}{Geology}
+Granite, schist, shale and calcite
+\end{block}
+
+\begin{block}{Tectonics}
+Caledonian, Varescan. Period: Neoproterozoic, Palaeozoic.
+\end{block}
+
+\begin{examples}{Vegetation}
+\begin{itemize}
+	\item Alpine vegetation zone - 1,400 m: large rocky deserts
+	\item Subalpine zone above timber line 1,250 - 1,350 m: knee timber, mountain grass meadows, subarctic highmoor, alpine grasslands
+	\item Boreal zone: spruce, mixed forest
+\end{itemize}
+\end{examples}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Karkonosze Mountains}
+\begin{frame}\frametitle{Karkonosze Mountains}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\vspace{8em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F14.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{6em} 
+Karkonosze Mountains is a part of the Sudety Mountains. 
+\begin{itemize}
+	\item Karkonosze Mountains – the highest and largest area in Sudety
+	\item Karkonosze National Park was established in 1959.
+	\item This mountainous region belongs to most valuable landscapes and natural regions in Central Europe 
+	\item Area: 5,575 ha
+	\item 70\% of area (3,828 ha) are covered by forests
+	\item The area under strict protection: alpine and sub-alpine zones (1,717 ha, ca 30\%)
+	\item The area under partial protection\
+	\item All other areas aimed on restoration of damaged or destroyed forests 
+	\item Around the park – protected zone of 11,266 
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Environmental Protection}
+\begin{frame}\frametitle{Environmental Protection}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+%\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=2.0cm]{F15.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=2.0cm]{F16.jpg}}
+			\vspace{3mm}
+		\subfloat {\includegraphics[width=2.0cm]{F17.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=2.0cm]{F18.jpg}}
+
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{4em} 
+Objectives of the Environmental Protection:
+\begin{itemize}
+	\item Maintenance of natural ecosystems 
+	\item Protection of biodiversity 
+	\item Restoration of damaged and destroyed phyto- and zoocenoses
+	\item Reconstruction of forests and natural ecological processes
+	\item Limitation of anthropogenic threats
+	\item Protection of unique beauty of Karkonosze Mountains
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Flora and Fauna}
+\begin{frame}\frametitle{Flora and Fauna}
+\vspace{3em}
+Vertical vegetation zonation:
+\begin{enumerate}
+	\item Foothill zone (up to 500 m): oak forest, coniferous forest 
+	\item Lower sub-alpine forest (500-1000 m): beech forest
+	\item Upper sub-alpine forest (1000-1250 m): Sudetic spruce forest 
+	\item Sub-alpine shrub (1250-1450 m): Sudetic dwarf pine shrub
+	\item Alpine zone (1450-1603 m): mountain meadows
+\end{enumerate}
+
+Vegetation uniqueness:
+\begin{itemize}
+	\item [*]The specific feature of the Karkonosze fauna: proportion of Carpathian species
+	\item [*]Nearly total absence of heat-loving species from Mediterranean, Balkans and Black Sea due to the climatic conditions of the Karkonosze Mountains
+\end{itemize}
+
+\begin{alertblock}{Animal species}
+Wolves, bears, lynxes, wild cats, red deer, roe-deer, fox.
+\end{alertblock}
+
+\begin{block}{Birds}
+House sparrow, magpie, pygmy owl, hazel hen, white-tailed eagle
+\end{block}
+
+\begin{block}{Reptiles}
+Common lizard, sand lizard, grass snake
+\end{block}
+
+\end{frame}
+
+\section{Sources}
+\begin{frame}\frametitle{Sources}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F19.jpg}
+\end{figure}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+  	\emph{Thank you for attention !}\\
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+\section{Bibliography}
+\begin{frame}\frametitle{Bibliography}
+\vspace{4em}
+\scriptsize{Author's publications on geography, geoscience and environment: \cite{Lemenkova2006e}, \cite{Lemenkova2006b}, \cite{Lemenkova2006a}, \cite{Lemenkova2007b}, \cite{Lemenkova2004a}, \cite{Lemenkova2008b},  \cite{Lemenkova2005b1}, \cite{Lemenkova2005a}, \cite{Lemenkova2002b}.}
+%\nocite{*}
+\printbibliography[heading=none]
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+
+\end{document}
