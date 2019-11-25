@@ -1,0 +1,622 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={
+	breaklinks = true, 
+	pdfauthor={Lemenkova Polina}, 
+	pdfsubject={Preentation}, 
+	pdfcreator={Lemenkova Polina}, 
+	pdfproducer={Lemenkova Polina}, 
+	colorlinks=true,linkcolor=blue, 
+	citecolor=NavyBlue, 
+%	urlbordercolor=cyan,
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+\usetheme{polimi}
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+	style = numeric,
+%	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Derbent.bib}%  \scriptsize \footnotesize
+\renewcommand*{\bibfont}{\tiny} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{multicol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Web-service GitHub and text editor \LaTeX \space as 
+effective tools \\
+of revision and control of student works at universities}\vspace{3em}
+
+\subtitle{
+Presented at the \nth{3} Conference\\
+ 'Educational Activities in the Mode of Innovation: Concepts, Approaches, Technologies'.\\
+Dagestan State Pedagogical University. Derbent, Russia}
+
+\author{Polina Lemenkova}
+         \date{April 15, 2015}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Table of Contents}
+\begin{frame}{Outline}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.45\textwidth}
+            \scriptsize{\tableofcontents[sections=1-6]}
+        \end{column}
+        \begin{column}{.45\textwidth}
+            \scriptsize{\tableofcontents[sections=7-14]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Introduction}
+\subsection{GitHub. What Does is Mean?}
+\begin{frame}\frametitle{Some Facts}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F1.jpg}
+\end{figure}
+\begin{itemize}
+	\item Octocat (Octopus + Cat) is a symbol of GitHub. It symbolizes sharing a project.
+	\item GitHub is available for free which is useful for students and researchers
+	\item Slogan of GitHub: 'Social Coding', i.e. 'let’s code it together'.
+	\item It refers to the programming, but in this presentation I show using GitHub for MSc thesis
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{itemize}
+	\item GitHub - a web-service for hosting (i.e. serving and maintenance) of IT-projects online, as well as their development by multiple authors (incl. graduate projects development).
+	\item GitHub is initially aimed at version control system Git (used in programming)
+	\item GitHub is written in the programming language "Erlang" and "Ruby", a framework Ruby on Rails
+	\item GitHub was created by GitHub, Inc, USA. The first private repository was established in 2008.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{GitHub: Shared Creativity}
+\begin{frame}\frametitle{GitHub: Shared Creativity}
+GitHub allows viewing and editing texts: make edits, change current versions in collective access; work together on the current version of the project; add new colleagues for collective work (convenient, for example, when a group of students write a common fieldwork report). GitHub maintains colored syntax highlighting: \textcolor{Green3}{added parts of code/text are colored green}, \textcolor{red}{deleted parts of code/text -- red}. Example: below (fragment of my MSc thesis code).
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F26.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{GitHub: Creative Sharing}
+\begin{frame}\frametitle{GitHub: Creative Sharing}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6.0cm]{F29.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{3em} 
+\begin{itemize}
+	\item Github allows adding various data types: code, graphics, etc.
+	\item Github allows control latest changes, discuss and discuss work with students, post any comments directly into the text, add online comments
+	\item Github allows registered users to add current version changes to the repository of the current project.
+	\item Github keeps all update versions in the current projects online
+	\item Github gives the opportunity for data sharing
+	\item Github enables coworking 
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+ 
+\section{Advantages of Web-Service GitHub}
+\begin{frame}\frametitle{Advantages of Web-Service GitHub}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6.0cm]{F2.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{4em}
+\begin{itemize}
+	\item Online repositories
+	\item Possibilities for co-authorship
+	\item Creating PhD/MSc/BSc theses
+	\item Presenting research works
+	\item Writing and updating articles
+	\item Archive of scientific works
+	\item Sharing with colleagues
+	\item Notification of current updates
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{\LaTeX \space : Advantages over Traditional Text Editors}
+\begin{frame}\frametitle{\LaTeX \space : Advantages over Traditional Text Editors}
+There are a number of drawbacks when using traditional programs for writing theses (e.g., MS Word). 
+These difficulties are essential when writing a thesis:
+\begin{itemize}
+	\item Continuous numbering of the test and illustrations breaks when changing or adding new ones in the middle of the text (which must be corrected manually)
+	\item In case of MS Word, student has to double-check all references to literary sources again, which complicates the work and leads to mechanical difficulties and lengthy monotonous corrections.
+	\item \LaTeX \space has a built-in flexible system of bibliographic cross-referencing in the list of references, which enables making automatic linking to the bib sources, as well as updating links.
+	\item \LaTeX \space has a built-in BibTeX package that enables compiling bibliography in active mode and leaves hyper refs a d live links toreferences, i.e. Instantly editable if necessary.
+\end{itemize}
+\end{frame}
+
+\section{How to Create Personal Repository ?}
+\subsection{Step 1: Key Generation}
+\begin{frame}\frametitle{Step 1: Key Generation}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F3.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Step 2: User Registration}
+\begin{frame}\frametitle{Step 2: User Registration}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+git config - global user.email 'you\@example.com' git config - global user.name 'Your Name'
+set up user’s account default identity
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F4.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{1em} 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F5.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Step 3: Generating Project}
+\begin{frame}\frametitle{Step 3: Generating Project}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+Key Commands and Tools:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.5cm]{F6.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+'git init' - initiation project from scratch. 'git add files' - selecting all files for the project. 
+(texts, tables, graphs, maps, figures).
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.5cm]{F7.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Step 4: Maintaining Project Push and Update}
+\begin{frame}\frametitle{Project Push and Update}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F9.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{4em} 
+\begin{itemize}
+	\item git commit -a -m 'name of update'
+	\item e.g.: git commit -a -m 'added tables No 14, 15, 17'
+	\item 'git diff' - a key command of GitHub,	
+	\item 'git diff' - detects and recognizes all updates in the text 
+	\item 'git diff' highlights them green/red, respectively
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Typesetting Thesis in \LaTeX}
+\begin{frame}\frametitle{Typesetting Thesis in \LaTeX}
+\vspace{1em}
+Example of structuring text in a thesis with the help of mark up language used to highlight text when writing codes with a high level of nesting, allows you to quickly navigate the work: paragraphs, highlighting text, indentation, multi-level markings, making tabs, hierarchical structuring (chapters, sections, sub-sections, paragraphs), multi-level indents from the red line. This allows to quickly read and navigate within the text.
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.0cm]{F27.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=4.5cm]{F28.jpg}}
+\end{figure}
+\end{frame}
+
+\section{Why Using GitHub ?}
+\subsection{Functionality of GitHub}
+\begin{frame}\frametitle{Syntax Coloring}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F12.jpg}
+\end{figure}
+\begin{itemize}
+	\item Important feature of Github: built-in color management for updated code
+	\item All recent updates are syntactically highlighted green in the command line
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{1em} 
+\begin{itemize}
+	\item Added text, lines and whole fragments and paragraphs of paragraphs are colored green
+	\item On the contrary, selected sections of text deleted from the last session are colored red.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F13.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Advantages of GitHub in Academia}
+\begin{frame}\frametitle{Advantages of GitHub in Academia}
+\vspace{1em} 
+\begin{alertblock}{Time Monitoring}
+Using GitHub facilitates monitoring research progress and to assess the work done recently, to timely response to the comments and corrections of colleagues.
+\end{alertblock}
+
+\begin{block}{Retrospective Editing}
+Retrospective and comparative editing of texts in the Github environment allows to return to the old, previous version of the work, saved a while ago, to cancel updates.
+\end{block}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6.5cm]{F15.jpg}
+\end{figure}
+
+\end{frame}
+
+\subsection{System of Control and Revision}
+\begin{frame}\frametitle{System of Control and Revision}
+\vspace{1em}
+All versions and changes of the thesis are recorded and available in the system. Thus, using GitHub revision control system and text code management, the project was regularly updated. Hence, supervisors can regularly monitor the project.
+% 2 картинки
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.5cm]{F16.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.5cm]{F17.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.5cm]{F18.jpg}}
+\end{figure}
+\end{frame}
+
+\subsection{Maintained Privacy}
+\begin{frame}\frametitle{Unpublished Works}
+Both public and private repositories are maintained: the colleague/co-author/supervisors may receive private links to the current version of research and have access to the work. 
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4cm]{F21.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.0cm]{F24.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=4.0cm]{F25.jpg}}
+\end{figure}
+\end{frame}
+
+\subsection{Online Feature of GitHub: Data-Sharing}
+\begin{frame}\frametitle{Online Feature of GitHub: Data-Sharing}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F30.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+Github's use of the standard command line interface in programming
+\begin{itemize}
+	\item Adding current version changes to the repository of the current project.
+	\item Supports both a public repository and a closed one in limited access (private).
+	\item Keeping closed unpublished works, with restricted access to coworkers.
+	\item Successfully defended dissertations, master's projects and theses can be posted in open access.
+	\item Access is configured for both the general public and the university archive. 
+	\item Data can be stored there for an unlimited time.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{A Case Study of Using GitHub}
+\begin{frame}\frametitle{ A Case Study of Using GitHub}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6.0cm]{F28.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{1em} 
+\small{A case study of using GitHub: my MSc thesis. 
+\begin{itemize}
+	\item MSc Thesis “Seagrass Mapping and Monitoring Along the Coasts of Crete, Greece”, defended in Netherlands, University of Twente, Faculty of GIS and Earth Observation, 2011.
+	\item Written using text editor \LaTeX \space using GitHub
+	\item Original source: on \href{https://github.com/paulinelemenkova}{my GitHub webpage}.
+ \end{itemize}}
+ \begin{figure}[H]
+	\centering
+		\includegraphics[width=6.0cm]{F10.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Project Interface in the Github Environment}
+\begin{frame}\frametitle{Project Interface in the Github Environment}
+
+\begin{alertblock}{Opportunities}
+GitHub: excellent opportunities in academia for supervisors, students, lecturers, researchers.
+\end{alertblock}
+
+\begin{block}{Monitoring}
+The use of \LaTeX \space and Github provided timely access for the project’s supervisors to monitor research progress
+\end{block}
+
+\begin{examples}{Updating}
+Unlike traditional MS Word, combination of \LaTeX \space and Github allowed supervisors to check current progress on-line as updates, comments and corrections made.
+\end{examples}
+\end{frame}
+
+\subsection{Example of Research Progress}
+\begin{frame}\frametitle{Example of Research Progress}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{1em}
+New text is highlighted in green, deleted paragraphs are highlighted in red.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F14.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{1em} 
+Current research progress can be easily monitored and specific project updates highlighted and commented
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F11.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+
+\subsection{Adding New Data to the Project}
+\begin{frame}\frametitle{Adding New Data to the Project}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F19.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Access to the Project}
+\begin{frame}\frametitle{Access to the Project}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.5cm]{F20.jpg}
+\end{figure}
+\end{frame}
+
+\section{Popularization}
+\begin{frame}\frametitle{Actuality of Using GitHub}
+
+\begin{alertblock}{Audience}
+Despite obvious advantages and prospects of the GitHub service, the majority of its users are programmers and IT specialists. Using GitHub in academia is still limited. 
+\end{alertblock}
+
+\begin{block}{Popularization in Academia}
+There is an need to popularize and demonstrate the GitHub service and environment in the student and academic environment: in research centers, universities, institutes.
+\end{block}
+
+\begin{examples}{Geologists:}
+Getting acquainted with GitHub would be of especial advantage for faculties of natural and Earth sciences, since they often have common fieldwork data and projects.
+\end{examples}
+
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}\frametitle{Conclusion}
+\vspace{1em}
+Current problem with GitHub and \LaTeX \space is their non-popularity in academia caused by following reasons.
+
+\begin{alertblock}{Student Works}
+Some students are not informed about the \LaTeX \space or GitHub and do not know how to use them. The functionality of these tools, multifunctional environments should be popularized.
+\end{alertblock}
+
+\begin{block}{Difficulty of Learning Curve}
+GitHub and \LaTeX \space are sometimes regard ed as difficult programs. The basics of using \LaTeX \space and GitHub should be initially studied for some time, but it is rewarding. Further advantages of using \TeX \space and GitHub are obvious and worth the efforts and time to master them.
+\end{block}
+
+\begin{examples}{Advantages:}
+Joint combination of using \LaTeX \space and GitHub facilitates writing, typesetting and managing versions upgrades while working on a project. 
+\end{examples}
+\end{frame}
+
+\section{Discussion}
+\begin{frame}\frametitle{Discussion}
+
+\begin{alertblock}{Opportunities}
+Traditional for IT industry and programmers, GitHub offers great opportunities for effective collaboration such as 'student-supervisor' or 'group of students' or 'group of colleagues'. Unlike traditional programs, the use of innovative technologies of text editors, such as \LaTeX \space and data archiving such as GitHub allows supervisor to monitor student’s research progress.
+\end{alertblock}
+
+\begin{block}{Advantages}
+A great advantage of GitHub consists in its color syntax and maintaining history of updates versions. The presentation demonstrated conceptual principles of the Github and \LaTeX. 
+\end{block}
+
+\begin{block}{Possibilities}
+The possibilities for collaborative data sharing, research progress updating and creative works are illustrated. Current work is a technical illustration of using IT in education.
+\end{block}
+
+\end{frame}
+
+\section{R\'{e}sum\'{e}}
+\begin{frame}\frametitle{R\'{e}sum\'{e}}
+\begin{alertblock}{R\'{e}sum\'{e}}
+This work aimed to give an example of the effective use of the GitHub web service specifically in an academic environment. The case study was given to a MSc thesis that was written completely using  \LaTeX \space and GitHub. The presentation illustrated how specifically one can apply new technologies and innovative approaches in the educational environment. 
+\end{alertblock}
+
+\begin{block}{Highlights}
+Technical issues of running project, creating repositories, making updates, adding new files to the system are demonstrated with a series of screenshot illustrations of the process. Important conceptual features and advantages of using Github and \LaTeX \space in the academic environment are listed and discussed. 
+\end{block}
+
+\end{frame}
+
+\section{Literature}
+\begin{frame}\frametitle{Literature}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F31.jpg}
+\end{figure}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+  	\emph{Thank you for attention !}\\
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+
+%\section{Bibliography}
+%\large{Bibliography}
+%\nocite{*}
+%\printbibliography[heading=none]
+
+\section{Bibliography}
+\begin{frame}[allowframebreaks]\frametitle{Bibliography}
+	\nocite{*}
+	\printbibliography[heading=none]
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
