@@ -1,0 +1,725 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={
+	breaklinks = true, 
+	pdfauthor={Lemenkova Polina}, 
+	pdfsubject={Preentation}, 
+	pdfcreator={Lemenkova Polina}, 
+	pdfproducer={Lemenkova Polina}, 
+	colorlinks=true,linkcolor=blue, 
+	citecolor=NavyBlue, 
+%	urlbordercolor=cyan,
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+\usecolortheme{wolverine} %beetle
+
+%\usecolortheme[named=Purple4]{structure}
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style = numeric,
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Prague.bib}%  \scriptsize \footnotesize
+\renewcommand*{\bibfont}{\tiny} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{multicol}
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{orange!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{orange}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+% делать footnote \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip0pt%
+}
+\makeatother
+
+%-------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Spatial Analysis for the Environmental Mapping \\
+of the \v{S}umava National Park }
+
+\subtitle{\nth{6} Annual PGS Conference\\
+Charles University in Prague,\\
+Institute for Environmental Studies\\
+Prague, Czech Republic}
+\author{Polina Lemenkova}
+\date{January 27, 2015}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Table of Contents}
+\begin{frame}{Table of Contents}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.45\textwidth}
+            \small{\tableofcontents[sections=1-4]}
+        \end{column}
+        \begin{column}{.45\textwidth}
+            \small{\tableofcontents[sections=5-15]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Introduction}
+
+\subsection{Research Aim}
+\begin{frame}\frametitle{Research Aim}
+
+\begin{alertblock}{Research Goal}
+Assessment of natural and human-induced changes in the vegetation of important floristic locations in South-West Bohemia: a GIS analysis
+\end{alertblock}
+
+\begin{alertblock}{Significance}
+Significance: Since 1990 the Šumava National Park (further ŠNP) has been the protected Biospherical Reserve of UNESCO and Natura 2000 protected area: the Bird EU Directive and Habitat EU Directive
+\end{alertblock}
+
+\begin{block}{Approaches}
+\begin{enumerate}
+	\item Literature review of the research area (geography,ecological settings, botanical characteristics, environmental problems etc)
+	\item Data capture from various sources
+	\item Technical organizing of GIS project, compatibility of data.
+	\item Remote sensing data processing and spatial analysis
+\end{enumerate}
+\end{block}
+
+\begin{examples}{Purpose}
+Current presentation shows these results of the Remote sensing data analysis for pattern recognition of the land cover types in Šumava National Park (time span 1991-2009).
+\end{examples}
+
+\end{frame}
+
+\subsection{Presentation Structure}
+\begin{frame}\frametitle{Presentation Structure}
+ Current presentation consists of 2 parts:
+ \begin{enumerate}
+	\item Overview of the environmental research problem and biogeographical characteristics of \v{S}umava National Park. Consequences of anthropogenic and climatic impacts on land cover patterns
+	\item Detailed technical description of the workflow (GIS part): remote sensing data capture, pre-processing, algorithm processing, image classification and spatial analysis.
+\end{enumerate}
+
+The presentation is formed by two logical parts.
+\begin{itemize}
+	\item Part 1 (ecological overview of study area)
+	\item Part 2 (GIS spatial analysis workflow)
+\end{itemize}
+\end{frame}
+
+\subsection{Summary}
+\begin{frame}\frametitle{Summary}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\vspace{1em}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.5cm]{F1.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=4.5cm]{F2.jpg}}
+\end{figure}
+
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{1em} 
+\begin{alertblock}{Study Area}
+Study Area: Šumava National Park, Czech Republic, spatial segment of 48\degree - 49\degree N, 12\degree - 13\degree E
+\end{alertblock}
+
+\begin{block}{Study Aim}
+Study Aim: spatio-temporal analysis of land cover changes in study area during 18 years (1991-2009)
+\end{block}
+
+\begin{examples}{Research Objective}
+Research Methodology: application of geoinformatics tools (QGIS), remote sensing data (satelite images Landsat TM) and spatial analysis for environmental analysis
+\end{examples}
+
+\begin{block}{Characteristics}
+Special features of ŠNP: topographic location in 3 boarding countries (Czechia, Germany and Austria) and climatic-geographic settings. ŠNP is the largest of the four national parks (68,064 ha).
+\end{block}
+
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Environment and Geography}
+
+\subsection{Geographic Location}
+\begin{frame}\frametitle{Geographic Location}
+
+\begin{alertblock}{Topography}
+ŠNP spreads from the northeast to the southeast. It is located at the heights between 600 m (Otava River valley at Rejštejn) and 1378 m (top Plech\'{y}, the highest mountain of the Czech Bohemian Forest). The highest peak on the Czech side is mountain (1456 m).
+\end{alertblock}
+
+\begin{block}{Geomorphology}
+Study area covers Šumava plains, uplands Železnorudsko, Boubínská, Želnavskou, the Šumava mountains and Vltava furrow.
+\end{block}
+
+\begin{block}{Hydrology}
+The ŠNP is the principal European division between the North and the Black Sea. It includes most of the drainage area (springs and bogs, rivers, glacial lakes and artificial waters) to the North Sea, the Elbe River Basin with major rivers Vltava and Otava. Climatic settings, wetlands, peatlands and forests affect positively the accumulation of water in the area and their control runoff. The ŠNP is included in the protected areas of natural water accumulation (CHOPAV), designed to prevent the reduction of the water potential, and negative changes in water quality and conditions.
+\end{block}
+
+\end{frame}
+
+\subsection{Geobotanical Settings}
+\begin{frame}\frametitle{Geobotanical Settings}
+ŠNP belongs to the Bohemian Forest, which is split into two national parks (Czech Republic and Germany). It forms a unique protected forested area in Central Europe and one of the largest forested areas between the Atlantic Ocean and Ural. The habitats of the ŠNP are represented by diverse biotops and host numerous rare and protected flora and fauna species.
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.1cm]{F3.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.2cm]{F4.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.2cm]{F5.jpg}}
+\end{figure}
+\end{frame}
+
+\subsection{Vegetation Zones}
+\begin{frame}\frametitle{Vegetation Zones}
+The area is represented by following main vegetation types:
+\begin{itemize}
+	\item vast wooded areas
+	\item mountain spruce forests
+	\item fir-beech and spruce fir-beech
+	\item mixed forests of various ages
+	\item peat bogs, grasslands, heaths, debris
+	\item meadows biotops, secondary shrubs
+	\item moors, lakes, streams, springs, wetlands
+	\item habitats modified or affected by humans	
+\end{itemize}
+Altogether, they create a unique mosaic of biotopes, which is a habitat for a variety of rare, endemic and endangered species, e.g. lynx, pearl mussel, owls, diverse songbirds, etc.
+\end{frame}
+
+\subsection{Environmental Settings}
+\begin{frame}\frametitle{Environmental Settings}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F6.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+
+\begin{alertblock}{Habitats}
+Unique mosaic of natural and secondary habitats of exceptional natural value of European-wide significance.
+\end{alertblock}
+
+\begin{block}{Biodiversity}
+High biodiversity value, unique landscape and wilderness attributes of ŠNP. Large area is a significant part of the Natura 2000 network in Czech Republic and Germany.
+\end{block}
+
+\begin{examples}{Endemic Species}
+Advantageous conditions for habitation of rare and endemic species. Special regime of the environmental protection $=>$ unique biological communities.
+\end{examples}
+
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Environmental Problems}
+\begin{frame}\frametitle{Environmental Problems}
+
+\begin{alertblock}{Anthropogenic Pressue}
+Human activity reached its peak at the end of the 19th and beginning of the 20th century. During that period, the original floodplain forests were fragmented and deforested land was managed mostly as regularly-cut meadows.
+\end{alertblock}
+
+\begin{block}{Ecosystem}
+During last decades some ecosystems components are being gradually, changed, or degrading, or under extinction. For example, the number of populations of rare plant species Gentianella praecox subsp. bohemica. (endemic to semi-natural grasslands in central Europe) declined rapidly in the last 60 years
+\end{block}
+
+\begin{examples}{Endangered Species}
+The extinction of some endangered, rare, unique and important species can be inevitable within several decades without management: even very large populations (1000 flowering individuals) can disappear before 2060.
+\end{examples}
+
+\begin{block}{Dynamics}
+The future of nature conservation in the ŠNP caused discussions about zoning of the Park, which has undergone significant changes since establishment.
+\end{block}
+
+\end{frame}
+
+\section{Data}
+\subsection{Data Capture. Raster Layers.}
+\begin{frame}\frametitle{ Data Capture. Raster Layers.}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.6\textwidth}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=6.0cm]{F9.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=6.0cm]{F10.jpg}}
+\end{figure}
+
+\begin{alertblock}{Source: GLCF}
+2 Landsat TM images were downloaded from the \href{http://glcfapp.glcf.umd.edu}{GLCF Earth Science Data Interface}.
+\end{alertblock}
+
+\end{column}
+\begin{column}{0.4\textwidth}
+\vspace{2em} 
+
+\begin{block}{Spatial Mask}
+To select target area, a spatial mask of coordinates ranging from 48\degree 00’-49\degree 00’N, 12\degree 00’-13\degree 00’E.
+\end{block}
+
+\begin{examples}{Target Images:}
+Chosen on 1991 and 2009 years: reasonable time span of 18 years, summer period, technical availability of cloudless images.
+\end{examples}
+
+\begin{block}{Geodetic Background}
+Data were stored in a GIS project in World Geodetic System WGS 84, ellipsoid Bessels, Křovák's Projection with 2 pseudo-standard parallels (oblique case of Lambert conformal conic projection made in 1922 for Czech Republic).
+\end{block}
+
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Data Quality}
+\begin{frame}\frametitle{Cloud Coverage}
+The main important issue for remote sensing (RS) data: 'the less clouds the better'.
+Other point for vegetation classification is 'clouds nature and their location: images with clouds above non-forest (urban) area is Ok, but clouds above forest area make otherwise good image useless.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F11-13.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Data Unpacking and Storage}
+\begin{frame}\frametitle{Data Unpacking and Storage}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F14.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{1em} 
+\small{The Landsat search parameters were tailored using GLCF website:
+\begin{itemize}
+	\item Selecting region on a map and entering coordinates
+	\item Entering place name (Šumava National Park). 
+	\item Selection option 'Landsat 4-5 TM', 'Landsat Orthorectified ETM+' and parameters of cloud-cover\% and range of  dates
+	\item Data were downloaded using the provided path
+	\item Final step includes data unpackage and storage
+\end{itemize}}
+\end{column}
+\end{columns}
+\end{minipage}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F15-16.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Data Preview}
+\begin{frame}\frametitle{Data Preview}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F17.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Data Read Into GIS Project}
+\begin{frame}\frametitle{Data Read Into GIS Project}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F21.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Data Pre-processing}
+\begin{frame}\frametitle{Data Pre-processing}
+The GeoTiffs of all Landsat layers were loaded into project one by one as separate raster layers.
+To apply contrast enhancements, the minimum and maximum display values were set in properties by double clicking the layer name.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F24.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Spectral Bands of Landsat TM}
+\begin{frame}\frametitle{Spectral Bands of Landsat TM}
+Dataset includes: metadata file and Landsat TM spectral bands (16 bit raster) with a spatial resolution of 30 meters:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F22.jpg}
+\end{figure}
+\end{frame}
+
+\section{Methods}
+\begin{frame}\frametitle{Methods}
+Methods used in the current work include following steps:
+\begin{enumerate}
+	\item Data capture, unpacking and storage.
+	\item Organizing GIS project.
+	\item Geo-referencing and re-projection.
+	\item Activating GDAL and GRASS remote sensing plugins.
+	\item Preliminary data processing.
+	\item Generating contour layers from DEM
+	\item Color composition from 3 Landsat TM bands
+	\item Defining Region of Interest: raster mosaicing and clipping 
+	\item False color composites (bands 4-3-2)
+	\item Setting up parameters for classification
+	\item Image classification using K-Means algorithm 
+	\item Pattern recognition
+	\item Spatial analysis
+\end{enumerate}
+ 
+\end{frame}
+
+\subsection{Techniques}
+\begin{frame}\frametitle{ Techniques}
+\begin{itemize}
+	\item The research was performed using Quantum GIS (QGIS) software using Landsat TM images for 1991 and 2009 (18- year time span).
+	\item The landscapes in study area at both Landsat TM images were classified into different land cover types
+	\item The area covered by each land cover class is compared and dynamics is analyzed for respecting years.
+	\item The changes in the selected land cover types were analyzed and the environmental modifications within landscapes detected.
+	\item Finally, classified land cover types across study area were compared at both maps of land cover types for the years 1991 and 2009, respectively.
+	\item GIS layers used for the spatial analysis include various vector layers in ArcGIS shape-file (.shp) format.
+	\item Data content: basic and geographic info: hydrological network, municipalities and cities, roads, borders, relief, geomorphic contours, zone boundaries, NATURA 2000.
+\end{itemize}
+\end{frame}
+
+\subsection{GIS Project}
+\begin{frame}\frametitle{QGIS}
+Advantages of QGIS:
+\begin{itemize}
+	\item Open source
+	\item Variety of modules and plugins for complex GIS analysis
+	\item Compatibility and similarity to ArcGIS (data exchange, conversion and GUI) 
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F8.jpg}
+\end{figure}
+
+\end{frame}
+
+\subsection{Geographic Coordinate System}
+\begin{frame}\frametitle{Changing Geographic Coordinate System}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F19-20.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Activating RS Tools in QGIS}
+\begin{frame}\frametitle{Activating RS Tools in QGIS}
+To activated RS functioning, I activated and updated the GDAL and GRASS plugins (figure below) using the 'Manage Plugins' (Plugins menu) and selected all useful ones. GUI changed to active image processing menu.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F23.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Generating Contours from DEM}
+\begin{frame}\frametitle{Generating Contours from DEM} 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F25.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Clipping Contours}
+\begin{frame}\frametitle{Clipping Contours}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F26.jpg}
+\end{figure}
+\end{frame}
+ 
+\subsection{Creating False Color Composite}
+\begin{frame}\frametitle{Creating False Color Composite}
+Color composites from two images were created using combination of bands 4-3-2:
+\begin{itemize}
+	\item band4VNIR(VisibleNearInfraRed)-0.76-0.90$\mu m$ 
+	\item band3red-0.61-0.69$\mu m$
+	\item band2green-0.51-0.60$\mu m$
+\end{itemize}
+These three bands are usually being merged for 'traditional' false color composite. This combination makes vegetation appear as reddish colors. An RGB 4-3-2 color composite of Landsat TM 7 scene is useful for interpretation of vegetation, as healthy vegetation reflects a large part of the incident light in the near-infrared wavelength. Band 4 gives high reflectance peak from vegetation which enables detection of vegetation types and discrimination land from water. \\
+Colors of land cover types: 
+\begin{itemize}
+	\item Blue: water (shallow or with high sediment concentrations)
+	\item Black to dark blue: deep waters
+	\item White: soils with no or sparse vegetation (sandy areas)
+	\item Greens/browns: organic matter content depending on moisture and chemical settings
+	\item Blue to gray: urban areas
+	\item Brighter red 'fresh, young' vegetation.
+\end{itemize}
+\end{frame}
+
+\subsubsection{Landsat TM image (1991). Bands 4-3-2}
+\begin{frame}\frametitle{Landsat TM image (1991). Bands 4-3-2}
+A color composite images for both data (1991 and 2009) were created using 'Raster/ General Tools/ Merge'.
+The input image layers (Bands 4-3-2) were selected using the Input Files$>$Select button. An output filename was assigned. The Layer Stack box was activated to create stack of image bands and the process was executed :
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F27.jpg}
+\end{figure}
+\end{frame}
+
+\subsubsection{Landsat TM image (2009). Bands 4-3-2}
+\begin{frame}\frametitle{Landsat TM image (2009). Bands 4-3-2}
+The same procedure was repeated for the second Landsat TM image (2009). Layers were displayed in the RGB composite using Layers workspace. Stretches and other basic image processing functions were applied for better visualization.
+The Layer Stack box was used to create stack of image bands representing ŠNP area.
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=7.3cm]{F28.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=2.8cm]{F29.jpg}}
+\end{figure}
+\end{frame}
+
+\subsubsection{Raster Mosaicking and Clipping}
+\begin{frame}\frametitle{Raster Mosaicking and Clipping}
+The necessary area was clipped from the the whole Landsat TM scene using mask of vector layer (.shp of ŠNP) by \emph{Raster / Extraction / Clipper menu}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F30.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Classification}
+\begin{frame}\frametitle{Classification}
+The Classification of the image has been performed using Semi - Automatic Classification Plugin
+The Classification Plugin allows supervised classification of Landsat TM images, providing tools to execute the classification process :
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F31.jpg}
+\end{figure}
+\end{frame}
+
+\subsubsection{Classification Parameters}
+\begin{frame}\frametitle{Classification Parameters}
+\begin{enumerate}
+	\item Input image: The layer stack of ŠNP resulting from the gdal merge function (done during previous step).
+	\item Available RAM (computer memory): I’ve set this very high as the calculation of distance matrices can take much memory on the computer, especially for large sample size of ŠNP
+	\item Validity mask: Sine the area of ŠNP is already clipped I am not using a validity mask. Therefore, this option is skipped
+	\item Training set size: As the layer stack has a lot of pixels I use a large value here (100.000), to have a good training sample
+	\item Number of classes: 30, to differentiate vegetation classes better. Afterwards they can be merge (e.g. double classes)
+	\item Maximum number of iterations: 100. It means, if more than 1-95 is changing the class during one classification step, a new iteration will be repeated
+	\item Convergence threshold: 95\%, as 95\% of the training sets will not change classes from one iteration to another
+	\item Set user defined seed: input image will be divided into 100 lines for better computation
+\end{enumerate}
+\end{frame}
+
+\subsubsection{K-means Clustering}
+\begin{frame}\frametitle{K-means Clustering}
+\begin{enumerate}
+	\item \emph{K-means} is a flat clustering algorithm often used as a classification technique
+	\item \emph{K-means} minimizes average squared Euclidean distance between the cluster centers (the means)
+	\item \emph{K-means} separates pixels into clusters by defining the mathematical centroids of all pixel groups with similar values of spectral reflectance (digital number, DNs)
+	\item \emph{K-means} separates raster pixels in \emph{n} clusters (groups of equal variance) by minimizing the ‘inertia’ criterion
+\end{enumerate}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.7cm]{F32.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=5.0cm]{F33.jpg}}
+\end{figure}
+\end{frame}
+
+\subsection{Classification Output: 1991}
+\begin{frame}\frametitle{Classification Output: 1991}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F34.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Classification Output: 2009}
+\begin{frame}\frametitle{Classification Output: 2009}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F36.jpg}
+\end{figure}
+\end{frame}
+
+\section{Results}
+
+\subsection{Maps of 1991 and 2009}
+\begin{frame}\frametitle{Maps of 1991 and 2009}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.0cm]{F35.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=5.0cm]{F37.jpg}}
+\end{figure}
+\end{frame}
+
+\section{Discussion}
+\begin{frame}\frametitle{Discussion}
+Research steps included:
+\begin{enumerate}
+	\item collecting, organizing and sorting data
+	\item studying, reading and analyzing relevant literature
+	\item develop a GIS project and methodology for spatio-temporal analysis of the land cover types and mapping change detection
+	\item mapping data land cover types for 1991 and 2009
+\end{enumerate}
+
+Recommendations for further studies:
+\begin{itemize}
+	\item improving approach (comparison of various methods) discrimination of land cover types in the study area, combining and comparing results from various classifier approaches with data on vegetation and terrain characteristics
+	\item analyzing misclassification in forest areas to reduce possible spectral confusion
+	\item assessing and improving accuracy for 1991 and 2009 images
+	\item environmental analysis of the 'triggers-consequences': degradation of land cover types can be explained by environmental changes and external effects.
+\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}\frametitle{Conclusion}
+\begin{itemize}
+	\item Methodologically, current research step highlighted techniques of spatial and temporal RS data analysis and GIS tools for detecting land cover changes
+	\item GIS and RS data were successfully used for the environmental monitoring since 1970s
+	\item Combination of remote sensing data and GIS tool for pattern recognition is proved to be effective tool for geo-botanical research
+	\item Spatial analysis by QGIS enabled using satellite images for geobotanical studies.
+	\item Spatio-temporal analysis applied to Landsat TM images on 1991 and 2009. 
+	\item Built-in functions of the mathematical algorithms in QGIS enabled to process raster Landsat TM images and to derive information
+	\item Image processing was used to analyze changes in geobotanical land cover types of the ŠNP area
+	\item Results proved changes in structure, shape and configuration of landscapes in ŠNP since 1991
+\end{itemize}
+\end{frame}
+
+\section{Literature}
+\begin{frame}\frametitle{Literature}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F38.jpg}
+\end{figure}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+  	\emph{Thank you for attention !}\\
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+
+%\section{Bibliography}
+%\large{Bibliography}
+%\nocite{*}
+%\printbibliography[heading=none]
+
+\section{Bibliography}
+\begin{frame}[allowframebreaks]\frametitle{Bibliography}
+	\nocite{*}
+	\printbibliography[heading=none]
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
