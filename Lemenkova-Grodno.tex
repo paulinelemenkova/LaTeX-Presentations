@@ -1,0 +1,518 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}
+	
+\usetheme{Boadilla}
+%\usetheme{Ilmenau}
+%\usefonttheme{structureitalicserif}%   structuresmallcapsserif
+\usecolortheme{rose} %lily %orchid
+\usecolortheme{seahorse}%whale %  seahorse % dolphin
+\usecolortheme[named=Red4]{structure}% 
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{csquotes}
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style = numeric,
+%	style=ieee,
+%	style=nature,
+%	style=science,
+%	style=apa,
+%	style=mla,
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Grodno.bib}
+\renewcommand*{\bibfont}{\tiny}
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------------
+% делать footnote \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip0pt%
+}
+\makeatother
+
+%-------------------------------------------------------
+% THE TITLEPAGE
+%-------------------------------------------------------
+
+\title[Innovations in the Geoscience Research: Classification of the Landsat TM]{
+Innovations in the Geoscience Research: \\
+Classification of the Landsat TM Image Using ILWIS GIS\\
+for Geographic Studies }
+\subtitle{Presented at the \nth{8} International Conference\\
+\emph{Prospects for the Higher School Development}\\
+Grodno State Agrarian University (GGAU)\\
+Grodno, Belarus
+}
+\author{Polina Lemenkova}
+         \date{May 28-29, 2015}
+
+\begin{document}
+
+\begin{frame}
+           \titlepage
+\end{frame}
+
+%-------------------------------------------------------
+% THE BODY OF THE PRESENTATION
+%-------------------------------------------------------
+
+\section*{Outline}
+\begin{frame}
+           \tableofcontents
+\end{frame}
+
+
+\section{Introduction}
+\subsection{Summary}
+\begin{frame}\frametitle{Summary}
+
+\begin{alertblock}{Research Aim}
+Analysis of the vegetation dynamics in the past two decades (1988-2011). 
+\end{alertblock}
+
+\begin{block}{Research Goals}
+Calculation of NDVI. Monitoring vegetation changes in tundra landscapes
+\end{block}
+
+\begin{block}{Data}
+Landsat TM scenes for 1988, 2001 and 2011. 
+\end{block}
+
+\begin{block}{Approach}
+GIS spatial analysis tools and Landsat TM imagery. GIS and RS application for environmental studies of Yamal. Application of ILWIS GIS.
+\end{block}
+
+\begin{examples}{Area: }
+Bovanenkovo region in Yamal Peninsula, Russian Extreme North
+\end{examples}
+
+\end{frame}
+
+\subsection{Study Area}
+\begin{frame}\frametitle{Study Area}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{f02.jpg}
+\end{figure}
+Source: B. Forbes
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{f03.jpg}
+\end{figure}
+Geographic location: Yamal Peninsula, north Russia.
+\begin{itemize} 
+	\item Geographic location of Yamal Peninsula (western part)
+	\item Study area: Yamal Peninsula. \\Map source: Web.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Geographic Settings}
+\subsection{Climate and Environment}
+\begin{frame}\frametitle{Climate and Environment}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+Yamal Peninsula:
+\begin{examples}{Specific Problems:}
+Seasonal flooding, seasonal flooding, permafrost distribution, cryogenic landslides formation
+\end{examples}
+
+\begin{block}{Geomorphology}
+Flat relief, elevations $<$ 90 m.
+\end{block}
+
+\begin{alertblock}{Landslides}
+Aaffect local ecosystem structure. Landslides change vegetation types recovering after the disaster.
+\end{alertblock}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+Landscapes of Yamal. 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{f04.jpg}
+\end{figure}
+Source: http://pixtale.net/
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Landscapes}
+\begin{frame}\frametitle{Landscapes of the Yamal Peninsula - I}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10cm]{f05.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Landscapes of the Yamal Peninsula - II}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{f06.jpg}
+\end{figure}
+Dry grass heath tundra (left). Sedge grass tundra (center). Dry short shrub tundra (right)
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{f07.jpg}
+\end{figure}
+Landscapes of Yamal (left). Sphagnum moss (right)
+\end{frame}
+
+\begin{frame}\frametitle{Landscapes of the Yamal Peninsula - III}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{f08.jpg}
+\end{figure}
+Dry short shrub sedge tundra (left). Wetlands (right)
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{f09.jpg}
+\end{figure}
+Short shrub tundra
+\end{frame}
+
+\section{Methodology}
+\begin{frame}\frametitle{Methodology: ILWIS GIS}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.6\textwidth}
+Technical tools: ILWIS GIS software. Methods: 
+\begin{itemize}
+	\item Landsat TM images interpretation
+	\item Supervised classification
+\end{itemize}
+Following working steps summarize research scheme used in this research:
+\begin{itemize}
+	\item Data pre-processing
+	\item Creation of image composites of several bands
+	\item Supervised classification using various classifiers 
+	\item Spatial analysis and results interpretation
+	\item Time series analysis for detecting changes
+	\item GIS mapping
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{f10.jpg}
+\end{figure}
+ILWIS GIS: https://52north.org/software/software-projects/ilwis/
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Minimum Distance}
+\begin{frame}\frametitle{Minimum Distance Method}
+
+\begin{alertblock}{Calculating Indices}
+Calculation of vegetation indices, especially and in this case Normalized Difference Vegetation Index (NDVI), has become one of the most successful, popular and traditional attempts in biogeographical research methods.
+\end{alertblock}
+
+\begin{examples}{Drawbacks:}
+The main weakness of the supervised classification method is caused by modeling approach and technical details of image recognition, i.e. errors in pixels classification.
+\end{examples}
+
+\begin{block}{Conceptual Principle}
+The principle of Minimum Distance method used for classification is based on the calculating of the shortest straight-line distance in Euclidian coordinate system from each pixel’s DN to the pattern pixels of land cover classes.
+\end{block}
+
+\begin{examples}{Misclassification:}
+The misclassification of pixels by the Minimum Distance method may occur due to the ambiguity and erroneous recognition of some of the pixels as well as insufficient representation of classes.
+\end{examples}
+
+\end{frame}
+
+\subsection{Workflow}
+\begin{frame}\frametitle{Workflow}
+Data Processing
+
+\begin{alertblock}{Data Import}
+Import .img into ASCII raster format (GDAL). After converting, each image contained collection of 7 raster bands
+\end{alertblock}
+
+\begin{block}{Data Pre-processing}
+Pre-processing (visual color and contrast enhancement). Geographic referencing of Landsat scenes, initially based on  WGS 1984 datum: UTM (Universal Transverse Mercator) Projection, Eastern Zone 42, Northern Zone W, (Georeference Corner Editor)
+\end{block}
+
+\begin{block}{Data Selection}
+Crop of study area: the area of interest (AOI) was identified and cropped on the raw images. This area shows Bovanenkovo region in a large scale and best represents typical tundra landscapes.
+\end{block}
+
+\begin{alertblock}{Data Classification}
+Supervsised Classification via GIS visualization and mapping
+\end{alertblock}
+
+\end{frame}
+
+\subsection{Data Preprocessing}
+\begin{frame}\frametitle{Data Import and Conversion}
+\begin{itemize}
+	\item Data Import and Conversion
+        \item Test area selection (Mask): 67\degree 00' - 72\degree 00' E - 70\degree 00' - 71\degree 00' N. 
+	\item 3 selected  Landsat TM satellite images show Yamal region in 1988, 2001, 2011.
+	\item Time span: 23 years (1988, 2001, 2011). 
+	\item Summer months selected for vegetation assessment. 
+	\item Data conversion / original images in format .TIFF converted to Erdas Imagine .img.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{f11.jpg}
+\end{figure}
+Initial remote sensing data, left to right: Landsat TM 1988, bands 7-3-1; Landsat TM 2011, pseudo natural colors composite; Landsat ETM + 2001 bands 6-3-1.
+\end{frame}
+
+\subsection{Data Georeferencing}
+\begin{frame}\frametitle{Georeferencing: Google Earth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{f19.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Classification}
+\begin{frame}\frametitle{Supervised Classification of the Landsat TM Image}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{N.jpg}
+\end{figure}
+\end{frame}
+
+\section{Results}
+\subsection{Computations}
+\begin{frame}\frametitle{Computing Pixels on Various Land Cover Classes}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{T1.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Map: 1988}
+\begin{frame}\frametitle{Map: 1988}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6cm]{F22.jpg}
+\end{figure}
+\small{Results show classified maps of the selected region of Bovanenkovo on 1988. GIS mapping is performed using image classification.} 
+\end{frame}
+
+\subsection{Map: 2001}
+\begin{frame}\frametitle{Map: 2001}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6cm]{F23.jpg}
+\end{figure}
+\small{Results show classified maps of the selected region of Bovanenkovo on 2001. \\
+Results of the supervised classification show preliminary dynamics of the vegetation distribution: 2001.} 
+\end{frame}
+
+\subsection{Map: 2011}
+\begin{frame}\frametitle{Map: 2011}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6cm]{F24.jpg}
+\end{figure}
+\small{Results show classified maps of the selected region of Bovanenkovo on 2011. \\
+Results of the supervised classification show final stage of the land cover classes dynamics.}
+\end{frame}
+
+\subsection{Explanations}
+\begin{frame}\frametitle{Explanations}
+Classification is based on the relationship between the spectral signatures and object variables, i.e. vegetation types. Water areas are defined as “no vegetation” class.
+
+\begin{block}{1988}
+For year 1988 “forest” class covered 8,188,926 pixels, which is 11,32\% from the total amount.
+\end{block}
+
+\begin{examples}{1988:}
+Maximal area, except for water, is covered by the shrubland (15,29\% from the total).
+\end{examples}
+
+\begin{block}{2011}
+For year 2011, the percentage of the shrubland decreased down to 6,26\%, while area of forests increased from 11,32 to 15,97\%.
+\end{block}
+
+\begin{examples}{2011:}
+The area of grass remained relatively stable with values slightly increasing to about 2\%
+\end{examples}
+
+\end{frame}
+
+\subsection{Histograms}
+\begin{frame}\frametitle{Histograms}
+Histogram for data on supervised classification of the Landsat TM image, 2011 (below) and 1988 (above).
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=7.0cm]{F25.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=7.0cm]{F26.jpg}}
+\end{figure}
+\end{frame}
+
+\section{Discussion}
+\begin{frame}\frametitle{Discussion}
+	
+\begin{alertblock}{Spatio-Temporal Variations}
+This research presented GIS based studies of the environment of Yamal Peninsula. Calculated land cover changes indicated vegetation dynamics in years 1988, 2001 and 2011.
+\end{alertblock}
+
+\begin{block}{Actuality}
+Application of the RS data is especially important for studies of the northern ecosystems, because it enables studying remotely located areas of Arctic. The results show successful use of ILWIS GIS software for spatio-temporal classification of the satellite images aimed at ecological mapping.
+\end{block}
+
+\begin{block}{Tools}
+Technically, the study is t based on ILWIS GIS, effective tool for spatial analysis. GIS-based processing of the RS data (Landsat TM) improves technical aspects of the landscape studies and monitoring
+\end{block}
+
+\begin{examples}{Application: }
+The results of the spatial analysis are presented as 3 GIS maps illustrating changes in vegetation based on the image analysis using Landsat TM.
+\end{examples}	
+
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}\frametitle{Conclusion}
+
+\begin{alertblock}{Time-Series Analysis}
+Remote sensing plays important role in land use studies and serves as a valuable source of spatial information for the time series analysis.
+\end{alertblock}
+
+\begin{block}{ILWIS GIS}
+Using enhanced ILWIS GIS tools to analyze and process satellite imagery contributes to the environmental analysis of the land cover changes. The classification used in the current work is pixel-based aimed to allocate and categorize pixels on the image to the created classes.
+\end{block}
+
+\begin{examples}{Remote Sensing:}
+While traditional methods for vegetation monitoring are fieldwork and ground surveys, usually performed in large-scale areas, the use of remote sensing techniques enables to monitor extended areas in a small scale, as well as to assess temporal changes.
+\end{examples}
+
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+  	\emph{Thank you for attention !}\\
+	\vspace{5em}
+\normalsize
+Acknowledgement: \\
+Current research has been funded by the \\
+Finnish Centre for International Mobility (CIMO) \\
+Grant No. TM-10-7124, for author's research stay at \\
+Arctic Center, University of Lapland (July 1 - December 31, 2012),\\
+Rovaniemi, Finland.
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+\section{Bibliography}
+%\vspace{2em}
+\large{Bibliography}
+\nocite{*}
+\printbibliography
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
