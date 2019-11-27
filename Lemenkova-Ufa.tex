@@ -1,0 +1,526 @@
+% All rights to the corporate identity of University of Amsterdam and its elements
+% belong to the University of Amsterdam.
+% Please refer to the following page for further information:
+% https://extranet.uva.nl/en/a-z/content/corporate-communication/corporate-communication.html
+%
+% Copyright (c) 2015 Franz Geiger
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+%
+% Additionally, this example document may be used with the template without
+% above license notice.
+
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,
+	breaklinks = true, 
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+% Load University of Amsterdam theme
+% Options:
+% 	logo: Select whether to use the Dutch or English logo in header.
+% 		Either 'NL' or 'ENG'. Default: ENG
+% 	maincolor: Select which main color to use for title page and as highlight color.
+%		Possible values are: Any color definition. Default: uva-rood
+% 		This theme pre-defines colors from the University of Amsterdam corporate identity:
+% 			uva-zwart	(general UvA Black)
+% 			uva-rood	(general UvA Red)
+% 			uva-feb-groen	(Green for Faculty of Economics and Business)
+% 			uva-fgw-blauw	(Blue for Faculty of Humanities)
+% 			uva-fdr-donker-rood	(Dark Red for Faculty of Law)
+% 			uva-gen-groen	(Green for Faculty of Medicine (AMC))
+% 			uva-fnwi-paars	(Purple for Faculty of Science)
+% 			uva-fmg-oranje	(Orange for Faculty of Social and Behavioural Sciences)
+% 			uva-iis-licht-blauw	(Light Blue for Institute of Interdisciplinary Studies)
+% 			uva-ilo-rood	(Red for Interfacultaire Lerarenopleidingen)
+% 		Please refer to the following page for usage instructions regarding the
+% 		corporate identity colors: https://extranet.uva.nl/en/a-z/content/corporate-communication/corporate-identity-elements/colour/colour-kopie.html
+%\usetheme[logo=ENG, maincolor=uva-rood]{UniversityOfAmsterdam}
+\usetheme[logo=ENG, maincolor=uva-rood]{UniversityOfAmsterdam}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{csquotes}
+\usepackage{graphicx} % to insert figures
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{uva-rood}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{uva-rood}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+backend=biber, 
+%	style = numeric,
+%	style=ieee,
+%	style=nature,
+%	style=science,
+%	style=apa,
+%	style=mla,
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Ufa.bib}%   \tiny \scriptsize \footnotesize \normalsize
+\renewcommand*{\bibfont}{\scriptsize} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% делать footnote \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip0pt%
+}
+\makeatother
+
+%-------------------------------------------------------
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Polina Lemenkova}
+\title[Modelling Landscape Changes and Detecting Land Cover Types by Means of the RS Data and ILWIS GIS]{\Large{Modelling Landscape Changes and Detecting Land Cover Types by Means of the Remote Sensing Data and ILWIS GIS}}
+\subtitle{\small{Presented at \nth{3} International Conference \emph{Information Technologies. Problems and Solutions}\\
+Venue: Ufa State Petroleum Technological University. \\
+Location: Ufa, Bashkortostan, Russia}}
+\institute{Arctic Center, University of Lapland}
+\date{May 20, 2015}
+
+\begin{document}
+
+% Title page (plain in order to hide regular background and footline)
+\frame[plain]{\titlepage}
+
+\section*{Table of Contents}
+\begin{frame}{Table of Contents}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.45\textwidth}
+            \small{\tableofcontents[sections=1-4]}
+        \end{column}
+        \begin{column}{.45\textwidth}
+            \small{\tableofcontents[sections=5-15]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Introduction}
+\subsection{Research Summary}
+\begin{frame}\frametitle{Research Summary}
+
+\begin{alertblock}{Application}
+GIS and RS application for environmental studies of Yamal Peninsula, Russian North
+\end{alertblock}
+
+\begin{block}{Data}
+Landsat TM scenes for 1988, 2001 and 2011
+\end{block}
+
+\begin{alertblock}{Aim}
+Analysis of the land cover change dynamics in the past two decades (1988-2011). Mapping vegetation in tundra landscapes
+\end{alertblock}
+
+\begin{block}{ILWIS GIS}
+GIS spatial analysis tools and Landsat imagery, calculation of NDVI by ILWIS GIS
+\end{block}
+
+\end{frame}
+
+\subsection{Study Area}
+\begin{frame}\frametitle{Study Area}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{f02.jpg}
+\end{figure}
+Source: B. C. Forbes
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{f03.jpg}
+\end{figure}
+
+\begin{alertblock}{Location}
+Yamal Peninsula, north Russia. \\
+Map source: Web.
+\end{alertblock}
+
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Yamal Peninsula: Geographic Settings}
+\subsection{Climate and Environment}
+\begin{frame}\frametitle{Climate and Environment}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+Yamal Peninsula: geomorphology : flat geomorphology, elevations lower than 90 m
+Processes:
+ \begin{itemize}
+        	\item seasonal flooding,
+	\item active erosion processing,
+	\item permafrost distribution,
+	\item cryogenic landslides formation
+\end{itemize}
+Landslides affect local ecosystem structure. \\
+Landslides change vegetation types recovering after the disaster.
+\end{column}
+\begin{column}{0.5\textwidth}
+Landscapes of Yamal. 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{f04.jpg}
+\end{figure}
+Source: http://pixtale.net/
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Landscapes}
+\begin{frame}\frametitle{Landscapes of the Yamal Peninsula - I}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.5cm]{f05.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Landscapes of the Yamal Peninsula - II}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{f06.jpg}
+\end{figure}
+Dry grass heath tundra (left). Sedge grass tundra (center). Dry short shrub tundra (right)
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{f07.jpg}
+\end{figure}
+Landscapes of Yamal (left). Sphagnum moss (right)
+\end{frame}
+
+\begin{frame}\frametitle{Landscapes of the Yamal Peninsula - III}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.5cm]{f08.jpg}
+\end{figure}
+Dry short shrub sedge tundra (left). Wetlands (right)
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{f09.jpg}
+\end{figure}
+Short shrub tundra
+\end{frame}
+
+\section{Methodology}
+\begin{frame}\frametitle{Methodology: ILWIS GIS}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+Technical tools: The RS data processing was performed in ILWIS GIS software.
+Research Methods: 
+\begin{itemize}
+	\item Image interpretation (Landsat TM scenes).
+	\item Supervised classification
+\end{itemize}
+Following working steps summarize research scheme used in this research:
+\begin{itemize}
+	\item Data pre-processing
+	\item Creation of image composites of several bands
+	\item Supervised classification using various classifiers 
+	\item Spatial analysis and interpretation of the results
+	\item Time series analysis for detecting changes
+	\item Final GIS mapping
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{f10.jpg}
+\end{figure}
+ILWIS GIS
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Minimum Distance Method}
+\begin{frame}\frametitle{Minimum Distance Method}
+
+\begin{alertblock}{NDVI}
+Calculation of vegetation indices, e.g. Normalized Difference Vegetation Index (NDVI), is one of the most useful attempts in biogeographical research methods.
+\end{alertblock}
+
+\begin{examples}{Disadvantages:}
+Technical details in modeling approach of image recognition: errors in pixels classification due to the ambiguity
+\end{examples}
+
+\begin{block}{Concept}
+The principle of Minimum Distance method used for classification is based on calculating the shortest straight-line distance in the Euclidian coordinate system from each pixel’s DN to the pattern pixels of the land cover classes.
+\end{block}
+
+\begin{examples}{Misclassification:}
+The misclassification by the Minimum Distance method may occur: erroneous recognition of some pixels, insufficient representation of classes.
+\end{examples}
+
+\end{frame}
+
+\subsection{Workflow}
+\begin{frame}\frametitle{Workflow}
+Data pre-processing
+\begin{itemize}
+         \item import .img into ASCII raster format (GDAL). After converting, each image contained collection of 7 raster bands 
+	\item Pre-processing (visual color and contrast enhancement) 
+	\item Geographic referencing of Landsat scenes, initially based on  WGS 1984 datum: UTM (Universal Transverse Mercator) Projection, Eastern Zone 42, Northern Zone W, (Georeference Corner Editor)
+	\item Crop of study area: the area of interest (AOI) was identified and cropped on the raw images. This area shows Bovanenkovo region in a large scale and best represents typical tundra landscapes.
+	\item Supervsised Classification vi.GIS visualization and mapping
+\end{itemize}
+\end{frame}
+
+\subsection{Data Import and Conversion}
+\begin{frame}\frametitle{Data Import and Conversion}
+\begin{itemize}
+        \item Test area selection (Mask): 67\degree 00' - 72\degree 00' E - 70\degree 00' - 71\degree 00' N. 
+	\item 3 selected  Landsat TM satellite images show Yamal region in 1988, 2001, 2011.
+	\item Time span: 23 years (1988, 2001, 2011). 
+	\item Summer months selected for vegetation assessment. 
+	\item Data conversion / original images in format .TIFF converted to Erdas Imagine .img.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{f11.jpg}
+\end{figure}
+Initial remote sensing data, left to right: Landsat TM 1988, bands 7-3-1; Landsat TM 2011, pseudo natural colors composite; Landsat ETM + 2001 bands 6-3-1.
+\end{frame}
+
+\subsection{Data Georeferencing}
+\begin{frame}\frametitle{Georeferencing: Google Earth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{f19.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Supervised Classification}
+\begin{frame}\frametitle{Supervised Classification of the Landsat TM Image}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{N.jpg}
+\end{figure}
+\end{frame}
+
+\section{Results}
+\subsection{Computations}
+\begin{frame}\frametitle{Computing Pixels on Various Land Cover Classes}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.5cm]{T1.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Mapping}
+\begin{frame}\frametitle{Land Cover Classes}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.5cm]{F22.jpg}}
+		\subfloat {\includegraphics[width=3.6cm]{F23.jpg}}
+		\subfloat {\includegraphics[width=3.6cm]{F24.jpg}}
+\end{figure}
+Results show classified maps of the selected region of Bovanenkovo on 1988, 2001 and 2011 yr (from left to right).
+GIS mapping is performed using image classification. Results of the supervised classification show 3 maps of the vegetation distribution (above). 
+\end{frame}
+
+\subsection{Comments}
+\begin{frame}\frametitle{Comments}
+Classification is based on the relationship between the spectral signatures and object variables, i.e. vegetation types. Water areas are defined as “no vegetation” class.
+
+\begin{block}{1988}
+For year 1988 “forest” class covered 8,188,926 pixels, which is 11,32\% from the total amount.
+\end{block}
+
+\begin{examples}{1988:}
+Maximal area, except for water, is covered by the shrubland (15,29\% from the total).
+\end{examples}
+
+\begin{block}{2011}
+For year 2011, the percentage of the shrubland decreased down to 6,26\%, while area of forests increased from 11,32 to 15,97\%.
+\end{block}
+
+\begin{examples}{2011:}
+The area of grass remained relatively stable with values slightly increasing to about 2\%
+\end{examples}
+
+\end{frame}
+
+\subsection{Statistical Histograms}
+\begin{frame}\frametitle{Statistical Histograms: 1988 and 2011}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=6.5cm]{F25.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=6.5cm]{F26.jpg}}
+\end{figure}
+\end{frame}
+
+\section{Discussion}
+\begin{frame}\frametitle{Discussion}
+\begin{itemize}
+        \item This research presented GIS based studies of the environment of Yamal Peninsula
+        \item The study is technically based on ILWIS GIS, effective tool for spatial analysis
+        \item The results of the spatial analysis are presented as 3 GIS maps illustrating changes in vegetation based on the image analysis using Landsat TM.
+        \item Calculated land cover changes indicated vegetation dynamics in years 1988, 2001 and 2011.
+        \item Application of the RS data is especially important for studies of the northern ecosystems, because it enables studying remotely located areas of Arctic
+	\item GIS-based processing of the RS data (Landsat TM) improves technical aspects of the landscape studies and monitoring
+	\item The results show successful use of ILWIS GIS software for spatio-temporal classification of the satellite images aimed at ecological mapping.
+	\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}\frametitle{Conclusion}
+
+\begin{alertblock}{Time-Series Analysis}
+Remote sensing plays important role in land use studies and serves as a valuable source of spatial information for the time series analysis.
+\end{alertblock}
+
+\begin{block}{ILWIS GIS}
+Using enhanced ILWIS GIS tools to analyze and process satellite imagery contributes to the environmental analysis of the land cover changes. The classification used in the current work is pixel-based aimed to allocate and categorize pixels on the image to the created classes.
+\end{block}
+
+\begin{examples}{Remote Sensing:}
+While traditional methods for vegetation monitoring are fieldwork and ground surveys, usually performed in large-scale areas, the use of remote sensing techniques enables to monitor extended areas in a small scale, as well as to assess temporal changes.
+\end{examples}
+
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+  	\emph{Thank you for attention !}\\
+	\vspace{5em}
+\normalsize
+Acknowledgement: \\
+Current research has been funded by the \\
+\emph{Finnish Centre for International Mobility (CIMO)} \\
+Grant No. TM-10-7124, for author's research stay at \\
+Arctic Center, University of Lapland (July 1 - December 31, 2011), \\
+Rovaniemi, Finland.
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+
+\section{Bibliography}
+\begin{frame}[allowframebreaks]\frametitle{Bibliography}
+	\nocite{*}
+	\printbibliography[heading=none]
+\end{frame}
+
+\end{document}
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
