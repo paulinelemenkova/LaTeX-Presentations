@@ -1,0 +1,604 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,breaklinks = true, urlcolor = NavyBlue, breaklinks = true}]{beamer}
+
+\usetheme[darktitle,framenumber,totalframenumber]{UniversiteitAntwerpen}
+%\usetheme[light,framenumber,totalframenumber]{UniversiteitAntwerpen}
+% \setbeamertemplate{background}[grid][step=1cm]
+% \beamertemplategridbackground{1}
+
+% Fonts. Use Auto 1, the official UA font.
+% \usepackage{fontspec,microtype}
+% \usepackage{unicode-math}
+% \defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase, Numbers=Lining}
+% \setmainfont{auto1}
+% \setsansfont{auto1}
+% \setmathfont{XITS Math} % for math symbols, can be any other OpenType math font
+% \setmathfont[range=\mathup]  {auto1}
+% \setmathfont[range=\mathbfup]{auto1 Bold}
+% \setmathfont[range=\mathbfit]{auto1 Bold Italic}
+% \setmathfont[range=\mathit]  {auto1 Italic}
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style = numeric,
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{EnschedeRP.bib}%  \scriptsize \footnotesize
+\renewcommand*{\bibfont}{\tiny} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{multicol}
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{orange!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{orange}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+% делать footnote \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip0pt%
+}
+\makeatother
+
+%-------------------------------------------------------
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\title[MSc Research Proposal Seagrass mapping and monitoring along the coast of Crete, Greece 08/2010]{Seagrass mapping and monitoring along the coast of Crete, Greece}
+\subtitle{MSc Research Proposal Presentation\\
+\footnotesize{University of Twente, Faculty of Earth Observation and Geoinformation (ITC)\\
+CO9 - GEM - MSc - 09. Supervisors: V. Venus, B. Toxopeus\\
+Enschede, Netherlands. August 26, 2010}}
+
+\date{August 26, 2010}
+
+\author{Polina Lemenkova}
+
+\begin{document}
+
+% ----------------------------------------------------------------------------
+% *** Titlepage <<<
+% ----------------------------------------------------------------------------
+\maketitle
+% ----------------------------------------------------------------------------
+% *** END of Titlepage >>>
+% ----------------------------------------------------------------------------
+
+\section*{Table of Contents}
+\begin{frame}{Table of Contents}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.45\textwidth}
+            \small{\tableofcontents[sections=1-5]}
+        \end{column}
+        \begin{column}{.45\textwidth}
+            \small{\tableofcontents[sections=6-11]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Introduction}
+\begin{frame}\frametitle{Introduction}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.0cm]{F1.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=5.0cm]{F2.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{4em} 
+\begin{itemize}
+	\item Seagrasses - a unique group of the aquatic plants growing submerged in a sea water
+	\item Globally, about 58 seagrass species are recognized
+	\item Seagrasses create marine ecosystems in the shelf, coastal zone between 0-50 meters in shallow waters all over the world
+	\item Seagrass is a valuable environmental indicator for the health of the marine ecosystems
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+
+\subsection{Background: Seagrass}
+\begin{frame}\frametitle{Background: Seagrass}
+Study object is seagrass Posidonia oceanic (\emph{P. oceanica}).
+The most important facts about seagrass:\\
+The endemic Mediterranean seagrass, \emph{P. oceanica} is a main species in marine coastal environment of Greece:
+\begin{itemize}
+	\item the largest
+	\item the most widespread
+	\item homogeneous
+	\item dense “mattes” forming meadows between 5-40 m
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.5cm]{F4.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.5cm]{F5.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.5cm]{F6.jpg}}
+\end{figure}
+\end{frame}
+
+\subsection{Environmental Significance}
+\begin{frame}\frametitle{Environmental Significance}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{1em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F3.jpg}
+\end{figure}
+Seagrass - component of coastal ecosystems of high importance for the marine life, playing important functions in the marine environment.
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+They are:
+\begin{itemize}
+	\item habitat for numerous marine species
+(sea stars, oysters, sponges, sea cucumbers, sea snails, etc)
+	\item food for fish, turtles and other marine guys
+	\item source of primary production
+	\item oxygenating water
+	\item trapping sand
+	\item recycling nutrients
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Environmental Vulnerability}
+\begin{frame}\frametitle{Environmental Vulnerability}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.5cm]{F7.jpg}}\caption{Fish Farming}
+		\subfloat {\includegraphics[width=3.5cm]{F8.jpg}}\caption{Trawling}. 
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+Seagrasses are subjects to external factors.
+
+\begin{alertblock}{Human factors}
+Main drivers of seagrass decline: 
+\begin{itemize}
+	\item vicinity of fish farming
+	\item anchoring of boats
+	\item bottom trawling \& dredging, 
+	\item thermal pollution,
+	\item sewage \& chemical contaminants
+\end{itemize}
+\end{alertblock}
+
+\begin{block}{Biochemistry}
+Reasons of seagrass decline:
+\begin{itemize}
+	\item increased sedimentation
+	\item eutrophication
+	\item invasive macroalgae
+\end{itemize}
+\end{block}
+
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Study Area}
+\begin{frame}\frametitle{Study Area}
+General research area: Island of Crete, Greece.
+Seagrass sampling will be performed at three stations at a depth of 6-7 m:
+Heraklion, 35\degree 20'N 25\degree 8'E, Agia Pelagia, 36\degree 20'N 22\degree 59'E, Xerokampos, 35\degree 12'N 26\degree 18'E
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F9.jpg}
+\end{figure}
+\end{frame}
+
+\section{Research Summary}
+
+\subsection{Research Problem}
+\begin{frame}\frametitle{Research Problem}
+
+\begin{alertblock}{Research Problem}
+The research problem of the current study focuses on monitoring spatial distribution and health of the seagrass meadows (case study of \emph{P. oceanica}) using satellite imagery over the 10-years period, to analyze dynamics in the environmental changes.
+\end{alertblock}
+
+\begin{block}{Spectral Reflectance}
+Spectral reflectance characteristics of the seagrass enable its discrimination from other seafloor types. Raster image processing using RS methods is suitable for seagrass mapping.
+\end{block}
+
+\begin{examples}{Limitations:}
+\end{examples}
+Seagrass mapping has difficulties and some limitations:
+\begin{itemize}
+	\item uncertainties of the spectral signature of the seagrass
+	\item technical difficulties of the underwater measurements comparing to the land areas 
+	\item availability of necessary data, including raster imagery
+	\item uncertainties \& errors can be caused by techniques used in data capture
+\end{itemize}
+
+\end{frame}
+
+\subsection{General Objectives}
+\begin{frame}\frametitle{General Objectives}
+\begin{block}{Goals}
+The general research objectives of the MSc research includes GIS and environmental analysis:
+\begin{itemize}
+	\item Mapping the extent of the spatial distribution of seagrass \emph{P. oceanica} along the northern coast of Crete
+	\item Monitoring environmental changes in seagrass meadows in the selected fieldwork sites (Agia Pelagia, Xerokampos) over the 10-year period (2000-2010)
+\end{itemize}
+\end{block}
+
+\begin{block}{Materials}
+The research is based on the multi-source data types: \alert{satellite images, aerial images, fieldwork \emph{in-situ} measurements, GIS layers} using methods of the RS/GIS analysis.
+\end{block}
+
+\begin{block}{Approaches}
+The research will be done using GIS layers. Technical implementation of the seagrass mapping is proposed to be based on raster imagery \& fieldwork data, GIS and RS methods (ENVI, Erdas Imagine and ArcGIS software).
+\end{block}
+
+\end{frame}
+
+\subsection{Specific Objectives}
+\begin{frame}\frametitle{Specific Objectives}
+Technical objectives include the following points: 
+\begin{itemize}
+	\item To apply broadband remote sensing imagery Landsat TM , MSS, ETM+, Ikonos, SPOT, etc images for the seagrass monitoring along the Cretan coasts.
+	\item To apply non-destructive fieldwork techniques to measure health indicators of the seagrasses
+	\item To use supervised classification (Isodata) for the thematic mapping of seagrass distribution
+	\item To apply WASI software for the spectral analysis of seagrass and other sea floor types in order to validate the classification results
+	\item Assessment of accuracy of seagrass mapping using GIS \& RS
+\end{itemize}
+\end{frame}
+
+\section{Data}
+\subsection{Data Types}
+\begin{frame}\frametitle{Data Types}
+The research is based on the 6 following types of data:
+\begin{enumerate}
+	\item satellite images from the open sources (mostly Landsat and others)
+	\item aerial images, Google Earth
+	\item underwater videographic measurements of 3 cameras Olympus ST 8000 made during the ship route (ca 20 total in the selected areas of the research places) resulting in series of consequent images, completely covering the area under the boat path.
+	\item in-situ measurements of the seagrass in selected spots, using measurement frame and other devices for marine biological research for the validation of the results
+	\item Arc GIS vector layers of Crete island and surroundings (.shp files)
+	\item data of the previous measurements received during the last year fieldwork, to analyze whether \emph{P.oceanica} is spectrally distinct from other sea floor types, using the differences in the spectral signatures on the graphs in a WASI, the Water Color Simulator software.
+\end{enumerate}
+\end{frame}
+
+\subsection{Satellite Imagery}
+\begin{frame}\frametitle{Satellite Imagery}
+Table summarizing available satellite imagery data: new data will be included later on.
+ \begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F10.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Landsat TM}
+\begin{frame}\frametitle{Landsat TM}
+Previews of the Landsat TM images:
+ \begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F11.jpg}
+\end{figure}
+\end{frame}
+
+\section{Research Questions}
+\subsection{Research Questions (1)}
+\begin{frame}\frametitle{Research Questions (1)}
+Mapping spatial distribution of the seagrass using broadband RS data:
+\begin{itemize}
+	\item to study properties of spectral ref lectance P.oceanica and detect exact areas of its location along the Cretan coast
+	\item to detect dynamic in changes of P.oceanica seagrass distribution along Crete during the past 10 years using series of Landsat TM, MSS satellite images for 2000-2010
+	\item to study the heterogeneity of the seafloor
+	\item is there any difference between the spectral ref lectance in diverse species of seagrasses (\emph{P.oceanica, Zostera, Cymodecea, Halophila, Ruppia}, etc)?
+\end{itemize}
+\end{frame}
+
+\subsection{Research Questions (2)}
+\begin{frame}\frametitle{Research Questions (2)}
+
+\begin{alertblock}{UVM}
+The next research question (How can remotely sensed UVM be applied for the monitoring of the health indicators” ?) will be tested using regression analysis, to compare the results of UV measurements and images classification: test for a slope of 1 and offset of 0 (perfect predictor) as revealed by a regression analysis between estimated and observed health indicators (No of leaves per shoot, thickness, percentage cover, etc.)
+\end{alertblock}
+
+\begin{block}{Videometric measurements:}
+Underwater videometric measurements (UVM) for the up-scaling mapping of meadows and mattes:
+\begin{itemize}
+	\item mapping \emph{P.oceanica} at different scales:
+	\begin{itemize}
+		\item small-scaled mapping (ca 1:30,000) of seagrass meadows, based on the satellite imagery and aerial photographs
+		\item large-scaled mattes mapping (ca 1:1,000 or 1:2,000) of seagrass mattes, based on the UVM (more detailed)
+	\end{itemize}
+	\item to use the RS UVM for the mapping of \emph{P.oceanica} on the mattes scale level and compare the results of the images classifications on the meadows scale level
+	\item to estimate and observe health indicators (i.e. No of leaves / shoot, thickness, percentage cover, etc.) using UVM at different scales
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\subsection{Research Questions (3)}
+\begin{frame}\frametitle{Research Questions (3)}
+\begin{alertblock}{Monitoring}
+The final research question is to find out, whether there are any changes in the spatial distribution of the seagrass within the research area. Monitoring of the environmental indicators \& how remote sensing can help to estimate them:
+\begin{enumerate}
+	\item to apply the RS methods for estimation of the structure of the matte of \emph{P. oceanica}: homogeneity, compactness, thickness of the matte intermatte channels, dead matte, and number of leaves per shoot
+	\item to study phenology of the seagrass: shoot size: length, width, rhizome and root diameter, amount of leaves per shoot, biomass, nutrient content, density of the meadows
+	\item to apply he RS methods for the estimation of the biomass of \emph{P. oceanica}
+\end{enumerate}
+The distribution of the spectral responses at every spectral band is assumed to be normal as well as the equality of the statistical variances.
+\end{alertblock}
+
+\end{frame}
+
+\subsection{Hypothesis Testing}
+\begin{frame}\frametitle{Hypothesis Testing}
+\begin{alertblock}{Hypothesis}
+A statistical testing is to compare spectral responses of different seagrass types, if they are spectrally distinct and at least one pair is statistically different at every spectral band. Hypothesis \emph{Ho}: seagrass aquatic vegetation types are not spectrally distinct, which means Ho: $\mu 1 = \mu 2 = \mu 3 ... = = \mu n$. The alternative Hypothesis \emph{Ha} claims the opposite statement: seagrass aquatic vegetation types are spectrally distinct, \emph{Ho}: $\mu 1 \neq \mu 2 \neq \mu 3 ... \neq \neq \mu n$
+\end{alertblock}
+
+\begin{block}{Spatial Changes}
+Hypothesis Ho: there are no changes between its spatial distributions. \\
+Hypothesis Ha: the areas have reduced their area, i.e. how has the seagrass distribution changed during the research period of 10 years?
+\end{block}
+
+\begin{block}{ANOVA}
+The hypothesis testing is suggested to be carried out using the ANOVA statistical test. ANOVA aims is to visualize spectral differences between seagrass species and their spatial distribution. The key hypotheses will be tested to prove if the results are correct. 
+\end{block}
+
+\end{frame}
+
+\section{Methods}
+
+\subsection{Research Scheme}
+\begin{frame}\frametitle{Research Scheme}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F13.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Fieldwork Design}
+\begin{frame}\frametitle{Fieldwork Design}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{F14.jpg}
+\end{figure}
+\footnotesize{Olympus ST 8000 camera. Source: Google}
+\end{column}
+
+\begin{column}{0.6\textwidth}
+
+\begin{alertblock}{Underwater videographic measurements}
+The series of images of the underwater videographic measurements (footage) for analysis and classification according to differences in the \alert{structure, color, texture, shapes} of the objects.
+\end{alertblock}
+
+\begin{block}{Transecting}
+Several boat routes, parallel to the coast and in a perpendicular direction with photographs taken along the path in order to receive information about the seafloor cover types
+\end{block}
+
+\begin{examples}{\emph{In-situ} measurements}
+Spot measurements in the selected locations - measurements frame, (data about the density, amount of leaves per shoot and other health indicators)
+\end{examples}
+
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Transect Sampling}
+\begin{frame}\frametitle{Transect Sampling}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.5cm]{F15.jpg}
+\end{figure}
+\footnotesize{Adjustment of three cameras for the measurements of depths. Source: courtesy of V. Venus}
+\end{column}
+\begin{column}{0.5\textwidth}
+The transect sampling method.
+Advantages: 
+\begin{itemize}
+	\item simplicity
+	\item objectivity 
+	\item ease of comparison
+\end{itemize}
+Boat path covers the research area in most complete way
+\begin{itemize}
+	\item Several (5-7) routes of the boat in each sampling site perpendicular to the coast line, ca 1 km long each,
+	\item 1-2 routes parallel the coastline
+	\item ca 20 measurements
+\end{itemize}
+Underwater video cameras: the underwater videographic measurements of the seafloor:
+a series of consequent overlapping images of the seafloor under the boat path.
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Upscaling}
+\begin{frame}\frametitle{Upscaling}
+Up-scaling: matte vs meadows\\
+Seagrass meadows (left) and seagrass mattes (right)
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F12.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Significance and Justification}
+\begin{frame}\frametitle{Significance and Justification}
+
+\begin{alertblock}{Precision}
+Precise, correct and up-to-date information about the seagrass distribution over the coasts is necessary for the sustainable conservation of marine environment.
+\end{alertblock}
+
+\begin{block}{Accuracy}
+Accurate mapping of the seagrasses meadows enables:
+\begin{itemize}
+	\item evaluating the seagrass current distribution
+	\item analysis of the effects of environmental characteristics 
+	\item spatial analysis: geographic locations on seagrass distribution
+	\item analysis of its dynamics and changes over time
+	\item estimation of the degree of deterioration for the purpose of coastal management
+\end{itemize}
+\end{block}
+\end{frame}
+
+\section{Expected Results}
+\begin{frame}\frametitle{Expected Results}
+The research work is expected to have following results :
+\begin{itemize}
+	\item Over the northern coasts of Crete: thematic maps showing seafloor types and seagrass \emph{P.oceanica} spatial distribution along the coasts of Crete
+	\item Within the fieldwork locations, Ligaria beach: monitoring the environmental changes, based on the classification of the satellite and aerial imagery and fieldwork video camera footage
+	\item Within the fieldwork locations : maps of the sea floor cover types, based on the fieldwork measurements and UVM
+	\item Results of the WASI spectral analysis illustrating graphs of the spectral reflectance of different sea floor types (sand, \emph{P.oceanica}, rocky, etc) at various depths (0.5-4 m), based on the results of 20.
+\end{itemize}
+\end{frame}
+
+\section{Literature}
+\begin{frame}\frametitle{Literature}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{liter.jpg}
+\end{figure}
+\end{frame}
+
+\section{Acknowledgements}
+\begin{frame}{Thanks}
+  	\centering \Large 
+  	\emph{Thank you for attention !}\\
+%	\vspace{5em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{F17.jpg}
+\end{figure}
+\normalsize
+Acknowledgement: \\
+Current research has been funded by the \\
+\emph{Erasmus Mundus Scholarship} \\
+Grant No. GEM-L0022/2009/EW, \\
+for author's MSc studies (09/2009 - 03/2011).
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+
+\section{Bibliography}
+\begin{frame}\frametitle{Bibliography}
+	\nocite{*}
+	\printbibliography[heading=none]
+\end{frame}
+%[allowframebreaks]
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
