@@ -1,0 +1,549 @@
+\documentclass[pdflatex,compress,10pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={
+	breaklinks = true, 
+	pdfauthor={Lemenkova Polina}, 
+	pdfsubject={Preentation}, 
+	pdfcreator={Lemenkova Polina}, 
+	pdfproducer={Lemenkova Polina}, 
+%	colorlinks=true,
+%	linkcolor=blue, 
+	citecolor=NavyBlue, 
+%	urlbordercolor=cyan,
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+
+
+\usepackage{stix} % use the STIX font (of course you can delete this line)
+
+%\usetheme{Blackboard}
+\usetheme{DarkConsole}
+%\usetheme{LightConsole}
+%\usetheme{Notebook}
+
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style = numeric,
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Yekat.bib}%  \scriptsize \footnotesize
+\renewcommand*{\bibfont}{\tiny} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usefonttheme{professionalfonts}
+\usepackage{palatino}
+\usepackage{multicol} % to split itemization
+%\usepackage{times}
+%\usepackage{bookman}
+%\usepackage{courier}
+%\usepackage{lmodern}
+%\usepackage{textcomp}
+%\usecolortheme{rose}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+% -------------------- FOOTNOTE *** START------------------------
+% \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+            \usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip0pt%
+}
+\makeatother
+
+% -------------------- FOOTNOTE *** END------------------------
+
+% --------------------- TOC *** START -----------------------------------------
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{orange!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{orange}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+  
+% --------------------- TOC *** END -----------------------------------------
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[\textcolor{red}{Mapping Agricultural Lands by Means of GIS ... in the South-Western Hungary}]{Mapping Agricultural Lands by Means of GIS \\
+for Monitoring Use of Natural Resources \\
+(\texttt{a Case Study of Landscapes in the South-Western Hungary})}
+
+\subtitle{\textcolor{white}{\textnormal{Presented at:\\
+\emph{Actual Problems of the Conservation and Development \\of Biological Resources}\\
+Ural State Agrarian University (UrGAU),\\
+Yekaterinburg, Russia}}}
+
+\author{Polina Lemenkova\footnote{\texttt{pauline.lemenkova@gmail.com}}}
+
+\date{February 27, 2015}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\section*{Outline: Table of Content}
+\begin{frame}{Outline: Table of Content}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.5\textwidth}
+            \footnotesize{\tableofcontents[sections=1-5]}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \footnotesize{\tableofcontents[sections=6-12]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Introduction}
+\subsection{Study Area}
+\begin{frame}\frametitle{Study Area}
+
+\begin{block}{Location}
+Study area is located in the southwestern, agricultural part of Hungary (Mecsek Hills foothill area), between the coordinates of 46\degree 6'0''N 18\degree 50'' E.
+\end{block}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.5cm]{F1.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=5.2cm]{F2.jpg}}
+
+\begin{alertblock}{Landscapes}
+The landscapes of the Mecsek region represent a unique part of the Hungarian environment belonging to the Carpathian basin
+\end{alertblock}
+
+\end{figure}
+\end{frame}
+
+\subsection{Environmental Settings}
+\begin{frame}\frametitle{Environmental Settings}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F3.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{block}{Endemic Species}
+Areas of the Mecsek region: unique biogeographic zones with rare endemic protected species of vegetation of the Carpathian basin, a mixed composition of soils and types of natural vegetation.
+\end{block}
+\end{column}
+\end{columns}
+\end{minipage}
+
+\begin{alertblock}{Forests}
+Dominant forests: beech-oak mixed. The soils of the Mecsek hills are rich in mineral and nutrient content (favorable environmental and geographical conditions of the area, its geomorphological and climatic factors).
+\end{alertblock}
+
+\end{frame}
+
+\subsection{Environmental Problems}
+\begin{frame}\frametitle{Environmental Problems}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F4.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+
+\begin{alertblock}{Aridification and Desertification}
+Main problem in agricultural regions of Hungary include aridification and desertification\\
+ (increase in average annual temperature, decrease in annual rainfall).
+\end{alertblock}
+
+\end{column}
+\end{columns}
+\end{minipage}
+
+\begin{block}{Landscape Changes}
+Altered hydrological and meteorological balance modifies landscapes. Anthropogenic factors also change the environment: land restructuring, increasing arable land, and industrialization since the 1960s have changed the face of Hungarian landscapes.
+\end{block}
+
+\end{frame}
+
+\section{Research Aims and Goals}
+\begin{frame}\frametitle{Research Aims and Goals}
+
+\begin{alertblock}{Landsat TM}
+The aim of the work is the use of GIS and remote sensing data of the Earth (satellite imagery Landsat TM) for monitoring ecological conditions of the agricultural lands using visualization and mapping methods.
+\end{alertblock}
+
+\begin{block}{Questions}
+Have landscapes within the test territory of the study region changed over the past 14 years (1992-2006)?
+Specifically, what types of land cover were previously available, and which are now ?
+\end{block}
+
+\begin{block}{Methodology}
+Using remote sensing data in combination with software ILWIS GIS to answer research questions
+\end{block}
+\end{frame}
+
+\section{Data}
+\subsection{Data Import and Conversion}
+\begin{frame}\frametitle{Data Import and Conversion}
+
+\begin{alertblock}{Masking}
+To select study area, a mask was applied with coordinates 17\degree 00' - 19\degree 00'E, 45\degree 00' - 47\degree 00' N Selected images cover area of southwestern Hungary in 1992, 1999 and 2006.
+\end{alertblock}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F6.jpg}
+\end{figure}
+
+\begin{block}{Landsat TM}
+3 Landsat TM images have a temporary gap of 14 years (1992-2006). The gap aimed to assess vegetation changes in the summer months (June). Satellite images in .tiff format were converted to Erdas Imagine .img format.
+\end{block}
+
+\end{frame}
+
+\subsection{Spectral Signatures}
+\begin{frame}\frametitle{Spectral Signatures}
+
+\begin{alertblock}{Image Classification}
+Image classification consists in grouping pixels into classes corresponding to the given types of vegetation cover (according to the tested area). The classification is based on using spectral brightness values of image pixels. In this way different types of agricultural crops and vegetation and other landscape objects (roads, rivers) were recognized
+\end{alertblock}
+
+\begin{block}{Spectral Discrimination}
+Spectral reflectances show spectral reflectivity of objects and vegetation types recognized on a raster image, because spectral reflectance of various land cover and features of the individual properties of the objects vary.
+\end{block}
+
+\end{frame}
+
+\section{Methods}
+\subsection{Algorithms}
+\begin{frame}\frametitle{Algorithms}
+The study includes following methodological steps:
+\begin{itemize}
+	\item Data collection: 3 Landsat TM images
+	\item Data import and conversion.
+	\item Data preprocessing: scenes of 1992, 1999 and 2006.
+	\item Making color composites from 3 Landsat TM spectral channels (multi-band layers).
+	\item Image segmentation and classification (clustering).
+	\item GIS mapping and spatial analysis.
+	\item Google Earth snapshot verification.
+	\item Results interpretation.
+	\item Results analysis.
+\end{itemize}
+\end{frame}
+
+\subsection{Flowchart}
+\begin{frame}\frametitle{Flowchart}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F5.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Clustering}
+\begin{frame}\frametitle{Clustering}
+
+\begin{alertblock}{Statistical Procedure}
+Cluster analysis is a statistical procedure for processing objects (digital pixels in a raster image), organizing them into homogeneous thematic groups: clusters. Each  pixel is assigned to a certain group of the corresponding landscape type based on the proximity of the value of its spectral brightness (Digital Number, DN) to the centroid in this group.
+\end{alertblock}
+
+\begin{block}{Iterative Process}
+Pixels are grouped in a semi-automatic mode based on their distinguishability from the neighboring pixels. The process is repeated in a n iterative way until optimal values of classes and pixels is reached. 
+\end{block}
+\end{frame}
+
+\subsection{ILWIS GIS}
+\begin{frame}\frametitle{ILWIS GIS}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=3.5cm]{F8.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+
+\begin{alertblock}{Segmentation Algorithm:}
+consists of grouping pixels in a picture (merging pixels) into clusters. Spectral and texture characteristics of different types of land cover classes are displayed on the image as different spectral brightnesses of pixels
+\end{alertblock}
+
+\end{column}
+\end{columns}
+\end{minipage}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.5cm]{F7.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Mapping}
+\begin{frame}\frametitle{Mapping}
+
+\begin{alertblock}{Cartography}
+
+Thematic mapping based on image classification results: visualization of the structure of landscapes and types of vegetation of the Earth within the tested area.
+\end{alertblock}
+
+\begin{block}{Classification}
+To classify land cover types, pixels on the raster image were identified for each category and grouped into the following land categories: 
+\begin{multicols}{2}
+\begin{itemize}
+	\item Winter wheat;
+	\item Barley
+	\item Maize
+	\item Silage corn
+	\item Sunflower
+	\item Sugar beet
+	\item Other sowing
+	\item Potatoes
+	\item Water areas
+	\item Areas not occupied by agricultural crops;
+	\item Meadows
+	\item Anthropogenic territories (settlements, cities)
+	\item Other landscape types
+\end{itemize}
+\end{multicols}
+\end{block}
+
+\end{frame}
+
+\subsection{Land Cover Classes}
+\begin{frame}\frametitle{Land Cover Classes}
+After that, land cover types were visually evaluated and identified as respective vegetation types. The number of cluster groups is 13, which corresponds to the main number of agricultural types and types of the vegetation cover in Mecsek Hills:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.5cm]{F9.jpg}
+\end{figure}
+Final mapping (results) are shown on the next three slides.
+\end{frame}
+
+\section{Results}
+\subsection{1992}
+\begin{frame}\frametitle{1992}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F10.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{1999}
+\begin{frame}\frametitle{1999}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F11.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{2006}
+\begin{frame}\frametitle{2006}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F12.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Computations}
+\begin{frame}\frametitle{Computations}
+Table with calculation results.  
+From left to right:
+\begin{enumerate}
+	\item Cluster groups
+	\item Number of pixels
+	\item Percentage of pixel area of the total area
+	\item Areas of land cover types
+\end{enumerate}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F13.jpg}
+\end{figure}
+\end{frame}
+
+\section{Accuracy}
+\subsection{Google Earth Verification}
+\begin{frame}\frametitle{Google Earth Verification}
+Study area represents the most diversified part of the agricultural landscapes of the Mecek region of SW Hungary: diverse landscape structure and land cover types.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.5cm]{F14.jpg}
+\end{figure}
+
+\end{frame}
+
+\subsection{Google Earth Fragment}
+\begin{frame}\frametitle{Google Earth Fragment}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F15.jpg}
+\end{figure}
+To control the most difficult areas, images were verified by the Google Earth: the same area on the satellite image and on the Google Earth were visualized simultaneously and visually compared. This enabled to check up heterogeneous areas where it was not clear, what type of vegetation does this site belongs to.
+\end{frame}
+
+\section{Discussion}
+\begin{frame}\frametitle{Discussion}
+
+\begin{alertblock}{Vegetation Degradation}
+Increase in anthropogenic pressure and activities (agricultural work, urban sprawl, industrialization) affects the environment, causes negative effects on the surrounding ecosystems and contributes to changes in the vegetation cover (degradation).
+\end{alertblock}
+
+\begin{block}{Species Extinction}
+Climate changes also affect landscapes to some extent: extinction of rare vegetation types and their replacement by other types. Significant changes in the land cover types were recorded and charted in the southwestern region of Hungary.
+As a result of the classification, types of agricultural land were identified based on the geospatial and temporal analysis.
+\end{block}
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}{Conclusions}
+
+\begin{alertblock}{Approaches}
+Monitoring landscape changes is an important tool for assessing the ecological stability of a region.\\
+\alert{Spatial analysis} of the multi-temporal satellite images by GIS methodology is the most effective tool. \\
+\alert{Data} included Landsat TM satellite imagery covering agricultural region of SW Hungary. Image processing was carried out using classification algorithms.
+\end{alertblock}
+
+\begin{block}{Outcome}
+The work demonstrated specific changes in the agricultural landscapes in a 14-year period of time (1992-2006).\\
+The results shown landscape changes in 1992, 1999 and 2006, which proves certain anthropogenic impact on the environment.
+\end{block}
+
+\begin{block}{RS/GIS}
+The work demonstrated the successful application of remote sensing methods and spatial GIS analysis, effective for monitoring such heterogeneous landscapes in the region of the Mecsek foothills.
+\end{block}
+
+\end{frame}
+
+\section{Acknowledgements}
+\begin{frame}{Thanks}
+  	\centering \Large 
+  	\emph{Thank you for attention !}\\
+	\vspace{5em}
+\normalsize
+Acknowledgement: \\\vspace{1em}
+Current research has been funded by the \\
+\emph{Hungarian State Scholarship, \\
+Balassi Int\'{e}zet} (Budapest, HSB) \\
+Grant No. M\"{O}B/154-2/2011, \\
+for author's 4-months research stay \\
+(01/01/2012 -- 30/04/2012)\\
+at E\"{o}tv\"{o}s Lor\'{a}nd University, \\
+Department of Cartography and Geoinformatics, \\
+Budapest, Hungary.
+\end{frame}
+
+\section{Literature}
+\begin{frame}{Literature}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F16.jpg}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+
+\section{Bibliography}
+\begin{frame}[allowframebreaks]\frametitle{Bibliography}
+	\nocite{*}
+	\printbibliography[heading=none]
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
+
+\end{document}
