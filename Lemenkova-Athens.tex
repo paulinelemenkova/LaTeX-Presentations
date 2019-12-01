@@ -1,0 +1,702 @@
+%\documentclass{beamer}
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={colorlinks = true,
+	breaklinks = true, 
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+
+%\usepackage{stix}               % use the STIX font (of course you can delete this line)
+%\usetheme{Blackboard}
+%\usetheme{LightConsole}
+\usetheme{Notebook}
+
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style = numeric,
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Athens.bib}%  \scriptsize \footnotesize
+\renewcommand*{\bibfont}{\tiny} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{palatino}
+\usepackage{multicol} % to split itemization
+%\usecolortheme{rose}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+% -------------------- FOOTNOTE *** START------------------------
+% \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=3.0ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+\usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip0pt%
+}
+\makeatother
+
+% -------------------- FOOTNOTE *** END------------------------
+
+% --------------------- TOC *** START -----------------------------------------
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{magenta!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{Green1}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+  
+% --------------------- TOC *** END -----------------------------------------
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Rural Sustainability and Management of Natural Resources in Tian Shan Region, Central Asia. 11/09/2014]{Rural Sustainability and Management of Natural Resources\\
+in Tian Shan Region, Central Asia}
+
+\subtitle{
+	Presented at the International Conference: \\
+	\emph{Celebrating Pastoral Life. Heritage and Economic Development} (CANEPAL)\\
+	Athens, Greece}
+
+\author[Polina Lemenkova]{Polina Lemenkova\footnote{\tiny{\texttt{pauline.lemenkova@gmail.com}}}}
+
+\date{September 11-13, 2014}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\section*{Table of Content}
+\begin{frame}{Table of Content}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.5\textwidth}
+            \footnotesize{\tableofcontents[sections=1-4]}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \footnotesize{\tableofcontents[sections=5-14]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Introduction}
+\subsection{Heart of Central Asia}
+\begin{frame}\frametitle{Geopolitical Location: in the Heart of Central Asia}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F1.jpg}
+\end{figure}
+
+\begin{alertblock}{Heart of Central Asia}
+Tian Shan has unique geopolitical location in the heart of Central Asia. It crosses five densely populated countries: China, Kazakhstan, Kyrgyzstan, Uzbekistan and Tajikistan.
+\end{alertblock}
+
+\begin{block}{Style of Life}
+The population mostly supports traditional style of life which includes livestock husbandry, intense grazing, farming and other agricultural activities.
+\end{block}
+
+\end{frame}
+
+\subsection{Geographic Location}
+\begin{frame}\frametitle{Geographic Location}
+
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F2.jpg}
+\end{figure}
+
+\begin{alertblock}{Celestial Mountains}
+Tian Shan (the 'Celestial Mountains’) is one of the largest high mountain systems \\(800,000 $km^{2}$) in the World.
+\end{alertblock}
+
+\begin{block}{Mountain Extent}
+Tian Shan is a complex mountain system extending 2,500 km westwards\\ (39-46\degree N and 69-95\degree E). Tian Shan is the northernmost existing montane range with elevations reaching > 7.000 m
+\end{block}
+
+\begin{examples}{Complex Mountain System}
+Geographically, Tian Shan is composed by large, \\isolated mountains, surrounded by the Tarim desert basin of north-western China, \\Lake Issyk Kul and deserts of Uzbekistan and Kazakhstan.
+\end{examples}
+
+\end{frame}
+
+\section{Geographic Settings}
+\subsection{Geomorphology}
+\begin{frame}\frametitle{Geomorphology}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=9.0cm]{F3.jpg}}
+			\vspace{1mm}
+		\subfloat {\includegraphics[width=9.0cm]{F4.jpg}}
+\end{figure}
+\tiny{Physical geographic map (above). Orographic geomorphic scheme (below).}
+\end{frame}
+
+\subsection{Biodiversity}
+\begin{frame}\frametitle{Biodiversity}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+Uniqueness of Tian Shan Nature:
+
+\begin{alertblock}{Biodiversity}
+The Tian Shan region is outstanding for the richness of natural resources, landscapes and ecosystems
+\end{alertblock}
+
+\begin{block}{Protected Species: Relicts and Endemics}
+Natural resources of Tian Shan are exceptional: the ecosystems include numerous protected and rare species ($> 4000$ wild species), relicts and endemics, unique coniferous forests, rich biodiversity
+\end{block}
+
+\begin{examples}{Rare Species}
+Rare species: ca 70\% of species (both animal and plants) have specific south Asian distribution, typical for steppe and desert ecosystems.
+\end{examples}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F5.jpg}
+\end{figure}
+\begin{block}{Ecosystems}
+The ecosystems of Tian Shan region has diverse mountainous environment influenced by a combination of Northern (boreal) and Asian climatic factors.
+\end{block}
+
+\end{column}
+\end{columns}
+\end{minipage}
+
+\end{frame}
+
+\subsection{Environment}
+\begin{frame}\frametitle{Environment}
+\footnotesize{
+\begin{alertblock}{Unique Ecosystems}
+Unique, complex and mixed ecosystem structure is formed by long migration and colonization processes of vegetation and animal elements in Pleistocene
+\end{alertblock}
+
+\begin{block}{Phytogeographical Groups}
+Species are introduced from several phytogeographical groups: \alert{Middle Asian, Irano-Turanian, Pontic-Siberian, Northern Siberian, Eurasian}.
+\end{block}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F6.jpg}
+\end{figure}
+
+\begin{block}{Unique Biota}
+Tian Shan region has unique biota structure, divided into two large groups: 
+\begin{enumerate}
+	\item \alert{humid} ecosystems dominating in the forests on the mountain slopes
+	\item \alert{arid} ecosystems dominating in the steppe areas and deserts
+\end{enumerate}
+\end{block}
+
+\begin{examples}{Mountainous Topography}
+Favorable conditions for extensive pasture in Tian Shan region are created by specific mountainous topography and climatic settings
+\end{examples}
+}
+\end{frame}
+
+\subsection{Forests}
+
+\begin{frame}\frametitle{Forests}
+Example of Rare Species
+
+\begin{alertblock}{Schrenk’s Spruce}
+The slopes of the mountains at altitudes 2000 to 3000m are mostly covered by precious coniferous forests of Schrenk’s Spruce (\emph{Picea schrenkiana}), recorded in the International Union for Conservation of Nature (IUCN) Red List of Threatened Species
+\end{alertblock}
+
+\begin{block}{Importance}
+The unique coniferous Shrenk pine forests play important role in the ecosystems of the Tian Shan, being hot spots of biodiversity, rich in species and resources.
+\end{block}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{F7.jpg}
+\end{figure}
+
+\begin{examples}{Functionality}
+Shrenk pine forests serve as a buffer belt against flooding and low-water runoff.The lower slopes are covered by mixed forests of wild Persian walnut (\emph{Juglans regia}), wild fruits and apple (\emph{Malus domestica}).
+\end{examples}
+
+\end{frame}
+
+\section{Social Development}
+\subsection{Brief History of the Land Use}
+\begin{frame}\frametitle{Brief History of the Land Use}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.0cm]{F8.jpg}}
+			\vspace{1mm}
+		\subfloat {\includegraphics[width=5.0cm]{F9.jpg}}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{itemize}
+	\item Concentration of numerous mountain ethnic groups with their original cultural and ancient traditions adapted to live in difficult conditions of mountains: Kyrgyz, Kazakhs, Uzbeks, Tajiks, Turkmen.
+	\item Livestock grazing activity has been kept by local population for centuries until middle of \nth{20} century.
+	\item Since 1920s: economic and land use structure was forced to state farms and sedentary lifestyle.
+	\item After 1990s: shift of the Central Asian society back to the traditional style of life (agriculture, pastures).
+	\item Nowadays, private land use and cattle grazing on mountain pastures are the main activities in the common life style of the majority of population.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+
+\end{frame}
+
+\subsection{Current Social Problems}
+\begin{frame}\frametitle{Current Social Problems}
+
+\begin{block}{Social Portrait}
+In general, social portrait of mountainous regions of Central Asia is the following. After the end of the USSR (1990s) the inhabitants of mountain areas have to deal with serious problems creating conditions for social tension and conflicts:
+\end{block}
+
+\begin{alertblock}{Poverty and Unemployment}
+Depressed economics: poverty, unemployment and lack of jobs, energy insecurity, lack of economic integration into the overall state system, lack of attention to the people’s needs and concerns of the inhabitants.
+\end{alertblock}
+
+\begin{block}{Population Growth}
+Significant population growth: the families struggles to deal with poverty by increasing the number of male workers (boys). As a consequence - ineffective ways of cultivating lands (primitive labour) and pastures (lack of resources)
+\end{block}
+
+\begin{alertblock}{Underdeveloped Transport and Infrastructure}
+Underdeveloped transport system and social infrastructure, low standards of construction (e.g. non-professional construction of houses directly on the mudflow areas or arable land, without concern of engineering - technical requirements and standards.
+\end{alertblock}
+
+\end{frame}
+
+\subsection{Current Social Situation}
+\begin{frame}\frametitle{Current Social Situation}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.65\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F10.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.35\textwidth}
+\vspace{4em} 
+\begin{itemize}
+	\item Nowadays the majority of the local population maintain traditional style of life. \pause
+	\item The livestock is increased, and strong grazing pressure become transform to overgrazing. \pause
+	\item This leads to unsustainable agriculture and overgrazing caused by cattle herds, and affects sustainability in mountainous landscapes.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+
+\end{frame}
+
+\subsection{Rangelands of Central Asia}
+\begin{frame}\frametitle{Rangelands of Central Asia}
+Source: FAOStat, 2009. 
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F11.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Land Use Statistics in Central Asia}
+\begin{frame}\frametitle{Land Use Statistics in Central Asia}
+Source: FAO, 2006. 
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F12.jpg}
+\end{figure}
+\end{frame}
+
+\section{Case Studies}
+\subsection{Kazakhstan}
+\begin{frame}\frametitle{Kazakhstan}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F13.jpg}
+\end{figure}
+
+\begin{block}{Grazing Land}
+Most of the grazing land was abandoned due to degradation, water scarcity and limitations of
+basic amenities needed for a normal life (electricity, schools \& hospitals, roads, shops).
+\end{block}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+
+\vspace{2em}
+\begin{alertblock}{Life Style}
+Ca 6 million people of Kazakhstan \\(40\% of the population) directly or indirectly dependent on the natural resources for their lives as a livelihood (pastures, meadows, forests, mountains, rivers). \\
+Many of them live in poverty.
+\end{alertblock}
+
+\begin{block}{Market-Based Economic System}
+During the economic shift in 1990s, many agricultural services, primarily supported by the government, decreased, while population moved very slowly to adjust to new market-based economic system.
+\end{block}
+
+\begin{examples}{Abandoned areas:}
+unused pastures, rangelands and degraded lands are \\estimated at ca 100 M ha
+\end{examples}
+
+\end{column}
+\end{columns}
+\end{minipage}
+
+\end{frame}
+
+\subsection{Kyrgyzstan (1)}
+\begin{frame}\frametitle{Kyrgyzstan (1)}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F14.jpg}
+\end{figure}
+
+\begin{block}{Overgrazing}
+Overgrazing of cattle on pastures causes:
+\begin{itemize}
+	\item destruction of the pasture plants
+	\item destruction of soil structure
+	\item reduced productivity and erosion
+\end{itemize}
+\end{block}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{alertblock}{Livestock Husbandry}
+Livestock husbandry occupies in total 85\% of the total agricultural area (including arable land: legume feed, lucerne, barley, and crop by-products such as hay and straw).
+\end{alertblock}
+
+\begin{block}{Pasture Degradation}
+Pasture degradation: 
+	\begin{itemize}
+		\item excessive anthropogenic pressure on pastures recently,
+		\item unsystematic grazing,
+		\item lack of improvements of the natural grassland,
+		\item deterioration of pastures.
+	\end{itemize}
+\end{block}
+
+\end{column}
+\end{columns}
+\end{minipage}
+
+\begin{examples}{Productivity}
+Average productivity of pastures since 1970 to 1990 decreased by 14\%. \\
+A considerable area of lands (ca 25\%) moderately or severely degraded \\
+(spring and autumn pastures are particularly sensitive to degradation).
+\end{examples}
+
+\end{frame}
+
+\subsection{Kyrgyzstan (2)}
+\begin{frame}\frametitle{Kyrgyzstan (2)}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+
+\begin{block}{Extinction of the Plant Species}
+Pasture degradation leads to the extinction of the plant species, sensitive to external pressure (grazing), loss of unique mountain landscapes, decrease of biodiversity.
+\end{block}
+
+\begin{alertblock}{Pasture Forage}
+Deterioration of pastures is a danger in terms of the reducing stocks of pasture forage.
+\end{alertblock}
+
+\begin{examples}{Pasture Degradation}
+Pasture degradation on the mountain slopes contributes to the development of soil erosion, which is an irreversible process for mountains, which can hardly be recovered to to the sensitivity of landscapes.
+\end{examples}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F15.jpg}
+\end{figure}
+
+\begin{block}{Damage for Pastures}
+\begin{enumerate}
+	\item \alert{too large} herds grazing on pastures;
+	\item \alert{too long} period of cattle staying on the pastures without ensuring their (pastures') recovery.
+\end{enumerate}
+\end{block}
+
+\end{column}
+\end{columns}
+\end{minipage}
+
+\end{frame}
+
+
+\subsection{Nomadism}
+\begin{frame}\frametitle{Nomadism}
+
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.0cm]{F16.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=5.7cm]{F17.jpg}}
+\end{figure}
+
+\begin{block}{Geographic Determination}
+The grazing routes are strongly determined by the geographic location of the pastures: pastures located near the settlements are over-utilized, whereas remotely located ones are often abandoned.
+\end{block}
+
+\begin{alertblock}{Nomadic Pastoralism}
+Geographic seasonality of nomadism: very intensive grazing in the summer months at high altitudes and migration downwards during the winter. This lead to the soil depletion by intensive pressure on selected areas in given time period.
+\end{alertblock}
+
+\end{frame}
+
+\section{Ecological Threats}
+
+\subsection{Overgrazing}
+\begin{frame}\frametitle{Overgrazing}
+
+\begin{alertblock}{System of Pastures}
+Due to the destruction of “collective farms” and state farms, and the formation of many new small business entities, the system of pastures in Central Asia changed.
+\end{alertblock}
+
+\begin{block}{Overgrazing}
+Almost all livestock is being kept all year on village spring-autumn pastures near villages, because owners are not able to overtake livestock on the remote pasture land due to the lack of transport and funds. Hence, pastures suffer from great pressure and overgrazing. Such imbalanced placing of livestock on the neighboring pastures leads to the degradation of the village grazing land.
+\end{block}
+
+\begin{examples}{\emph{Changes in soil structure}:}
+Animals continuously grazing on the same place negatively affect the soil : the soils became more thick and compact in structure, with reduced infiltration. The wrong organized grazing reduces vegetation coverage, bares the soil and accelerates erosion.
+\end{examples}
+
+\begin{examples}{\emph{Changes in vegetation structure}:}
+changes in dominant plant communities; loss of certain grass species, reduced yields, pasture forages, increased 'bad, non-edible' plants on the pastures: inedible, noxious and poisonous plants, increased growing bushes on pastures (especially thorny bushes, instead of 'edible' plants), increased grazing and water erosion (increase of grazing trails, ravines, gullies, etc.)
+
+\end{examples}
+
+\end{frame}
+
+\subsection{Deforestation}
+\begin{frame}\frametitle{Ecological Threats}
+Unsustainable livestock husbandry and nomadic pastures affect ecosystems:
+
+\begin{alertblock}{Overgrazing}
+Increased livestock numbers cause intensive and strong grazing pressure (overgrazing). In turn, overgrazing cause detrimental effects on landscapes
+\end{alertblock}
+
+\begin{block}{Deforestation}
+Deforestation: decrease in forest areas.
+\end{block}
+
+\begin{block}{Decreased Species Composition}
+Decreased species composition and structure of plant communities, e.g. relic and endemic species
+\end{block}
+
+\begin{examples}{Soil depletion}
+on the mountain slopes (e.g. in Tajikistan and Kyrgyzstan)
+\end{examples}
+
+\begin{examples}{Soil erosion}
+leads to desertification and silting of debris from the rivers and lakes
+\end{examples}
+
+\end{frame}
+
+\subsection{Erosion and Degradation}
+\begin{frame}\frametitle{Erosion and Degradation}
+
+\begin{alertblock}{Sensitive Ecosystems}
+Anthropogenic pressure and non sustainable grazing pose major threats to the local environment and may have negative impacts on sensitive mountain ecosystems
+\end{alertblock}
+
+\begin{block}{Land Use}
+Unsustainable land use caused environmental and anthropogenic impacts on the ecosystems of Tian Shan region. 
+\end{block}
+
+\begin{block}{Overgrazing}
+Increased overgrazing caused extinction of rare species: some Euro-Siberian and Middle Asian endemic plants are now endangered.
+\end{block}
+
+\begin{examples}{Erosion and Degradation:}
+Cattle trampling caused soil erosion and degradation of shrubland and vulnerable habitats. Destruction of flora and fauna by locals during engineering and pasturing. 
+\end{examples}
+
+\begin{examples}{Lost of Pastures:}
+Unbalanced land use caused loss of ca 50 M hectares of pastures in Kazakhstan, which are now declined and gradually degrading.
+\end{examples}
+
+
+\end{frame}
+
+\section{Nature Conservation Programs}
+\begin{frame}\frametitle{Nature Conservation Programs in Tian Shan Region}
+To support, preserve and protect unique natural ecosystems in Tian Shan environmental region several Natural Research Parks were created. \\
+The most important ones are acknowledged by the UNESCO:
+\begin{itemize}
+	\item Issyk-Kul Biosphere Reserve (Kyrgyzstan);
+	\item UNESCO ’Man and the Biosphere’ program;
+	\item State Kazakhstan National Natural Park ’Altyn-Emel’ (Kazakhstan);
+	\item UNESCO World Heritage object Aksu-Zhabagly National Park (Kazakhstan);
+	\item Sary-Chelek Nature Reserve (Kyrgyzstan), a World Biosphere reserve designated by UNESCO;
+	\item Ugam-Chatkal National Park (Uzbekistan), a UNESCO World Biosphere reserve;
+\end{itemize}
+These National reserves maintain thousands of hectares of precious forests, meadows, and other natural reservoirs
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}\frametitle{Conclusion: Problem Solving}
+
+How to effectively deal with land degradation and to prevent further environmental problems ?
+
+\begin{alertblock}{Preparing}
+Preparing an inventory of the arable lands of precious mountain areas: current status, soil fertility, resistance to erosion, compaction;
+\end{alertblock}
+
+\begin{block}{Developing}
+Developing land and resource protection methods for all neighboring countries (Kazakhstan, Kyrgyzstan,Tajikistan and Uzbekistan);
+\end{block}
+
+\begin{alertblock}{Applying}
+Applying modern technologies to zoning, monitoring and mapping of agro-ecological areas resisting to anthropogenic pressure: e.g. GIS, remote sensing, territorial soil erosion mapping; creating a data bank on mountain soils;
+\end{alertblock}
+
+\begin{block}{Creating}
+Creating modern water management and irrigation technologies to prevent erosion and other forms of degradation of mountain soils;
+\end{block}
+
+\begin{alertblock}{Teaching}
+Teaching local people how to deal with soil erosion;
+\end{alertblock}
+
+\begin{block}{Protecting}
+Subject of special care should be development of specially protected areas (national parks, nature reserves, wildlife sanctuaries), as sources of ecological stability of the region.
+\end{block}
+
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+  	\emph{Thank you for attention !}\\
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+
+\section{Bibliography}
+\begin{frame}[allowframebreaks]\frametitle{Bibliography}
+\footnotesize{Author's publications on Geography, Environment, GIS and Landscape Studies:}
+	\nocite{*}
+	\printbibliography[heading=none]
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
