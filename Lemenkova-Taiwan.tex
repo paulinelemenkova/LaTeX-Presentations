@@ -1,0 +1,858 @@
+%\documentclass{beamer}
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={	
+	breaklinks = true, 
+	pdfauthor={Lemenkova Polina}, 
+	pdfsubject={Preentation}, 
+	pdfcreator={Lemenkova Polina}, 
+	pdfproducer={Lemenkova Polina}, 
+	colorlinks=true,
+	linkcolor=Gold1, 
+	citecolor=NavyBlue, 
+%	urlbordercolor=cyan,
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+\usepackage{lipsum}             % for dummy text
+\usepackage{stix}               % use the STIX font (of course you can delete this line)
+\usetheme{Blackboard}
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+%	style = numeric,
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Taiwan.bib}%  \scriptsize \footnotesize
+\renewcommand*{\bibfont}{\tiny} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{palatino}
+\usepackage{multicol} % to split itemization
+%\usecolortheme{rose}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+% -------------------- FOOTNOTE *** START------------------------
+% \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=3.0ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+\usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip-4pt%
+}
+\makeatother
+
+% -------------------- FOOTNOTE *** END------------------------
+
+% --------------------- TOC *** START -----------------------------------------
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{magenta!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{Green1}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+  
+% --------------------- TOC *** END -----------------------------------------
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Using K-means algorithm classifier for urban landscapes classification in Taipei. 22/05/2013]{Using \emph{K-means} algorithm classifier for \\
+urban landscapes classification in \\
+\texttt{Taipei area, Taiwan}}
+\subtitle{Seminar at \\
+National Taiwan University (NTU)\\
+Taipei, Taiwan, China}
+
+\author[Polina Lemenkova]{Polina Lemenkova \footnote{\texttt{pauline.lemenkova@gmail.com}}}
+\date{May 22, 2013}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\section*{Table of Content}
+\begin{frame}{Table of Content}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.5\textwidth}
+            \tiny{\tableofcontents[sections=1-11]}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \tiny{\tableofcontents[sections=12-20]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%% PART 1 START %%%%%%%%%%%%%%%%%%
+
+\section{Summary}
+
+\begin{frame}\frametitle{Summary}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{P1.jpg}
+\end{figure}
+\small{Study area: overlay of the Landsat TM image with vector map of Taiwan Island and elevation contours. ArcGIS visualization.}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{alertblock}{Research Area}
+Taipei urban landscapes, Taiwan R.O.C.
+\end{alertblock}
+
+\begin{block}{Research Aim}
+Apatio-temporal analysis of urban dynamics in study area during 15 years (1990-2005)
+\end{block}
+
+\begin{alertblock}{Research Objective}
+Application of geoinformatic tools, remote sensing data for urban studies of Taipei
+\end{alertblock}
+
+\begin{block}{Research Methodology}
+GIS based spatial analysis
+\end{block}
+
+Study area is located in Taiwan R.O.C., Taipei city capital area. 
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\begin{frame}\frametitle{Study Area}
+	\begin{alertblock}{Location}
+Taipei is located on the north of the Taiwan Island
+	\end{alertblock}
+	
+	\begin{block}{Significance}
+Taipei is the Taiwan's core urban political \& economic center
+	\end{block}
+
+	\begin{block}{Characteristics}
+		\begin{itemize}
+			\item Taipei: favorable \alert{topographic} location, \alert{climatic} and \alert{geographic} settings 
+			\item Advantageous conditions for habitation here during centuries.
+		\end{itemize}
+	\end{block}
+
+	\begin{examples}{Geographic Settings}
+		\begin{itemize}
+			\item  Geomorphology: Taipei is characterized by flat relief and several rivers of Tamsui basin with alluvial soils. 
+			\item Physical geography: Natural borders of the city are formed by surrounding mountains and hills	(Tsou \& Cheng, 2013).
+			\item Geology: Rich sediments from the upstream area maintain soils fertility, creating favorable resources for agricultural activities (Huang et al., 2001).
+		\end{itemize}
+	\end{examples}
+\end{frame}
+
+\section{Human Factors}
+\begin{frame}\frametitle{Human Activities Affecting Landscapes}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.5cm]{P3.jpg}
+\end{figure}
+\small{View of from Taipei-101 skyscraper \\
+(Taipei World Financial Center), \\
+Photo: author, 2013.}
+\end{column}
+\begin{column}{0.6\textwidth}
+\vspace{1em}
+Urban growth and city sprawl affects ecosystems. \\
+Consequences of human impacts include:
+\small{
+\begin{itemize}
+	\item landscape degradation
+	\item changes in land cover and land use types
+	\item decrease in biodiversity richness within the city
+	\item deforestation, urbanization, and wetlands destruction (Chen and Lin, 2013)
+	\item decrease in species, losses of rare and extinct species (McKinney, 2006; Shochat et al., 2004; Ramachandra et al., 2012)
+\end{itemize}
+In turn, modified land use types:
+\begin{itemize}
+	\item affect hydrological components in the surrounding watersheds
+	\item cause changes of the land use \alert{patterns}
+	\item change primary descriptors of the landscape patterns: \alert{composition, configuration, connectivity, variety} (Lin et al., 2007)
+	\item modify \alert{abundance} of patch types within a landscape
+\end{itemize}}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Land Cover/Use Types}
+\begin{frame}\frametitle{Land Cover vs Land Use Types: Conceptual Difference}
+
+\begin{alertblock}{Land Cover}
+Land cover data documents how much of a region is covered by forests, wetlands, impervious surfaces, agriculture, and other land and water types. 
+Water types include wetlands or open water.
+\end{alertblock}
+
+\begin{block}{Land Use}
+Land Use shows just how people use the landscape – whether for development, conservation, or mixed uses. The different types of land cover can be managed or used quite differently.
+\end{block}
+
+\begin{examples}{Land Cover vs Land Use}
+\begin{itemize}
+	\item Land cover can be determined by analyzing satellite and aerial imagery.
+	\item Land use cannot be determined from satellite imagery.
+	\item Land cover maps provide information to enable interpreting current landscape.
+\end{itemize}
+\end{examples}
+
+This research focused on study of land cover types in Taipei using GIS \& RS.\\
+To highlight dynamics in the land cover types, multi-temporal RS images for several different years were taken and compared. 
+With this information, past situation was evaluated and insight into the effects of urban sprawl in Taipei area are made.
+\end{frame}
+
+\section{Taipei}
+\subsection{Urban Area}
+\begin{frame}\frametitle{Taipei: Urban Area}
+% 2 картинки
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.9cm]{P2.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=4.0cm]{P4.jpg}}
+\end{figure}
+
+\begin{alertblock}{Population}
+A Taipei population living within an area of 271.8 $km^{2}$, density of 9566 persons/$km^{2}$, which is higher than for most of Asia’s other major cities (Tsou \& Cheng, 2013).
+\end{alertblock}
+
+\begin{block}{Function}
+Located on the north of the Taiwan Island, Taipei is the country's core urban \alert{political and economic center} with population reaching over 2.6 M and continuing to expand within the metropolitan region.
+\end{block}
+
+\end{frame}
+
+\subsection{Urbanization}
+\begin{frame}\frametitle{Taipei: Urbanization}
+Concentrated \alert{population density} and \alert{environmental pressure} within the \alert{limited geographic space and resources} $=>$ metropolis as Taipei deal with specific urban environmental problems.
+\begin{examples}{Consequences of urbanization}
+\begin{enumerate}
+	\item transformation in \alert{structure of natural landscapes}
+	\item simplification of species, changes in landscape composition
+	\item disconnected and disrupted components within the hydrological systems, fragmentation of natural habitats
+	\item changes in \alert{land cover types}: forests, river deltas, meadows, native grasslands, wetlands $=>$ human-modified agricultural or \alert{built-up areas} 
+	\item new areas consist of large amounts of \alert{impervious surfaces}, covered by concrete blocks, asphalt pavement, bricks, buildings
+	\item significantly altered \alert{aboveground net primary productivity}
+	\item changes in \alert{soil respiration rates}, compared to natural ecosystems (Kaye et al., 2005)
+	\item \alert{air pollution} and decreased \alert{water quality} (Huang et al., 2001)
+\end{enumerate}
+\end{examples}
+\end{frame}
+
+\subsection{Regional Differences: Urban Space}
+\begin{frame}\frametitle{Regional Differences: Urban Space}
+
+\begin{alertblock}{Limitation of Land Resources}
+Uncontrolled urbanization $=>$ \\
+Gradual limitation of the land and water resources $=>$ \\
+Insufficient infrastructure within the city $=>$ \\
+Development of densely concentrated mixed land use types.
+\end{alertblock}
+
+\begin{block}{Land Use Types}
+About 45\% of the Taipei city is categorized as restricted with regard to availability and usage due to its topography (Tsou and Cheng, 2013). \\
+Only 14\% (46.30 km2) is available for further development (residential and commercial).
+\end{block}
+
+\begin{block}{Land Cover Types}
+Urban landscapes are composed of areas of various shape and size, water bodies, human built-up quarters and hilly mountainous areas
+\end{block}
+
+\begin{examples}{Urbanization}
+Nowadays, new Taipei city face consists of built-up new apartments, buildings, office centers and residential areas, re-structured districts. \\
+This process is reinforced by the average structure age of the buildings and modernization (Lin and Jhen, 2009).
+\end{examples}
+
+\end{frame}
+
+\section{Ecosystems}
+\subsection{Functions}
+\begin{frame}\frametitle{Urban Ecosystems: Functions}
+
+\begin{alertblock}{Complex Structure}
+Urban ecosystems have highly complex composing structure and functioning. \\
+Urban landscapes have the highest level of ecosystems hierarchy.
+\end{alertblock}
+
+\begin{block}{Energy}
+Energy flows and density reach the most intensity in the cities comparing to natural and semi-natural ecosystems
+\end{block}
+
+\begin{examples}{Typical functions of urban ecosystems:}
+Cultural, supporting, regulating services $=>$ core criteria for measurement of the environmental quality of the urban areas (Flores et al., 1998). Complexity of these functions consists in various aspects of urban landscapes (Bonaiuto et al., 2003): 
+\begin{itemize}
+	\item spatial (architecture and planning space)
+	\item organization and access to green spaces within the city)
+	\item human (i.e. people and social interrelations)
+	\item functional (recreational, commercial, transport services and welfare)
+	\item contextual aspects (life style and environmental health)
+\end{itemize}
+\end{examples}
+\end{frame}
+
+\subsection{Structure}
+\begin{frame}\frametitle{Urban structure: a simplified flowchart}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{P5.jpg}
+\end{figure}
+\end{frame}
+
+\section{Urbanization}
+
+\subsection{Urbanization: Trends}
+\begin{frame}\frametitle{Urbanization: Trends}
+
+\begin{alertblock}{Population}
+In the past decades, the process of urbanization became more and more notable in the world. About half of the world's population will reside in urban areas and cities by 2000 (Huang et al., 1998).
+\end{alertblock}
+
+\begin{block}{Importance}
+World's global cities (e.g. New York, London, Tokyo, Taipei, Paris, Seoul, Moscow, Hong Kong, Singapore, etc.) are the key engines of the human development and global cooperation. The importance of capitals: economies drivers; play key role in national and regional economies of countries (Scott, 2000; Hsu, 2005; Sassen, 2001).
+\end{block}
+
+\begin{examples}{Functions of capitals in the modern World}
+\begin{enumerate}[(a)]
+	\item control resources and information
+	\item attract major material and economic forces
+	\item trigger human activities
+	\item attract financial investments for further development
+	\item involve informational knowledge centers and strategies
+\end{enumerate}
+\end{examples}
+\end{frame}
+
+\subsection{Urbanization: Consequences}
+\begin{frame}\frametitle{Urbanization: Consequences}
+Global cities, such as Taipei, have to face specific environmental problems, due to the concentrated human density and environmental pressure within the limited geographic space and resources. Consequences of urbanization:
+
+\begin{itemize}
+	\item [*] transformation in structure of natural landscapes: e.g. simplification of species, changes in landscape composition, disconnected and disrupted components within the hydrological systems, fragmentation of natural habitats
+	\item [*] changes in land cover types: e.g., from forests, river deltas, meadows, native grasslands, wetlands, or agricultural areas, towards anthropogenic affected built-up areas which consist of large amounts of impervious surfaces, covered by concrete blocks, asphalt pavement, bricks, buildings
+	\item [*] significantly altered aboveground net primary productivity
+	\item [*] serious changes in soil respiration rates, compared to natural ecosystems (Kaye et al., 2005)
+	\item [*] air pollution and decreased water quality (Huang et al., 2001)
+\end{itemize}
+\end{frame}
+
+\section{Statistics}
+
+\begin{frame}\frametitle{Taipei: comparison with other major cities}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{P6.jpg}
+\end{figure}
+
+\begin{alertblock}{Taipei Population}
+Taipei metropolitan area population = 2,618,772 people\\
+ including Taipei, New Taipei and Keelung = \\
+ 6,900,273 people
+\end{alertblock}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{block}{Taiwan Population}
+Taiwan population (for the whole country) according to the last two censuses: 
+\begin{itemize}
+	\item year 1990: 20.393,628; 
+	\item year 2000: 22.226,879.; 
+	\item year 2012: 23,315,822.
+\end{itemize}
+Source: Number of Villages, Neighborhoods, \\
+Households and Resident Population. \\
+MOI Statistical Information Service. \\
+Retrieved: 2 January 2013.
+\end{block}
+
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Environment}
+\begin{frame}\frametitle{Environment}
+
+\begin{alertblock}{Industrialization}
+Human-driven effects on the environment and landscapes of Taipei agglomeration consist in \alert{high industrialization and urbanization}.
+The spatiotemporal pattern of landscape diversity changed within Taipei metropolitan region between 1971 and 2005.
+\end{alertblock}
+
+\begin{block}{Urbanization}
+Rapid urbanization affects \alert{interrelations between natural and urban ecosystems}, changes their \alert{structure, size} and \alert{shape}, which gradually became a serious environmental problem. Thus, in Taipei, natural, typical land cover types are being gradually transformed into human-affected artificial surfaces (Hung et al., 2010).
+\end{block}
+
+\begin{examples}{Increase of built-up areas:}
+Analysis of the landscape biogeographic characteristics of the urban forests shows that species diversity, composition and richness, spatial variability is done by Jim and Chen, 2008. According to their findings, the Taipei's urban the built-up areas with space limitations have the \alert{lowest biodiversity level}, while parks accommodate the \alert{highest biodiversity level}, as represented by native species.
+\end{examples}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%% PART 1 END %%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%% PART 2 START %%%%%%%%%%%%%%%%%%
+
+\section{Techniques}
+\begin{frame}\frametitle{Techniques}
+
+\begin{alertblock}{ENVI GIS}
+The research was performed using ENVI GIS software using Landsat TM images for years 1990 and 2005.
+\end{alertblock}
+
+\begin{block}{K-means Algorithm}
+The landscapes in the study area at two multi-temporal Landsat TM images were classified using "K-means" algorithm. Different land use types were identified and classified. The area covered by each land cover class is compared for years 1990 and 2005 and dynamics analyzed.
+\end{block}
+
+\begin{block}{Land Cover Types}
+Changes in the selected land cover types were analyzed and human impacts on the natural landscapes detected. Classified land cover types were compared at both maps of land cover types for the years 1990 and 2005.
+\end{block}
+
+\end{frame}
+
+\section{Data}
+\begin{frame}\frametitle{Data}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F1.jpg}
+\end{figure}
+
+\begin{alertblock}{Source}
+Data: two Landsat TM imagery taken from the USGS website. 
+\end{alertblock}
+
+\begin{block}{Temporal comparison}
+Study period: imagery for summer periods of 1999-2005 
+\end{block}
+
+\begin{examples}{Spatial Comparison}
+Selected territory focused on \alert{3 different areas}: comparison of three districts of southern area of Taipei, Taiwan, along the Tamsui river
+\end{examples} 
+\end{frame}
+
+\subsection{Landsat TM Images}
+\begin{frame}\frametitle{Landsat TM 1990}
+Landsat TM image (1990). Bands 1-7 (fragment). Color composites (ENVI)
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F4.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Landsat TM 2005}
+Landsat TM image (2005). Bands 1-7 (fragment). Color composites (ENVI)
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F5.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Preliminary Data Processing}
+\begin{frame}\frametitle{Preliminary Data Processing}
+\begin{itemize}
+	\item Preliminary data processing: image contrast stretching. 
+	\item By default, ENVI displays images with a 2\% linear contrast stretch.
+	\item Histogram equalization contrast stretch was applied to the images in order to enhance the visual quality (better contrast)
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F3.jpg}
+\end{figure}
+\end{frame}
+
+\section{Methods}
+\begin{frame}\frametitle{Methods}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F2.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+Methods used in the current work include following steps:
+\begin{itemize}
+	\item Data capture
+	\item Color composition from 3 bands
+	\item Defining Region of Interest (ROI)
+	\item Selecting 3 areas within the city 
+	\item Image classification
+	\item Combining classes 
+	\item Re-classification 
+	\item Post-processing
+	\item Spatial analysis 
+	\item Defining 3 different areas of Taipei city
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{K-means Algorithm}
+\begin{frame}\frametitle{K-means Algorithm}
+K-means algorithm procedure has 3 steps:
+\begin{itemize}
+	\item Choosing the initial \alert{centroids} for defined number of land classes
+	\item \alert{Assignation} of each pixel to the nearest centroid which represent certain land cover class
+	\item Creating new centroids by taking the mean value of all pixels assigned to each previous land cover \alert{class} (i.e. centroid).
+\end{itemize}
+\alert{Looping} between the other steps 2 and 3: \\
+The difference between the old and the new centroids is '\alert{inertia}'. \\
+The algorithm repeats (loops) steps until the 'inertia' is less than a \alert{threshold}.\\
+It \alert{smoothes iteratively} the allocation of pixels until the centroids do not move significantly.
+\end{frame}
+ 
+\subsection{K-Means Clustering}
+\begin{frame}\frametitle{K-Means Clustering}
+ K-Means classification: general idea.
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+ \begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F6.jpg}
+\end{figure}
+K-Means: a mathematical approach:\\\vspace{1em}
+
+$J(X,C)=\sum_{i=0}^n\frac{min}{\mu_{j}\in C} (||x_j-\mu_i||^{2})$
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+	\item  K-means is a flat clustering algorithm which is often used in classification techniques. \pause
+	\item The objective of K- means: to minimize the average squared Euclidean distance between the cluster centers (the means). \pause
+	\item K-means analysis allocates pixels into various clusters by defining the mathematical centroids of all clusters - groups of pixel with similar values of spectral reflectance, or digital number (DNs) \pause
+	\item K-means separates raster pixels in n clusters (groups of equal variance) by minimizing the ‘inertia’ criterion.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{K-means Classification: ENVI GIS}
+\begin{frame}\frametitle{K-means Classification by Means of ENVI GIS}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F8.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Land Cover Types}
+\begin{frame}\frametitle{Land Cover Types}
+Classification of the land cover types in the city:
+\begin{itemize}
+	\item Forests
+	\item Urban areas – 2 (roads)
+	\item Grasslands
+	\item Open fields (little or no vegetation)
+	\item Water areas
+	\item Urban vegetation – 1 (bushes)
+	\item Cultivated lands
+	\item Agricultural facilities
+	\item Urban vegetation –2 (parks and squares)
+	\item Urban areas -2 (built-up surfaces)
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F9.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{ENVI GIS Classification by K-means Method}
+\begin{frame}\frametitle{ENVI GIS Classification by K-means Method}
+\small{1990 Landsat TM scene classification (fragment). Random color visualization}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{F10.jpg}
+\end{figure}
+\small{2005 Landsat TM scene classification (fragment). Random color visualization}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{F11.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Combining Classes}
+\begin{frame}\frametitle{Combining Classes}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F12.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Creating Region Of Interest (ROI)}
+\begin{frame}\frametitle{Creating Region Of Interest (ROI)}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F13.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Subset Data via ROI}
+\begin{frame}\frametitle{ Subset Data via ROI}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F14.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Regional Division of Taipei}
+\begin{frame}\frametitle{Regional Division of Taipei City}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F15.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Statistics of Change Detection}
+\begin{frame}\frametitle{Statistics of Change Detection: Process}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.7\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F16.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.3\textwidth}
+Process workflow:
+\begin{itemize}
+	\item Change detection statistics
+	\item Setting options of process
+	\item Choice of 'Initial Stage' image
+	\item Choice of 'Final Stage' Image
+	\item Defining equivalent classes
+	\item Defining pixel size for area statistics
+	\item Change detection statistics output
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\subsection{Post-Classification Data Processing}
+\begin{frame}\frametitle{ Post-Classification Data Processing}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.0cm]{F17.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Statistical Processing}
+\begin{frame}\frametitle{Statistical Processing}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F18.jpg}
+\end{figure}
+\begin{itemize}
+	\item Left: \alert{Getis Ord G statistics} - measures concentration of the emergency values (highest or lowest) for the land cover classes
+	\item Center: \alert{Geary statistics} - measures spatial dependance and autocorrelation of pixels.
+	\item Right: \alert{Moran statistics} - measures spatial features similarity values based on pixels location and values
+\end{itemize}
+\end{frame}
+
+\subsection{Computed Areas of the Land Cover Types}
+\begin{frame}\frametitle{Computed Areas of the Land Cover Types}
+\begin{minipage}[0.5\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.6\textwidth}
+Results: ROI has changes in land cover classes: 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{F19.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\textwidth}
+
+\begin{enumerate}
+	\item class “urban areas” increased from 16.9\% in 1990 to 21.8\% in 2005
+	\item class “urban vegetation” decreased from 3.1\% in 1990 to 2.9\% in 2005
+	\item class “forests” decreased from 62.4\% in 1990 to 60.8\% in 2005
+	\item class “grasslands” decreased from 15.6\% in 1990 to 10.3\% in 2005
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Results}
+\begin{frame}\frametitle{Results: Regions I, II and III}
+Three regions of Taipei have differences in the land cover types:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F20.jpg}
+\end{figure}
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}\frametitle{Conclusions}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.5cm]{F21.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em}
+Comparison of regions I, II and III:
+\begin{itemize}
+	\item Region I: located on the left bank of Tamsui river, agricultural area. It has significant changes in the land cover types since 1990s. \pause
+	\item Region II is the core, old city area is the most stable region. It has the least changes: this area is already industrialized for a long time. \pause
+	\item Region III is an area located southwards from the core city. It has undergone notable changes caused by intensive relocation of the population to the Taipei area after 1980s. This is regions is dynamically developing since 1990s.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Discussion}
+\begin{frame}\frametitle{Discussion}
+\begin{itemize}
+	\item Spatial analysis performed by ENVI GIS enabled to process satellite images for urban studies. 
+	\item Spatio-temporal analysis was applied to Landsat TM images taken at 1990 and 2005: 
+	\item Built-in functions of the mathematical K-means algorithm enabled to classify Landsat TM images and to derive information on land cover types.
+	\item Image classification was used to analyze land cover changes in Taipei which includes built-up areas and natural green areas.
+	\item Results of image processing and spatial analysis show changes in structure, shape and configuration of urban landscapes in Taipei since 1990
+	\item Areas occupied by human activities increased, while natural landscapes undergone modifications.
+	\item Changes in urban landscapes of Taipei are caused by the increased relocation of population, urbanization and occupied lands for urban needs.
+\end{itemize}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+	\emph{Thank you for attention !}\\
+	\vspace{5em}
+\normalsize
+Acknowledgement: \\
+Current work has been supported by the \\
+Taiwan Ministry of Education Short Term Research Award (STRA) \\
+for author's 2-month research stay (April-May 2013) at\\
+National Taiwan University (NTU), \\
+Department of Geography.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%% PART 2 END %%%%%%%%%%%%%%%
+
+%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%%%%%%%
+\section{Literature}
+\begin{frame}\frametitle{Literature}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.5cm]{liter.jpg}
+\end{figure}
+\end{frame}
+
+\section{Bibliography}
+\begin{frame}[allowframebreaks]\frametitle{Bibliography}
+\footnotesize{Author's publications on Cartography, Mapping, Geography, Environment, GIS and Landscape Studies:}
+	\nocite{*}
+	\printbibliography[heading=none]
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
