@@ -1,0 +1,507 @@
+\documentclass[pdflatex,compress,10pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={
+	colorlinks = true,
+	breaklinks = true, 
+	citecolor=NavyBlue, 
+	urlcolor = blue, 
+%	urlbordercolor=magenta,
+	filecolor=magenta} 
+]{beamer}	
+\usetheme{JuanLesPins}
+\usecolortheme[named=Turquoise1]{structure}
+
+\usepackage[super]{nth}
+\usepackage{amsmath}
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+backend=biber, 
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Groningen.bib}%   \tiny \scriptsize \footnotesize \normalsize
+\renewcommand*{\bibfont}{\scriptsize} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+% -------------------- FOOTNOTE *** START------------------------
+% \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=3.0ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+\usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip-4pt%
+}
+\makeatother
+
+% -------------------- FOOTNOTE *** END------------------------
+
+% --------------------- TOC *** START -----------------------------------------
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{magenta!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{Green1}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+  
+% --------------------- TOC *** END -----------------------------------------
+
+
+\date{24-06-2013}
+\title[\textcolor{white}{How could obligation chain be structured along cross-border gas supply ? Groningen, Netherlands, 24-06-2013}]{\textcolor{DodgerBlue4}{How could obligation chain be structured along cross-border gas supply for gas security ? \\3-tier legal interactions}}
+
+\subtitle{\textcolor{Cyan4}{Presented at: \\
+\large{\emph{Groningen Energy Summer School \\
+'A multi-disciplinary approach to energy transition,\\ from policy to physics'}}
+\normalsize{together with Huong Hoang. \\
+Rijksuniversiteit Groningen\\
+Groningen, Netherlands}}}
+
+\author[\textcolor{Sienna3}{Polina Lemenkova}]{\large{Polina Lemenkova}}
+
+% ----------------------------------------------------------------------------
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Table of Content}
+\begin{frame}{Table of Content}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.5\textwidth}
+            \tiny{\tableofcontents[sections=1-8]}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \tiny{\tableofcontents[sections=9-14]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\section{Summary}
+\subsection{Research Aims}
+\begin{frame}\frametitle{Research Aims}
+
+\begin{alertblock}{Measure}
+to measure components and linkages of legal obligations undertaken by the actors involving cross-border gas supply chain
+\end{alertblock}
+
+\begin{block}{Investigate}
+to investigate possibility to establish a legal structure for promoting security of gas supply chain
+\end{block}
+
+\begin{block}{Examine}
+to examine consequences of gas supply chain for government and companies
+\end{block}
+
+\begin{examples}{Analyze:}
+legal structures (international-domestic-contract law): entitlement vs. state responsibility as requirements for functioning/enforcing obligation chain
+\end{examples}
+
+\end{frame}
+
+\subsection{Research Problems}
+\begin{frame}\frametitle{Research Problems}
+\small{
+\begin{alertblock}{Forecast}
+Forecast: natural gas will increase demand at global average of nearly 2\% per year by 2035:
+\begin{itemize}
+	\item [$\Longrightarrow$] convenience in consumption
+	\item [$\Longrightarrow$] economical and environmental efficiency
+	\item [$\Longrightarrow$] natural gas remains a preferred choice in many applications with high consumption
+\end{itemize}
+\end{alertblock}
+
+\begin{block}{Gas Reserve}
+Gas reserve is highly unevenly distributed: 
+\begin{itemize}
+	\item [$\longrightarrow$] ca 0.75\% deposited: Middle East \& Eurasia; 
+	\item [$\longrightarrow$]  54\% of total estimated: Russia, Iran \& Qatar
+\end{itemize}
+\end{block}
+
+\begin{examples}{Large consumers:}
+in Asia \& Europe are insufficient or lack of domestic gas to meet their demand
+\end{examples}
+}
+\end{frame}
+
+\subsection{Gas Market Situation: Pros \& Cons}
+\begin{frame}\frametitle{Gas Market Situation: Pros \& Cons}
+\begin{alertblock}{Supply-Demand}
+Cross-border trade plays important role in 'supply-demand' relationships of unevenly distributed resources
+\end{alertblock}
+
+\begin{alertblock}{Long-Term Contracts}
+Long-term contracts remain important for viable investment of a gas value chain
+\end{alertblock}
+
+\begin{block}{Supply Security}
+Cross-border trade doesn't always guarantee the security of supply (adequate volume when and where it is needed at affordable price)
+\end{block}
+
+\begin{block}{Uncommitted Volume}
+Long-term contracts limit the availability of uncommitted volume for market to balance demand-supply
+\end{block}
+\end{frame}
+
+\section{Problem Statement}
+\begin{frame}\frametitle{Problem Statement}
+
+\begin{alertblock}{Scheme Drawbacks}
+however, this scheme has serious drawbacks:
+\begin{itemize}
+	\item [$\rightarrow$] Current mechanism of O.G.S. has limitations in guaranteeing supply security for importing country.
+	\item [$\rightarrow$] Gas market is constrained in delivering adequate volume at affordable price to the right place on time
+	\item [$\rightarrow$] Impossibility of the importing government in directly controlling overseas gas supply source due to sovereignty of the producing country
+	\item [$\rightarrow$] Ineffective managing/sustaining cross-border gas supply flow
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\section{Hypothesis}
+\begin{frame}\frametitle{Hypothesis}
+
+\begin{alertblock}{Hypothesis}
+\begin{itemize}
+	\item [$\longleftrightarrow$] Targets of the test: dynamic dimensions of availability and affordability.
+	\item [$\longleftrightarrow$] The scenarios of excess and shortage of gas supply (volume and infrastructure capacity) are applied for testing rights and obligations of the actors involved.
+	\item [$\longleftrightarrow$] Producing/exporting country covers expensive supply and cheap supply (due to geological conditions and technology requirements).
+	\item [$\longleftrightarrow$] 2 types of consuming/importing countries: 'rich consumer with little supply shortage; and 'poor consumer in high demand for gas' (levels of economic development \& social welfare).
+	\item [$\longleftrightarrow$] Measure: gas volume, infrastructure capacity, distance, timing, price \& company’s flexibility.
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+
+\section{Research Methodology}
+\begin{frame}\frametitle{Research Methodology}
+
+\begin{alertblock}{Conceptual Analysis}
+ to look into the elements and interactions of legal obligations in\\
+  \alert{three tiers} of the relationship:
+ \begin{itemize}
+	\item [$\leftharpoondown$] government vs government in international law
+	\item [$\leftharpoondown$] government vs company in domestic law
+	\item [$\leftharpoondown$] company vs company in contract law
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+
+\section{Research Techniques}
+\begin{frame}\frametitle{Research Techniques}
+\small{
+\begin{alertblock}{Assuming}
+Performing the obligations implies aspect of actors’ expectations.
+\end{alertblock}
+
+\begin{block}{Examining}
+Examining consequences for the government and the company.
+\end{block}
+
+\begin{alertblock}{Clarifying}
+Clarifying the concepts
+\end{alertblock}
+
+\begin{block}{Investigating}
+Investigating legal structure (international-domestic-contract law): entitlement \emph{vs} state responsibility as requirements for functioning/enforcing obligation chain
+\end{block}
+
+\begin{alertblock}{Exploring}
+Exploring documentary database 
+\end{alertblock}
+}
+\end{frame}
+
+\section{Demand-Supply Imbalance: Triggers and Consequences}
+\begin{frame}\frametitle{ Demand-Supply Imbalance: Triggers and Consequences}
+
+\begin{alertblock}{Rigidity}
+Rigidity of dedicated and network bound \alert{infrastructures}\\
+$\Downarrow$\\
+Limited \alert{swing capacity}\\
+$\Downarrow$\\
+The market responsiveness becomes \alert{inhibited (less flexible)}
+\end{alertblock}
+
+\begin{examples}{Imbalance:}
+demand-supply relationships, e.g. by tight supply: 
+\begin{itemize}
+	\item [$\searrow$]market price are driven upward (when affordability aspect of supply security is ignored)
+	\item [$\searrow$]market price cannot still attract demanded gas volume (because of relative concentration of the producers/suppliers)
+\end{itemize}
+\end{examples}
+\end{frame}
+
+\section{Government’s Role}
+\subsection{Sustainable Gas Supply Flow}
+\begin{frame}\frametitle{Government’s Role: Sustainable Gas Supply Flow}
+
+\begin{alertblock}{Involvement}
+Government’s role in gas sector for sustainable supply flow. The government's involvement helps to regulate uncertainties and difficulties that go beyond the guarantee of gas market:
+\begin{itemize}
+	\item [$\hookleftarrow$] Requirement of timely supply-demand balancing (e.g. in short notice):
+		\begin{itemize}
+			\item [$\longmapsto$] distance between production and consumption locations of the infrastructures.
+			\item [$\longmapsto$] infrastructure capacity and constraints
+		\end{itemize}
+	\item [$\hookleftarrow$] Uncertainties related to volume availability
+	\item[$\hookleftarrow$]  Affordable price
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\subsection{Gas Sector: Domestic Affairs}
+\begin{frame}\frametitle{Government's Role in Gas Sector: Domestic Affairs}
+
+\begin{alertblock}{Domestic Affairs}
+\begin{itemize}
+	\item[$\mapsto$] formulating \& monitoring domestic framework with clarified objectives and responsibilities of the market players
+	\item[$\mapsto$] licensing scheme \& legal framework under law rules 
+	\item[$\mapsto$] controlling operations of the companies and local
+market
+	\item[$\mapsto$] facilitating gas inflow
+	\item[$\mapsto$] influencing company’s operations through obligations or restrictions
+	\item[$\mapsto$] stimulating companies to promote company’s presence and performance of particular business activities
+\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\subsection{International Affairs}
+\begin{frame}\frametitle{Government's Role in Gas Sector: International Affairs}
+
+\begin{alertblock}{International Affairs}
+\begin{itemize}
+	\item [$\rightharpoonup$] aims at general strategies/policies of energy security securing supply of overseas gas
+	\item [$\rightharpoonup$] indirect involvement of the governments: ‘many large gas contracts have been closed in the context of bilateral meetings between government leaders’
+	\item [$\rightharpoonup$] creating multilateral agreements mitigating trade barriers,
+	\item [$\rightharpoonup$] supporting cross-border activities among participating countries (e.g. stipulation of free transit principle in GATT/WTO
+	\item [$\rightharpoonup$] mitigating trade barriers,
+	\item [$\rightharpoonup$] agreement or in Energy Charter Treaty)
+\end{itemize}
+\end{alertblock}
+ 
+\end{frame}
+
+\subsection{Diplomatic Affairs}
+\begin{frame}\frametitle{Government's Role in Gas Sector: Diplomatic Affairs}
+
+\begin{alertblock}{Diplomatic Affairs}
+\begin{itemize}
+	\item [$\rightharpoondown$] interference in market \& cooperation relation with other countries within bilateral \& multilateral
+agreements
+	\item [$\rightharpoondown$] strengthening bilateral relationships 
+	\item [$\rightharpoondown$] participating in multilateral agreements 
+	\item [$\rightharpoondown$] engaging in diplomatic agreements
+in cooperative spirit
+	\item [$\rightharpoondown$] obtaining certainties of the supply source
+	\item [$\rightharpoondown$] facilitating operations of the companies
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+
+\section{Advantages and Disadvantages}
+\subsection{Possible Negative Consequences of Governmental Participation}
+\begin{frame}\frametitle{Possible Disadvantages and Negative Consequences of Governmental Participation}
+
+\begin{alertblock}{Dependance}
+Cooperation agreement depend on diplomatic attitude and goodwill of the governments
+\end{alertblock}
+
+\begin{block}{Instabilities}
+Cooperation agreements have no obligatory effect
+\end{block}
+
+\begin{block}{Uncertainties}
+It may contain uncertainties
+\end{block}
+
+\begin{examples}{Unpredictability:}
+It may be waived or failure in achieving expectations or practical yields
+\end{examples}
+\end{frame}
+
+
+\subsection{Multilateral Agreements: Advantages \& Drawbacks}
+\begin{frame}\frametitle{Multilateral Agreements: Advantages \& Drawbacks}
+
+\begin{alertblock}{Energy Charter Treaty}
+Multilateral agreements (M.A.), e.g. Energy Charter Treaty, provide general cooperation frameworks with more favorable conditions for participating members.
+\end{alertblock}
+
+\begin{block}{Entities or Trade}
+However, M.A. could not enforce the entities or trade activities and may only be considered as ‘facilitation of trade’.
+\end{block}
+
+\begin{examples}{Scarcity or Shortage:}
+Overseas gas supplies may be constrained to destine timely to the right location at affordable price with adequate volume, especially in case of scarcity or shortage.
+\end{examples}
+
+\end{frame}
+
+\subsection{Government's Participation in Gas Sector: Drawbacks}
+\begin{frame}\frametitle{Government's Participation in Gas Sector: Drawbacks}
+\begin{alertblock}{Drawbacks}
+The government’s capability of enforcing an independent company to perform any obligations at any time remains questionable:\\
+$\Updownarrow$\\
+company’s nature of for-profits aim needs for affordable gas supply for economic development and social welfare at macroeconomic level $\Leftrightarrow$\\
+$\Updownarrow$\\
+practice of freedom of contract in pursuing business
+\end{alertblock}
+\end{frame}
+
+\section{Current mechanism of Overseas Gas Supply (O.G.S.)}
+\begin{frame}\frametitle{Current mechanism of Overseas Gas Supply (O.G.S.)}
+
+\begin{alertblock}{O.G.S.}
+Current mechanism of Overseas Gas Supply consists in an operational frame with combination of:
+\begin{itemize}
+	\item [$\Rightarrow$] contractual obligations functioning in the market
+	\item [$\Rightarrow$] government’s obligations originated from inter-government agreement
+	\item [$\Rightarrow$] obligations imposed on gas undertakings by domestic regulation
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+
+\section{Limitations and Challenges}
+\begin{frame}\frametitle{Limitations and Challenges}
+
+\begin{examples}{Limitations and Challenges:}
+Managing/sustaining cross-border gas supply flow has difficulties for the importing country. These include:
+\begin{itemize}
+	\item [$\rightleftharpoons$] lack of enforcing power over independent company’s operation
+	\item [$\rightleftharpoons$] Impossibility in directly controlling overseas gas supply source, the explanation of which is attached to sovereignty of the producing country
+	\item [$\rightleftharpoons$] no direct control of access to infrastructure capacity along gas chain
+\end{itemize}
+\end{examples}
+
+\end{frame}
+
+\section{Long-Term Goal}
+\begin{frame}\frametitle{Long-Term Goal}
+
+\begin{alertblock}{Responsibility}
+The government is ultimately responsible for gas supply security of the country
+Therefore, the main question is:
+\end{alertblock}
+
+$\downarrow$
+
+\begin{examples}{Obligation Chain}
+\begin{itemize}
+	\item [$\Leftarrow$] satisfying both availability and affordability
+dimensions in securing overseas gas flow, which is currently not easy for importing government
+	\item [$\Leftarrow$] creating legal obligation chain along cross-border countries that guarantees availability and affordability of gas supply
+\end{itemize}
+\end{examples}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+	\emph{Thank you for attention !}\\
+	\vspace{5em}
+\small
+Acknowledgement: \\
+Current work has been supported by the \\
+Rijksuniversiteit Groningen Travel Grant (No. GESP 2013/355)\\
+for author's 2-week participation at \\
+Groningen Energy Summer School (June 2013),\\
+Groningen, Netherlands.
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+\section{Bibliography}
+\Large{Bibliography}\\
+\footnotesize{Author's publications on Geography, Environment, GIS and Landscape Studies:}
+\vspace{1em}
+\nocite{*}
+\printbibliography[heading=none]
+
+\end{document}
+
+\end{document}
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
