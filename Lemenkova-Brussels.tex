@@ -1,0 +1,909 @@
+%!TEX program = xelatex
+%\documentclass{beamer}
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={	
+	breaklinks = true, 
+	pdfauthor={Lemenkova Polina}, 
+	pdfsubject={Preentation}, 
+	pdfcreator={Lemenkova Polina}, 
+	pdfproducer={Lemenkova Polina}, 
+	colorlinks=true,
+	linkcolor=Tomato, 
+	citecolor=DeepPink3, 
+%	urlbordercolor=cyan,
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+\usepackage{blindtext}
+\usetheme{Execushares}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{csquotes}
+\usepackage{graphicx} % to insert figures
+\usepackage{multicol} % to split itemization
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+backend=biber, 
+%	style = numeric,
+%	style=ieee,
+%	style=nature,
+%	style=science,
+%	style=apa,
+%	style=mla,
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Brussels.bib}%   \tiny \scriptsize \footnotesize \normalsize
+\renewcommand*{\bibfont}{\scriptsize} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+% -------------------- FOOTNOTE *** START------------------------
+% \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=3.0ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+\usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip-6pt%
+}
+\makeatother
+
+% -------------------- FOOTNOTE *** END------------------------
+
+% --------------------- TOC *** START -----------------------------------------
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{magenta!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{Green1}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+  
+% --------------------- TOC *** END -----------------------------------------
+
+\setbeamerfont{frametitle}{size=\tiny}
+
+\title[Urban Sprawl in Estonia. Presented at: Universit\'{e} libre de Bruxelles, Belgique. 03/10/2012.]{Urban Sprawl in Estonia}
+\subtitle{Contributed talk \\
+presented at Seminar\\
+\emph{Unit\'{e} Analyse G\'{e}ospatial (ANAGEO).\\
+Institut de Gestion de l'Environnement \\
+et d'Aménagement du Territoire (IGEAT)\\
+Facult\'{e} de Sciences\\
+Universit\'{e} libre de Bruxelles}\\
+Brussels, Belgium}
+
+\author[Polina Lemenkova]{\large{Polina Lemenkova}}
+\date{October 03, 2012}
+
+\setcounter{showSlideNumbers}{1}
+
+\begin{document}
+	\setcounter{showProgressBar}{0}
+	\setcounter{showSlideNumbers}{0}
+
+	\frame{\titlepage}
+
+%\section*{Outline}
+%\begin{frame}
+ % \small{         \tableofcontents}
+%\end{frame}
+
+\section*{Table of Content}
+\begin{frame}{Table of Content}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.5\textwidth}
+            \small{\tableofcontents[sections=1-9]}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \small{\tableofcontents[sections=10-20]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Summary}
+\begin{frame}\frametitle{Pärnu County}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8cm]{P1.jpg}
+\end{figure}
+\footnotesize{Estonia within the EU (left). District of Pärnu in Estonia (right)}
+Research Questions:
+\begin{itemize}
+	\item What are the major trends in the current recreation activities in Baltic Sea ?
+	\item How the tourism in the post-USSR countries (Estonia) is developing after the 1990s ?
+	\item Is the an environmental balance between the nature and human activities ?
+\end{itemize}
+\end{frame} 
+
+\section{Study Area}
+\subsection{Geographic Settings}
+\begin{frame}\frametitle{Geographic Settings}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.0cm]{P2.jpg}
+\end{figure}
+The region of Pärnu is valuable environmental part and a unique recreational area of Estonia. 
+\begin{itemize}
+	\item Mild marine climate condition
+	\item Precious coniferous forests
+\end{itemize}
+\end{column}
+%
+\begin{column}{0.6\textwidth}
+\vspace{3em}
+
+Landscapes: 
+\begin{itemize}
+	\item richness, 
+	\item biodiversity, 
+	\item variability 
+	\item unique composition structure.
+\end{itemize}
+Example of land cover types:
+\begin{itemize}
+	\item mixed forests
+	\item broadleaved forests,
+	\item coniferous forests,
+	\item agricultural landscapes, 
+	\item wooded meadows,
+	\item heathland, 
+	\item bogs and moors,
+	\item shrublands,
+	\item grasslands, 
+	\item birch-dominating coastal areas
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame} 
+
+\subsection{Pärnu Bay}
+\begin{frame}\frametitle{Pärnu Bay}
+\vspace{3em}
+ What is specific for Pärnu Bay as a tourism destination place ?
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.5cm]{P3.jpg}
+\end{figure}
+Photos: author.
+\small{
+\begin{itemize}
+	\item environmental value of the region (e.g. pine forests) 
+	\item advantageous location on the Baltic coasts
+	\item facilities for tourism and long-year tradition
+\end{itemize}
+}
+\end{frame} 
+
+\section{Research Aim}
+
+\begin{frame}\frametitle{Research Aim}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\vspace{3em}
+ 
+\begin{alertblock}{Spatial extent}
+Spatial extent of the study area is limited to the surroundings of P\"{a}rnu County.
+\end{alertblock}
+
+\begin{alertblock}{GIS Analysis}
+first, a geographic (GIS) analysis of land cover types in the coastal landscapes of western Estonia, P\"{a}rnu surroundings at two dates (\alert{1992} and \alert{2006})
+\end{alertblock}
+
+\begin{block}{IDRISI GIS}
+second, an overview of the technical methods enabling image processing by different tools of IDRISI GIS software"
+\end{block}
+
+\begin{block}{Landsat TM Images}
+Research methods consists in processing and classification of satellite remote sensing data Landsat TM aimed at land cover types mapping.
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.5cm]{F2.jpg}
+\end{figure}
+
+\begin{block}{Study Area}
+The research region encompasses coastal area of Baltic Sea: south-western Estonia
+\end{block}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Data}
+\begin{frame}\frametitle{Data}
+	The research data used in this project include vector and raster types of data:
+
+	\begin{block}{Raster data}
+Thematic raster layers GeoTiff Landsat TM including scenes taken on \alert{18 June 2006} and \alert{03 June 1992}. \\
+Both images cover summer months, thus enabling vegetation coverage to be easily recognized. The images were downloaded from the Earth Science Data Interface, Global Land Cover Facility.
+	\end{block}
+
+	\begin{block}{Vector Data}
+CORINE vector layers (abbreviation from \alert{Coordination of Information on the Environment}), developed by the European Environmental Agency, EU Commission). CORINE data were stored in ESRI format shape-files. They contain information on land use types provided by the Estonian Land Board and available at the University of Tartu
+	\end{block}
+\end{frame}
+
+\section{Methods}
+\subsection{Flowchart}
+\begin{frame}\frametitle{Methods}
+\vspace{3em}
+	\begin{block}{GIS Projects}
+The GIS projects has been organized and executed in two different software: \alert{Arc GIS 10.0} and \alert{IDRISI GIS Andes 15.0}.
+	\end{block}
+
+	\begin{block}{Landsat TM}
+The raster processing GIS approach and classification was applied in the current work towards Landsat TM two images."
+	\end{block}
+
+	\begin{block}{ISOCLUST}
+The method is based on the ISOCLUST unsupervised classification executed by means of IDRISI GIS.
+	\end{block}
+
+	\begin{block}{Machine Learning}
+The ISOCLUST available in IDRISI GIS performs the most of the image processing workflow in semi-automatically regime
+	\end{block}
+	
+	\begin{block}{Land Cover Classes}
+It results in a map with pre-defined number of 16 land class categories which enable to compare two different stages of landscape development: \alert{'earlier'} and \alert{'now'}.
+	\end{block}
+
+	\begin{block}{Objectivity}
+The ISOCLUST method was chosen, since it enables to avoid subjectivity in classification.
+	\end{block}
+
+\end{frame}
+
+\subsection{IDRISI GIS}
+\begin{frame}\frametitle{IDRISI GIS}
+
+	\begin{block}{IMPORT}
+Initially, the data of Landsat TM were imported to IDRISI Andes GIS from \alert{GeoTIFF} format to IDRISI specific format \alert{.rst}, through \alert{Data Provider Format} import.\\ As each Landsat TM scene is a multispectral image with several spectral bands, each band was displayed and visualized as a separate image.
+	\end{block}
+
+	\begin{block}{COLOR COMPOSITE}
+Afterwords, the images were composed using \alert{Color Composite} function. The combination of three bands was made as a single color composite image (bands 2-3-4). This composition displays urban areas distinctively, which enables to clearly recognize them
+	\end{block}
+
+	\begin{block}{PROJECT}
+Then data were organized in a created project in \alert{IDRISI GIS}.
+	\end{block}
+
+\end{frame}
+
+\subsection{Image Processing}
+\begin{frame}\frametitle{Image Processing}
+\vspace{3em}
+	\begin{examples}{Image Processing}
+	\end{examples}
+	\begin{figure}[H]
+		\centering
+			\includegraphics[width=9.0cm]{F8.jpg}
+	\end{figure}
+\end{frame}
+
+\subsection{ISOCLUST Algorithm}
+\begin{frame}\frametitle{ISOCLUST Algorithm}
+\vspace{3em}
+	\begin{block}{Classification}
+The next step includes application of chosen classification method of ISOCLUST approach towards images processing. ISOCLUST classifier technique is based on the histogram peak selection technique"
+	\end{block}
+
+	\begin{block}{Analysis of Spectral Signatures}
+The ground principle of the classification consists in the analysis of spectral signatures that are individual for each land cover class.
+	\end{block}
+
+	\begin{block}{Analysis of Spectral Reflections}
+The analysis of spectral reflections strongly depends on the local surface features: texture, structure, color, etc.
+	\end{block}
+
+	\begin{block}{Spectral Signatures}
+Information on spectral signatures is received by the satellite sensors and recorded on the images (in this case, Landsat TM). This information is used for the image classification.
+	\end{block}
+	
+	\begin{examples}{Information Extraction:}
+Using individual characteristics of objects, derived from the multispectral Landsat TM bands, information from the images was extracted, analyzed and used for land classification
+	\end{examples}
+
+\end{frame}
+
+\subsection{Land Cover Types}
+	\begin{frame}\frametitle{Land Cover Types}
+	\vspace{3em}	
+	\begin{figure}[H]
+		\centering
+			\includegraphics[width=6.0cm]{F9.jpg}
+	\end{figure}
+	
+	\begin{block}{Image Comparison}
+Changes in land cover types in selected Estonian landscapes are shown on the histograms on 1992 and 2006.
+	\end{block}
+
+	\begin{block}{2006 vs 1992}
+ In 2006 the urban area became larger than in 1992 (land cover class "3" on the histogram. This can be explained by various reasons.
+	\end{block}
+
+	\begin{block}{Impact Factors}
+The most important reason is intense suburbanization $=>$ the major process in the current urban dynamics of modern Estonia: intensive construction of summer homes and cottages in the coastal area.
+	\end{block}
+
+	\begin{block}{Buildings}
+New buildings and houses created along the P\"{a}rnu Bay, $=>$ increased area of urban areas.
+	\end{block}
+\end{frame}
+
+\section{Results}
+\begin{frame}\frametitle{Image Processing}
+
+	\begin{block}{ISOCLUST}
+ISOCLUST classification of the images enabled to create thematic maps of the same study areas
+	\end{block}
+
+	\begin{block}{CORINE}
+According to CORINE, there are 16 land cover types typical for the study area.
+	\end{block}
+
+	\begin{figure}[H]
+		\centering
+			\includegraphics[width=9.0cm]{F10.jpg}
+	\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Land Cover Classes}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\vspace{3em}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\small{\begin{itemize}
+	\item discontinuous urban fabric
+	\item industrial or commercial units
+	\item green urban areas
+	\item pastures
+	\item complex cultivation patterns
+	\item agriculture lands with grass
+	\item broad-leaved forest
+	\item coniferous forest
+	\item mixed forest
+	\item natural grassland
+	\item moors and heathlands
+	\item transitional woodland
+	\item beaches, dunes, sand
+	\item island marshes
+	\item water bodies
+	\item Baltic Sea
+\end{itemize}}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.5cm]{F11.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Landscapes}
+\begin{frame}\frametitle{Landscapes}
+
+\begin{block}{South-West Estonia: Unique Environment}
+South-west Estonia is known for unique environmental settings: mild maritime climate, broad beaches, coniferous pine forests on the coastal zone
+\end{block}
+
+\begin{alertblock}{Landscapes}
+Landscapes here are rich and world-known for their diversity, variability, unique composition structure and high esthetic value
+\end{alertblock}
+
+\begin{examples}{Types of Landscapes}
+Landscape types include, for example, mixed and broadleaved forests, traditional agricultural semi-natural landscapes, wooded meadows, plant communities, heathland, bogs and moors, complex anthropogenic areas with different land use structure, shrubland, grasslands, birch-dominating coastal areas and flooded meadows
+\end{examples}
+
+\end{frame}
+
+\subsection{Baltic Sea Coasts}
+\begin{frame}\frametitle{Examples of Landscapes: Baltic Sea Coasts}
+\begin{examples}{Landscapes:}
+Baltic Sea Coasts. Photos: author.
+\end{examples}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F3.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Marine Landscapes: P\"{a}rnu}
+\begin{frame}\frametitle{Marine Landscapes: P\"{a}rnu Coasts}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F4.jpg}
+\end{figure}
+\begin{examples}{Marine Landscapes:}
+ P\"{a}rnu Coasts. Photos: author.
+\end{examples}
+\end{frame}
+
+\subsection{Lacustrine Landscapes: Luitemaaa}
+\begin{frame}\frametitle{Lacustrine landscapes: Luitemaa}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F5.jpg}
+\end{figure}
+\begin{examples}{Lacustrine landscapes:}
+Luitemaa Nature Conservation Area. Photos: author.
+\end{examples}
+\end{frame}
+
+\subsection{Forest Landscapes: Luitemaa}
+\begin{frame}\frametitle{Forest landscapes: Luitemaa}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F6.jpg}
+\end{figure}
+\begin{examples}{Forest Landscapes:}
+Luitemaa Nature Conservation Area. Photos: author.
+\end{examples}
+\end{frame}
+
+\section{Human Factors}
+\subsection{Facts}
+\begin{frame}\frametitle{Human Factors}
+
+\begin{block}{Tourism Activities}
+P\"{a}rnu region is traditionally popular as a \alert{tourism destination} due to favorable combination of factors:
+\begin{itemize}
+	\item geographic value: advantageous location on the coasts of Baltic Sea
+	\item social value: good facilities for the tourism and tourism reputation
+	\item environmental value: unique nature (marine landscapes, pine forests)
+\end{itemize}
+\end{block}
+
+\begin{block}{Agricultural Activities}
+P\"{a}rnu region is also known for traditional \alert{agricultural activities} (field crops cultivation, intensive planting, etc), as well as extensive \alert{housing development} in the rural area.
+\end{block}
+
+\begin{alertblock}{Human Pressure}
+All these factors create additional human pressure on the local ecosystems and may lead to fragmentation of the landscape structure.
+\end{alertblock}
+\end{frame}
+
+\subsection{Ecohouses Construction}
+\begin{frame}\frametitle{Ecohouses Construction}
+\vspace{3em}
+\begin{examples}{Ecohouses Construction}
+Photos: author.
+\end{examples}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F7.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Examples: Eco-housing}
+\begin{examples}{Eco-housing}
+Photos: author.
+\end{examples}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F12.jpg}
+\end{figure}
+\end{frame}
+         
+\section{Tourism}
+\begin{frame}\frametitle{Tourism Development}
+\vspace{3em}
+%\begin{figure}[H]
+%	\centering
+%		\includegraphics[width=5.0cm]{PH.jpg}
+%\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.0cm]{PH.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=5.0cm]{PG.jpg}}
+\end{figure}
+Old picture of Pärnu beach. 1920-30s. Source: www.theeuropeanlibrary.org\\
+Historical development of the touristic system in Estonia in early XX. Quick overview:
+\begin{enumerate}
+	\item Late XIX: the history of Estonian Baltic tourism begins;
+	\item \nth{1} World War 1914-18: resort development restricted;
+	\item 1920s: quick re-development of tourism (Rannapark restored, new mud baths constructed).
+	\item Late 1920-30s: Estonian hotels \& restaurants - popular destinations in Baltic Europe.
+	\item Active advertisements of Estonian resorts in the tourist literature of Europe.
+	\item 1930s: Active development of tourism
+	\item  Good railway communication with Germany, Latvia \& Lithuania $=>$ facilitated easy access to the Baltic coasts in 1920s
+	\item Pärnu region widely visited by international guests: Scandinavia, Poland, Germany, UK.
+\end{enumerate}
+\end{frame} 
+
+\subsection{Period 1920-90s}
+\begin{frame}\frametitle{Soviet Period (1920-90s)}
+\vspace{3em}
+Soviet period:
+\begin{enumerate}
+	\item the tourism industry in Baltic Sea region has been diminished;
+	\item restrictions on foreign tourism in Pärnu region;
+	\item poor management in the Soviet planned economy bad service facilities \& undeveloped hotelier tradition;
+	\item The business of private hotels and restaurants diminished drastically;
+	\item The existing touristic hotels were reconstructed and state-controlled;
+	\item environmental protection: the coasts and beaches in Pärnu region were protected as “public health zone” for recreation;
+	\item environmental protection: only selected activities were permitted and vehicles prohibited;
+	\item reconstruction and maintenance of the selected hotels;
+	\item The most precious areas of the Baltic Sea were protected as summer vacation places;
+\end{enumerate}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6.0cm]{P5.jpg}
+\end{figure}
+\end{frame} 
+
+\subsection{Cases}
+\begin{frame}\frametitle{Case Example: Cosmonauts Hotel}
+\vspace{3em}
+\small{The Cosmonauts Hotel, a former Soviet resort for workers of space industry (www.kosmonautika.ee): maintaining history and cosmos hotel design. Famous soviet cosmonaut Y. Gagarin was guest in this hotel. Photos: author.}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{P4.jpg}
+\end{figure}
+\begin{itemize}
+	\item 1990s $=>$ great economical and sociopolitical reformation of Estonia.
+	\item Estonia survived a difficult period of restructuring in economic and social system.
+	\item Changes in the socio-economic structure, administrative regime, touristic cluster.
+\end{itemize}
+\end{frame} 
+
+\subsection{Period 1990-2000}
+\begin{frame}\frametitle{Socio-Economic Developmen}
+\vspace{3em}
+Rapid socio-economic development in Estonia after 1990s caused
+\begin{itemize}
+	\item active formation of the middle-class society
+	\item personal economic growth
+	\item new style of life, increased well-being
+	\item increased number of cars and private property
+	\item intensive constriction of private hotels, hostels, guesthouses, cottages for rent...
+\end{itemize}
+Consequences of globalization: Estonia – a part of world society
+\begin{itemize}
+	\item tourist flows into various country destinations
+	\item increasing world trade development
+	\item internationalization of production of food, goods, etc 
+	\item improved hotel management system
+	\item improved touristic services
+	\item rapid exchange of information \& computerization
+	\item standardization of touristic guides
+\end{itemize}
+\end{frame} 
+
+\subsection{Modern Trends}
+\begin{frame}\frametitle{Modern Trends}
+Increase in real estate in Estonia after the 1990s and statistics for Pärnu county (1995-2002):
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{P6.jpg}
+\end{figure}
+Modern trends in tourism in Pärnu area
+\begin{itemize}
+	\item Regaining the independency of Estonia has revolutionized Baltic tourism.
+	\item New, revitalized era for tourism industry in Estonia
+	\item Tourism is now based on privatization and foreign investments (from Finland or Germany).
+	\item Modern, "western-looking" and quickly constructed hotels are now being created
+\end{itemize}
+\end{frame} 
+
+\section{Real Estate}
+\begin{frame}\frametitle{Real Estate Development}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{P7.jpg}
+\end{figure}
+Privatization and reconstruction – other trends in modern Estonia
+\begin{itemize}
+	\item Since 1990s, land management system and urban development of Estonia changed reflecting  socio-economic and political situation
+	\item Currently, Estonia has intensive privatization process caused by changes in the state regulations on property and ownership.
+	\item Naturally, it caused intensification of construction of the privately hold hotels and summer cottages, built both for personal (family based) needs for spending summer vacations, and for rent to incoming tourists, domestic and international.
+	\item Nowadays, suburbanization and development of summer cottages become the major evident processes in current urban dynamics of modern Estonia.
+\end{itemize}
+\end{frame} 
+
+\subsection{Eco-Houses}
+\begin{frame}\frametitle{Eco-Houses}
+\vspace{3em}
+\small{Examples of the new trends in properties reconstruction: eco-houses built in the forest area: }
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.5cm]{P8.jpg}
+\end{figure}
+\small{New eco-style houses, Reiu village, Pärnu County, Estonia. Photos: author}.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.5cm]{P12.jpg}
+\end{figure}
+\end{frame} 
+
+\section{Recreation Zones}
+\subsection{Forest Areas}
+\begin{frame}\frametitle{Examples. Photos: author.}
+\vspace{3em}
+Rural environmental tourism: eco-style new cottages built since 1990s in Pärnu surroundings. Photos: author.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{P9.jpg}
+\end{figure}
+\end{frame} 
+
+\begin{frame}\frametitle{Examples. Photos: author.}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{P10.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Examples. Photos: author.}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{P11.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Marine Areas}
+\begin{frame}\frametitle{Marine Recreation. Photos: author.}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{P13.jpg}
+\end{figure}
+\end{frame}
+ 
+\subsection{Tourists}
+\begin{frame}\frametitle{Tourists Origin and Frequency}
+Who are the main frequent tourists and guests in Estonia ?
+\begin{itemize}
+	\item Dominating nations Russians and Finnish (for the whole country);
+	\item Finnish tourists traditionally visit western Estonia (Baltic Sea coasts);
+	\item Russians preferably concentrate near Russian border, in eastern Estonia, on the Finnish Gulf;
+	\item These two nations are notably the most representing tourists, while others visit Estonia significantly lesser;
+\end{itemize}
+Who are the main frequent tourists and guests in Estonia ?
+\begin{itemize}
+	\item a bit of statistics on touristic portrait in Pärnu:
+	\item About 90,000 foreign tourists/year visit Pärnu. 
+	\item of which about 50,000 are Finns,
+	\item followed by 7,200 Swedes,
+	\item 4,500 Russians,
+	\item 2,700 Americans,
+	\item and ca. 17,100 of other nationalities.
+\end{itemize}
+\end{frame}
+
+\section{Perspectives}
+\begin{frame}\frametitle{Problems}
+Difficulties in development tourism in Estonia
+\begin{itemize}
+	\item Main problem in the touristic cluster in Estonia consists in its specific location on the Baltic Sea with cold climate in summer period. 
+	\item It causes low popularity among tourists, comparing to Mediterranean.
+	\item low investments into tourism (comparing to other European countries) due to the ongoing development of the country.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{P14.jpg}
+\end{figure}
+\end{frame}
+
+\subsection{Consequences}
+\begin{frame}\frametitle{Consequences: Demand for popularity}
+Why does Estonia as a touristic place has lack of popularity, comparing to other countries? Lack of popularity of Estonia among other nations, (comparing to touristic giants, like France or Italy) can be explained by various factors:
+\begin{itemize}
+	\item Not enough amount of world-level hotels, possibilities for recreation and spa-centers\\ (e.g. not as many as in Finland);
+	\item Weather and specific climatic conditions: cool waters in Baltic Sea (even in summer); \\windy and cold winters;
+	\item Lack of world-known heritage places;
+	\item Under-developed touristic cluster, e.g. bad service facilities, caused by historical reasons (now in process of growth and development).
+\end{itemize}
+As a result:
+\begin{itemize}
+	\item Touristic cluster now rapidly develops in new directions: \\Soviet touristic areas are either abandoned or re-constructed;
+	\item New hotels are being actively created, Intensive privatization of summer houses is ongoing;
+	\item New eco-style and modern design is dominating in the touristic hotels;
+\end{itemize}
+\end{frame}
+
+\subsection{Examples}
+\begin{frame}\frametitle{Examples. Photos: author.}
+\vspace{3em}
+Examples of the today's tourism in Häädemeeste.\\
+Private new Estonian Spa Hotel (Lepanina Hotell) created on the Baltic Sea coast.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{P15.jpg}
+\end{figure}
+A successful combination of the following factors:
+\begin{itemize}
+	\item modern European hotel design;
+	\item location on the seaside with maritime landscapes;
+	\item coniferous forests in the near - make it a valuable health resort area. 
+\end{itemize}
+\end{frame}
+
+\subsection{Perspectives}
+\begin{frame}\frametitle{Perspectives}
+\vspace{3em}
+ Perspectives for the tourism development in Estonia include following points:
+\begin{itemize}
+	\item Redirection towards the eco-style sustainable tourism;
+	\item Family business, family-runed hotels / hostels, which often implies direct host-guest interactions.
+	\item Active development of modern world-class hotels
+	\item Intensive reconstruction and modernization of the old, Soviet-style hotels
+	\item Organized group sportive activities (e.g., biking)
+	\item Seaside recreation activities and small business
+	\item Developing of camping and low-cost recreation
+	\item Construction of summer cottages for rent
+	\item Local-scale tourism, a special benefit for Estonia
+	\item Organized tours to the Natural Parks.
+\end{itemize}
+What are the main trends in the Estonian tourism nowadays ?
+\begin{itemize}
+	\item Expanding touristic dimensions is highly profitable for the country (evident income of financial flows);
+	\item Now tourism in Estonia becomes eco-oriented, often family-runned small business;
+	\item Actively developed cottages for rent, restructured and renovated old hotels;
+\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}\frametitle{Conclusion}
+This presentation highlighted following issues:
+\begin{itemize}
+	\item current socio-economic development of Estonia
+	\item post-socialistic heritage of Estonia as ex-USSR country 
+	\item today's development of tourism in Pärnu region
+	\item cultural and environmental changes in the country
+\end{itemize}
+Methods included:
+\begin{itemize}
+	\item Literature review
+	\item Analysis of the statistical data
+	\item Fieldwork
+\end{itemize}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+\vspace{3em}
+\emph{Thank you for attention !}\\
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F13.jpg}
+\end{figure}
+\small{Photo: author.}\\
+
+\footnotesize{
+Acknowledgement: \\
+\begin{itemize}
+	\item Current work has been during author's 2-month short research visit at the University of Tartu, Faculty of Geography. This included fieldwork, excursions in Pärnu area, research work with GIS and statistical data.
+	\item Funding of this research was provided by the DoRa Scholarship, European Social Fund (ESF).
+	\item The University of Tartu provided: \alert{CORINE} layers, \alert{IDRISI GIS} 15.0, \alert{ArcGIS} 10.0.
+	\item I cordially thank the assistance in organizing the fieldwork 
+	\begin{itemize}
+		\item Mrs. Irja Pede, employee at Häädemeeste municipality,
+		\item Mrs. Merle Looring, a lecturer of the University of Tartu, Pärnu College, \\
+		Department of Ecosystem Management, 
+		\item Prof. Dr. J. Roosaare, a lecturer of the University of Tartu.
+	\end{itemize}
+\end{itemize}
+}
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+
+\section{Bibliography}
+\begin{frame}[allowframebreaks]\frametitle{Bibliography}
+\vspace{3em}
+\footnotesize{Author's publications on Cartography, Mapping, Geography, Environment, GIS and Landscape Studies:}
+	\nocite{*}
+	\printbibliography[heading=none]
+\end{frame}
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
