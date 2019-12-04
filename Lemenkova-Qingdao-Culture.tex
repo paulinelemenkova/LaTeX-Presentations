@@ -1,0 +1,808 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={	
+	breaklinks = true, 
+	pdfauthor={Lemenkova Polina}, 
+	pdfsubject={Preentation}, 
+	pdfcreator={Lemenkova Polina}, 
+	pdfproducer={Lemenkova Polina}, 
+	colorlinks=true,
+	linkcolor=NavyBlue, 
+	citecolor=NavyBlue, 
+%	urlbordercolor=cyan,
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+\usetheme{KansaiDebian}
+
+%\usecolortheme{orchid} %, whale
+%\useinnertheme{circles}
+
+%\useoutertheme{foo}
+%\usecolortheme{foo}
+
+%% fontsize settings
+\setbeamerfont{framesubtitle}{parent=frametitle,size=\normalsize}
+
+%% color settings
+
+%\usecolortheme{structure} % sidebartab
+%\useoutertheme{infolines} % shadow %miniframes split sidebartab
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+%\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{palatino}
+\usepackage{multicol} % to split itemization
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% -------------------- FOOTNOTE *** START------------------------
+% \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=3.0ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+\usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip-4pt%
+}
+\makeatother
+
+% -------------------- FOOTNOTE *** END------------------------
+
+% --------------------- TOC *** START -----------------------------------------
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{magenta!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{VioletRed3}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+  
+% --------------------- TOC *** END -----------------------------------------
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{QingdaoCulture.bib}%  \scriptsize \footnotesize
+\renewcommand*{\bibfont}{\tiny} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{palatino}
+\usepackage{multicol} % to split itemization
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------------
+
+\title[\textcolor{Maroon4}{Polina Lemenkova} Treasures of Chinese Culture: Painting and Opera. OUC, Qingdao, China, 20/12/2017]{Treasures of Chinese Culture: Painting and Opera}
+\subtitle{\small{
+Presented at the\\
+Seminar on the Course \emph{'Introduction to Chinese Culture'},\\
+ code 000K0006, together with: \\
+ Soonvilerth Phonesaly, Phetphanthong Sommali, Fang Xin, Honew Shwe.\\
+ \emph{Ocean University of China (OUC)}\\
+Qingdao, China}
+}
+\author[Polina Lemenkova]{Polina Lemenkova}
+
+\date{December 20, 2017}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Table of Content}
+\begin{frame}{Table of Content}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.5\textwidth}
+            \tiny{\tableofcontents[sections=1-2]}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \tiny{\tableofcontents[sections=3-5]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Traditional Chinese Painting}
+\begin{frame}\frametitle{Traditional Chinese Painting}
+\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+			\begin{figure}[H]
+				\centering
+					\subfloat {\includegraphics[width=4.3cm]{F2.jpg}}
+						\vspace{1mm}
+					\subfloat {\includegraphics[width=4.3cm]{F3.jpg}}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\vspace{4em} 
+				\begin{itemize}
+					\item Painting and calligraphy are of the same origin and are regarded as two treasured arts in China.
+					\item They are both liked with free movement and distribution of lines in expression.
+					\item Together with music and chess, they formed the four skills for a learned scholar to pursue in ancient China.
+					\item They have also been held as a good exercise to temper one’s character and cultivate one’s personality.
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{History of Chinese Painting}
+\begin{frame}\frametitle{History of Chinese Painting}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+		\small{
+		\begin{alertblock}{History and Tradition}
+Chinese painting has a long history and excellent tradition. Through thousands of years, it has developed its own style, its own techniques, and a complete system of art which expresses the aesthetics of the nation.
+		\end{alertblock}
+
+		\begin{block}{Unique Style and Features}
+Through its unique style and features, it has established supremacy in the world of art. Chinese painting emphasizes the point that 'Inspiration comes from close observation and understanding of Nature'.
+		\end{block}
+
+		\begin{alertblock}{Quintessence of Chinese Culture}
+Traditional Chinese painting is the art of painting on a piece of Xuan paper or silk with a Chinese brush soaked with black ink or colored pigments. It is called one of the three 'quintessence of Chinese culture.
+		\end{alertblock}
+		}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.9cm]{F5.jpg}
+\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+	
+\end{frame}
+
+\subsection{The Character of Chinese Painting}
+\begin{frame}\frametitle{The Character of Chinese Painting}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+	\small{
+	\begin{alertblock}{Ink}
+The character of Chinese painting is closely bound up with the nature of the medium. The basic material is ink. Chinese ink is a wonderful substance capable of an immense range and an extraordinary beauty of tone.
+	\end{alertblock}
+
+	\begin{block}{Brush: Hair of Goats, Deer, or Wolves}
+Painter uses a pointed-tipped brush made of hair of goats, deer or wolves set in a shaft of bamboo. He paints on a length of silk or a sheet of paper, the surface of which is absorbent, allowing no erasure or correction.
+	\end{block}
+
+	\begin{alertblock}{Color}
+Color is sometimes added to make the effect more true to life, but the ink-drawing remains almost always the foundation of the design. Color is not formal element in the design as in Western art.
+	\end{alertblock}
+	}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F6.jpg}
+\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Structure of Chinese Painting}
+\begin{frame}\frametitle{Structure of Chinese Painting}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+	\small{
+	\begin{alertblock}{Composision}
+	Because it lacks a single focal point, Chinese artists are free to paint on long strips of paper (or silk) and can compose pieces of amazing complexity in a rather comic book-like manner. Artists could paint a whole chain of pictures to depict continuous scenery.
+	\end{alertblock}
+	
+	\begin{block}{Scrolls}
+	Chinese paintings are usually in a form of hanging pictures or horizontal scrolls. In both cases they are normally kept rolled up.
+	\end{block}
+
+	\begin{alertblock}{Symmetry, Balance, Proportion}
+	Paintings of great length are unrolled bit by bit and enjoyed as a reader enjoys reading a manuscript. There is no fixed or standard viewpoint or perspective. 
+	\end{alertblock}
+	}	
+		\end{column}
+			\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F7.jpg}
+\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+	
+\end{frame}
+
+\subsection{Chinese Calligraphy Technique}
+\begin{frame}\frametitle{Chinese Calligraphy Technique}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+	\small{
+	\begin{alertblock}{Technique}
+	Chinese technique admits no correction. Therefore, the artist must know in advance \alert{what} he is going to paint and \alert{how} to arrange objects on the picture. 
+	\end{alertblock}
+
+	\begin{block}{Plan}
+	The painter plots a design of painting: it is already in his mind before being actually painted. Having imaged what he going to paint, he paints it quickly by assured strokes on the silk. However, it requires confidence, speed, and a virtuous mastery of technique acquired only by long practice.
+	\end{block}
+	
+	\begin{block}{View Point}
+	Many pictures include objects that are both far away and near, but they are depicted as being of the same size. It is more likely that the artists were trying to paint life exactly as they saw it.
+	\end{block}
+	}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=4.9cm]{F1.jpg}
+\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+
+
+	
+\end{frame}
+
+\subsection{Painting: Topics}
+\begin{frame}\frametitle{Painting: Topics}
+
+	\begin{alertblock}{5 Popular Topics}
+	The most popular topics have been human figures, landscapes, animals, fishes, birds and flowers. The last two being frequently combined in 1 group as 'flower and bird painting'.
+	\end{alertblock}
+
+	\begin{block}{3 Major Classifications}
+	Figure painting, landscape painting, birds and flowers painting are the three major classifications according to subject matter.
+	\end{block}
+
+	\begin{alertblock}{Man: Confucian period}
+	Figure painting, which reached maturity during the Warring States Period, flourished against a Confucian background, illustrating moralistic themes.
+	\end{alertblock}
+	
+	\begin{block}{Man:  Han to Tang Dynasties}
+	From the Han Dynasty to the end of the Tang Dynasty, the human figure occupied the dominant position in Chinese painting, as it did in pre-modern European art.
+	\end{block}
+	
+\end{frame}
+
+\subsection{Landscape Painting}
+\begin{frame}\frametitle{Landscape Painting}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+%\small{
+	\begin{alertblock}{Focus}
+	Landscape painting is focused on mountains and rivers, which stand for nature. Landscape painting: mountain and water occupy the most important place in a piece of painting. Nature is predominant, and human beings are only a humble part of it. Non-essential elements of landscape and people are omitted or painted as embellishment
+	\end{alertblock}
+
+	\begin{alertblock}{Man-Nature}
+	This concept of the man’s relationship with nature was especially stressed in paintings of the Song Dynasty, which greatly influenced later landscape painters.
+	\end{alertblock}
+%}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+			\begin{figure}[H]
+				\centering
+					\subfloat {\includegraphics[width=4.7cm]{F4.jpg}}
+						\vspace{1mm}
+					\subfloat {\includegraphics[width=4.7cm]{F8.jpg}}
+			\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+
+
+
+	
+\end{frame}
+
+\subsection{Symbolism in Chinese Painting}
+\begin{frame}\frametitle{Symbolism in Chinese Painting}
+
+	\begin{alertblock}{Symbolism}
+	Symbolism used in Chinese landscape painting often puzzles Western eyes: mountains, rivers, plants, animals, birds, flowers can all be chosen for their traditional association as much as for their inherent beauty.
+	\end{alertblock}
+	
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.5cm]{F10.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=5.6cm]{F11.jpg}}
+\end{figure}
+	
+\end{frame}
+
+\subsection{Flowers of Four Seasons}
+\begin{frame}\frametitle{Flowers of Four Seasons}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+	%			\vspace{4em}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.0cm]{F9.jpg}
+				\end{figure}
+	\small{
+	\begin{block}{Flowers of Four Seasons}
+\begin{itemize}
+	\item \alert{peony}: richness and honors;
+	\item \alert{lotus} - purity: it comes out of the mire without being smeared;
+	\item \alert{chrysanthemum}: elegance, righteousness and longevity;
+	\item \alert{prunes}: bravery and plentifulness.
+\end{itemize}
+	\end{block}
+	}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+	\begin{examples}{Hidden Symbols:}\\
+\begin{itemize}
+	\item [$\Rightarrow$]\alert{Pine}, represents uprightness and immortality. It is one of the three plants which are generally called 'Three Friends of Winter', the other two being bamboo \alert{bamboo} and \alert{plums}.
+	\item [$\Rightarrow$]\alert{Orchid}, a modest flower, is often identified with the high principles of the unassertive scholar or artist. 
+	\item [$\Rightarrow$]\alert{Prunes} are regarded as messengers of spring. 
+	\item [$\Rightarrow$]\alert{Crane} is believed to symbolize a long life.
+	\item [$\Rightarrow$]\alert{Fish} pronounced in Chinese stands for surplus, wealth and prosperity.
+	\item [$\Leftarrow$] Another much depicted group of flowers are 'Flowers of Four Seasons'.
+\end{itemize}
+		\end{examples}
+	
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Inspiration}
+\begin{frame}\frametitle{Inspiration}
+\footnotesize{
+	\begin{alertblock}{Associations}
+	Last but not least, Chinese painting is inseparably associated with literature and other arts, such as poetry and calligraphy. The painter’s carefully placed signature, inscription (often a poem) and seals are an integral part of the composition.
+	\end{alertblock}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.2\textwidth}
+	\begin{block}{Poetry}
+	Many of painters were poets; some, like Wang Wei, were equally distinguished in both arts. Consequently a \emph{painter} means more to the Chinese than to the Westerners: it symbolizes a highly educated man.
+	\end{block}
+			\end{column}
+			\begin{column}{0.8\textwidth}
+				\begin{figure}[H]
+					\centering
+						\includegraphics[width=9.0cm]{F12.jpg}
+				\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+}	
+
+\end{frame}
+
+\subsection{Birds and Flowers}
+\begin{frame}\frametitle{Birds and Flowers}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F13.jpg}
+\end{figure}
+\end{frame}
+
+\section{Part II: Chinese Opera}
+\begin{frame}\frametitle{Part II: Chinese Opera}
+	\small{
+	\begin{block}{Roots: Song Dynasty}
+	Traditional Chinese opera, is a popular form of drama and musical theatre in China with roots in early periods in China. It evolved gradually $>1000$ years, reaching its mature form in \nth{13} century during Song Dynasty.
+	\end{block}
+	}
+	
+	\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=6.1cm]{F17.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=4.6cm]{F14.jpg}}
+	\end{figure}
+
+	\begin{alertblock}{Mix of Arts}
+Chinese opera is a composite performance, a mix of various art forms existed in ancient China.
+	\end{alertblock}
+
+\end{frame}
+
+\subsection{Zhao Dynasty (319-351)}
+\begin{frame}\frametitle{Zhao Dynasty (319-351)}
+
+	\begin{alertblock}{Zhao Dynasty: Canjun Opera}
+An early form of Chinese drama is the Canjun Opera (Adjutant Play) originated from Later Zhao Dynasty (319-351). In its early form it was a simple comic drama involving only 2 performers: corrupted officer Canjun (adjutant) and jester Grey Hawk. These 2 characters in Canjun Opera are the forerunners of the fixed role categories of later Chinese opera.
+	\end{alertblock}
+	
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.0cm]{F15.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=5.5cm]{F16.jpg}}
+			\hspace{1mm}
+\end{figure}
+\end{frame}
+
+\subsection{Tang Dynasty}
+\begin{frame}\frametitle{Tang Dynasty}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+	\begin{alertblock}{Tang Dynasty}
+Various song and dance dramas developed during the Six Dynasties period. \\
+These forms of early drama were popular in Tang Dynasty where they further developed. \\
+By the end of Tang Dynasty Canjun Opera evolved into a performance with more complex plot and dramatic twists, and now involved at least \alert{four} performers.
+	\end{alertblock}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\begin{figure}[H]
+					\centering
+						\includegraphics[width=4.5cm]{F18.jpg}
+				\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+
+\subsection{Period From Song to Qing Dynasty}
+\begin{frame}\frametitle{Period From Song to Qing Dynasty}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+	\begin{alertblock}{Singing and Dancing}
+By Song Dynasty, Canjun Opera had become a performance that involved \alert{singing} and \alert{dancing}.
+	\end{alertblock}
+
+	\begin{block}{Speaking}
+	During Song Dynasty actors strictly adhered to speaking in Classical Chinese onstage, while during the Yuan Dynasty actors speaking or performing lyrics.
+	\end{block}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\begin{figure}[H]
+					\centering
+						\includegraphics[width=4.0cm]{F19.jpg}
+				\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Ming Dynasty (1368-1644)}
+\begin{frame}\frametitle{Ming Dynasty (1368-1644)}
+	\begin{alertblock}{Yuan Poetic Drama}
+	In the Yuan poetic drama, one person sang for the all four acts, but in the poetic dramas that developed from Nanxi during the Ming Dynasty (1368-1644), all the characters were able to sing and perform.
+	\end{alertblock}
+	
+	\begin{block}{Gao Ming}
+	A playwright Gao Ming late in the Yuan Dynasty wrote an opera called Tale of the Pipa which became highly popular, and became a model for Ming Dynasty drama as it was the favorite opera of the first Ming
+emperor Zhu Yuanzhang
+	\end{block}
+\end{frame}
+
+\subsection{A Tale of Pipa}
+\begin{frame}\frametitle{A Tale of Pipa}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+		\begin{column}{0.5\textwidth}
+
+	\begin{block}{Love Story}
+	Tale of the Pipa is the story of a loyal wife named Zhao Wuniang. Her husband Cai Yong was forced to marry another woman. Zhao, left destitute undertakes a 12-year search for him. During her long journey, she plays the pipa in order to earn money for living.
+	\end{block}
+
+	\begin{alertblock}{Happy End}
+	Two version: 
+		\begin{enumerate}
+			\item Original story version: Zhao was killed by a horse. Her husband Cai was killed (struck) by thunder lightning. 
+			\item Gao Ming's version: there is a happy end. She found her husband, and they lived happily together.
+		\end{enumerate}	
+	\end{alertblock}
+		\end{column}
+			\begin{column}{0.5\textwidth}
+				\vspace{2em}
+				\begin{figure}[H]
+					\centering
+						\includegraphics[width=5.0cm]{F20.jpg}
+				\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Structure of Beijing Opera}
+\begin{frame}\frametitle{Structure of Beijing Opera}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.0cm]{F21.jpg}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+	%			\vspace{4em} 
+				\begin{itemize}
+					\item In Beijing opera, traditional Chinese string and percussion instruments provide a strong rhythmic accompaniment to the acting.
+					\item The acting is based on allusion: gestures, footwork, and other body movements express such actions as riding a horse, rowing a boat, or opening a door.
+					\item Spoken dialogue is divided into recitative and Beijing colloquial speech, the former employed by serious characters and the latter by young females and clowns.
+					\item Character roles are strictly defined. Elaborate make-up designs portray which character is acting.
+					\item The traditional repertoire of Beijing opera includes more than 1,000 works, mostly taken from historical novels about political and military struggles.
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Period of 1912-1949}
+\begin{frame}\frametitle{Period of 1912-1949}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+				\vspace{3em} 
+				\begin{itemize}
+					\item At the turn of the \nth{20} century, Chinese students returning from abroad began to experiment with Western plays.
+					\item 1919 a number of Western plays were staged in China, and Chinese playwrights began to imitate this form.
+					\item The most notable of the new-style playwrights: Cao Yu (b. 1910). His major works: Thunderstorm, Sunrise, Wilderness, and Peking Man written between 1934 and 1940, were widely read in China.
+					\item In 1930s, theatrical productions performed by traveling Red Army cultural troupes were consciously used to promote party goals and political philosophy. By 1940s, theater was well established.
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+						\begin{figure}[H]
+				\centering
+					\subfloat {\includegraphics[width=4.5cm]{F22.jpg}}
+						\vspace{1mm}
+					\subfloat {\includegraphics[width=4.5cm]{F23.jpg}}
+			\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Period of 1949-1985}
+
+\begin{frame}\frametitle{Period of 1949-1985}
+As a popular art form, opera was the first from the arts to reflect changes in the China.
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.7\textwidth}
+	%			\vspace{4em}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=7.5cm]{F24.jpg}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.3\textwidth}
+				\vspace{3em} 
+				\begin{itemize}
+					\item In early years of the People's Republic of China, the development of Beijing opera was encouraged
+					\item Many new operas on historical and modern themes were written, and earlier operas continued to be performed
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Symbolism of Colors}
+\begin{frame}\frametitle{Symbolism of Colors}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.6\textwidth}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.5cm]{F25.jpg}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.4\textwidth}
+			\vspace{4em}
+				\begin{alertblock}{Colors Exaggeration and Symbolysation}
+	Exaggerated paints on opera performer's face which ancient warriors decorated themselves to scare the enemy are used in the opera. \\
+	Each color has a different meaning. They are used to symbolize a character's role, fate, and illustrate his emotional state and character. 
+				\end{alertblock}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Magic of Colors}
+\begin{frame}\frametitle{Magic of Colors}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+			\begin{figure}[H]
+				\centering
+				\subfloat {\includegraphics[width=4.5cm]{F26.jpg}}
+					\hspace{1mm}
+				\subfloat {\includegraphics[width=4.5cm]{F28.jpg}}
+			\end{figure}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\vspace{2em}
+				\begin{itemize}
+					\item \alert{White} symbolizes sinister, evil, crafty, treacherous, and suspicious. Any performer with white painted face usually takes the part of a villain of the show. The larger the white area, the crueler the role.							\item \alert{Green} symbolizes impulsive behavior, violence, no self-restraint or self-control. Red stands for bravery or loyalty.
+					\item \alert{Black} symbolizes boldness, fierceness, impartiality, rough.
+					\item \alert{Yellow} symbolizes ambition, fierceness, or intelligence. 
+					\item \alert{Blue} stands for steadfastness (someone who is loyal and sticks to one side no matter what): overall painted face, only painted in the center of the face, connecting eyes and nose.
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Present Situation of Chinese Opera}
+\begin{frame}\frametitle{Present Situation of Chinese Opera}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+			\vspace{4em}
+			\begin{alertblock}{Opera Houses}
+	In \nth{21} century, Chinese opera is publicly staged in formal Chinese opera houses.
+			\end{alertblock}
+	
+			\begin{block}{Chinese Ghost Festival}
+	It may also be presented during the lunar seventh month Chinese Ghost Festival in Asia as a form of entertainment to the spirits and audience.
+			\end{block}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\begin{figure}[H]
+					\centering
+						\subfloat {\includegraphics[width=5.0cm]{F29.jpg}}
+							\hspace{1mm}
+						\subfloat {\includegraphics[width=5.0cm]{F30.jpg}}
+				\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Beijing Opera House}
+\begin{frame}\frametitle{Beijing Opera House}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+			
+	\begin{alertblock}{Kunqu}
+	$>30$ famous forms of Chinese opera continue to be performed today are came from Kunqu, including Journey of the West, Romance of Three Kingdom, the Peony Pavilion, and the Peach Blossom Fan.
+	\end{alertblock}
+	
+	\begin{block}{Masks}	
+These masks were based on the ancient face painting tradition where warriors decorated themselves to scare the enemy.
+In 2001, Kunqu was recognized as Masterpiece of Oral and Intangible Heritage of Humanity by UNESCO.
+	\end{block}
+	
+			\end{column}
+			\begin{column}{0.6\textwidth}
+			\vspace{3em}
+				\begin{figure}[H]
+					\centering
+						\includegraphics[width=6.0cm]{F27.jpg}\caption{Beijing Opera House}
+				\end{figure}
+				
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+	\centering\emph{Thank you for attention !}\\
+	\begin{figure}[H]
+		\centering
+			\includegraphics[width=5.0cm]{F31.jpg}
+	\end{figure}
+\normalsize{	
+Acknowledgements:
+\begin{itemize}
+	\item This research is a part of author's PhD studies funded by the China Scholarship Council (CSC), State Ocean Administration (SOA), Marine Scholarship of China, People's Republic of China (P. R. C.), Beijing, Grant \#2016SOA002, 2016-2020.	
+	\item \LaTeX \space beamer code used for this presentation is adopted and modified from the original source: \href{https://github.com/uwabami/beamerthemeKansaiDebianMeeting/blob/master/beamerthemeKansaiDebian.sty}{KansaiDebian style}  published by \href{https://github.com/uwabami}{Youhei SASAKI}.  
+\end{itemize}
+}	
+\end{frame}
+
+\section{Bibliography}
+%\begin{frame}[allowframebreaks]\frametitle{Bibliography}
+
+\Large{Bibliography}\\
+\footnotesize{Author's publications on Geography and Social Studies:}\\
+	\nocite{*}
+	\printbibliography[heading=none]
+%\end{frame}
+
+\end{document}
