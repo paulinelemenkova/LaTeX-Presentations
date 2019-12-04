@@ -1,0 +1,1136 @@
+%\documentclass{beamer}
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={	 
+	pdfauthor={Lemenkova Polina}, 
+	pdfsubject={Preentation}, 
+	pdfcreator={Lemenkova Polina}, 
+	pdfproducer={Lemenkova Polina}, 
+	colorlinks=true,
+	linkcolor=Red3, 
+	citecolor=NavyBlue, 
+%	urlbordercolor=cyan,
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+\usetheme{Warsaw}
+\usecolortheme{rose} %lily %orchid
+\usecolortheme{seahorse}%whale %  seahorse % dolphin
+\usecolortheme[named=SpringGreen1]{structure}% 
+
+%\usepackage[T2A,T1]{fontenc}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage[english,russian]{babel}
+\usepackage{hyphenat} %переносы
+\usepackage{ragged2e}
+
+%%%%%%%%%%%%% рус: начало %%%%%%%%%%%%
+\usepackage{polyglossia} % Поддержка многоязычности (fontspec подгружается автоматически)
+%\usepackage{fontspec}
+\setmainlanguage{english} % Язык по-умолчанию английский  (в американской вариации по-умолчанию)
+\setotherlanguage{russian} % Дополнительный язык = русский
+%\setmonofont{CMU Typewriter Text} % моноширинный шрифт
+\setmonofont{Times New Roman}
+\newfontfamily\cyrillicfonttt{CMU Typewriter Text} % моноширинный шрифт для кириллицы
+\defaultfontfeatures{Ligatures=TeX} % стандартные лигатуры TeX, замены нескольких дефисов на тире и т. п. Настройки моноширинного шрифта должны идти до этой строки, чтобы при врезках кода программ в коде не применялись лигатуры и замены дефисов
+\setmainfont{CMU Serif} % Шрифт с засечками
+\newfontfamily\cyrillicfont{CMU Serif} % Шрифт с засечками для кириллицы
+\setsansfont{CMU Sans Serif} % Шрифт без засечек
+\newfontfamily\cyrillicfontsf{CMU Sans Serif}
+
+%%%%%%%%%%%%% рус: конец %%%%%%%%%%%%
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Moscow.bib}%  \scriptsize \footnotesize
+\renewcommand*{\bibfont}{\tiny} % 
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{palatino}
+\usepackage{multicol} % to split itemization
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+% -------------------- FOOTNOTE *** START------------------------
+% \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=3.0ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+\usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip-4pt%
+}
+\makeatother
+
+% -------------------- FOOTNOTE *** END------------------------
+
+% --------------------- TOC *** START -----------------------------------------
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{magenta!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{Green1}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+  
+% --------------------- TOC *** END -----------------------------------------
+
+\title[Using ArcGIS in Teaching Geosciences. Lomonosov Moscow State University, Moscow, Russia, 2007-06-05.]{Использование геоинформационных технологий в преподавании дисциплин в Высшей школе}
+
+\subtitle{Аттестационная работа \\
+на получение дополнительного к Высшему образованию\\
+Московский Государственный Университет им. М. В. Ломоносова\\
+Факультет глобальных процессов\\
+Отделение педагогического образования\\
+Специализация 'Преподаватель Высшей школы'
+}
+\author[Polina Lemenkova]{Полина Алексеевна Леменкова}
+
+\date{2007-06-05}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+\section*{Table of Contents}
+\begin{frame}{Table of Contents}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.30\textwidth}
+            \footnotesize{\tableofcontents[sections=1-5]}
+        \end{column}
+        \begin{column}{.30\textwidth}
+            \footnotesize{\tableofcontents[sections=6-6]}
+        \end{column}
+        \begin{column}{.30\textwidth}
+            \footnotesize{\tableofcontents[sections=7-11]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\section{Introduction}
+\begin{frame}\frametitle{Introduction}
+
+\small{
+\begin{block}{}
+Выявление путей повышения эффективности преподавания географических дисциплин в ВУЗах благодаря использованию ГИС и геоинформационных технологий.
+\end{block}
+
+\begin{alertblock}{}
+\begin{itemize}
+	\item Проанализировать психолого-педагогическую и методическую литературу, теоретические вопросы преподавания географических дисциплин в ВУЗе.
+	\item Определить структуру и функции ГИС-программ, изучить один из ГИС для дальнейшего преподавания (выыбран Arc GIS 9.1).
+	\item Изучить практические возможности использования ГИС в учебном процессе преподавания географии в ВУЗах в российской и международной практике
+	\item Исследовать эффективность использования геоинформационных технологий использования и ГИС-программ в образовательном процессе Высшей школы.
+	\item Разработать схему занятий (поурочный план) со студентами по изучению программы ArcGIS 9.1
+\end{itemize}
+\end{alertblock}
+
+\begin{alertblock}{}
+В настоящее время необходимы разработки новых методик преподавания на географическом факультете с опорой на ГИС-технологии как информационно-технический базис изучаемых дисциплин.
+\end{alertblock}
+
+\begin{block}{}
+Содержание и методика ГИС-преподавания на лабораторных занятиях и семинарах 
+\end{block}
+}
+\end{frame}
+
+\section{GIS: Background}
+\begin{frame}\frametitle{GIS: Background}
+ГИС – сокращ. Географическая Информационная Система \\
+(от англ. 'Geographic Information System', GIS)  –  это интегрированные в единой информационной среде компоненты:
+\begin{itemize}
+	\item базы данных
+	\item атрибутивная информация
+	\item пространственная информация
+	\item электронные пространственные изображения (карты, схемы, планы) 
+	\item доп. информация (рисунки, иллюстрации, фотографии, тексты, интернет-ссылки)
+\end{itemize}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+%				\vspace{4em}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.0cm]{F1.jpg}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+\vspace{2em}
+Схема состава ГИС:
+\begin{itemize}
+	\item компьютеры + периферийное оборудование
+	\item программное обеспечение ГИС
+	\item данные (карты, базы данных и т.д.)
+	\item методы обработки данных
+	\item люди (пользователи ГИС)
+\end{itemize}
+			\end{column}
+		\end{columns}
+\end{minipage}
+
+\end{frame}
+
+\section{GIS}
+\subsection{GIS: Advantages}
+\begin{frame}\frametitle{GIS: Advantages}
+Отличие ГИС от традиционной картографии:
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.0cm]{F2.jpg}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+\begin{alertblock}{}
+ГИС  представляет собой не просто  набор нарисованных карт, а  информационную систему, 
+обеспечивающую:
+\begin{itemize}
+	\item сбор, хранение, обработку, отображение данных (графическая визуализация)
+	\item анализ пространственных данных (геокодирование, моделирование)
+\end{itemize}
+\end{alertblock}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+
+\begin{block}{}
+ГИС - современная технология картографирования и анализа  объектов и событий реального мира.
+\end{block}
+
+\begin{alertblock}{ГИС}
+ГИС используется для: картопроизводства с нуля редактирования имеющихся карт оцифровки старых бумажных карт создания картографических баз данных
+\end{alertblock}
+
+\end{frame}
+
+\subsection{Arc GIS: Specifics}
+\begin{frame}\frametitle{Arc GIS: Specifics}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+	%			\vspace{4em}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.0cm]{F3.jpg}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+			\vspace{2em}
+Преимущества Arc GIS. \\
+В качестве рабочей программы для данной работы выбрана программа \alert{Arc GIS} (производство компании ESRI). \\
+Arc GIS 9.1 в настоящее время безусловный мировой лидер среди ГИС многофункционального назначения. 
+			\end{column}
+		\end{columns}
+	\end{minipage}
+	
+Преимущества Arc GIS 9.1 перед другими ГИС:
+
+\begin{itemize}
+	\item удобство и простота использования программы
+	\item наличие множества функций для всевозможных видов обработки и анализа геоданных
+	\item возможность обработки как растровых так и векторных данных
+	\item улучшенное создание и распечатка карт
+	\item встроенный язык программирования Avenue 
+	\item совместимость: проекты, созданные в других ГИС можно конвертировать в ArcGIS, т.к. его форматы совместимы с другими программами.
+\end{itemize}
+   
+\end{frame}
+
+\subsection{Arc GIS: Structure}
+\begin{frame}\frametitle{Arc GIS: Structure}
+Модульная архитектура ArcGIS состоит из отдельных блоков, главные из которых следующие:
+\begin{itemize}
+	\item Arc Catalog – база данных ArcGIS
+	\item Arc Map – главный блок для картографирования
+	\item Arc Globe – для 3-мерной визуализации
+	\item Arc Reader – для просмотра готовых карт
+	\item Arc Tools – главный инструментарий программы, где создаются запросы
+	\item ArcScan – для создания векторных карт на основе сканированных
+	\item Arc Info - главное информационное ядро программы
+\end{itemize}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F4.jpg}
+\end{figure}
+
+\end{frame}
+
+\section{Arc GIS: Functionality}
+\subsection{GIS: Data Visualization}
+\begin{frame}\frametitle{GIS: Data Visualization}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.3\textwidth}
+				\begin{figure}[H]
+					\centering
+					\subfloat {\includegraphics[width=3.0cm]{F17.jpg}}
+						\hspace{1mm}
+					\subfloat {\includegraphics[width=3.0cm]{F18.jpg}}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.7\textwidth}	
+				\small{
+				\begin{alertblock}{}
+Преимущества использования геоинформационных технологий студентами в учебном процессе обусловлены следующими функциями ГИС вообще и Arc GIS в частности:
+				\end{alertblock}
+
+				\begin{block}{}
+Функция наглядности ГИС обогащает круг географических представлений студентов, делает обучение более доступным,  развивает наблюдательность, их мышление и познавательные способности, помогает более глубокому и прочному усвоению учебного материала.  
+				\end{block}
+				
+				\begin{alertblock}{}
+Познавательная функция. При этом происходит опора на чувственную форму познания, в основе которой лежат ощущения - восприятия - представления
+				\end{alertblock}
+				
+				\begin{block}{}
+ГИС помогает сформировать у студентов гармоничный взгляд на мир, обеспечивающий его комплексное восприятие и лучшее понимание взаимосвязей между его составляющими.
+				\end{block}
+
+				\begin{block}{}
+Результат: усвоение студентами материала при использовании ГИС происходит эффективно и результативно
+				\end{block}
+				}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+
+\end{frame}
+
+\subsection{GIS: Education}
+\begin{frame}\frametitle{GIS: Education}
+
+\begin{alertblock}{}
+Воспитательная функция ГИС: работе с ГИС свойственны эмоциональность, воздействие на чувства студентов, интерес к работе. Объяснение и демонстрирование студентам функций и приемов работы с ГИС в классе (каждый работает на своем мониторе) увеличивает эффективность и стимулирует интерес
+\end{alertblock}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.6cm]{F15.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.3cm]{F5.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.3cm]{F6.jpg}}
+\end{figure}
+
+\begin{block}{}
+Развитие культуры: решение разнообразных задач с ГИС способствует развитию общегеографической культуры, профессиональным навыкам, развивает кругозор и эрудированность студентов. Результат: обучение с ГИС активизирует творческие способности
+\end{block}
+
+\end{frame}
+
+\subsection{GIS: Development}
+\begin{frame}\frametitle{GIS: Development}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+	%			\vspace{4em}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=3.5cm]{F7.jpg}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+\begin{block}{}
+Развивающая функция ГИС. При cистематическом целенаправленном использовании ГИС студентами наблюдается ряд положительных изменений: ГИС способствует умственному развитию студентов. В процессе работы происходит активное обучение приемам наблюдения,  анализа и синтеза наблюдаемого, активизируется логическое мышление и анализ причинно-следственных связей, развивается способность принятия решений и построения выводов в процессе самостоятельной работы, улучшается и оттачивается общая компьютерная грамотность и навыки работы с разным ПО.
+\end{block}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+
+\begin{block}{}
+\small{С помощью ГИС студенты учатся управлять информацией, 
+проводить запросы по специальным базам данных (реляционные СУБД), 
+получать ответы на вопросы аналитического характера: Кто владелец данного земельного участка? 
+На каком расстоянии друг от друга расположены эти объекты?
+Где расположена данная промзона?
+Где есть места для строительства нового дома? 
+Каков основный тип почв под еловыми лесами? 
+Как повлияет на движение транспорта строительство новой дороги?}
+\end{block}
+
+\begin{block}{}
+Результат: работа студентов с ГИС способствует их умственному развитию, активизирует логико-аналитическое мышление
+\end{block}
+
+\end{frame}
+
+\subsection{GIS: Information}
+\begin{frame}\frametitle{GIS: Information}
+
+\begin{alertblock}{}
+Информационная и экологичекая функция ГИС. ГИС несут значительную смысловую и информационную нагрузку, в том числе экологичесую, усвоение которых увеличивает кругозор и общую эрудицию студентов 
+\end{alertblock}
+
+\begin{block}{}
+ГИС формируют у студентов пространственные представления и понятия о размещении природных и социально-экономических объектов и явлений
+\end{block}
+
+% 2 картинки
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.0cm]{F8.jpg}}
+			\hspace{5mm}
+		\subfloat {\includegraphics[width=3.0cm]{F9.jpg}}
+\end{figure}
+
+\begin{alertblock}{}
+Работа с ГИС помогает студентам выявлять взаимосвязи между различными параметрами (например, почвами, климатом и урожайностью с/х культур), что важно при изучении географических дисциплин
+\end{alertblock}
+
+\begin{block}{}
+Результат: работа студентов с ГИС повышает эрудицию и географическую и экологическую культуру, 
+расширяют кругозор.
+\end{block}
+
+\end{frame}
+
+\section{ArcGIS: Basics}
+\begin{frame}\frametitle{ArcGIS: Basics}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+				\vspace{2em}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.0cm]{F11.jpg}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+	%			\vspace{4em} 
+\begin{alertblock}{}
+Принципы работы в ArcGIS. Студенты при работе с ГИС оперируют с различными слоями тематической информации, мышью, выбирая объекты для пространственного анализа и обработки геоданных
+\end{alertblock}
+
+\begin{alertblock}{}
+Информация в Arc GIS 9.1 хранится послойно, что позволяет студентам составлять всевозможные комбинации из тематических слоев; редактирование карт происходит 'на лету': можно составлять различные серийные тематические карты
+\end{alertblock}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+
+\begin{block}{}
+ГИС полезно  представить студентам в виде функции; где область определения - база исходных данных (табличных, графических, текстовых), область существования -  графическое представление этих данных, а сама функциональная зависимость -  методика перевода одного в другое.
+\end{block}
+
+\end{frame}
+
+\subsection{Arc GIS: Module Structure}
+\begin{frame}\frametitle{Обучение модульной системе Arc GIS}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}		
+	%			\vspace{4em}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.0cm]{F12.jpg}
+				\end{figure}
+			Обработка геоданных, знакомство с отдельными модулями Arc GIS. Основные этапы работы в обучении студентов должны включать следующие этапы: $\nearrow$
+			\end{column}
+			\begin{column}{0.5\textwidth}
+\begin{alertblock}{}
+
+\begin{itemize}
+	\item выбор проекции карты
+	\item работа с базами геоданных
+	\item векторизация растровых данных
+	\item (на примере оцифровки горизонталей рельефа) 
+	\item изучение модуля Spatial Analyst ArcGIS (для построения цифровой модели рельефа)
+	\item изучение модуля Arc Scene ArcGIS 9.1 (для построения 3-мерного изображения карты)
+	\item создание таблиц в Arc GIS 9.1 
+	\item моделирование и пространственный анализ в ArcGIS
+	\item дизайн и художественное оформление карт
+	\item создание тематических карт
+\end{itemize}
+
+\end{alertblock}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{ArcGIS 9.1: Map Projections}
+\begin{frame}\frametitle{ArcGIS 9.1: Map Projections}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+
+\small{\begin{alertblock}{}
+Работа с картографическими проекциями полезна для студентов-географов, т.к. проекция карты - базовое понятие при работе с картами и обработке пространственной информации
+\end{alertblock}
+
+\begin{block}{}
+Картографические проекции переводят данные из трехмерного пространства  на двухмерную поверхность. Выбор оптимальной проекции для пространственных данных требует от студентов рассмотрения всех типов данных и объектов, которые должна содержать карта, учета ограничений некоторых частных проекций назначения карты
+\end{block}
+}
+
+\begin{alertblock}{}
+ArcInfo и ArcView обеспечивают устойчивую поддержку многих проекций. При помощи ArcMap, модуля ArcInfo,
+проекция может быть легко вызвана или изменена. 
+\end{alertblock}
+
+			\end{column}
+			\begin{column}{0.5\textwidth}
+	%			\vspace{4em}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.0cm]{F13.jpg}
+				\end{figure}
+\begin{block}{}
+Щелчком правой кнопкой мыши на рамке изображения и последующим выбором строки Свойства вызываем таблицу Системы координат, которая показывает параметры текущей  координатной системы  и позволяет отобразить данные  в одной из более 60 заданных проекций или изменить параметры системы координат.
+\end{block}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{ArcGIS: Geomorphology}
+\begin{frame}\frametitle{ArcGIS: Geomorphology}
+
+\small{
+\begin{alertblock}{}
+Оцифровка рельефа. Студентам надо освоить векторизацию растровых данных на примере работы с рельефом, т.к. рельеф – основа и базис практически всех карт. Работа осуществляется с использованием основных модулей ArcGIS: ArcMap, ArcGlobe, ArcCatalog. 
+\end{alertblock}
+
+\begin{block}{}
+На отдельных этапах работы используются также другие программы: Easy Trace или Autotrace (для ускоренной оцифровки), Surfer (для построения сетки рельефа и как аналог ArcGlobe).
+\end{block}
+}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.5cm]{F14.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.2cm]{F16.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.5cm]{F19.jpg}}
+\end{figure}
+
+\small{
+\begin{alertblock}{}
+Основные этапы работы включают: оцифровку горизонталей по отсканированной растровой топокарте
+занесение атрибутивных данных и информации о высотах в ArcCatalog, построение сетки высот и модели местности ЦМР (DEM), применение послойной окраски и утолщенных горизонталей в оформлении карты 3D- визуализация полученной карты с помощью модуля ArcGlobe использование метода отмывки рельефа.
+\end{alertblock}
+}
+
+\end{frame}
+
+\subsection{ArcGIS: Spatial Analyst. DEM}
+\begin{frame}\frametitle{ArcGIS: Spatial Analyst. DEM}
+
+\begin{alertblock}{}
+Изучение модуля Spatial Analyst ArcGIS для построение цифровой модели рельефа. Логическим продолжением предыдущей темы является обучение посторению ЦМР с помощью модуля Spatial Analyst ArcGIS
+\end{alertblock}
+
+\begin{block}{}
+На первом этапе работы активизируем модуль 3D Analyst ArcGIS. Открываем меню 3D Analyst и выбираем Create/ Modify TIN. Появляется диалоговое окно, в котором слева предлагается выбор слоев, на основе которых может быть построена TIN - модель 
+\end{block}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.3cm]{F20.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=5.2cm]{F28.jpg}}
+\end{figure}
+
+\end{frame}
+
+\subsection{ArcGIS: Spatial Analyst. TIN}
+\begin{frame}\frametitle{ArcGIS: Spatial Analyst. TIN}
+
+\begin{block}{}
+Отмечаем галочкой слои, содержащие информацию о высоте в нашем случае поле 'AHEIGHT'. Можно отредактировать легенду TIN двойным щелчком мыши. В ArcMap есть широкие возможности для раскраски рельефа цветовыми шкалами
+\end{block}
+
+\begin{alertblock}{}
+Затем выбираем способ классификации для построения легенды слоя абсолютных высот. Можно задать любое количество классов и любые интервалы между ними, цветовые шкалы так же можно редактировать 
+\end{alertblock}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.2cm]{F22.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.4cm]{F23.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.2cm]{F21.jpg}}
+\end{figure}
+
+\end{frame}
+
+\subsection{ArcGIS: ArcScene}
+\begin{frame}\frametitle{ArcGIS: ArcScene}
+\small{
+\begin{alertblock}{}
+Изучение модуля ArcScene ArcGIS для построения 3D карты. Делаем слой оттенения (3D Analyst- Surface Analysis Hillshade), в окне задаем направление освещения (по умолчанию СЗ) и Altitude угол высоты солнца над горизонтом Azimuth (чем он ниже - тем длиннее тени).
+\end{alertblock}
+}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.0cm]{F25.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.0cm]{F26.jpg}}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.0cm]{F24.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.0cm]{F27.jpg}}
+\end{figure}
+
+\small{
+\begin{alertblock}{}
+Экспорт в ArcScene: загрузить слой поверхности/ После добавления слоя в проект ArcScene подгружаем легенду .lyr, сохраненную в ArcMap.
+\end{alertblock}
+}
+\end{frame}
+
+\subsection{ArcSDE (1)}
+\begin{frame}\frametitle{ArcSDE (1)}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+	%			\vspace{4em}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.0cm]{F29.jpg}
+				\end{figure}
+\small{				
+				\begin{block}{}
+Топология позволяет моделировать в ГИС пространственные отношения: связность (связаны ли между собой линии дорожной сети?) и смежность (существует ли расстояние между двумя полигонами участков?). Знать принципы топологии важно.
+				\end{block}
+
+				\begin{block}{}
+В ArcGIS есть возможность автономного редактирования баз геоданных: откреплять геообъекты из многопользовательской базы геоданных для работы с ними в полевых условиях
+				\end{block}
+}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+		\small{
+			\begin{alertblock}{}
+Обучение студентов работе с базами геоданных в ArcGIS 9.1 База геоданных – важнейшая компонента и информационное ядро ГИС. База геоданных – это технология для хранения разнородных геоданных, позволяющая повысить эффективность их хранения и использования в сложных проектах и системах.
+			\end{alertblock}
+
+			\begin{block}{}
+Работая с базами геоданных, студенты получают навыки по использованию баз данных, т.к. устройство баз геоданных аналогично обычным (MS Access), и по обработке геоданных, обеспеченной благодаря топологиям.
+			\end{block}
+
+			\begin{alertblock}{}
+Фундаментальная особенность баз геоданных - поддержка топологий, обеспечивающая логико-пространственную взаимосвязь разных объектов на территории.
+			\end{alertblock}
+
+			\begin{alertblock}{}
+Топология полезна для контроля целостности совпадающей геометрии у разных классов объектов 
+(совпадает ли береговая линия с границей страны?)
+			\end{alertblock}
+		}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+	
+\end{frame}
+
+\subsection{ArcSDE (2)}
+\begin{frame}\frametitle{ArcSDE (2)}
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.0cm]{F30.jpg}}
+			\vspace{2mm}
+		\subfloat {\includegraphics[width=4.0cm]{F30a.jpg}}
+\end{figure}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+\small{
+Обучение студентов работе с базами геоданных в ArcGIS.
+
+\begin{block}{}
+Главное хранилище данных в ArcGIS - сервер пространственных данных ArcSDE, созданный 
+в 1994 г. и поддерживаемый различные форматы как других приложений ArcGIS (ArcView, ArcEditor), 
+так и других ГИС-программ: Erdas Imagine для обработки растра, MapInfo для работы с векторными картами. 
+\end{block}
+
+\begin{alertblock}{}
+ArcSDE позволяет использовать общую базу данных одновременно нескольким пользователям, что актуально для студенческих групп 
+\end{alertblock}
+
+\begin{block}{}
+В ArcSDE можно сохранять варианты данных на определенный временной отрезок и хранить т.о. резервные копии и при желании вернуться к ним.
+\end{block}
+}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+
+\end{frame}
+
+\subsection{ArcGIS: ModelBuilder}
+\begin{frame}\frametitle{ArcGIS: ModelBuilder}
+Обучение студентов моделированию и пространственному анализу в ArcGIS
+\small{
+\begin{alertblock}{}
+Для решения сложных задач геообработки (c использованием нескольких инструментов) можно создать модель путем связывания отдельных процессов в ModelBuilder. При построении модели можно мышью перетаскивать инструменты из окна ArcToolbox или дерева ArcCatalog. Для задания параметров модели существует отдельное окно, где студенты могут задавать критерии моделирования.
+\end{alertblock}
+
+\begin{block}{}
+
+Объясняем студентам назначение клавиш: Контейнер с набором инструментов. Инструмент: запускает какую-то функцию геообработки. Скрипт: может быть написан на любом компилируемом языке программирования: Python, Jscript или VBScript. В ArcGIS также есть встроенный язык Avenue. Редактировать модель можно в окне Model Builder.
+\end{block}
+}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=5.1cm]{F31.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=4.7cm]{F32.jpg}}
+\end{figure}
+
+\end{frame}
+
+\subsection{ArcGIS: Spatial Analysis}
+\begin{frame}\frametitle{ArcGIS: Spatial Analysis}
+
+\begin{alertblock}{}
+Примеры результатов пространственного анализа, проведенного студентами при работе с ArcGIS. Для выделения районов, находящихся в доступности m или n км студентам предлагается выполнить запрос на поиск территорий, удовлетворяющих условию 'расстояние любой точки на границе данного полигонального объекта до другого доkжно быть менее или равным X'. 
+\end{alertblock}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=4.4cm]{F33.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=4.0cm]{F33a.jpg}}
+\end{figure}
+
+\begin{block}{}
+Подобные запросы можно проводить при экологическом анализе (выделить территории, находящиеся на расстоянии Х или Y км от фабрики, очага выбросов вредных веществ или катастрофы и т.д) и при других видах 
+территориальной оценки. Пример: Зоны доступности магазинов в 500 и 300 метров.
+\end{block}
+
+\end{frame}
+
+\subsection{Export: MS Excel}
+\begin{frame}\frametitle{Export: MS Excel}
+Обучение студентов работе с таблицами в Arc GIS 9.1; экспорт из MS Excel
+	
+\begin{alertblock}{}
+Вся атрибутивная информация в ArcGIS хранится в табличной форме в модуле ArcCatalog,
+поэтому необходимо обучить студентов их использованию и редактированию и экспорту/импорту.
+\end{alertblock}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.4cm]{F34.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=4.0cm]{F35.jpg}}
+\end{figure}
+
+\begin{block}{}
+В ArcGIS 9-й версии возможен экспорт таблиц из Excel. Для переноса данных из таблицы Excel в ArcGIS, сохраняем их в текстовом формате с разделителями – табуляциями в Excel -  DBF 3 (dBase III) 
+\end{block}
+
+\end{frame}
+
+\subsection{Export Data}
+\begin{frame}\frametitle{Export Data}
+
+\begin{alertblock}{}
+Добавляем файл в ArcMap (File - Add Data). В Source указываем местонахождение и имя файла. Добавленная в ArcMap таблица отражается в иерархическом 'дереве' проекта, где находятся все созданные карты, слои, растровые изображенияи снимки, модели, созданные в проекте и таблицы с данными.
+\end{alertblock}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.5cm]{F36.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=2.8cm]{F37.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.5cm]{F38.jpg}}
+\end{figure}
+
+\begin{block}{}
+Подгруженную таблицу можно просматривать, редактировать и изменять. На основе табличных данных 
+создаем точечный слой и добавляем его в проект (в отдельных столбцах хранятся координаты и атрибуты).
+\end{block}
+
+\end{frame}
+
+\subsection{ArcGIS: Design Solutions}
+\begin{frame}\frametitle{ArcGIS: Design Solutions}
+\small{
+\begin{alertblock}{}
+Изучение принципов оформления карт активизирует творческие способности студентов; как правило, оформление карт - одна из самых интересных для них тем
+\end{alertblock}
+
+\begin{block}{}
+ArcGIS предоставляет большие возможности художественного оформления карт: цветовые палитры,  графические символы, штриховки, управление слоями (прозрачность: совмещать одни тематические слои на фоне других) цветовые градиенты 'оттенение' для отмывки рельефа.
+\end{block}
+}
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.8cm]{F39.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=4.0cm]{F40.jpg}}
+\end{figure}
+\small{
+\begin{alertblock}{}
+На одном из семинаров можно предложить студентам задание по составлению в ArcGIS графиков и диаграмм, полезных для представления и анализа разновременных социально-экономических данных, где показано изменение статистической информации по годам: изменение численности / плотности населения, ВВП страны или региона по годам и т.д. На основе данных студенты создают графики, пользуясь инструментом Chart в основном меню.
+\end{alertblock}
+}
+\end{frame}
+
+\section{ArcGIS: Thematic Mapping}
+
+\subsection{Hydrology}
+\begin{frame}\frametitle{Hydrology}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+
+\begin{itemize}
+	\item чертежи профилей водохранилищ
+	\item составление схем речной сети и бассейнов и распределение
+	\item речного стока в пределах бассейна
+	\item расчет характеристик и параметров гидрографической сети
+	\item моделирование подъема и спада воды в периоды 
+	\item моделирование половодий и паводков
+	\item анализ водопотребления 
+	\item в районе, освоение человеком водоохранных зон
+\end{itemize}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+
+			\begin{figure}[H]
+					\centering
+					\includegraphics[width=5.5cm]{F42.jpg}
+			\end{figure}
+$\Longleftarrow$ Используя ArcGIS студенты-гидрологи могут выполнять следующие задания.
+\footnotesize{
+\begin{block}{}
+Территории в зонах затопления на ортофотоплане в ArcGIS. Разработка комплексных ГИС гидрологического назначения позволяет собрать воедино разобщенную гидрологическую информацию, и на основе фактических и прогнозных данных оперативно представлять сведения для работы паводковых комиссий. Поэтому для будущих гидрологов важно знать инструментарий и возможности ГИС в гидрологии.
+\end{block}
+}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+\subsection{Economic Geography}
+\begin{frame}\frametitle{Economic Geography}
+
+	\begin{minipage}[0.4\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=4.0cm]{F41.jpg}
+				\end{figure}
+\small{	
+\begin{alertblock}{}
+Использование ArcGIS студентами экономико-географических специальностей. Основные направления применения ГИС: транспортная логистика, размещение объектов торговли и услуг, услуги, связанные с местоположением клиента (сфера телекоммуникаций и сотовых связей)
+\end{alertblock}
+}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+\small{
+\begin{block}{}
+Актуальная задача для студентов экономико-географов - размещение объектов и логистика, 
+включающая:
+\begin{itemize}
+	\item многофакторный анализ территории, 
+	\item транспортная инфраструктура, 
+	\item планирование перевозок
+	\item ценовые характеристики территории
+	\item поиск оптимальных положений для новых объектов 
+	\item отображение объектов: магазины, театры, кафе, дома, склады
+	\item режимы землепользования
+	\item оперативное управление парком транспортных средств
+	\item демография (потенциальный спрос).
+	\item оценка обеспеченности районов магазинами 
+\end{itemize}
+Для решения этих задач используем модули пространственного анализа ArcGIS: ArcGIS Spatial Analyst (на сплошных поверхностях). ArcGIS Network Analyst (на сетевых структурах).
+\end{block}
+}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+
+\end{frame}
+
+\subsection{Glaciology}
+\begin{frame}\frametitle{Glaciology}
+\small{
+Использование ArcGIS в области гляциологии. Задачи, которые студенты могут решать, используя модули ArcGIS 9.1:
+\begin{itemize}
+	\item деградация ледников Арктики и Антарктики, высокогорных районов 
+	\item криогенез в пределах ледникового бассейна
+	\item расчет характеристик и параметров оледенения (толщина, цвет, плотность льда) 
+	\item моделирование и прогнозирование изменения ледников
+	\item анализ сокращения площади ледников
+	\item изучение скорости сокращения ледников по данным космических снимков и карт за к.-л.
+ промежутки времени (такие задачи можно решать при написании курсовых).
+\end{itemize}
+}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8.0cm]{F45.jpg}
+\end{figure}
+\small{
+Ледниковый купол: изображение на космическом снимке и на карте. Совместное использование карт и снимков в ArcGIS позволяет студентам вычислять сокращение площадей ледников.
+}
+\end{frame}
+
+\subsection{Photogrammetry and RS}
+\begin{frame}\frametitle{Photogrammetry and RS}
+
+\begin{alertblock}{}
+Тематическое картографирование при изучении студентами дисциплины 'Фотограмметрия и основы дистанционного зондирования Земли'. \\
+Использование современных средств ArcGIS 9.1 вместо громоздких стереокомпараторов намного повышает эффективность работы при обработке снимков:
+\end{alertblock}
+
+\begin{block}{}
+С помощью модуля Stereo Analyst ArcGIS 9.1, кроме обычного двухмерного изображения возможен просмотр трехмерных данных.\\
+Stereo Analyst ArcGIS 9.1 позволяет: проводить частичную обработку космических снимков обработывать два снимка, используя эффект стереопары
+\end{block}
+
+\begin{figure}[H]
+	\centering
+		\subfloat {\includegraphics[width=3.2cm]{F46.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.2cm]{F47.jpg}}
+			\hspace{1mm}
+		\subfloat {\includegraphics[width=3.2cm]{F48.jpg}}
+\end{figure}
+
+\begin{alertblock}{}
+Модуль ArcScene ArcGIS 9.1 дает возможность 3-мерного, объемного отображения карты, что выглядит очень эффектно и интересно для студентов
+\end{alertblock}
+
+\end{frame}
+
+\subsection{Cadaster and Land Use}
+\begin{frame}\frametitle{Cadaster and Land Use Planning}
+
+\begin{alertblock}{}
+Тематическое картографирование студентами географического факультета при изучении  дисциплины 'Кадастр и землеустройство'.
+\end{alertblock}
+
+\begin{block}{}
+Использование ПО ArcGIS 9.1 при изучении  дисциплины 'Кадастр и землеустройство' или студентами архитектурных специальностей и землеустроительных факультетов помогает решать задачи градостроительного кадастра.
+\end{block}
+
+\begin{alertblock}{}
+Наличие сведений о зданиях, сооружениях и других элементах градостроительной инфраструктуры позволит решать разнообразные аналитические задачи: функциональное зонирование, моделирование развития территорий, анализ ограничений с учетом трехмерных характеристик объектов, (этажность), плотность населения по районам
+\end{alertblock}
+
+\begin{block}{}
+На основе ArcGIS студенты могут имитировать принятие управленческих решений:
+например, проанализоровать эффективность постройки школ (на основе имеющейся в базе данных численности населения) проанализировать эффективности расположения избирательных участков выделить объекты, требующих капитального ремонта (на основе периода постройки зданий) 
+\end{block}
+
+\end{frame}
+
+\subsection{Biogeography}
+\begin{frame}\frametitle{Biogeography}
+\small{
+Тематическое картографирование для студентов кафедры 'Биогеография'.
+
+\begin{alertblock}{}
+Работа с интерактивными акртами способствует развитию экологического воспитания студентов, пробуждает интерес к теме. Разные масштабы и цели оценки состояния лесов требуют учета многих аспектов и параметров биоразнообразия: это реализуемо средствами ГИС (наложение слоев, анализ информации, моделирование)
+\end{alertblock}
+
+\begin{block}{}
+Классические средства картографии в полной мере содержатся в  интерфейсе ArcGIS: художественно-оформительские средства, разнообразные и перекрестные штриховок. \\
+Используя ArcGIS студенты могут: 
+\begin{itemize}
+	\item дешифрировать породы деревьев 
+	\item составлять карты лесной таксации
+	\item определять экосистемное биоразнообразие лесов	
+	\item дешифрировать контуры лесных выделов по космоснимкам
+	\item устанавливать текущее состояние лесных территорий (лесхозов)
+	\item прогнозировать развитие лесов с учетом их естественной динамики,
+	\item оценивать интенсивность лесопользования и сохранения биоразнообразия
+	\item проводить расчет и визуализацию основных параметров/индексов биоразнообразия
+\end{itemize}
+Наполнение базы геоданных ГИС: рельеф, инфраструктура, ДДЗ, снимки, гидросеть, таблицы.
+\end{block}
+}
+\end{frame}
+
+\subsection{Landscape Studies}
+\begin{frame}\frametitle{Landscape Studies}
+
+\begin{alertblock}{}
+Использование ArcGIS студентами кафедры 'Ландшафтоведение' для решения задач по экологичекому менеджменту и комплексной оценки территорий. Используя инструментарий ArcGIS студенты старших курсов кафедры 'Ландшафтоведение' могут проводить комплексные сложные исследования состояния ландшафтов территорий.
+	\begin{itemize}
+		\item создание комплексной базы данных, объединяющей сведения о компонентах геосистем
+		\item создание электронной ландшафтной карты
+		\item оценка устойчивости геосистем (и их отдельных компонентов) к различным видам антропогенного воздействия на основе интегральных балльных оценок по факторам устойчивости интеграция карт устойчивости ландшафтов к техногенной нагрузке с картами объектов 
+		\item обустройство и выделение потенциально опасных для хозяйственного освоения участков территории (оценка экологического риска) 
+		\item выбор оптимальной стратегии при проектировании с учетом экономической и экологической составляющих базы данных
+		\item поддержка принятия управленческих решений организация на базе ArcGIS системы экологического мониторинга с использованием материалов наземных (полевых) наблюдений и ДДЗ, включая космические снимки высокого разрешения
+	\end{itemize}
+\end{alertblock}
+\end{frame}
+
+\subsection{Environmental Mapping}
+\begin{frame}\frametitle{Environmental Mapping}
+
+\begin{alertblock}{}
+Модуль Spatial Analyst ArcView 3.2a из линейки ArcGIS 9.1 позволяет студентам выполнить ряд практических занятий по комплексной оценки геоэкологического состояния территорий и районирвания, которые могут быть тренировочными и полезными к написанию курсовых:
+\begin{itemize}
+	\item анализ пространственного распространения загрязнителей в почве или воде 
+	\item анализ взаимного влияния типов данных характеристики геологической среды, гидросеть и гидрологические характеристики, 
+	\item расстояние до населенных кварталов, 
+	\item рельеф и геоморфологические характеристики,
+	\item содержание тяжелых металлов в почвах и водах.
+\end{itemize}
+\end{alertblock}
+
+\begin{block}{}
+Основные этапы таких работ следующие: Особенность организации ландшафтной ГИС: комплексности и множество данных и материалов, которые используются для проведения экспертных оценок и принятия управленческих решений экологического менеджмента. Для анализа пространственных связей между элементами природных экосистем полезно устанавливать горячие связи HotLinks.
+\end{block}
+
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}\frametitle{Conclusion}
+\begin{itemize}
+	\item В настоящее время использование ГИС  практически полностью вытеснило методы 
+традиционной картографии (рисовка от руки, изготовление твердых фотокопий карт)
+	\item Использование ГИС актуально в различных сферах геонаук: геология, геоморфология, гидрология, 
+ океанология, геодезия, землепользование и кадастр, картография, экология, ландшафтоведение и др.
+	\item На предприятиях среди выпускников востребованы владеющие ГИС-пакетами и новыми IT
+	\item Среди различных ГИС-программ ArcGIS является наиболее оптимальным, популярным и
+многофункциональным, что позволяет использовать его в различных сферах деятельности.
+	\item Обучение использованию ГИС - актуально как для студентов-картографов, так и для других
+специальностей и кафедр
+	\item Изучение ПО ArcGIS активизирует интерес студентов к предмету, позволяет решать пространственно-аналитические задачи, развивает кругозор, укрепляет навыки работы с базами данных.
+	\item Обучение студентов ГИС (ПО ArcGIS)  является в настоящее время актуальной и необходимой задачей
+\end{itemize}
+\end{frame}
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \LARGE 
+	\emph{Спасибо за внимание !}
+\end{frame}
+
+\section{Literature}
+\begin{frame}\frametitle{Literature}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.5cm]{liter.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Bibliography}
+%\footnotesize{Author's publications on Cartography, Mapping, Geography, Environment, GIS and Landscape Studies:}
+	\nocite{*}
+	\printbibliography[heading=none]
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%	
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
