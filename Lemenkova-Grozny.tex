@@ -1,0 +1,452 @@
+\documentclass[pdflatex,compress,8pt,
+	xcolor={dvipsnames,dvipsnames,svgnames,x11names,table},
+	hyperref={	
+	breaklinks = true, 
+	pdfauthor={Lemenkova Polina}, 
+	pdfsubject={Presentation}, 
+	pdfcreator={Lemenkova Polina}, 
+	pdfproducer={Lemenkova Polina}, 
+	colorlinks=true,
+	linkcolor=NavyBlue, 
+	citecolor=NavyBlue, 
+%	urlbordercolor=cyan,
+	urlcolor = NavyBlue, 
+	breaklinks = true}]{beamer}
+\usetheme{Hannover}
+
+% ----------------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{gensymb} % degree symbol
+\usepackage[super]{nth}
+\usepackage{amsmath}
+\usepackage{palatino}
+\usepackage{subfig}
+\usepackage{csquotes}
+ \setbeamertemplate{caption}[numbered] % Figures numeration
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}} % path to folder with Figures
+
+% ----------------------------------------------------------------------------
+% *** START BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+\usepackage[
+	backend=biber, 
+	style = phys,
+	maxbibnames=99,
+	citestyle=numeric,
+	giveninits=true,
+	isbn=true,
+	url=true,
+	natbib=true,
+	sorting=ndymdt,
+	bibencoding=utf8,
+	useprefix=false,
+	language=auto, 
+	autolang=other,
+	backref=true,
+	backrefstyle=none,
+	indexing=cite,
+]{biblatex}
+\DeclareSortingTemplate{ndymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort[direction=descending]{
+    \field{sortyear}
+    \field{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{99}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{99}
+  }
+  \sort{
+    \field{sorttitle}
+  }
+  \sort[direction=descending]{
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{9999}
+  }
+}
+
+\addbibresource{Grozny.bib}
+\renewcommand*{\bibfont}{\tiny}
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% ----------------------------------------------------------------------------
+% *** END BIBLIOGRAPHY <<<
+% ----------------------------------------------------------------------------
+
+% -------------------- FOOTNOTE *** START------------------------
+% \title[Short Title]{Long Title}
+\makeatletter
+\setbeamertemplate{footline}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.24 \paperwidth,ht=2.5ex,dp=3.0ex,leftskip=.01cm plus1fill,rightskip=.05cm]{author in head/foot}%
+\usebeamerfont{title in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.76\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.05cm,rightskip=.15cm plus1fil]{title in head/foot}%
+        \usebeamerfont{title in head/foot}\insertshorttitle{}
+        \insertframenumber{} / \inserttotalframenumber \ \hspace*{2ex} 
+    \end{beamercolorbox}}%
+    \vskip-4pt%
+}
+\makeatother
+
+% -------------------- FOOTNOTE *** END------------------------
+
+% --------------------- TOC *** START -----------------------------------------
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\setbeamertemplate{section in toc}{%
+  {\color{magenta!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+  \hspace{1.2em}{\color{VioletRed3}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+  
+% --------------------- TOC *** END -----------------------------------------
+
+%-------------------------------------------------------
+% THE TITLEPAGE
+%-------------------------------------------------------
+
+\title[Why Should We Stand for Geothermal Energy ? Grozny, Chechnya, Russia, June 19-21, 2015.]{Why Should We Stand for Geothermal Energy ?\\
+ Example of the Negative Impacts of Oil and Gas Exploration Activities Over the Marine Environment}
+
+\subtitle{\small{Presented at International Conference\\ \emph{'Geoenergy'}\\
+Grozny State Oil Technical University n.a. M.D. Millionshtchikov\\
+Grozny, Chechnya, Russia}}
+
+\author[Polina Lemenkova]{Polina Lemenkova}
+
+\date{June 19-21, 2015}
+
+\begin{document}
+\begin{frame}
+           \titlepage
+\end{frame}
+
+%-------------------------------------------------------
+% THE BODY OF THE PRESENTATION
+%-------------------------------------------------------
+
+\section*{Outline}
+\begin{frame}{Outline}
+    \begin{columns}[onlytextwidth,T]
+        \begin{column}{.5\textwidth}
+            \small{\tableofcontents[sections=1-4]}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \small{\tableofcontents[sections=5-10]}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Introduction}
+\subsection{Study Area}
+\begin{frame}\frametitle{Study Area}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F1.jpg}\caption{Source: IBCAO}
+\end{figure}
+
+\begin{alertblock}{}
+Geothermal energy is a clean, environmentally friednly, renewable resource that provides energy around the world. Heat flowing constantly from the interior of the Earth ensure to be an inexhaustible supply of energy. However, existing traditional sources of energy, such as oil and gas are still popular nowadays.
+\end{alertblock}
+
+\end{frame}
+
+\section{Arctic}
+\subsection{Environment}
+\begin{frame}\frametitle{Environment}
+
+\begin{alertblock}{Currents}
+Distribution of the contaminants in the marine environment is largely dependent on the ocean currents and physicochemical characteristics. Water-dissolved particles are transported by snow melt and surface waters, intra-ocean currents, groundwater and rivers.
+\end{alertblock}
+
+\begin{block}{Polar Climate}
+Permafrost, excessive wetting of the active layer, low temperature and long freezing period slow down chemical and biochemical soil-forming processes in the Polar zone
+\end{block}
+
+\begin{alertblock}{Impact Factors}
+Atmospheric flows, river and sea currents get connected in Arctic. This cause a long-distance possible transport of the pollutants. In view of this, Arctic is a region with a high environmental risk of the accumulation of pollutants.
+\end{alertblock}
+
+\begin{block}{Food Chains}
+Food chains are main biological pathways for the selective absorption, concentration and transfer of contaminants by plants and animals. A variety of processes upbrings pollutants from coastal areas, atmosphere, seas and rivers. This makes Arctic flora and fauna an objects of possible environmental pollution.
+\end{block}
+
+\end{frame}
+
+\subsection{Settings}
+\begin{frame}\frametitle{Settings}
+
+	\begin{alertblock}{Arctic: small yet important}
+'Arctic is a kitchen of weather'. Arctic Ocean is the smallest among the oceans. However, according to the climate data, its role in the formation of the global climate invaluable. Sweet water formed from icebergs and coming through the surface waters is a part of the interoceanic circulation system of ocean currents. Through circulation system, Arctic waters are connected to the Atlantic and the World Ocean. Therefore, oil pollution of the Arctic seas is dangerous.
+	\end{alertblock}
+
+	\begin{block}{Low recovery speed}
+Development of offshore oil fields is negative for the northern seas, due to the low rates of the recovery processes. Chemical, biochemical and microbiological oxidation has slow speed in the Arctic, due to low water and air temperatures. Therefore, the pollution of the sea waters and soil of the Arctic can be higher compared to temperate and tropical zones.
+	\end{block}
+
+	\begin{alertblock}{Global environmental ecosystem}
+The continent and sea basins are the natural components of a global environmental ecosystem. Therefore, any changes and pollution affect functioning of the individual parts of the ecosystem: lakes, seas, coastal areas.
+	\end{alertblock}
+
+\end{frame}
+
+\section{Barents Sea}
+\subsection{Ecosystem}
+\begin{frame}\frametitle{Ecosystem}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7.0cm]{F2.jpg}\caption{Graphics source: author}
+\end{figure}
+
+\begin{alertblock}{General}
+\small{
+Barents Sea - marginal and the most western of the Arctic Ocean seas. Hydrologically, it is connected with the Norwegian and Greenland seas, Central Arctic basin, Kara Sea and White Sea. Located beyond the Arctic Circle, but directly connected with North Atlantic, it has specific climatic conditions. 
+}
+\end{alertblock}
+
+\end{frame}
+
+\subsection{Geography}
+\begin{frame}\frametitle{Geography}
+
+\begin{block}{Specific}
+A characteristic feature of the Barents Sea: warm waters coming from the North Atlantic come into contact with the cold waters of the Arctic. Permafrost, excessive moistening of the active layer, low temperature and long freezing period slow down chemical and biochemical soil-forming processes in the polar zone.
+\end{block}
+
+\begin{examples}{Bioproductivity:}
+Barents Sea is the most highly productive north Russian seas. Water circulation is determined by the interaction of the main two oppositely directed flows: Atlantic and Arctic. Rich biota in the Barents Sea is explained by active light regime during Polar summer, advantageous geographical settings and income of the warm North Atlantic currents into the high latitudes.
+\end{examples}
+
+\begin{alertblock}{Submarine Geomorphology}
+Vast ice fields, drifting icebergs that do not melt during the year, inhibit the development of the wave processes.
+These processes in the coastal zone $=>$ formation of an \alert{anomalous flattened profile} of the underwater coastal slope of the Barents Sea $=>$ distribution of finely dispersed sediments not typical of the inner shelf.
+\end{alertblock}
+
+\end{frame}
+
+\subsection{Meteorology}
+\begin{frame}\frametitle{Meteorology}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9.0cm]{F5.jpg}
+\end{figure}
+
+\begin{alertblock}{Climatic Conditions}
+The climatic conditions of the Barents region are determined by its polar position and the warming influence of the North Atlantic. Distribution of the precipitation is the result of a complex interaction of the circulation processes.
+\end{alertblock}
+
+\end{frame}
+
+\subsection{Mapping}
+\begin{frame}\frametitle{Mapping}
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+%\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F7.jpg}\caption{Source: Author. Mapping: ArcGIS}
+\end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+\begin{itemize}
+	\item Distribution of the petroleum hydrocarbons in the bottom layer of the Barents Sea. 
+	\item The map shows two zones of the increased concentrations of phenols and oil pollution: western and eastern areas. 
+	\item Atlantic waters are the main source in the west. 
+	\item White Sea water is the main source in the east. 
+	\item Increased values are noted in the Kola Bay and in the adjacent water area
+	\item The annual inflow of oil to the marine environment of the oceans from various sources is ca. 1.7-8.7 M tons.
+	\item Due to the development of the oil fields in Arctic regions, especially in the Barents and Kara Seas, the flow of oil products increased.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{minipage}
+\end{frame}
+
+\section{Pechora Sea}
+\subsection{Coasts}
+\begin{frame}\frametitle{Coasts}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+
+	\begin{block}{Location}
+Pechora Sea is a south-eastern part of the Barents Sea.
+	\end{block}
+	
+	\begin{alertblock}{Population}
+The coast of the Pechora Sea is \emph{poorly populated}. Among the settlements of the coastal zone, the largest are Naryan-Mar, Varandey, Vangurey in the Pechora Bay, Korotaikha, Bugrino.
+	\end{alertblock}
+	
+	\begin{block}{Naryan-Mar}
+Naryan-Mar is the capital of the Nenets Autonomous Okrug, river port and important transport hub on the waterway from the Pechora region and the Northern Sea Route.
+	\end{block}
+
+	\begin{block}{Fishery}
+Pechora Bay and estuary are important fishery areas playing important role in the economy of the Nenets region. Recently, fisheries here decreased in number of salmon herds and whitefish catches.
+	\end{block}
+	
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{3em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F3.jpg}\caption{Source: Author. Mapping: ArcGIS}
+\end{figure}
+\end{column}
+\end{columns}
+\end{minipage}
+
+\end{frame}
+
+\subsection{Currents}
+\begin{frame}\frametitle{Currents}
+
+\begin{minipage}[0.4\textheight]{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+%\vspace{4em}
+\begin{alertblock}{Gulf Stream}
+Additional source of contaminants in the Barents Sea is the Gulf Stream system. Ca. 1-1.5 M tons of oil products are transported by the Gulf Stream per year. 
+\end{alertblock}
+
+\begin{block}{Discharge Zones}
+Currents of the Gulf Stream, containing dissolved pollutants, e.g. oil products, have several discharge zones off the coast of North America and Europe (Sargasso, Norwegian and Barents Seas).
+\end{block}
+
+\begin{block}{Effects of the Pechora River}
+The flow of the Pechora River, in addition to contaminant transit and desalination, determines the formation of the runoff currents in the Pechora Bay, determining distribution of the contaminants across the sea. 
+\end{block}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\vspace{2em} 
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=5.0cm]{F6.jpg}\caption{Source: Web}
+\end{figure}
+
+\begin{block}{Effects of the Pechora Sea}
+The opposite effect of the Pechora Sea on the Pechora River (through the Pechora Bay) $=>$ tidal and surging waves into the river.
+\end{block}
+
+\end{column}
+\end{columns}
+\end{minipage}
+
+\end{frame}
+
+\subsection{Environment}
+\begin{frame}\frametitle{Environment}
+
+\begin{alertblock}{Determinants}
+Environmental settings of the Pechora Sea ecosystem are determined by physical, geographical parameters of the biotope, and anthropogenic pressure.
+\end{alertblock}
+
+\begin{block}{River Discharge}
+The ecological and chemical conditions of the Pechora Sea is affected by the discharge of the Pechora River, which flows into the Pechora Bay and transports pollutants from the industrial regions of Komi and Nenets regions. 
+\end{block}
+
+\begin{examples}{Technogenic Pollution}
+Example of the pollutants associated with this type of source is oil products, which can be considered as an example of technogenic pollution. This is caused by the increasing oil production in offshore areas, transportation and the use of lubricating oils and chemical products as a fuel.
+\end{examples}
+
+\begin{alertblock}{Distribution}
+Maximum concentrations of the pollutants are localized in a surface layer: zone of the interaction between the hydrosphere and the atmosphere. High concentrations of oil aggregates are along the transport routes, in the shelf zones of closed seas, and in currents of the Atlantic waters carrying pollution from Europe and NW coast of Africa.
+\end{alertblock}
+
+\end{frame}
+
+\subsection{River-Sea}
+\begin{frame}\frametitle{River-Sea}
+
+\begin{alertblock}{Pollutants Distribution}
+The uneven distribution of pollutants is caused by geographical location of the sources, water circulation and vertical structure, chemical form of the pollutants in water and their properties.
+\end{alertblock}
+
+\begin{itemize}
+	\item Pechora River provides ca. 90\% of the total river inflow to the Pechora Sea.
+	\item By water runoff, it is one of the largest Arctic rivers in Russia.
+	\item Pechora estuary is an object of intensive economic development associated with the discovery of gas and oil fields directly in the estuary region and adjacent areas of the Bolshezemelskaya and Malozemelskaya tundra.
+	\item The route of the pollutants to the sea: natural geographic connection of of Pechora River $=>$ Pechora Bay $=>$ Pechora Sea
+\end{itemize}
+
+\begin{block}{Coastal Zones}
+The highest concentration of the pollutants: in relatively calm coastal zones, where dumping is carried out in vast inactive areas of the open ocean, where they are carried out from the Gulf Stream and the North Atlantic Current and where they constantly accumulate.
+\end{block}
+
+\begin{block}{Additional Sources}
+Additional source of pollution of Arctic: shipping. The main source of oil pollution in the Barents Sea: waste dumping, petroleum transportation, toxic substances, emergency situations, global current system development of the offshore oil and gas fields.
+\end{block}
+
+\end{frame}
+
+\subsection{Mapping}
+\begin{frame}\frametitle{Mapping}
+\vspace{2em}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10.0cm]{F8.jpg}\caption{Source: Author. Mapping: ArcGIS}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+% END OF THE PRESENTATION
+%-------------------------------------------------------
+
+\section{Thanks}
+\begin{frame}{Thanks}
+  	\centering \Large
+	\emph{Thank you for attention !}\\
+\end{frame}
+
+%%%%%%%%%%% Bibliography %%%%%%%
+\section{Bibliography}
+%\vspace{2em}
+\large{Bibliography}\\
+\footnotesize{Author's publications on Geography, GIS and Environment:}
+\nocite{*}
+\printbibliography
+
+%Changing the font size locally (from biggest to smallest):	
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\end{document}
